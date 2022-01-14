@@ -1,0 +1,22 @@
+.gradient-custom-3 {
+
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgb(49, 143, 83, 0.5),rgba(10, 202, 250, 0.2))
+  }
+  .gradient-custom-4 {
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #05f0f880, rgba(24, 235, 94, 0.5))
+  }
+
+ #backgroundImage {
+    background-image: url('../images/hq.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+  
+#requiredInfo {
+  color:red;
+}

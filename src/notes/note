@@ -1,0 +1,12 @@
+For Importing images:
+
+Either put them in public and reference them using /path/path
+but these cannot be imported outside of /src folder using "import"
+
+Or you can use an actual URL link or you can put it in a css file and reference from there
+
+For some reason, trying to reference as a style={variable} and defining the path in the backgroundImage: url(url) won't
+work. THe work around is to either use an actual url, put in css folder, or put outside of src folder in the public
+
+If however you are doing import image from " "; 
+then it must be within src folder b/c importing outside of src is not supported but refercing outside is!
