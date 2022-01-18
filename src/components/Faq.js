@@ -7,7 +7,7 @@ export class Faq extends Component {
                 <div className='container'>
                     <div className='row justify-content-center '>
                         <div className='col-9'>
-                            <p style={{fontSize: "35px"}} className='text-center fw-bold p-5  '>Frequently Asked Questions</p>
+                            <p style={{ fontSize: "35px" }} className='text-center fw-bold p-5  '>Frequently Asked Questions</p>
                             <h5 className=' text-center p-5'> Got a question? We've got answers. If you have some other questions, contact us at <a href="#!">contact@Overflow.com.</a></h5>
                             <div className='accordion pb-5 px-5'>
                                 <div className='accordion-item'>
@@ -43,13 +43,13 @@ export class Faq extends Component {
                                 <div className='accordion-item'>
                                     <h2 className='accordion-header'>
                                         <button className='accordion-button collapsed fw-bold fs-6' type='button' data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                                        Can I cancel my subscription?
+                                            Can I cancel my subscription?
                                         </button>
 
                                     </h2>
                                     <div className='accordion-collapse collapse ' id='collapseThree'>
                                         <div className='accordion-body'>
-                                            <div> You can cancel your subscription anytime in your account. Once the subscription is cancelled, you will not be charged next month. 
+                                            <div> You can cancel your subscription anytime in your account. Once the subscription is cancelled, you will not be charged next month.
                                                 You will continue to have access to your account until your current subscription expires.</div>
                                         </div>
                                     </div>
@@ -58,7 +58,7 @@ export class Faq extends Component {
                                 <div className='accordion-item'>
                                     <h2 className='accordion-header'>
                                         <button className='accordion-button collapsed fw-bold fs-6' type='button' data-bs-toggle="collapse" data-bs-target="#collapseFour">
-                                        Can I use my custom domain?
+                                            Can I use my custom domain?
                                         </button>
 
                                     </h2>

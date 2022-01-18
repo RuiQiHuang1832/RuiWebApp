@@ -8,6 +8,7 @@ import gift from '../images/gift-fill.svg'
 import clipboard from '../images/clipboard-plus.svg'
 import keyfill from '../images/key-fill.svg'
 
+
 //Navigation Links..Either <li> tags, routes w/ components, bootstrap navbars, navlinks/links..but those are kinda hard 
 // routes and links used in conjunction
 
@@ -35,7 +36,7 @@ class NavigationBar extends Component {
                      
                                 {/**to reload: use anchor tags + href */}
                                 <Link to='/' className='nav-link text-black'><img src={house} className='mb-1' /> Home</Link> 
-                                <a className='nav-link text-black'><img src={gift} className='mb-1'/> Upgrade</a>
+                                <Link to='/upgrade' className='nav-link text-black'><img src={gift} className='mb-1' /> Upgrade</Link> 
                                 <a className='nav-link text-black'><img  src={search} className='mb-1' /> Search</a>
                              </div>
                         </div>

@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Tos from "./components/Tos";
 import Faq from "./components/Faq";
+import Upgrade from "./components/Upgrade"
 function App() {
   return (
     <div className="App">
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/tos" element={<Tos />}/>
           <Route path="/faq" element={<Faq />}/>
+          <Route path="/upgrade" element={<Upgrade />}/>
         </Routes>
       
         <Footer />

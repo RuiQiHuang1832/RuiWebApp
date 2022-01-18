@@ -1,16 +1,19 @@
-import React, { Component, useState, useRef } from 'react'
+import React, { Component, useState, useRef, useEffect } from 'react'
 import "../styling/Signup.css"
 import { useForm } from 'react-hook-form'
-import myInstance from '../global/finals';
 import { Link } from 'react-router-dom'
+
 
 //also able to use refs but refs don't function in function components b/c they have no instance however,
 //you are able to use it within another function if you want to use them in funciton componenets"
 //You can, however, use the ref attribute inside a function component as long as you refer to a DOM element or a class component:
 //https://reactjs.org/docs/refs-and-the-dom.html
 
-
+let val = "", valEmail = "", valPw = "", valCPw = ""
 export default function Signup() {
+
+    const [address, setAddress] = useState('')
+    const [theaddress, settheaddress] = useState([])
 
     const { register, handleSubmit, watch, reset,
         formState: { errors }
@@ -24,34 +27,56 @@ export default function Signup() {
         mode: 'onChange'
     });
 
+    const handleClick=(e)=> {
+        e.preventDefault()
+        const theusername = {address} 
+        console.log(theusername)
+        fetch("http://localhost:8080/student/add", {
+            method:"POST",
+            headers: {"Content-Type":"application/json"},
+            body:JSON.stringify(theusername)
+        }).then(() => {
+            console.log("student is added!")
+        })
+    }
+
+    useEffect(()=> {
+        fetch("http://localhost:8080/student/getAll")
+        .then(res => res.json())
+        .then((result)=> {
+            settheaddress(result)
+    }
+    )
+    }, [])
+
     let formColor = () => {
         if (watched.firstName === '') {
-            myInstance.val = ""
+            val = ""
         } else if (errors.firstName?.message === undefined) {
-            myInstance.val = "is-valid"
+            val = "is-valid"
         } else {
-            myInstance.val = "is-invalid"
+            val = "is-invalid"
         }
         if (watched.email === '') {
-            myInstance.valEmail = ""
+            valEmail = ""
         } else if (errors.email?.message === undefined) {
-            myInstance.valEmail = "is-valid"
+            valEmail = "is-valid"
         } else {
-            myInstance.valEmail = "is-invalid"
+            valEmail = "is-invalid"
         }
         if (watched.password === '') {
-            myInstance.valPw = ""
+            valPw = ""
         } else if (errors.password?.message === undefined) {
-            myInstance.valPw = "is-valid"
+            valPw = "is-valid"
         } else {
-            myInstance.valPw = "is-invalid"
+            valPw = "is-invalid"
         }
         if (watched.cPassword === '') {
-            myInstance.valCPw = ""
+            valCPw = ""
         } else if (errors.cPassword?.message === undefined) {
-            myInstance.valCPw = "is-valid"
+            valCPw = "is-valid"
         } else {
-            myInstance.valCPw = "is-invalid"
+            valCPw = "is-invalid"
         }
     };
 
@@ -94,8 +119,16 @@ export default function Signup() {
                                                             message: "Max length must be 13 characters or less"
                                                         },
 
-                                                    })} type="text" id="formname" className={`form-control  + ${myInstance.val} `} placeholder='Username*' />
+                                                    })} type="text" id="formname" className={`form-control  + ${val} `} value={address} onChange={(e) => setAddress(e.target.value)} placeholder='Username*'   />
                                                 <div className='text-muted'>Between 4 and 13 characters</div>
+                                                   {/* {theaddress.map(student =>(
+                                                       <p>
+                                                       Id:{student.id}
+                                                       Name:{student.name}
+                                                       Address:{student.address}
+                                                       </p>
+                                                       ))
+                                                       }   */}
                                                 <div className='text-danger'>{errors.firstName?.message}</div>
                                                 {/**class="form-control" are set to width: 100% by default  */}
                                             </div>
@@ -110,7 +143,7 @@ export default function Signup() {
                                                             value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
                                                             message: "Please provide a valid email."
                                                         }
-                                                    })} type="text" id="formemail" className={`form-control  + ${myInstance.valEmail} `} placeholder='Email Address*' />
+                                                    })} type="text" id="formemail" className={`form-control  + ${valEmail} `} placeholder='Email Address*' />
                                                 <div className='text-danger'>{errors.email?.message}</div>
                                             </div>
                                             <div className='mb-2'>
@@ -126,7 +159,7 @@ export default function Signup() {
                                                             value: 32,
                                                             message: "Enter a valid password"
                                                         }
-                                                    })} type="password" id="formpassword" className={`form-control  + ${myInstance.valPw} `} placeholder='Password*' />
+                                                    })} type="password" id="formpassword" className={`form-control  + ${valPw} `} placeholder='Password*' />
                                                 <div className='text-muted'>Between 3 and 32 characters</div>
                                                 <div className='text-danger'>{errors.password?.message}</div>
                                             </div>
@@ -138,7 +171,7 @@ export default function Signup() {
                                                     {
                                                         required: "Passwords do not match",
                                                         validate: value => value === watched.password || 'Passwords do not match'
-                                                    })} type="password" id="formcpassword" className={`form-control  +  ${myInstance.valCPw}`} placeholder='Confirm Password*' />
+                                                    })} type="password" id="formcpassword" className={`form-control  +  ${valCPw}`} placeholder='Confirm Password*' />
                                                 <div className='text-danger'>{errors.cPassword?.message}</div>
 
                                             </div>
@@ -160,7 +193,7 @@ export default function Signup() {
                                             </div>
 
                                             <div className='d-grid '>
-                                                <button type='submit' className='btn btn-success  btn-lg gradient-custom-4 text-body'>Register</button>
+                                                <button type='submit' onClick={handleClick} className='btn btn-success  btn-lg gradient-custom-4 text-body'>Register</button>
 
                                             </div>
                                             <p className='text-center text-muted mt-4 mb-0'>Already have an account? <u >  <Link className='text-body' to="/login">Login </Link></u></p>
