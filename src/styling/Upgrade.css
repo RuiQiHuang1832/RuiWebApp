@@ -1,5 +1,37 @@
 #borderRadius {
     border-radius: 11px;
-    box-shadow: 12px 12px 2px 2px rgba(51, 255, 0, 0.693);
+    box-shadow: 1px 1px 44px -8px rgba(1, 1, 2, 0.651);
+    
+  
     
 }
+
+.gradient-custom-1 {
+
+    opacity: 0.8;
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgb(214, 9, 233),rgba(10, 202, 250, 0.788))
+  }
+
+  .gradient-custom-5 {
+
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(0, 26, 255, 0.945),rgba(250, 10, 10, 0.76))
+  }
+
+  .gradient-custom-6 {
+
+ 
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to left, rgba(195, 238, 6, 0.938),rgba(0, 255, 98, 0.986))
+  }
+
+  #bestvaluetag {
+      z-index: 2;
+      position:absolute;
+      color:black
+    
+      
+     
+  }

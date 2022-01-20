@@ -44,9 +44,9 @@ export class Footer extends Component {
                                     Navigation
                                 </h6>
                              
-                               <div><a>Upgrade</a></div>
-                               <div><Link className='text-body' to="/tos">Terms of Service </Link></div>
-                               <div><Link className='text-body' to="/faq">FAQ </Link></div>
+                               <div><Link className='text-body fw-bold text-decoration-none' to="/upgrade">Upgrade</Link></div>
+                               <div><Link className='text-body fw-bold text-decoration-none' to="/tos">Terms of Service </Link></div>
+                               <div><Link className='text-body  fw-bold text-decoration-none' to="/faq">FAQ </Link></div>
                              
                             </div>
                         </div>
