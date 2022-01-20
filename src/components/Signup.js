@@ -12,8 +12,8 @@ import { Link } from 'react-router-dom'
 let val = "", valEmail = "", valPw = "", valCPw = ""
 export default function Signup() {
 
-    const [address, setAddress] = useState('')
-    const [theaddress, settheaddress] = useState([])
+    // const [address, setAddress] = useState('')
+    // const [theaddress, settheaddress] = useState([])
 
     const { register, handleSubmit, watch, reset,
         formState: { errors }
@@ -27,27 +27,27 @@ export default function Signup() {
         mode: 'onChange'
     });
 
-    const handleClick=(e)=> {
-        e.preventDefault()
-        const theusername = {address} 
-        console.log(theusername)
-        fetch("http://localhost:8080/student/add", {
-            method:"POST",
-            headers: {"Content-Type":"application/json"},
-            body:JSON.stringify(theusername)
-        }).then(() => {
-            console.log("student is added!")
-        })
-    }
+    // const handleClick=(e)=> {
+    //     e.preventDefault()
+    //     const theusername = {address} 
+    //     console.log(theusername)
+    //     fetch("http://localhost:8080/student/add", {
+    //         method:"POST",
+    //         headers: {"Content-Type":"application/json"},
+    //         body:JSON.stringify(theusername)
+    //     }).then(() => {
+    //         console.log("student is added!")
+    //     })
+    // }
 
-    useEffect(()=> {
-        fetch("http://localhost:8080/student/getAll")
-        .then(res => res.json())
-        .then((result)=> {
-            settheaddress(result)
-    }
-    )
-    }, [])
+    // useEffect(()=> {
+    //     fetch("http://localhost:8080/student/getAll")
+    //     .then(res => res.json())
+    //     .then((result)=> {
+    //         settheaddress(result)
+    // }
+    // )
+    // }, [])
 
     let formColor = () => {
         if (watched.firstName === '') {
@@ -119,7 +119,8 @@ export default function Signup() {
                                                             message: "Max length must be 13 characters or less"
                                                         },
 
-                                                    })} type="text" id="formname" className={`form-control  + ${val} `} value={address} onChange={(e) => setAddress(e.target.value)} placeholder='Username*'   />
+                                                    })} type="text" id="formname" className={`form-control  + ${val} `}  placeholder='Username*'   />
+                                                    {/**value={address} onChange={(e) => setAddress(e.target.value)} */}
                                                 <div className='text-muted'>Between 4 and 13 characters</div>
                                                    {/* {theaddress.map(student =>(
                                                        <p>
@@ -193,7 +194,8 @@ export default function Signup() {
                                             </div>
 
                                             <div className='d-grid '>
-                                                <button type='submit' onClick={handleClick} className='btn btn-success  btn-lg gradient-custom-4 text-body'>Register</button>
+                                                <button type='submit'  className='btn btn-success  btn-lg gradient-custom-4 text-body'>Register</button>
+                                                {/*onClick={handleClick} */}
 
                                             </div>
                                             <p className='text-center text-muted mt-4 mb-0'>Already have an account? <u >  <Link className='text-body' to="/login">Login </Link></u></p>
