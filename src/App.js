@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import Tos from "./components/Tos";
 import Faq from "./components/Faq";
 import Upgrade from "./components/Upgrade"
+//app > index
 function App() {
   return (
     <div className="App">
