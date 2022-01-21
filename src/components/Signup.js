@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom'
 let val = "", valEmail = "", valPw = "", valCPw = ""
 export default function Signup() {
 
-    // const [address, setAddress] = useState('')
+    const [address, setAddress] = useState('')
     // const [theaddress, settheaddress] = useState([])
 
     const { register, handleSubmit, watch, reset,
@@ -24,21 +24,25 @@ export default function Signup() {
             password: "",
             cPassword: ""
         },
-        mode: 'onChange'
+        mode: 'all'
+       
     });
+     {/**^combining mode:onChange and onChange=>(e.target.value) doesn't work for some reason. react hook form validation doesn't work together with 2x Onchange
+    hypothesis: 100% not sure.. actual really stumped on this one.. work around is to use a different mode like "all" which uses both blur/change
+    I thought I could do onSubmit=>(e.target.value) but it doesn't grab the value fast enough to submit it into address..something about async.. but not enough knowledge..rn*/}
+    const handleClick=(e)=> {
 
-    // const handleClick=(e)=> {
-    //     e.preventDefault()
-    //     const theusername = {address} 
-    //     console.log(theusername)
-    //     fetch("http://localhost:8080/student/add", {
-    //         method:"POST",
-    //         headers: {"Content-Type":"application/json"},
-    //         body:JSON.stringify(theusername)
-    //     }).then(() => {
-    //         console.log("student is added!")
-    //     })
-    // }
+        //  e.preventDefault()
+        const theusername = {address} 
+        console.log(theusername)
+        fetch("http://localhost:8080/student/add", {
+            method:"POST",
+            headers: {"Content-Type":"application/json"},
+            body:JSON.stringify(theusername)
+        }).then(() => {
+            console.log("student is added!")
+        })
+    }
 
     // useEffect(()=> {
     //     fetch("http://localhost:8080/student/getAll")
@@ -97,7 +101,8 @@ export default function Signup() {
                                     <div className="card-body p-5"> {/**card must always be accompained by card-body */}
                                         <h2 className="text-uppercase text-center mb-5">Create an account</h2>
                                         <form onSubmit={handleSubmit(() => {
-                                            reset();
+                                            handleClick();
+                                          
                                             {/**passes first name, don't reset on submit */ }
                                         })}>
                                             {formColor()}
@@ -119,8 +124,8 @@ export default function Signup() {
                                                             message: "Max length must be 13 characters or less"
                                                         },
 
-                                                    })} type="text" id="formname" className={`form-control  + ${val} `}  placeholder='Username*'   />
-                                                    {/**value={address} onChange={(e) => setAddress(e.target.value)} */}
+                                                    })} type="text" id="formname" className={`form-control  + ${val} `}  placeholder='Username*'  onChange={(e) => setAddress(e.target.value)}   />
+                                              
                                                 <div className='text-muted'>Between 4 and 13 characters</div>
                                                    {/* {theaddress.map(student =>(
                                                        <p>
@@ -195,7 +200,7 @@ export default function Signup() {
 
                                             <div className='d-grid '>
                                                 <button type='submit'  className='btn btn-success  btn-lg gradient-custom-4 text-body'>Register</button>
-                                                {/*onClick={handleClick} */}
+                                               
 
                                             </div>
                                             <p className='text-center text-muted mt-4 mb-0'>Already have an account? <u >  <Link className='text-body' to="/login">Login </Link></u></p>

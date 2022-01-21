@@ -70,7 +70,7 @@ export class Upgrade extends Component {
                                         <div className='col-lg-3 col-md-7 col-sm-10 h-200'>
                                             <div className='card py-2 border-0 '>
                                                 <div className='d-flex justify-content-center mb-3 '>
-                                                    <span id="bestvaluetag" className='badge rounded-pill bg-warning fs-6 '>Best Value</span>
+                                                    <span id="bestvaluetag" className='badge rounded-pill bg-warning border border-dark fs-6 '>Best Value</span>
                                                 </div>
                                                 <div id='borderRadius' className='card-body border border-dark '>
                                                     <div className='row px-2 '>

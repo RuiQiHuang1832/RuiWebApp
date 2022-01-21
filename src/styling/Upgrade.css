@@ -28,9 +28,11 @@
   }
 
   #bestvaluetag {
-      z-index: 2;
+    
       position:absolute;
-      color:black
+      color:black;
+      transform: rotate(-7deg)
+   
     
       
      
