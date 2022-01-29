@@ -1,10 +1,13 @@
 #borderRadius {
-    border-radius: 11px;
+  
     box-shadow: 1px 1px 44px -8px rgba(1, 1, 2, 0.651);
+    border-color:black !important;
+    border-width: thin !important;
     
   
     
 }
+
 
 .gradient-custom-1 {
 
@@ -26,14 +29,37 @@
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to left, rgba(195, 238, 6, 0.938),rgba(0, 255, 98, 0.986))
   }
+  #theborder { 
+ 
+ 
+    border: 8px solid;
+    
+    border-image-slice: 1;
+
+    border-image-source: linear-gradient(to bottom, #743ad5, #d53a9d);
+ 
+  }
+
 
   #bestvaluetag {
     
       position:absolute;
       color:black;
-      transform: rotate(-7deg)
-   
-    
-      
+      transform: rotate(-7deg);
+
      
   }
+
+.table {
+    border-collapse: separate;
+    border-spacing:0px 10px;
+ 
+}
+
+#content {
+  font-size: 15px;
+
+  
+  
+}
+

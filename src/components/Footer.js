@@ -5,13 +5,13 @@ export class Footer extends Component {
     render() {
         return (
 
-            <footer className='position-relative bg-light text-muted'>
+            <footer className='position-relative bg-dark text-muted'>
                 <section className="d-flex justify-content-center justify-content-lg-between p-3 border-bottom">
                     <div className="me-5 d-none d-lg-block">
-                        <span>Get connected with us on social networks:</span>
+                        <span className='text-white'>Get connected with us on social networks:</span>
                     </div>
         
-                    <div>
+                    <div className='text-white'>
                         <a href='mailto: huangben32@gmail.com' className='me-4 text-reset'><i className="bi bi-envelope"></i></a>
                         <a href='https://github.com/RuiQiHuang1832' className='me-4 text-reset'><i className="bi bi-github"></i></a>
                         <a className='me-4 text-reset'><i className="bi bi-instagram"></i></a>
@@ -22,8 +22,8 @@ export class Footer extends Component {
 
                 <section className='border-bottom'>
                     <div className='container text-center text-sm-start mt-4'>
-                        <div className='row'>
-                            <div className='col-md-3 col-lg-4 col-xl-3 mx-auto mb-4'>
+                        <div className='row text-white'>
+                            <div className='col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 '>
                                 <h6 className='text-uppercase fw-bold mb-4'>
                                     About Us
                                 </h6>
@@ -40,13 +40,13 @@ export class Footer extends Component {
                                 </p>
                             </div>
                             <div className='col-md-3 col-lg-4 col-xl-3 mx-auto mb-4'>
-                                <h6 className='text-uppercase fw-bold mb-4'>
+                                <h6 className='text-uppercase fw-bold mb-3'>
                                     Navigation
                                 </h6>
                              
-                               <div><Link className='text-body fw-bold text-decoration-none' to="/upgrade">Upgrade</Link></div>
-                               <div><Link className='text-body fw-bold text-decoration-none' to="/tos">Terms of Service </Link></div>
-                               <div><Link className='text-body  fw-bold text-decoration-none' to="/faq">FAQ </Link></div>
+                               <div className=''><Link className='text-white fw-bold text-decoration-none ' to="/upgrade">Upgrade</Link></div>
+                               <div><Link className='text-white fw-bold text-decoration-none' to="/tos">Terms of Service </Link></div>
+                               <div className=''><Link className='text-white  fw-bold text-decoration-none' to="/faq">FAQ </Link></div>
                              
                             </div>
                         </div>
@@ -55,7 +55,7 @@ export class Footer extends Component {
 
                 </section>
                 <section>
-                    <div style={{backgroundColor:"#36BCE8", color:"black" }} className='text-center p-2'>
+                    <div style={{backgroundColor:"dark", color:"white" }} className='text-center p-2'>
                     © 2021 Copyright. All Rights Reserved.
                     </div>
                 </section>
