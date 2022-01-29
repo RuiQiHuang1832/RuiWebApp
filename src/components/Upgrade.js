@@ -6,14 +6,14 @@ export class Upgrade extends Component {
     render() {
         return (
             <div>
-                <div style={{ background: "#161618" }} className='container-fluid p-5'>
+                <div style={{ background: "#161618" }} className='container-fluid p-0 p-lg-5 p-md-5 p-sm-5 '>
                     <div className='row  '>
                         <div className='col '>
                             <div style={{ background: "rgb(36, 36, 36)" }} className='card  '>
-                                <div style={{ background: "rgb(36, 36, 36)" }} className='card-body '>
+                                <div style={{ background: "rgb(36, 36, 36)" }} className='card-body'>
                                     <div className='row justify-content-center'>
                                         {/**Gap-4 ^ */}
-                                        <div className='col-lg-4 col-md-7 col-sm-10 '>
+                                        <div className='col-lg-4 col-md-7 col-sm-10  '>
                                         
                                             <div  id="theborder" className='card my-5 ' >
                                              <div  className='d-inline-flex  p-2 w-100 gradient-custom-1 justify-content-between'> 
@@ -134,7 +134,7 @@ export class Upgrade extends Component {
                                             </div>
                                         </div>
 
-                                        <div className='col-lg-4 col-md-7 col-sm-10 h-200'>
+                                        <div className='col-lg-4 col-md-7 col-sm-10  h-200'>
                                             <div style={{ background: "rgb(36, 36, 36)" }} className='card py-2 border-0 '>
                                                 <div className='d-flex justify-content-center mb-3 '>
                                                     <span id="bestvaluetag" className='badge rounded-pill bg-warning border border-dark fs-6 '>Best Value</span>
@@ -197,7 +197,7 @@ export class Upgrade extends Component {
                                             </div>
                                         </div>
 
-                                        <div className='col-lg-4 col-md-7 col-sm-10 '>
+                                        <div className='col-lg-4 col-md-7 col-sm-10  '>
                                             <div style={{ background: "rgb(36, 36, 36)" }} className='card py-5 border-0 '>
                                                 <div id='borderRadius' className='card-body border border-dark shadow bg-body'>
                                                     <div className='row px-2'>
