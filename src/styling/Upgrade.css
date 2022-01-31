@@ -1,65 +1,77 @@
 #borderRadius {
-  
-    box-shadow: 1px 1px 44px -8px rgba(1, 1, 2, 0.651);
-    border-color:black !important;
-    border-width: thin !important;
-    
-  
-    
+  box-shadow: 1px 1px 44px -8px rgba(1, 1, 2, 0.651);
+  border-color: black !important;
+  border-width: thin !important;
 }
 
-
 .gradient-custom-1 {
+  opacity: 0.8;
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(
+    to top,
+    rgb(214, 9, 233),
+    rgba(10, 202, 250, 0.788)
+  );
+}
 
-    opacity: 0.8;
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, rgb(214, 9, 233),rgba(10, 202, 250, 0.788))
-  }
+.gradient-custom-5 {
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(
+    to top,
+    rgba(0, 26, 255, 0.945),
+    rgba(250, 10, 10, 0.76)
+  );
+}
 
-  .gradient-custom-5 {
+.gradient-custom-6 {
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(
+    to bottom,
+    rgba(195, 238, 6, 0.938),
+    rgba(0, 255, 98, 0.986)
+  );
+}
 
-  
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, rgba(0, 26, 255, 0.945),rgba(250, 10, 10, 0.76))
-  }
+.gradient-custom-7 {
+  opacity: 0.8;
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgb(0, 195, 255), rgb(9, 64, 245));
+}
+#theborderstart {
+  border: 8px solid;
 
-  .gradient-custom-6 {
+  border-image-slice: 1;
 
- 
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to left, rgba(195, 238, 6, 0.938),rgba(0, 255, 98, 0.986))
-  }
-  #theborder { 
- 
- 
-    border: 8px solid;
-    
-    border-image-slice: 1;
+  border-image-source: linear-gradient(to bottom, #743ad5, #d53a9d);
+}
 
-    border-image-source: linear-gradient(to bottom, #743ad5, #d53a9d);
- 
-  }
+#thebordermiddle {
+  border: 8px solid;
 
+  border-image-slice: 1;
 
-  #bestvaluetag {
-    
-      position:absolute;
-      color:black;
-      transform: rotate(-7deg);
+  border-image-source: linear-gradient(to bottom, #7bff00, #0041f3);
+}
+#theborderend {
+  border: 8px solid;
 
-     
-  }
+  border-image-slice: 1;
+
+  border-image-source: linear-gradient(to bottom, #fc0000, #00ffdd);
+}
+
+#bestvaluetag {
+  z-index: 1;
+  position: absolute;
+  color: black;
+  transform: rotate(-7deg);
+}
 
 .table {
-    border-collapse: separate;
-    border-spacing:0px 10px;
- 
+  border-collapse: separate;
+  border-spacing: 0px 10px;
 }
 
 #content {
   font-size: 15px;
-
-  
-  
 }
-
