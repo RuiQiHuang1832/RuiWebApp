@@ -69,9 +69,74 @@
 
 .table {
   border-collapse: separate;
-  border-spacing: 0px 10px;
+  border-spacing: 0px 2px;
 }
 
 #content {
   font-size: 15px;
 }
+
+/*
+source: https://www.bram.us/2021/01/29/animating-a-css-gradient-border/
+*/
+
+/* AQUA tab*/
+#thebordermiddle {
+  --angle: 0deg;
+  border-image: linear-gradient(var(--angle), green, yellow) 1;
+  animation: 3s rotate linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+
+/* VIP tab*/
+#theborderstart {
+  --angle: 0deg;
+  border-image: linear-gradient(var(--angle), #fc0000, #00ffdd) 1;
+  animation: 3s rotate linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+
+/* Nova tab*/
+#theborderend {
+  --angle: 0deg;
+  border-image: linear-gradient(var(--angle), #743ad5, hsl(295, 100%, 51%)) 1;
+  animation: 3s rotate linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+

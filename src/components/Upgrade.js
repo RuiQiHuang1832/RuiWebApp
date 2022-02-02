@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import "../styling/Upgrade.css"
+import VIPbanner from '../images/vip.png'
 
-//border animation
 //format code.. hungry delete
 //themeatic colors for each
 //linking buys
@@ -32,6 +32,20 @@ export class Upgrade extends Component {
                                                                 <tr className='border-bottom border-3'>
                                                                     <td><div className='ms-2'> Length:</div></td>
                                                                     <td><div className='text-center '> 1 Month </div></td>
+                                                                </tr>
+                                                                <tr className='border-bottom border-3 bg-info'>
+                                                                    <td><div className='ms-5 py-1 ps-5 text-center text-white'><span className='text-danger'>VIP</span> Userbar</div></td>
+                                                                    <td><div className=''></div></td>
+                                                                </tr>
+
+                                                                <tr className='border-bottom border-3  '>
+                                                                    <td><div className='ms-5 ps-5 text-center '><img src={VIPbanner} className='img-fluid' width="220" /></div></td>
+                                                                    <td><div className=''></div></td>
+                                                                </tr>
+
+                                                                <tr className='border-bottom border-3 bg-info '>
+                                                                    <td><div className='ms-5 py-1 ps-5 text-center text-white'><span className='text-danger'>VIP</span> Upgrade Perks</div></td>
+                                                                    <td><div className=''></div></td>
                                                                 </tr>
                                                                 <tr className=' border-bottom border-3 '>
                                                                     <td><div className='ms-2 mb-2'> A new cool username style.</div></td>
@@ -117,12 +131,15 @@ export class Upgrade extends Component {
                                                                     </tr>
                                                                     <tr className='border-bottom border-3'>
                                                                         <td><div className='ms-2 text-primary'>Able to choose cover page</div></td>
+                                                                        <td>{/**100% width border line*/}</td>
                                                                     </tr>
                                                                     <tr className='border-bottom border-3'>
                                                                         <td><div className='ms-2 text-primary'>Can rename to banned members</div></td>
+                                                                        <td>{/**100% width  border line*/}</td>
                                                                     </tr>
                                                                     <tr className='border-bottom border-3'>
                                                                         <td><div className='ms-2 text-primary'>Ability to change the color of your userbar</div></td>
+                                                                        <td>{/**100% width border line */}</td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
