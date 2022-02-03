@@ -27,51 +27,51 @@ export class Upgrade extends Component {
                                                 </div>
                                                 <div id='borderRadius' >
                                                     <div className='row'>
-                                                        <table className='table'>
+                                                        <table className='table '>
                                                             <tbody id="content">
-                                                                <tr className='border-bottom border-3'>
+                                                                <tr className='border border-white'>
                                                                     <td><div className='ms-2'> Length:</div></td>
                                                                     <td><div className='text-center '> 1 Month </div></td>
                                                                 </tr>
-                                                                <tr className='border-bottom border-3 bg-info'>
-                                                                    <td><div className='ms-5 py-1 ps-5 text-center text-white'><span className='text-danger'>VIP</span> Userbar</div></td>
-                                                                    <td><div className=''></div></td>
+                                                                <tr className='border border-white bg-info '>
+                                                                    <td colSpan={2}><div className=' text-center text-white text-nowrap'><span className='text-danger'>VIP</span> Userbar</div></td>
+                                                                    {/**colSpan allows me to use the full width of the row! This the right way to code for text-center!!*/}
                                                                 </tr>
 
-                                                                <tr className='border-bottom border-3  '>
-                                                                    <td><div className='ms-5 ps-5 text-center '><img src={VIPbanner} className='img-fluid' width="220" /></div></td>
-                                                                    <td><div className=''></div></td>
+                                                                <tr className='border border-white '>
+                                                                    <td colSpan={2}><div id="vipMargin" className='text-center'><img src={VIPbanner} className='img-fluid' width="220" /></div></td>
+
                                                                 </tr>
 
-                                                                <tr className='border-bottom border-3 bg-info '>
-                                                                    <td><div className='ms-5 py-1 ps-5 text-center text-white'><span className='text-danger'>VIP</span> Upgrade Perks</div></td>
-                                                                    <td><div className=''></div></td>
+                                                                <tr className=' bg-info '>
+                                                                    <td colSpan={2}><div className='text-center text-white text-nowrap'><span className='text-danger'>VIP</span> Upgrade Perks</div></td>
+
                                                                 </tr>
-                                                                <tr className=' border-bottom border-3 '>
+                                                                <tr className='  '>
                                                                     <td><div className='ms-2 mb-2'> A new cool username style.</div></td>
                                                                     <td><div className=' text-center text-info'>John&nbsp;Doe</div></td>
                                                                 </tr>
-                                                                <tr className=' border-bottom border-3  '>
+                                                                <tr className='   '>
                                                                     <td><div className='ms-2'> <span className='text-danger'>VIP</span> Award </div></td>
                                                                     <td><div className='text-center '> <i style={{ fontSize: " 18px", color: "cornflowerblue" }} class=" bi bi-gem"></i> </div></td>
                                                                 </tr>
-                                                                <tr className='border-bottom border-3'>
+                                                                <tr className=''>
                                                                     <td><div className='ms-2 '> Bypass the requirements to unlock hidden content.</div></td>
                                                                     <td><div className='text-center mt-1 '> <i style={iconFontSize} class="bi bi-lock-fill"></i> </div></td>
                                                                 </tr>
-                                                                <tr className='border-bottom border-3'>
+                                                                <tr className=''>
                                                                     <td><div className='ms-2 mb-2 mt-1'>Access to <span className='text-danger'>VIP</span> exclusive forums. </div></td>
                                                                     <td><div className='text-center'> <i style={iconFontSize} class="bi bi-star-fill"></i> </div>  </td>
                                                                 </tr>
-                                                                <tr className='border-bottom border-3'>
+                                                                <tr className=''>
                                                                     <td> <div className='ms-2'>Storage for 5,000 messages.</div>  </td>
                                                                     <td> <div className='text-center '> <i style={iconFontSize} class="bi bi-envelope-check-fill"></i> </div></td>
                                                                 </tr>
-                                                                <tr className='border-bottom border-3'>
+                                                                <tr className=''>
                                                                     <td><div className='ms-2'>Able to change display name 1 time every month.</div></td>
                                                                     <td><div className='text-center '> <i style={iconFontSize} class="bi bi-body-text"></i> </div></td>
                                                                 </tr>
-                                                                <tr className='border-bottom border-3'>
+                                                                <tr className=''>
                                                                     <td><div className='ms-2'>Able to change your username.</div></td>
                                                                     <td><div className='text-center '> <i style={iconFontSize} class="bi bi-collection-fill"></i> </div> </td>
                                                                 </tr>
@@ -97,47 +97,47 @@ export class Upgrade extends Component {
                                                         <div className='row '>
                                                             <table className='table '>
                                                                 <tbody id="content" className=''>
-                                                                    <tr className='border-bottom border-3'>
+                                                                    <tr className=''>
                                                                         <td><div className='ms-2'> Length:</div></td>
                                                                         <td><div className='text-center '> Lifetime </div></td>
                                                                     </tr>
-                                                                    <tr className=' border-bottom border-3 '>
+                                                                    <tr className=' '>
                                                                         <td><div className='ms-2 mb-2'> A new cool username style.</div></td>
                                                                         <td><div className=' text-center text-danger'>John&nbsp;Doe</div></td>
                                                                     </tr>
-                                                                    <tr className=' border-bottom border-3  '>
+                                                                    <tr className='   '>
                                                                         <td><div className='ms-2'> <span className='text-info'>AQUA</span> Award </div></td>
                                                                         <td><div className='text-center '> <i style={{ fontSize: " 18px", color: "cornflowerblue" }} class=" bi bi-gem"></i> </div></td>
                                                                     </tr>
-                                                                    <tr className='border-bottom border-3'>
+                                                                    <tr className=''>
                                                                         <td><div className='ms-2 '> Bypass the requirements to unlock hidden content.</div></td>
                                                                         <td> <div className='text-center mt-1 '> <i style={iconFontSize} class="bi bi-lock-fill"></i> </div>  </td>
                                                                     </tr>
-                                                                    <tr className='border-bottom border-3'>
+                                                                    <tr className=''>
                                                                         <td><div className='ms-2 mb-2 mt-1'>Access to <span className='text-danger'>VIP</span> exclusive forums. </div> </td>
                                                                         <td><div className='text-center'> <i style={iconFontSize} class="bi bi-star-fill"></i> </div> </td>
                                                                     </tr>
-                                                                    <tr className='border-bottom border-3'>
+                                                                    <tr className=''>
                                                                         <td><div className='ms-2'>Storage for 5,000 messages.</div> </td>
                                                                         <td><div className='text-center '> <i style={iconFontSize} class="bi bi-envelope-check-fill"></i> </div> </td>
                                                                     </tr>
-                                                                    <tr className='border-bottom border-3'>
+                                                                    <tr className=''>
                                                                         <td><div className='ms-2'>Able to change display name 1 time every month.</div></td>
                                                                         <td><div className='text-center '> <i style={iconFontSize} class="bi bi-body-text"></i> </div></td>
                                                                     </tr>
-                                                                    <tr className='border-bottom border-3'>
+                                                                    <tr className=''>
                                                                         <td><div className='ms-2'>Able to change your username.</div></td>
                                                                         <td><div className='text-center '> <i style={iconFontSize} class="bi bi-collection-fill"></i> </div></td>
                                                                     </tr>
-                                                                    <tr className='border-bottom border-3'>
+                                                                    <tr className=''>
                                                                         <td><div className='ms-2 text-primary'>Able to choose cover page</div></td>
                                                                         <td>{/**100% width border line*/}</td>
                                                                     </tr>
-                                                                    <tr className='border-bottom border-3'>
+                                                                    <tr className=''>
                                                                         <td><div className='ms-2 text-primary'>Can rename to banned members</div></td>
                                                                         <td>{/**100% width  border line*/}</td>
                                                                     </tr>
-                                                                    <tr className='border-bottom border-3'>
+                                                                    <tr className=''>
                                                                         <td><div className='ms-2 text-primary'>Ability to change the color of your userbar</div></td>
                                                                         <td>{/**100% width border line */}</td>
                                                                     </tr>
@@ -163,35 +163,35 @@ export class Upgrade extends Component {
                                                         <div className='row '>
                                                             <table className='table '>
                                                                 <tbody id="content" className=''>
-                                                                    <tr className='border-bottom border-3'>
+                                                                    <tr className=''>
                                                                         <td><div className='ms-2'> Length:</div></td>
                                                                         <td><div className='text-center '> Lifetime </div></td>
                                                                     </tr>
-                                                                    <tr className=' border-bottom border-3 '>
+                                                                    <tr className=' '>
                                                                         <td><div className='ms-2 mb-2'> A new cool username style.</div></td>
                                                                         <td><div className=' text-center text-warning'>John&nbsp;Doe</div></td>
                                                                     </tr>
-                                                                    <tr className=' border-bottom border-3  '>
+                                                                    <tr className='   '>
                                                                         <td> <div className='ms-2'> <span className='text-warning'>NOVA</span> Award </div></td>
                                                                         <td> <div className='text-center '> <i style={{ fontSize: " 18px", color: "cornflowerblue" }} class=" bi bi-gem"></i> </div> </td>
                                                                     </tr>
-                                                                    <tr className='border-bottom border-3'>
+                                                                    <tr className=''>
                                                                         <td> <div className='ms-2 '> Bypass the requirements to unlock hidden content.</div>  </td>
                                                                         <td> <div className='text-center mt-1 '> <i style={iconFontSize} class="bi bi-lock-fill"></i> </div> </td>
                                                                     </tr>
-                                                                    <tr className='border-bottom border-3'>
+                                                                    <tr className=''>
                                                                         <td><div className='ms-2 mb-2 mt-1'>Access to <span className='text-danger'>VIP</span> exclusive forums. </div> </td>
                                                                         <td><div className='text-center'> <i style={iconFontSize} class="bi bi-star-fill"></i> </div></td>
                                                                     </tr>
-                                                                    <tr className='border-bottom border-3'>
+                                                                    <tr className=''>
                                                                         <td><div className='ms-2'>Storage for 5,000 messages.</div></td>
                                                                         <td><div className='text-center '> <i style={iconFontSize} class="bi bi-envelope-check-fill"></i> </div> </td>
                                                                     </tr>
-                                                                    <tr className='border-bottom border-3'>
+                                                                    <tr className=''>
                                                                         <td><div className='ms-2'>Able to change display name 1 time every month.</div> </td>
                                                                         <td><div className='text-center '> <i style={iconFontSize} class="bi bi-body-text"></i> </div></td>
                                                                     </tr>
-                                                                    <tr className='border-bottom border-3'>
+                                                                    <tr className=''>
                                                                         <td><div className='ms-2'>Able to change your username.</div></td>
                                                                         <td><div className='text-center '> <i style={iconFontSize} class="bi bi-collection-fill"></i> </div></td>
                                                                     </tr>
