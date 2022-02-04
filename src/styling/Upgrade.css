@@ -2,16 +2,12 @@
   box-shadow: 1px 1px 44px -8px rgba(1, 1, 2, 0.651);
   border-color: black !important;
   border-width: thin !important;
+
 }
 
 .gradient-custom-1 {
-  opacity: 0.8;
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(
-    to top,
-    rgb(214, 9, 233),
-    rgba(10, 202, 250, 0.788)
-  );
+ background-color:rgba(225, 64, 199, 1);
+
 }
 
 .gradient-custom-5 {
@@ -25,17 +21,11 @@
 
 .gradient-custom-6 {
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(
-    to bottom,
-    rgba(195, 238, 6, 0.938),
-    rgba(0, 255, 98, 0.986)
-  );
+ background: orange
 }
 
 .gradient-custom-7 {
-  opacity: 0.8;
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to right, rgb(0, 195, 255), rgb(9, 64, 245));
+ background: rgb(0, 183, 255)
 }
 #theborderstart {
   border: 8px solid;
@@ -83,7 +73,7 @@ source: https://www.bram.us/2021/01/29/animating-a-css-gradient-border/
 /* AQUA tab*/
 #thebordermiddle {
   --angle: 0deg;
-  border-image: linear-gradient(var(--angle), green, yellow) 1;
+  border-image: linear-gradient(var(--angle), rgb(0, 255, 242), rgb(255, 255, 0)) 1;
   animation: 3s rotate linear infinite;
 }
 
@@ -103,7 +93,7 @@ source: https://www.bram.us/2021/01/29/animating-a-css-gradient-border/
 /* VIP tab*/
 #theborderstart {
   --angle: 0deg;
-  border-image: linear-gradient(var(--angle), #fc0000, #00ffdd) 1;
+  border-image: linear-gradient(var(--angle), #d400ff, #00f7ff) 1;
   animation: 3s rotate linear infinite;
 }
 
@@ -123,7 +113,7 @@ source: https://www.bram.us/2021/01/29/animating-a-css-gradient-border/
 /* Nova tab*/
 #theborderend {
   --angle: 0deg;
-  border-image: linear-gradient(var(--angle), #743ad5, hsl(295, 100%, 51%)) 1;
+  border-image: linear-gradient(var(--angle), #ff8800, hsl(300, 100%, 50%)) 1;
   animation: 3s rotate linear infinite;
 }
 
@@ -139,6 +129,6 @@ source: https://www.bram.us/2021/01/29/animating-a-css-gradient-border/
   inherits: false;
 }
 
-#vipMargin {
-
+.bgColorBar {
+  background: rgb(47, 47, 47, 0.9);
 }
