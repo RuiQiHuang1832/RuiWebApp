@@ -3,10 +3,9 @@ import "../styling/Upgrade.css"
 import VIPbanner from '../images/vip.png'
 import AQUAbanner from '../images/aqua.png'
 import NOVAbanner from '../images/nova.png'
-//format code.. hungry delete
-//themeatic colors for each
+//format code.. hungry delete + online html formatter
 //linking buys
-//colors for icons (maybe)
+
 
 export class Upgrade extends Component {
     render() {
@@ -15,7 +14,9 @@ export class Upgrade extends Component {
                 <div style={{ background: "#161618" }} className='container-fluid p-0 p-lg-5 p-md-5 p-sm-5 '>
                     <div className='row  '>
                         <div className='col '>
+                            <h1 className='text-white text-center py-3 gradient-custom-upgradeheader'>~Upgrade~</h1>
                             <div style={{ background: "rgb(36, 36, 36)" }}> {/**style={{ background: "rgb(36, 36, 36)" }} v white lines */}
+
                                 <div className='card-body'>
                                     <div className='row justify-content-center'> {/**Gap-4 ^ */}
 
@@ -24,7 +25,8 @@ export class Upgrade extends Component {
                                             <div id="theborderstart" className='card my-5 '>
                                                 <div className='d-inline-flex  p-2 w-100 gradient-custom-1 justify-content-between fw-bold'>
                                                     <div className='fs-5 ms-2 text-white'>VIP</div>
-                                                    <div className='fs-5 text-white '>$10.00</div>
+                                                    <div style={darkHighlight} className='fs-5 text-white'>$10.00</div>
+
                                                 </div>
                                                 <div id='borderRadius' >
                                                     <div className='row'>
@@ -48,31 +50,31 @@ export class Upgrade extends Component {
                                                                     <td colSpan={2}><div className='text-center text-white text-nowrap'><span style={VIPColor}>VIP</span> Upgrade Perks</div></td>
 
                                                                 </tr>
-                                                                <tr className='  '>
+                                                                <tr className=''>
                                                                     <td><div className='ms-2'> A new cool username style.</div></td>
                                                                     <td><div style={VIPColor} className=' text-center'>John&nbsp;Doe</div></td>
                                                                 </tr>
-                                                                <tr className='   '>
+                                                                <tr className='iconcolor-vip '>
                                                                     <td><div className='ms-2'> <span style={VIPColor}>VIP</span> Award </div></td>
-                                                                    <td><div className='text-center '> <i style={{ fontSize: " 18px", color: "cornflowerblue" }} class=" bi bi-gem"></i> </div></td>
+                                                                    <td><div className='text-center '> <i style={iconFontSize} class=" bi bi-gem"></i> </div></td>
                                                                 </tr>
-                                                                <tr className=''>
+                                                                <tr className='iconcolor-vip'>
                                                                     <td><div className='ms-2 '> Bypass the requirements to unlock hidden content.</div></td>
                                                                     <td><div className='text-center mt-1 '> <i style={iconFontSize} class="bi bi-lock-fill"></i> </div></td>
                                                                 </tr>
-                                                                <tr className=''>
+                                                                <tr className='iconcolor-vip'>
                                                                     <td><div className='ms-2 mb-2 mt-1'>Access to <span style={VIPColor}>VIP</span> exclusive forums. </div></td>
                                                                     <td><div className='text-center'> <i style={iconFontSize} class="bi bi-star-fill"></i> </div>  </td>
                                                                 </tr>
-                                                                <tr className=''>
+                                                                <tr className='iconcolor-vip'>
                                                                     <td> <div className='ms-2'>Storage for 5,000 messages.</div>  </td>
                                                                     <td> <div className='text-center '> <i style={iconFontSize} class="bi bi-envelope-check-fill"></i> </div></td>
                                                                 </tr>
-                                                                <tr className=''>
+                                                                <tr className='iconcolor-vip'>
                                                                     <td><div className='ms-2'>Able to change display name 1 time every month.</div></td>
                                                                     <td><div className='text-center '> <i style={iconFontSize} class="bi bi-body-text"></i> </div></td>
                                                                 </tr>
-                                                                <tr className=''>
+                                                                <tr className='iconcolor-vip'>
                                                                     <td><div className='ms-2'>Able to change your username.</div></td>
                                                                     <td><div className='text-center '> <i style={iconFontSize} class="bi bi-collection-fill"></i> </div> </td>
                                                                 </tr>
@@ -92,7 +94,7 @@ export class Upgrade extends Component {
                                                 <div id="thebordermiddle">
                                                     <div className='d-inline-flex  p-2 w-100 gradient-custom-7 justify-content-between fw-bold'>
                                                         <div className='fs-5 ms-2 text-white'>AQUA</div>
-                                                        <div className='fs-5 text-white '>$35.00</div>
+                                                        <div style={darkHighlight} className='fs-5 text-white '>$35.00</div>
                                                     </div>
 
                                                     <div id='borderRadius' className=' bg-body '>
@@ -121,27 +123,27 @@ export class Upgrade extends Component {
                                                                         <td><div className='ms-2 '> A new cool username style.</div></td>
                                                                         <td><div style={AQUAColor} className=' text-center '>John&nbsp;Doe</div></td>
                                                                     </tr>
-                                                                    <tr className='   '>
+                                                                    <tr className='iconcolor-aqua   '>
                                                                         <td><div className='ms-2'> <span style={AQUAColor}>AQUA</span> Award </div></td>
-                                                                        <td><div className='text-center '> <i style={{ fontSize: " 18px", color: "cornflowerblue" }} class=" bi bi-gem"></i> </div></td>
+                                                                        <td><div className='text-center '> <i style={iconFontSize} class=" bi bi-gem"></i> </div></td>
                                                                     </tr>
-                                                                    <tr className=''>
+                                                                    <tr className='iconcolor-aqua'>
                                                                         <td><div className='ms-2 '> Bypass the requirements to unlock hidden content.</div></td>
                                                                         <td> <div className='text-center mt-1 '> <i style={iconFontSize} class="bi bi-lock-fill"></i> </div>  </td>
                                                                     </tr>
-                                                                    <tr className=''>
+                                                                    <tr className='iconcolor-aqua'>
                                                                         <td><div className='ms-2 mb-2 mt-1'>Access to <span style={AQUAColor}>VIP</span> exclusive forums. </div> </td>
                                                                         <td><div className='text-center'> <i style={iconFontSize} class="bi bi-star-fill"></i> </div> </td>
                                                                     </tr>
-                                                                    <tr className=''>
+                                                                    <tr className='iconcolor-aqua'>
                                                                         <td><div className='ms-2'>Storage for 5,000 messages.</div> </td>
                                                                         <td><div className='text-center '> <i style={iconFontSize} class="bi bi-envelope-check-fill"></i> </div> </td>
                                                                     </tr>
-                                                                    <tr className=''>
+                                                                    <tr className='iconcolor-aqua'>
                                                                         <td><div className='ms-2'>Able to change display name 1 time every month.</div></td>
                                                                         <td><div className='text-center '> <i style={iconFontSize} class="bi bi-body-text"></i> </div></td>
                                                                     </tr>
-                                                                    <tr className=''>
+                                                                    <tr className='iconcolor-aqua'>
                                                                         <td><div className='ms-2'>Able to change your username.</div></td>
                                                                         <td><div className='text-center '> <i style={iconFontSize} class="bi bi-collection-fill"></i> </div></td>
                                                                     </tr>
@@ -173,7 +175,7 @@ export class Upgrade extends Component {
                                                 <div id="theborderend" className='card my-5 '>
                                                     <div className='d-inline-flex  p-2 w-100 gradient-custom-6 justify-content-between fw-bold'>
                                                         <div className='fs-5 ms-2 text-white'>NOVA</div>
-                                                        <div className='fs-5 text-white '>$50.00</div>
+                                                        <div style={darkHighlight} className='fs-5 text-white '>$50.00</div>
                                                     </div>
                                                     <div id='borderRadius' className='  '>
                                                         <div className='row '>
@@ -201,27 +203,27 @@ export class Upgrade extends Component {
                                                                         <td><div className='ms-2 '> A new cool username style.</div></td>
                                                                         <td><div style={NOVAColor} className=' text-center '>John&nbsp;Doe</div></td>
                                                                     </tr>
-                                                                    <tr className='   '>
+                                                                    <tr className=' iconcolor-nova  '>
                                                                         <td> <div className='ms-2'> <span style={NOVAColor}>NOVA</span> Award </div></td>
-                                                                        <td> <div className='text-center '> <i style={{ fontSize: " 18px", color: "cornflowerblue" }} class=" bi bi-gem"></i> </div> </td>
+                                                                        <td> <div className='text-center '> <i style={iconFontSize} class=" bi bi-gem"></i> </div> </td>
                                                                     </tr>
-                                                                    <tr className=''>
+                                                                    <tr className='iconcolor-nova'>
                                                                         <td> <div className='ms-2 '> Bypass the requirements to unlock hidden content.</div>  </td>
                                                                         <td> <div className='text-center mt-1 '> <i style={iconFontSize} class="bi bi-lock-fill"></i> </div> </td>
                                                                     </tr>
-                                                                    <tr className=''>
+                                                                    <tr className='iconcolor-nova'>
                                                                         <td><div className='ms-2 mb-2 mt-1'>Access to <span style={NOVAColor}>NOVA</span> exclusive forums. </div> </td>
                                                                         <td><div className='text-center'> <i style={iconFontSize} class="bi bi-star-fill"></i> </div></td>
                                                                     </tr>
-                                                                    <tr className=''>
+                                                                    <tr className='iconcolor-nova'>
                                                                         <td><div className='ms-2'>Storage for 5,000 messages.</div></td>
                                                                         <td><div className='text-center '> <i style={iconFontSize} class="bi bi-envelope-check-fill"></i> </div> </td>
                                                                     </tr>
-                                                                    <tr className=''>
+                                                                    <tr className='iconcolor-nova'>
                                                                         <td><div className='ms-2'>Able to change display name 1 time every month.</div> </td>
                                                                         <td><div className='text-center '> <i style={iconFontSize} class="bi bi-body-text"></i> </div></td>
                                                                     </tr>
-                                                                    <tr className=''>
+                                                                    <tr className='iconcolor-nova'>
                                                                         <td><div className='ms-2'>Able to change your username.</div></td>
                                                                         <td><div className='text-center '> <i style={iconFontSize} class="bi bi-collection-fill"></i> </div></td>
                                                                     </tr>
@@ -285,6 +287,12 @@ const AQUAColor = {
 const NOVAColor = {
     color: "rgb(212, 103, 9)",
     textShadow: " rgb(212 103 9) 1px 1px 3px"
+}
+
+const darkHighlight = {
+    backgroundColor: "rgba(0, 0, 0, 0.2)",
+    padding: "10px",
+    margin: "-8px",
 }
 
 export default Upgrade

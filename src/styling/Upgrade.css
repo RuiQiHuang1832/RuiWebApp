@@ -19,6 +19,11 @@
   );
 }
 
+.gradient-custom-upgradeheader {
+  background: rgb(0, 183, 255);
+  text-shadow:  rgb(0, 0, 0) 1px 3px 6px
+}
+
 .gradient-custom-6 {
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
  background: orange
@@ -131,4 +136,17 @@ source: https://www.bram.us/2021/01/29/animating-a-css-gradient-border/
 
 .bgColorBar {
   background: rgb(47, 47, 47, 0.9);
+}
+
+.iconcolor-vip i {
+  color:rgb(225, 64, 199);
+
+}
+
+.iconcolor-aqua i {
+  color: #6991f7;
+}
+
+.iconcolor-nova i {
+  color: rgb(212, 103, 9);
 }
