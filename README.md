@@ -1,7 +1,7 @@
 # TODO
-Upgrade ✔️
-Search
-Home
+Upgrade ✔️<br />
+Search<br />
+Home<br />
 
 
 # Getting Started with Create React App
