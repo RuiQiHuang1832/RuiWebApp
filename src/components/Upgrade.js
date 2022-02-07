@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 import "../styling/Upgrade.css"
 import VIPbanner from '../images/vip.png'
 import AQUAbanner from '../images/aqua.png'
@@ -6,8 +6,16 @@ import NOVAbanner from '../images/nova.png'
 //format code.. hungry delete + online html formatter
 //linking buys
 
+const TITLE = "Upgrade";
 
 export class Upgrade extends Component {
+
+    //UseEffect for functions, componentDidMount for classes
+    //called after mounting
+    componentDidMount() {
+        document.title = TITLE;
+    }
+
     render() {
         return (
             <div>

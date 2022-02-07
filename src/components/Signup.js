@@ -3,7 +3,7 @@ import "../styling/Signup.css"
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 
-
+const TITLE = "Sign up";
 //also able to use refs but refs don't function in function components b/c they have no instance however,
 //you are able to use it within another function if you want to use them in funciton componenets"
 //You can, however, use the ref attribute inside a function component as long as you refer to a DOM element or a class component:
@@ -25,20 +25,20 @@ export default function Signup() {
             cPassword: ""
         },
         mode: 'all'
-       
+
     });
-     {/**^combining mode:onChange and onChange=>(e.target.value) doesn't work for some reason. react hook form validation doesn't work together with 2x Onchange
+    {/**^combining mode:onChange and onChange=>(e.target.value) doesn't work for some reason. react hook form validation doesn't work together with 2x Onchange
     hypothesis: 100% not sure.. actual really stumped on this one.. work around is to use a different mode like "all" which uses both blur/change
     I thought I could do onSubmit=>(e.target.value) but it doesn't grab the value fast enough to submit it into address..something about async.. but not enough knowledge..rn*/}
-    const handleClick=(e)=> {
+    const handleClick = (e) => {
 
         //  e.preventDefault()
-        const theusername = {address} 
+        const theusername = { address }
         console.log(theusername)
         fetch("http://localhost:8080/student/add", {
-            method:"POST",
-            headers: {"Content-Type":"application/json"},
-            body:JSON.stringify(theusername)
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(theusername)
         }).then(() => {
             console.log("student is added!")
         })
@@ -88,7 +88,9 @@ export default function Signup() {
     //   console.log(val)
     //   console.log(errors.firstName?.message)
     let watched = watch();
-
+    useEffect(() => {
+        document.title = TITLE;
+    }, []);
 
     return (
         <div> {/*background shouldn't affect child and stuff on top of it like "card", however grid affects children */}
@@ -102,7 +104,7 @@ export default function Signup() {
                                         <h2 className="text-uppercase text-center mb-5">Create an account</h2>
                                         <form onSubmit={handleSubmit(() => {
                                             handleClick();
-                                          
+
                                             {/**passes first name, don't reset on submit */ }
                                         })}>
                                             {formColor()}
@@ -124,10 +126,10 @@ export default function Signup() {
                                                             message: "Max length must be 13 characters or less"
                                                         },
 
-                                                    })} type="text" id="formname" className={`form-control  + ${val} `}  placeholder='Username*'  onChange={(e) => setAddress(e.target.value)}   />
-                                              
+                                                    })} type="text" id="formname" className={`form-control  + ${val} `} placeholder='Username*' onChange={(e) => setAddress(e.target.value)} />
+
                                                 <div className='text-muted'>Between 4 and 13 characters</div>
-                                                   {/* {theaddress.map(student =>(
+                                                {/* {theaddress.map(student =>(
                                                        <p>
                                                        Id:{student.id}
                                                        Name:{student.name}
@@ -199,8 +201,8 @@ export default function Signup() {
                                             </div>
 
                                             <div className='d-grid '>
-                                                <button type='submit'  className='btn btn-success  btn-lg gradient-custom-4 text-body'>Register</button>
-                                               
+                                                <button type='submit' className='btn btn-success  btn-lg gradient-custom-4 text-body'>Register</button>
+
 
                                             </div>
                                             <p className='text-center text-muted mt-4 mb-0'>Already have an account? <u >  <Link className='text-body' to="/login">Login </Link></u></p>

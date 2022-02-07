@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import '../styling/Home.css'
 
+const TITLE = "Home";
+
 export class Home extends Component {
+    componentDidMount() {
+        document.title = TITLE;
+    }
     render() {
         return (
             <div id='homeBackground' className='text-white'>
