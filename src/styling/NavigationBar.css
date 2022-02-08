@@ -2,13 +2,24 @@
     font-size: 20px;
 }
 
+
+
 .nav-link:hover {
-    border-radius: 23px;
-    background-color:lightblue;
+    color:rgba(134, 134, 134, 0.986) !important;
 }
+
 
 #navBackgroundColor {
     background: rgb(36, 36, 36);
    
  
+}
+
+.active {
+    border-bottom: solid red;
+
+}
+
+.navbar-nav {
+    height: 43px  !important;
 }

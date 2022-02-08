@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import "../styling/Search.css"
 
-//add header title 
-//put search inside the input bar
 const TITLE = "Search"
 
 export class Search extends Component {
@@ -15,9 +13,12 @@ export class Search extends Component {
                 <div className='row justify-content-center  '>
                     <div className='col  '>
                         <form className='d-flex spacing-form '>
-
-                            <input className='form-control' type="search" placeholder="Search" />
-                            <button className='btn btn-warning' type='submit'>Search</button>
+                            <div className='input-group'>
+                                <input className='form-control form-control-lg ' type="search" placeholder="Search..." />
+                                <div className='input-group-prepend'>
+                                    <button className='btn btn-md btn-warning ' type='submit'>Search</button>
+                                </div>
+                            </div>
                         </form>
 
                     </div>
