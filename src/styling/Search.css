@@ -13,13 +13,26 @@ body {
 
 }
 
-
+.searchstuff {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index:9;
+}
 
  .input-group-prepend {
     position: absolute;
     right: 4px;
-    top: 5px;
+    top: 50%;
+    transform: translateY(-50%);
     z-index:9;
+
   
   
 }
+
+.textindented {
+    text-indent: 25px; 
+}
+

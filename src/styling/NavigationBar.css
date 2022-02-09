@@ -21,5 +21,13 @@
 }
 
 .navbar-nav {
-    height: 43px  !important;
+    height: 43px;
 }
+
+/*When screen size is smaller than this, height:auto */
+ @media (max-width: 575.98px) { 
+    .navbar-nav {
+        height: auto;
+    }
+
+  }

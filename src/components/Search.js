@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import "../styling/Search.css"
 
+
+
 const TITLE = "Search"
 
 export class Search extends Component {
@@ -14,8 +16,13 @@ export class Search extends Component {
                     <div className='col  '>
                         <form className='d-flex spacing-form '>
                             <div className='input-group'>
-                                <input className='form-control form-control-lg ' type="search" placeholder="Search..." />
+                                <div className='searchstuff'>
+                                    <i class="bi bi-search"></i>
+                                </div>
+                                <input className='textindented form-control form-control-lg rounded-1 ' type="search" placeholder='...' />
+
                                 <div className='input-group-prepend'>
+
                                     <button className='btn btn-md btn-warning ' type='submit'>Search</button>
                                 </div>
                             </div>
@@ -23,11 +30,15 @@ export class Search extends Component {
 
                     </div>
 
-                </div>
+                </div >
 
-            </div>
+            </div >
         )
     }
 }
+
+
+
+
 
 export default Search;
