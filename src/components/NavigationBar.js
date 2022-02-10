@@ -5,6 +5,8 @@ import { NavLink } from 'react-router-dom'
 
 
 
+
+
 //Navigation Links..Either <li> tags, routes w/ components, bootstrap navbars, navlinks/links..but those are kinda hard 
 // routes and links used in conjunction
 
@@ -74,7 +76,7 @@ class NavigationBar extends Component {
 
                     </span>
                 </nav>
-            </div>
+            </div >
         )
     }
 }

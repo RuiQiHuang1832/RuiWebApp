@@ -32,7 +32,7 @@ export class Upgrade extends Component {
                                         <div className='col-lg-4 col-md-7 col-sm-10  '>
                                             <div id="theborderstart" className='card my-5 '>
                                                 <div className='d-inline-flex  p-2 w-100 gradient-custom-1 justify-content-between fw-bold'>
-                                                    <div className='fs-5 ms-2 text-white'>VIP</div>
+                                                    <div className='fs-5 ms-2 text-white'>Tier 1</div>
                                                     <div style={darkHighlight} className='fs-5 text-white'>$10.00</div>
 
                                                 </div>
@@ -45,7 +45,7 @@ export class Upgrade extends Component {
                                                                     <td><div className='text-center '> 1 Month </div></td>
                                                                 </tr>
                                                                 <tr className='border border-white bgColorBar'>
-                                                                    <td colSpan={2}><div className=' text-center text-white text-nowrap'><span style={VIPColor}>VIP</span> Userbar</div></td>
+                                                                    <td colSpan={2}><div className=' text-center text-white text-nowrap'><span style={VIPColor}>Tier 1</span> Userbar</div></td>
                                                                     {/**colSpan allows me to use the full width of the row! This the right way to code for text-center!!*/}
                                                                 </tr>
 
@@ -55,41 +55,38 @@ export class Upgrade extends Component {
                                                                 </tr>
 
                                                                 <tr className=' bgColorBar '>
-                                                                    <td colSpan={2}><div className='text-center text-white text-nowrap'><span style={VIPColor}>VIP</span> Upgrade Perks</div></td>
+                                                                    <td colSpan={2}><div className='text-center text-white text-nowrap'><span style={VIPColor}>Tier 1</span> Upgrade Perks</div></td>
 
                                                                 </tr>
                                                                 <tr className=''>
-                                                                    <td><div className='ms-2'> A new cool username style.</div></td>
+                                                                    <td><div className='ms-2'> Flashy colors for username</div></td>
                                                                     <td><div style={VIPColor} className=' text-center'>John&nbsp;Doe</div></td>
                                                                 </tr>
                                                                 <tr className='iconcolor-vip '>
-                                                                    <td><div className='ms-2'> <span style={VIPColor}>VIP</span> Award </div></td>
+                                                                    <td><div className='ms-2'> <span style={VIPColor}>Tier 1</span> Award </div></td>
                                                                     <td><div className='text-center '> <i style={iconFontSize} class=" bi bi-gem"></i> </div></td>
                                                                 </tr>
                                                                 <tr className='iconcolor-vip'>
-                                                                    <td><div className='ms-2 '> Bypass the requirements to unlock hidden content.</div></td>
-                                                                    <td><div className='text-center mt-1 '> <i style={iconFontSize} class="bi bi-lock-fill"></i> </div></td>
+                                                                    <td><div className='ms-2 '> Unlocks all hidden content</div></td>
+                                                                    <td><div className='text-center '> <i style={iconFontSize} class="bi bi-lock-fill"></i> </div></td>
                                                                 </tr>
                                                                 <tr className='iconcolor-vip'>
-                                                                    <td><div className='ms-2 mb-2 mt-1'>Access to <span style={VIPColor}>VIP</span> exclusive forums. </div></td>
+                                                                    <td><div className='ms-2 mb-2 mt-1'>Access to <span style={VIPColor}>Tier 1</span> exclusive forums. </div></td>
                                                                     <td><div className='text-center'> <i style={iconFontSize} class="bi bi-star-fill"></i> </div>  </td>
                                                                 </tr>
                                                                 <tr className='iconcolor-vip'>
-                                                                    <td> <div className='ms-2'>Storage for 5,000 messages.</div>  </td>
+                                                                    <td> <div className='ms-2'>Storage for 1,000 messages.</div>  </td>
                                                                     <td> <div className='text-center '> <i style={iconFontSize} class="bi bi-envelope-check-fill"></i> </div></td>
                                                                 </tr>
                                                                 <tr className='iconcolor-vip'>
-                                                                    <td><div className='ms-2'>Able to change display name 1 time every month.</div></td>
+                                                                    <td><div className='ms-2'>Able to change name once per month.</div></td>
                                                                     <td><div className='text-center '> <i style={iconFontSize} class="bi bi-body-text"></i> </div></td>
                                                                 </tr>
-                                                                <tr className='iconcolor-vip'>
-                                                                    <td><div className='ms-2'>Able to change your username.</div></td>
-                                                                    <td><div className='text-center '> <i style={iconFontSize} class="bi bi-collection-fill"></i> </div> </td>
-                                                                </tr>
+
                                                             </tbody>
                                                         </table>
                                                         <div className="d-flex justify-content-center">
-                                                            <button type='button' className='text-dark text-center mb-3  btn btn-outline-danger'> <a className='text-decoration-none text-dark' href="https://google.com" >Buy VIP</a> </button>
+                                                            <button type='button' className='text-dark text-center mb-3  btn btn-outline-danger'> <a className='text-decoration-none text-dark' href="https://google.com" >Buy Tier 1</a> </button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -101,7 +98,7 @@ export class Upgrade extends Component {
                                                 <div className='d-flex justify-content-center mb-3 '> <span id="bestvaluetag" className='badge rounded-pill bg-warning border border-dark fs-6 '>Best Value</span> </div>
                                                 <div id="thebordermiddle">
                                                     <div className='d-inline-flex  p-2 w-100 gradient-custom-7 justify-content-between fw-bold'>
-                                                        <div className='fs-5 ms-2 text-white'>AQUA</div>
+                                                        <div className='fs-5 ms-2 text-white'>Tier 2</div>
                                                         <div style={darkHighlight} className='fs-5 text-white '>$35.00</div>
                                                     </div>
 
@@ -114,7 +111,7 @@ export class Upgrade extends Component {
                                                                         <td><div className='text-center '> Lifetime </div></td>
                                                                     </tr>
                                                                     <tr className='border border-white bgColorBar '>
-                                                                        <td colSpan={2}><div className=' text-center text-white text-nowrap'><span style={AQUAColor}>AQUA</span> Userbar</div></td>
+                                                                        <td colSpan={2}><div className=' text-center text-white text-nowrap'><span style={AQUAColor}>Tier 2</span> Userbar</div></td>
                                                                         {/**colSpan allows me to use the full width of the row! This the right way to code for text-center!!*/}
                                                                     </tr>
 
@@ -124,53 +121,50 @@ export class Upgrade extends Component {
                                                                     </tr>
 
                                                                     <tr className='bgColorBar '>
-                                                                        <td colSpan={2}><div className='text-center text-white text-nowrap'><span style={AQUAColor}>AQUA</span> Upgrade Perks</div></td>
+                                                                        <td colSpan={2}><div className='text-center text-white text-nowrap'><span style={AQUAColor}>Tier 2</span> Upgrade Perks</div></td>
 
                                                                     </tr>
                                                                     <tr className=' '>
-                                                                        <td><div className='ms-2 '> A new cool username style.</div></td>
+                                                                        <td><div className='ms-2 '> Flashy colors for username</div></td>
                                                                         <td><div style={AQUAColor} className=' text-center '>John&nbsp;Doe</div></td>
                                                                     </tr>
                                                                     <tr className='iconcolor-aqua   '>
-                                                                        <td><div className='ms-2'> <span style={AQUAColor}>AQUA</span> Award </div></td>
+                                                                        <td><div className='ms-2'> <span style={AQUAColor}>Tier 2</span> Award </div></td>
                                                                         <td><div className='text-center '> <i style={iconFontSize} class=" bi bi-gem"></i> </div></td>
                                                                     </tr>
                                                                     <tr className='iconcolor-aqua'>
-                                                                        <td><div className='ms-2 '> Bypass the requirements to unlock hidden content.</div></td>
-                                                                        <td> <div className='text-center mt-1 '> <i style={iconFontSize} class="bi bi-lock-fill"></i> </div>  </td>
+                                                                        <td><div className='ms-2 '> Unlocks all hidden content.</div></td>
+                                                                        <td> <div className='text-center '> <i style={iconFontSize} class="bi bi-lock-fill"></i> </div>  </td>
                                                                     </tr>
                                                                     <tr className='iconcolor-aqua'>
-                                                                        <td><div className='ms-2 mb-2 mt-1'>Access to <span style={AQUAColor}>VIP</span> exclusive forums. </div> </td>
+                                                                        <td><div className='ms-2 mb-2 mt-1'>Access to <span style={AQUAColor}>Tier 2</span> exclusive forums. </div> </td>
                                                                         <td><div className='text-center'> <i style={iconFontSize} class="bi bi-star-fill"></i> </div> </td>
                                                                     </tr>
                                                                     <tr className='iconcolor-aqua'>
-                                                                        <td><div className='ms-2'>Storage for 5,000 messages.</div> </td>
+                                                                        <td><div className='ms-2'>Storage for 3,000 messages.</div> </td>
                                                                         <td><div className='text-center '> <i style={iconFontSize} class="bi bi-envelope-check-fill"></i> </div> </td>
                                                                     </tr>
                                                                     <tr className='iconcolor-aqua'>
-                                                                        <td><div className='ms-2'>Able to change display name 1 time every month.</div></td>
+                                                                        <td><div className='ms-2'>Able to change display name 2 time every month.</div></td>
                                                                         <td><div className='text-center '> <i style={iconFontSize} class="bi bi-body-text"></i> </div></td>
                                                                     </tr>
-                                                                    <tr className='iconcolor-aqua'>
-                                                                        <td><div className='ms-2'>Able to change your username.</div></td>
-                                                                        <td><div className='text-center '> <i style={iconFontSize} class="bi bi-collection-fill"></i> </div></td>
-                                                                    </tr>
+
                                                                     <tr className=''>
-                                                                        <td><div style={AQUAColor} className='ms-2 '>Able to choose cover page</div></td>
+                                                                        <td><div style={AQUAColor} className='ms-2 '>Able to customize cover page</div></td>
                                                                         <td>{/**100% width border line*/}</td>
                                                                     </tr>
                                                                     <tr className=''>
-                                                                        <td><div style={AQUAColor} className='ms-2 '>Can rename to banned members</div></td>
+                                                                        <td><div style={AQUAColor} className='ms-2 '>Able to rename to deleted & banned members</div></td>
                                                                         <td>{/**100% width  border line*/}</td>
                                                                     </tr>
                                                                     <tr className=''>
-                                                                        <td><div style={AQUAColor} className='ms-2 '>Ability to change the color of your userbar</div></td>
+                                                                        <td><div style={AQUAColor} className='ms-2 '>Able to stylize userbar </div></td>
                                                                         <td>{/**100% width border line */}</td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
                                                             <div className="d-flex justify-content-center">
-                                                                <button type='button' className='text-dark text-center mb-3  btn btn-outline-info'> <a className='text-decoration-none text-dark' href="https://google.com" >Buy AQUA</a> </button>
+                                                                <button type='button' className='text-dark text-center mb-3  btn btn-outline-info'> <a className='text-decoration-none text-dark' href="https://google.com" >Buy Tier 2</a> </button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -182,10 +176,10 @@ export class Upgrade extends Component {
                                             <div className=' my-5 border-0 '>
                                                 <div id="theborderend" className='card my-5 '>
                                                     <div className='d-inline-flex  p-2 w-100 gradient-custom-6 justify-content-between fw-bold'>
-                                                        <div className='fs-5 ms-2 text-white'>NOVA</div>
+                                                        <div className='fs-5 ms-2 text-white'>Tier 3</div>
                                                         <div style={darkHighlight} className='fs-5 text-white '>$50.00</div>
                                                     </div>
-                                                    <div id='borderRadius' className='  '>
+                                                    <div id='borderRadius' >
                                                         <div className='row '>
                                                             <table className='table '>
                                                                 <tbody id="content" className=''>
@@ -194,7 +188,7 @@ export class Upgrade extends Component {
                                                                         <td><div className='text-center '> Lifetime </div></td>
                                                                     </tr>
                                                                     <tr className='border border-white bgColorBar '>
-                                                                        <td colSpan={2}><div className=' text-center text-white text-nowrap'><span style={NOVAColor}>NOVA</span> Userbar</div></td>
+                                                                        <td colSpan={2}><div className=' text-center text-white text-nowrap'><span style={NOVAColor}>Tier 3</span> Userbar</div></td>
                                                                         {/**colSpan allows me to use the full width of the row! This the right way to code for text-center!!*/}
                                                                     </tr>
 
@@ -204,23 +198,23 @@ export class Upgrade extends Component {
                                                                     </tr>
 
                                                                     <tr className=' bgColorBar '>
-                                                                        <td colSpan={2}><div className='text-center text-white text-nowrap'><span style={NOVAColor}>NOVA</span> Upgrade Perks</div></td>
+                                                                        <td colSpan={2}><div className='text-center text-white text-nowrap'><span style={NOVAColor}>Tier 3</span> Upgrade Perks</div></td>
 
                                                                     </tr>
                                                                     <tr className=' '>
-                                                                        <td><div className='ms-2 '> A new cool username style.</div></td>
+                                                                        <td><div className='ms-2 '> Flashy colors for username.</div></td>
                                                                         <td><div style={NOVAColor} className=' text-center '>John&nbsp;Doe</div></td>
                                                                     </tr>
                                                                     <tr className=' iconcolor-nova  '>
-                                                                        <td> <div className='ms-2'> <span style={NOVAColor}>NOVA</span> Award </div></td>
+                                                                        <td> <div className='ms-2'> <span style={NOVAColor}>Tier 3</span> Award </div></td>
                                                                         <td> <div className='text-center '> <i style={iconFontSize} class=" bi bi-gem"></i> </div> </td>
                                                                     </tr>
                                                                     <tr className='iconcolor-nova'>
-                                                                        <td> <div className='ms-2 '> Bypass the requirements to unlock hidden content.</div>  </td>
-                                                                        <td> <div className='text-center mt-1 '> <i style={iconFontSize} class="bi bi-lock-fill"></i> </div> </td>
+                                                                        <td> <div className='ms-2 '> Unlocks all hidden content..</div>  </td>
+                                                                        <td> <div className='text-center '> <i style={iconFontSize} class="bi bi-lock-fill"></i> </div> </td>
                                                                     </tr>
                                                                     <tr className='iconcolor-nova'>
-                                                                        <td><div className='ms-2 mb-2 mt-1'>Access to <span style={NOVAColor}>NOVA</span> exclusive forums. </div> </td>
+                                                                        <td><div className='ms-2 mb-2 mt-1'>Access to <span style={NOVAColor}>Tier 3</span> exclusive forums. </div> </td>
                                                                         <td><div className='text-center'> <i style={iconFontSize} class="bi bi-star-fill"></i> </div></td>
                                                                     </tr>
                                                                     <tr className='iconcolor-nova'>
@@ -228,27 +222,24 @@ export class Upgrade extends Component {
                                                                         <td><div className='text-center '> <i style={iconFontSize} class="bi bi-envelope-check-fill"></i> </div> </td>
                                                                     </tr>
                                                                     <tr className='iconcolor-nova'>
-                                                                        <td><div className='ms-2'>Able to change display name 1 time every month.</div> </td>
+                                                                        <td><div className='ms-2'>Able to change display name 3 time every month.</div> </td>
                                                                         <td><div className='text-center '> <i style={iconFontSize} class="bi bi-body-text"></i> </div></td>
                                                                     </tr>
-                                                                    <tr className='iconcolor-nova'>
-                                                                        <td><div className='ms-2'>Able to change your username.</div></td>
-                                                                        <td><div className='text-center '> <i style={iconFontSize} class="bi bi-collection-fill"></i> </div></td>
-                                                                    </tr>
+
                                                                     <tr className=''>
-                                                                        <td><div style={NOVAColor} className='ms-2 '>Able to choose cover page</div></td>
+                                                                        <td><div style={NOVAColor} className='ms-2 '>Able to customize cover page</div></td>
                                                                         <td>{/**100% width border line*/}</td>
                                                                     </tr>
                                                                     <tr className=''>
-                                                                        <td><div style={NOVAColor} className='ms-2 '>Can rename to banned members</div></td>
+                                                                        <td><div style={NOVAColor} className='ms-2 '>Able to rename to deleted & banned members</div></td>
                                                                         <td>{/**100% width  border line*/}</td>
                                                                     </tr>
                                                                     <tr className=''>
-                                                                        <td><div style={NOVAColor} className='ms-2 '>Ability to change the color of your userbar</div></td>
+                                                                        <td><div style={NOVAColor} className='ms-2 '>Able to stylize userbar</div></td>
                                                                         <td>{/**100% width border line */}</td>
                                                                     </tr>
                                                                     <tr className=''>
-                                                                        <td><div style={NOVAColor} className='ms-2 '>Ability to use BBCode/Emojis in your usertitle</div></td>
+                                                                        <td><div style={NOVAColor} className='ms-2 '>Users with this tier get special support from admins</div></td>
                                                                         <td>{/**100% width border line*/}</td>
                                                                     </tr>
                                                                     <tr className=''>
@@ -260,7 +251,7 @@ export class Upgrade extends Component {
                                                                 </tbody>
                                                             </table>
                                                             <div className="d-flex justify-content-center">
-                                                                <button type='button' className='text-dark text-center mb-3  btn btn-outline-warning'><a className='text-decoration-none text-dark' href="https://google.com" >Buy Nova</a></button>
+                                                                <button type='button' className='text-dark text-center mb-3  btn btn-outline-warning'><a className='text-decoration-none text-dark' href="https://google.com" >Buy Tier 3</a></button>
                                                             </div>
                                                         </div>
                                                     </div>
