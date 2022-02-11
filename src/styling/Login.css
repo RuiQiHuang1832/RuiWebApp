@@ -5,4 +5,25 @@
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
   }
+
+
+  #backgroundImageLogin {
+    background-image: url('../images/backgroundlogin.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
   
+.gradient-custom-3-login {
+
+  
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to bottom, rgba(12, 17, 14, 0.5),rgba(115, 117, 228, 0.815))
+}
+
+@media (max-width: 575.98px) { 
+  .footerLoginFontSize {
+      font-size: 95%;
+  }
+
+}

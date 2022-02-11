@@ -11,28 +11,30 @@ export class Search extends Component {
     }
     render() {
         return (
-            <div className='container vh-100'>
-                <div className='row justify-content-center  '>
-                    <div className='col  '>
-                        <form className='d-flex spacing-form '>
-                            <div className='input-group'>
-                                <div className='searchstuff'>
-                                    <i class="bi bi-search"></i>
+            <div className='searchbackgroundcolor'>
+                <div className='container vh-100 '>
+                    <div className='row justify-content-center  '>
+                        <div className='col  '>
+                            <form className='d-flex spacing-form '>
+                                <div className='input-group'>
+                                    <div className='searchstuff'>
+                                        <i class="bi bi-search"></i>
+                                    </div>
+                                    <input className='textindented form-control form-control-lg rounded-1 ' type="search" placeholder='...' />
+
+                                    <div className='input-group-prepend'>
+
+                                        <button className='btn btn-md btn-warning ' type='submit'>Search</button>
+                                    </div>
                                 </div>
-                                <input className='textindented form-control form-control-lg rounded-1 ' type="search" placeholder='...' />
+                            </form>
 
-                                <div className='input-group-prepend'>
+                        </div>
 
-                                    <button className='btn btn-md btn-warning ' type='submit'>Search</button>
-                                </div>
-                            </div>
-                        </form>
-
-                    </div>
+                    </div >
 
                 </div >
-
-            </div >
+            </div>
         )
     }
 }

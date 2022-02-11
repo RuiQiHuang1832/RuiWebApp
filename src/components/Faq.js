@@ -12,8 +12,8 @@ export class Faq extends Component {
                 <div className='container'>
                     <div className='row justify-content-center '>
                         <div className='col-9'>
-                            <p style={{ fontSize: "35px" }} className='text-center fw-bold p-5  '>Frequently Asked Questions</p>
-                            <h5 className=' text-center p-5'> Got a question? We've got answers. If you have some other questions, contact us at <a href="#!">contact@Overflow.com.</a></h5>
+                            <p style={{ fontSize: "35px" }} className='text-center text-white fw-bold p-5  '>Frequently Asked Questions</p>
+                            <h5 className=' text-center p-5 text-white '> Got a question? We've got answers. If you have some other questions, contact us at <a className="text-white" href="#!">contact@Overflow.com.</a></h5>
                             <div className='accordion pb-5 px-5'>
                                 <div className='accordion-item'>
                                     <h2 className='accordion-header'>
@@ -85,7 +85,7 @@ export class Faq extends Component {
                                         <div className='accordion-body'>
                                             <div> Yes, donations towards the site are handled by petrichor please PM him with the title "Donation". If you want to donate towards a moderator, PM the mod you choose.
                                                 <p /><div className='text-danger'>NOTE:</div> Donations are not the same as upgrades. You will not receive any special rank for it. Nevertheless, you will be awarded the donator award.
-                                                Our site does not officially feature donations towards mods. Therefore you won't receive anything!
+
                                             </div>
                                         </div>
                                     </div>

@@ -1,9 +1,5 @@
-body {
-    background-image: linear-gradient(to right top, #00ff4c, #ae00ff);
- 
-   
-   
-
+.searchbackgroundcolor {
+    background-color: rgba(36, 36, 36, 0.808);
 }
 
 .spacing-form {
