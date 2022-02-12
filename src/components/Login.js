@@ -61,10 +61,10 @@ export class Login extends Component {
             {/*applying mb-5 makes a white space at the bottom applied to this div tag V */}
             <div className='d-xxl-flex justify-content-xxl-center d-flex text-white text-nowrap footerLoginFontSize'>
               <Link className='text-white text-decoration-none' to="/tos">Terms of Use</Link>
-              <i class="bi bi-dot"></i>
+              <i className="bi bi-dot"></i>
               <Link className='text-white text-decoration-none' to="/faq">Help</Link>
 
-              <i class="bi bi-dot"></i>
+              <i className="bi bi-dot"></i>
               {/**however, applying it to this div tag only does it for this paragraph instead of the whole box */}
               <a className='text-white text-decoration-none mb-5' href="https://policies.google.com/privacy?hl=en-US">Privacy Policy</a>
 

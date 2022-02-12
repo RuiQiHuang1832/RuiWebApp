@@ -64,23 +64,23 @@ export class Upgrade extends Component {
                                                                 </tr>
                                                                 <tr className='iconcolor-vip '>
                                                                     <td><div className='ms-2'> <span style={VIPColor}>Tier 1</span> Award </div></td>
-                                                                    <td><div className='text-center '> <i style={iconFontSize} class=" bi bi-gem"></i> </div></td>
+                                                                    <td><div className='text-center '> <i style={iconFontSize} className=" bi bi-gem"></i> </div></td>
                                                                 </tr>
                                                                 <tr className='iconcolor-vip'>
                                                                     <td><div className='ms-2 '> Unlocks all hidden content</div></td>
-                                                                    <td><div className='text-center '> <i style={iconFontSize} class="bi bi-lock-fill"></i> </div></td>
+                                                                    <td><div className='text-center '> <i style={iconFontSize} className="bi bi-lock-fill"></i> </div></td>
                                                                 </tr>
                                                                 <tr className='iconcolor-vip'>
                                                                     <td><div className='ms-2 mb-2 mt-1'>Access to <span style={VIPColor}>Tier 1</span> exclusive forums. </div></td>
-                                                                    <td><div className='text-center'> <i style={iconFontSize} class="bi bi-star-fill"></i> </div>  </td>
+                                                                    <td><div className='text-center'> <i style={iconFontSize} className="bi bi-star-fill"></i> </div>  </td>
                                                                 </tr>
                                                                 <tr className='iconcolor-vip'>
                                                                     <td> <div className='ms-2'>Storage for 1,000 messages.</div>  </td>
-                                                                    <td> <div className='text-center '> <i style={iconFontSize} class="bi bi-envelope-check-fill"></i> </div></td>
+                                                                    <td> <div className='text-center '> <i style={iconFontSize} className="bi bi-envelope-check-fill"></i> </div></td>
                                                                 </tr>
                                                                 <tr className='iconcolor-vip'>
                                                                     <td><div className='ms-2'>Able to change name once per month.</div></td>
-                                                                    <td><div className='text-center '> <i style={iconFontSize} class="bi bi-body-text"></i> </div></td>
+                                                                    <td><div className='text-center '> <i style={iconFontSize} className="bi bi-body-text"></i> </div></td>
                                                                 </tr>
 
                                                             </tbody>
@@ -130,23 +130,23 @@ export class Upgrade extends Component {
                                                                     </tr>
                                                                     <tr className='iconcolor-aqua   '>
                                                                         <td><div className='ms-2'> <span style={AQUAColor}>Tier 2</span> Award </div></td>
-                                                                        <td><div className='text-center '> <i style={iconFontSize} class=" bi bi-gem"></i> </div></td>
+                                                                        <td><div className='text-center '> <i style={iconFontSize} className=" bi bi-gem"></i> </div></td>
                                                                     </tr>
                                                                     <tr className='iconcolor-aqua'>
                                                                         <td><div className='ms-2 '> Unlocks all hidden content.</div></td>
-                                                                        <td> <div className='text-center '> <i style={iconFontSize} class="bi bi-lock-fill"></i> </div>  </td>
+                                                                        <td> <div className='text-center '> <i style={iconFontSize} className="bi bi-lock-fill"></i> </div>  </td>
                                                                     </tr>
                                                                     <tr className='iconcolor-aqua'>
                                                                         <td><div className='ms-2 mb-2 mt-1'>Access to <span style={AQUAColor}>Tier 2</span> exclusive forums. </div> </td>
-                                                                        <td><div className='text-center'> <i style={iconFontSize} class="bi bi-star-fill"></i> </div> </td>
+                                                                        <td><div className='text-center'> <i style={iconFontSize} className="bi bi-star-fill"></i> </div> </td>
                                                                     </tr>
                                                                     <tr className='iconcolor-aqua'>
                                                                         <td><div className='ms-2'>Storage for 3,000 messages.</div> </td>
-                                                                        <td><div className='text-center '> <i style={iconFontSize} class="bi bi-envelope-check-fill"></i> </div> </td>
+                                                                        <td><div className='text-center '> <i style={iconFontSize} className="bi bi-envelope-check-fill"></i> </div> </td>
                                                                     </tr>
                                                                     <tr className='iconcolor-aqua'>
                                                                         <td><div className='ms-2'>Able to change display name 2 time every month.</div></td>
-                                                                        <td><div className='text-center '> <i style={iconFontSize} class="bi bi-body-text"></i> </div></td>
+                                                                        <td><div className='text-center '> <i style={iconFontSize} className="bi bi-body-text"></i> </div></td>
                                                                     </tr>
 
                                                                     <tr className=''>
@@ -207,23 +207,23 @@ export class Upgrade extends Component {
                                                                     </tr>
                                                                     <tr className=' iconcolor-nova  '>
                                                                         <td> <div className='ms-2'> <span style={NOVAColor}>Tier 3</span> Award </div></td>
-                                                                        <td> <div className='text-center '> <i style={iconFontSize} class=" bi bi-gem"></i> </div> </td>
+                                                                        <td> <div className='text-center '> <i style={iconFontSize} className=" bi bi-gem"></i> </div> </td>
                                                                     </tr>
                                                                     <tr className='iconcolor-nova'>
                                                                         <td> <div className='ms-2 '> Unlocks all hidden content..</div>  </td>
-                                                                        <td> <div className='text-center '> <i style={iconFontSize} class="bi bi-lock-fill"></i> </div> </td>
+                                                                        <td> <div className='text-center '> <i style={iconFontSize} className="bi bi-lock-fill"></i> </div> </td>
                                                                     </tr>
                                                                     <tr className='iconcolor-nova'>
                                                                         <td><div className='ms-2 mb-2 mt-1'>Access to <span style={NOVAColor}>Tier 3</span> exclusive forums. </div> </td>
-                                                                        <td><div className='text-center'> <i style={iconFontSize} class="bi bi-star-fill"></i> </div></td>
+                                                                        <td><div className='text-center'> <i style={iconFontSize} className="bi bi-star-fill"></i> </div></td>
                                                                     </tr>
                                                                     <tr className='iconcolor-nova'>
                                                                         <td><div className='ms-2'>Storage for 5,000 messages.</div></td>
-                                                                        <td><div className='text-center '> <i style={iconFontSize} class="bi bi-envelope-check-fill"></i> </div> </td>
+                                                                        <td><div className='text-center '> <i style={iconFontSize} className="bi bi-envelope-check-fill"></i> </div> </td>
                                                                     </tr>
                                                                     <tr className='iconcolor-nova'>
                                                                         <td><div className='ms-2'>Able to change display name 3 time every month.</div> </td>
-                                                                        <td><div className='text-center '> <i style={iconFontSize} class="bi bi-body-text"></i> </div></td>
+                                                                        <td><div className='text-center '> <i style={iconFontSize} className="bi bi-body-text"></i> </div></td>
                                                                     </tr>
 
                                                                     <tr className=''>

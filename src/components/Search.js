@@ -18,7 +18,7 @@ export class Search extends Component {
                             <form className='d-flex spacing-form '>
                                 <div className='input-group'>
                                     <div className='searchstuff'>
-                                        <i class="bi bi-search"></i>
+                                        <i className="bi bi-search"></i>
                                     </div>
                                     <input className='textindented form-control form-control-lg rounded-1 ' type="search" placeholder='...' />
 

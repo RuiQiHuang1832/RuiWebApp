@@ -1,7 +1,10 @@
 import React, { Component, useState, useRef, useEffect } from 'react'
 import "../styling/Signup.css"
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
+
+let simpleAuth = false;    //auth for signup=success
 
 const TITLE = "Sign up";
 //also able to use refs but refs don't function in function components b/c they have no instance however,
@@ -11,6 +14,7 @@ const TITLE = "Sign up";
 
 let val = "", valEmail = "", valPw = "", valCPw = ""
 export default function Signup() {
+    const navigate = useNavigate();
 
     const [address, setAddress] = useState('')
     // const [theaddress, settheaddress] = useState([])
@@ -42,6 +46,18 @@ export default function Signup() {
         }).then(() => {
             console.log("student is added!")
         })
+
+
+        simpleAuth = true;  //auth for signup=success
+        setTimeout(function () {  //
+            simpleAuth = false;
+        }, 5000);
+
+        if (simpleAuth) {
+            navigate("/signup=success");
+        } else {
+            navigate("/")           //
+        }
     }
 
     // useEffect(()=> {
@@ -104,6 +120,7 @@ export default function Signup() {
                                         <h2 className="text-uppercase text-center mb-5">Create an account</h2>
                                         <form onSubmit={handleSubmit(() => {
                                             handleClick();
+                                            reset();
 
                                             {/**passes first name, don't reset on submit */ }
                                         })}>
@@ -138,7 +155,7 @@ export default function Signup() {
                                                        ))
                                                        }   */}
                                                 <div className='text-danger'>{errors.firstName?.message}</div>
-                                                {/**class="form-control" are set to width: 100% by default  */}
+                                                {/**className="form-control" are set to width: 100% by default  */}
                                             </div>
 
                                             <div className='mb-2'>
@@ -220,4 +237,4 @@ export default function Signup() {
 
 }
 
-
+export { simpleAuth };
