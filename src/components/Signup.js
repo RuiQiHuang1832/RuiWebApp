@@ -50,7 +50,8 @@ export default function Signup() {
 
         simpleAuth = true;  //auth for signup=success
         setTimeout(function () {  //
-            simpleAuth = false;
+            navigate("/")
+            simpleAuth = false;      //set to false**********
         }, 5000);
 
         if (simpleAuth) {
