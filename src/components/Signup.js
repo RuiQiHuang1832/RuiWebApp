@@ -41,7 +41,8 @@ export default function Signup() {
         //  e.preventDefault()
         const userinfo = { username, email, password }
         console.log(userinfo)
-        fetch("https://rui-web-app.vercel.app/user/add", {
+        fetch("https://ruibackend.herokuapp.com/user/add", {
+            /*http://localhost:8080 */
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(userinfo)
