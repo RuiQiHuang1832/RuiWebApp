@@ -16,7 +16,9 @@ let val = "", valEmail = "", valPw = "", valCPw = ""
 export default function Signup() {
     const navigate = useNavigate();
 
-    const [address, setAddress] = useState('')
+    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     // const [theaddress, settheaddress] = useState([])
 
     const { register, handleSubmit, watch, reset,
@@ -37,14 +39,14 @@ export default function Signup() {
     const handleClick = (e) => {
 
         //  e.preventDefault()
-        const theusername = { address }
-        console.log(theusername)
-        fetch("http://localhost:8080/student/add", {
+        const userinfo = { username, email, password }
+        console.log(userinfo)
+        fetch("https://rui-web-app.vercel.app/user/add", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(theusername)
+            body: JSON.stringify(userinfo)
         }).then(() => {
-            console.log("student is added!")
+            console.log("user is added!")
         })
 
 
@@ -144,7 +146,7 @@ export default function Signup() {
                                                             message: "Max length must be 13 characters or less"
                                                         },
 
-                                                    })} type="text" id="formname" className={`form-control  + ${val} `} placeholder='Username*' onChange={(e) => setAddress(e.target.value)} />
+                                                    })} type="text" id="formname" className={`form-control  + ${val} `} placeholder='Username*' onChange={(e) => setUsername(e.target.value)} />
 
                                                 <div className='text-muted'>Between 4 and 13 characters</div>
                                                 {/* {theaddress.map(student =>(
@@ -169,7 +171,7 @@ export default function Signup() {
                                                             value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
                                                             message: "Please provide a valid email."
                                                         }
-                                                    })} type="text" id="formemail" className={`form-control  + ${valEmail} `} placeholder='Email Address*' />
+                                                    })} type="text" id="formemail" className={`form-control  + ${valEmail} `} placeholder='Email Address*' onChange={(e) => setEmail(e.target.value)} />
                                                 <div className='text-danger'>{errors.email?.message}</div>
                                             </div>
                                             <div className='mb-2'>
@@ -185,7 +187,7 @@ export default function Signup() {
                                                             value: 32,
                                                             message: "Enter a valid password"
                                                         }
-                                                    })} type="password" id="formpassword" className={`form-control  + ${valPw} `} placeholder='Password*' />
+                                                    })} type="password" id="formpassword" className={`form-control  + ${valPw} `} placeholder='Password*' onChange={(e) => setPassword(e.target.value)} />
                                                 <div className='text-muted'>Between 3 and 32 characters</div>
                                                 <div className='text-danger'>{errors.password?.message}</div>
                                             </div>
