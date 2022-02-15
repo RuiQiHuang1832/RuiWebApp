@@ -2,10 +2,9 @@ import React, { Component, useState, useRef, useEffect } from 'react'
 import "../styling/Signup.css"
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
-
+import bcrypt from 'bcryptjs'
 
 let simpleAuth = false;    //auth for signup=success
-
 const TITLE = "Sign up";
 //also able to use refs but refs don't function in function components b/c they have no instance however,
 //you are able to use it within another function if you want to use them in funciton componenets"
@@ -20,7 +19,6 @@ export default function Signup() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     // const [theaddress, settheaddress] = useState([])
-
     const { register, handleSubmit, watch, reset,
         formState: { errors }
     } = useForm({
@@ -38,18 +36,30 @@ export default function Signup() {
     I thought I could do onSubmit=>(e.target.value) but it doesn't grab the value fast enough to submit it into address..something about async.. but not enough knowledge..rn*/}
     const handleClick = (e) => {
 
+
+        const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync())
+        //http://localhost:8080/user/add                     <-local
+        //https://ruibackend.herokuapp.com/user/add          <-production
         //  e.preventDefault()
-        const userinfo = { username, email, password }
+
+        const userinfo = { username, email, hashedPassword }
         console.log(userinfo)
         fetch("https://ruibackend.herokuapp.com/user/add", {
-            /*http://localhost:8080 */
+
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(userinfo)
+            headers: {
+
+                "Content-Type": "application/json"
+            },
+
+
+            body: JSON.stringify({ username: userinfo.username, email: userinfo.email, password: userinfo.hashedPassword })
+
         }).then(() => {
             console.log("user is added!")
         })
 
+        //else {res.status(404).send("invald login")}           
 
         simpleAuth = true;  //auth for signup=success
         setTimeout(function () {  //
