@@ -5,16 +5,18 @@ import { useState, useEffect } from 'react';
 
 export function SuccessSignUp() {
 
-
     const [seconds, setSeconds] = useState(5);
 
     useEffect(() => {
+
         if (seconds > 0) {
             setTimeout(() => setSeconds(seconds - 1), 1000);
-        } else {
-            setSeconds("0");
+            return () => {      //ComponentDidUnmount
+                clearTimeout();
+            }
         }
     });
+
 
     return (
         <div id="backgroundImage" >

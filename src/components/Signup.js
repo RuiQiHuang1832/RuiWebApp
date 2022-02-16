@@ -10,15 +10,16 @@ const TITLE = "Sign up";
 //you are able to use it within another function if you want to use them in funciton componenets"
 //You can, however, use the ref attribute inside a function component as long as you refer to a DOM element or a class component:
 //https://reactjs.org/docs/refs-and-the-dom.html
+let val = "", valEmail = "", valPw = "", valCPw = ""  //default values
 
-let val = "", valEmail = "", valPw = "", valCPw = ""
 export default function Signup() {
     const navigate = useNavigate();
 
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    // const [theaddress, settheaddress] = useState([])
+    const [dupmessage, setDupmessage] = useState(' ')
+
     const { register, handleSubmit, watch, reset,
         formState: { errors }
     } = useForm({
@@ -36,43 +37,61 @@ export default function Signup() {
     I thought I could do onSubmit=>(e.target.value) but it doesn't grab the value fast enough to submit it into address..something about async.. but not enough knowledge..rn*/}
     const handleClick = (e) => {
 
-
         const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync())
-        //http://localhost:8080/user/add                     <-local
-        //https://ruibackend.herokuapp.com/user/add          <-production
+
         //  e.preventDefault()
 
         const userinfo = { username, email, hashedPassword }
         console.log(userinfo)
-        fetch("https://ruibackend.herokuapp.com/user/add", {
 
+
+
+
+        fetch("https://ruibackend.herokuapp.com/user/add", {
+            //look at login.js on how to implement login
+
+            //http://localhost:8080/user/add                     <-local
+            //https://ruibackend.herokuapp.com/user/add          <-production
             method: "POST",
             headers: {
-
                 "Content-Type": "application/json"
             },
-
-
             body: JSON.stringify({ username: userinfo.username, email: userinfo.email, password: userinfo.hashedPassword })
+        }).then((response) => {
+            if (!response.ok) {
+                if (response.status == 500) {
+                    setDupmessage("Username is already taken. Try again.")
+
+                }
+                throw new Error(response.status);
+            }
+            else
+                setDupmessage("")
 
         }).then(() => {
-            console.log("user is added!")
+
+            setTimeout(function () {  //
+                navigate("/")
+                simpleAuth = false;      //set to false**********
+            }, 6000);
+            navigate("/signup=success");
+
+        }).catch((error) => {
+
         })
 
-        //else {res.status(404).send("invald login")}           
+
+
 
         simpleAuth = true;  //auth for signup=success
-        setTimeout(function () {  //
-            navigate("/")
-            simpleAuth = false;      //set to false**********
-        }, 5000);
 
-        if (simpleAuth) {
-            navigate("/signup=success");
-        } else {
-            navigate("/")           //
-        }
+
+
+
+
     }
+
+
 
     // useEffect(()=> {
     //     fetch("http://localhost:8080/student/getAll")
@@ -134,7 +153,7 @@ export default function Signup() {
                                         <h2 className="text-uppercase text-center mb-5">Create an account</h2>
                                         <form onSubmit={handleSubmit(() => {
                                             handleClick();
-                                            reset();
+                                            // reset();
 
                                             {/**passes first name, don't reset on submit */ }
                                         })}>
@@ -169,6 +188,8 @@ export default function Signup() {
                                                        ))
                                                        }   */}
                                                 <div className='text-danger'>{errors.firstName?.message}</div>
+                                                <div className='text-danger'>{dupmessage}</div>
+
                                                 {/**className="form-control" are set to width: 100% by default  */}
                                             </div>
 
@@ -226,7 +247,7 @@ export default function Signup() {
                                                     id="formcheck"
                                                 />
                                                 <label className="form-check-label" htmlFor="formcheck">
-                                                    I agree to all statements in <a href="#!" className="text-body"><u><Link className='text-body' to="/tos">Terms of Service </Link></u></a>
+                                                    I agree to all statements in <span className="text-body"><u><Link className='text-body' to="/tos">Terms of Service </Link></u></span>
                                                 </label>
                                                 *
                                             </div>

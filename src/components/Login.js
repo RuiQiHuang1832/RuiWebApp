@@ -6,6 +6,17 @@ import { Link } from 'react-router-dom'
 const TITLE = "Login";
 
 export class Login extends Component {
+  /**************************
+   * 
+   * 
+   * 
+   * 
+   *Look at the previous video at the end where he sends requesst to the server.
+   * all I have to do is copy that. grab data from login just like in Signup, then do a auth request
+   * just like in the video to pass it in. prob using fetch API again...
+   * 
+   * 
+   */
   componentDidMount() {
     document.title = TITLE;
   }
