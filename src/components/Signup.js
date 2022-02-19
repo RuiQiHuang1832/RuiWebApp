@@ -3,6 +3,7 @@ import "../styling/Signup.css"
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import bcrypt from 'bcryptjs'
+import axios from 'axios'
 
 let simpleAuth = false;    //auth for signup=success
 const TITLE = "Sign up";
@@ -11,7 +12,6 @@ const TITLE = "Sign up";
 //You can, however, use the ref attribute inside a function component as long as you refer to a DOM element or a class component:
 //https://reactjs.org/docs/refs-and-the-dom.html
 let val = "", valEmail = "", valPw = "", valCPw = ""  //default values
-
 export default function Signup() {
     const navigate = useNavigate();
 
@@ -139,6 +139,8 @@ export default function Signup() {
     let watched = watch();
     useEffect(() => {
         document.title = TITLE;
+
+
     }, []);
 
     return (
@@ -189,7 +191,6 @@ export default function Signup() {
                                                        }   */}
                                                 <div className='text-danger'>{errors.firstName?.message}</div>
                                                 <div className='text-danger'>{dupmessage}</div>
-
                                                 {/**className="form-control" are set to width: 100% by default  */}
                                             </div>
 
