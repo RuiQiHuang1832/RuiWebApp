@@ -1,8 +1,4 @@
-.gradient {
-
-      background: linear-gradient(to left, rgba(15, 255, 15, 0.404),rgba(36, 159, 175, 0.39))
-  }
 
   #backgroundColor {
-      background: honeydew
+    background: rgb(31,32,40);
   }

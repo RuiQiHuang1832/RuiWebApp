@@ -19,11 +19,11 @@ export class Upgrade extends Component {
     render() {
         return (
             <div>
-                <div style={{ background: "#161618" }} className='container-fluid p-0 p-lg-5 p-md-5 p-sm-5 '>
+                <div style={{ background: "rgb(31,32,40)" }} className='container-fluid p-0 p-lg-5 p-md-5 p-sm-5 '>
                     <div className='row  '>
                         <div className='col '>
                             <h1 className='text-white text-center py-3 gradient-custom-upgradeheader'>~Upgrade~</h1>
-                            <div style={{ background: "rgb(36, 36, 36)" }}> {/**style={{ background: "rgb(36, 36, 36)" }} v white lines */}
+                            <div style={{ background: "rgb(31,32,40)" }}> {/**style={{ background: "rgb(36, 36, 36)" }} v white lines */}
 
                                 <div className='card-body'>
                                     <div className='row justify-content-center'> {/**Gap-4 ^ */}

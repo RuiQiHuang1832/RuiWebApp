@@ -4,20 +4,54 @@
 
 
 
-.nav-link:hover {
-    color:rgba(134, 134, 134, 0.986) !important;
+ .nav-link:hover {
+    color:rgba(255, 255, 255, 0.986) !important;
+}
+ 
+
+.nav-link {
+    margin-bottom: 14px;
+    display: inline-block;
+  
+    text-decoration: none;
+}
+
+.nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #019fb6;
+    transition: all 250ms ease-in-out;
+    
+}
+
+.nav-link:hover::after {
+   width: 100%;
 }
 
 
+.active{
+  border-bottom: 2px solid #019fb6;
+    
+}
+
 #navBackgroundColor {
-    background: rgb(36, 36, 36);
+    background: rgb(31,32,40);
    
  
 }
 
-.active {
-    border-bottom: solid red;
 
+
+
+.font-mono {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+   
+
+}
+.pos {
+    position: absolute;
 }
 
 .navbar-nav {
