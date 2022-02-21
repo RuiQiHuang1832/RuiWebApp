@@ -22,20 +22,20 @@ export class Home extends Component {
 
     componentDidMount() {
         document.title = TITLE;
-        // axios.get('https://ipgeolocation.abstractapi.com/v1/?api_key=0761240eebc74e768f377af56ed0058a')
-        //     .then(response => {
-        //         console.log(response.data);
-        //         this.setState({
-        //             city: response.data.city,
-        //             ip_address: response.data.ip_address,
-        //             timezone: response.data.timezone.abbreviation,
-        //             continent: response.data.continent,
-        //             region: response.data.region
-        //         })
-        //     })
-        //     .catch(error => {
-        //         console.log(error);
-        //     });
+        axios.get('https://ipgeolocation.abstractapi.com/v1/?api_key=0761240eebc74e768f377af56ed0058a')
+            .then(response => {
+                console.log(response.data);
+                this.setState({
+                    city: response.data.city,
+                    ip_address: response.data.ip_address,
+                    timezone: response.data.timezone.abbreviation,
+                    continent: response.data.continent,
+                    region: response.data.region
+                })
+            })
+            .catch(error => {
+                console.log(error);
+            });
 
     }
 
