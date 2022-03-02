@@ -19,6 +19,7 @@ export default function Signup() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [dupmessage, setDupmessage] = useState(' ')
+    const [ipaddress, setIpaddress] = useState()
 
     const { register, handleSubmit, watch, reset,
         formState: { errors }
@@ -32,6 +33,23 @@ export default function Signup() {
         mode: 'all'
 
     });
+
+    useEffect(() => {
+        axios.get('https://ipgeolocation.abstractapi.com/v1/?api_key=0761240eebc74e768f377af56ed0058a')
+            .then(response => {
+
+                setIpaddress(response.data.ip_address)
+
+            })
+    }, []) //componentdidUpdate with the second parameter being empty. however
+    // can also provide a list of things to allow it to know when to update
+    //1) [] - acts like componentDidMount,To run the useEffect only on mount, pass an empty array [] as a second argument
+    //2) no second parameter -  it runs both after the first render and after every update.
+    //3) [...] Only re-run the effect if count changes
+
+
+
+
     {/**^combining mode:onChange and onChange=>(e.target.value) doesn't work for some reason. react hook form validation doesn't work together with 2x Onchange
     hypothesis: 100% not sure.. actual really stumped on this one.. work around is to use a different mode like "all" which uses both blur/change
     I thought I could do onSubmit=>(e.target.value) but it doesn't grab the value fast enough to submit it into address..something about async.. but not enough knowledge..rn*/}
@@ -41,13 +59,11 @@ export default function Signup() {
 
         //  e.preventDefault()
 
-        const userinfo = { username, email, hashedPassword }
+        const userinfo = { username, email, hashedPassword, ipaddress }
         console.log(userinfo)
 
 
-
-
-        fetch("https://ruibackend.herokuapp.com/user/add", {
+        fetch("https://ruibackend.herokuapp.com/user/add  ", {
             //look at login.js on how to implement login
 
             //http://localhost:8080/user/add                     <-local
@@ -56,7 +72,7 @@ export default function Signup() {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ username: userinfo.username, email: userinfo.email, password: userinfo.hashedPassword })
+            body: JSON.stringify({ username: userinfo.username, email: userinfo.email, password: userinfo.hashedPassword, ipaddress: userinfo.ipaddress })
         }).then((response) => {
             if (!response.ok) {
                 if (response.status == 500) {
