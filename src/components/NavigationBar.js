@@ -23,8 +23,20 @@ class NavigationBar extends Component {
                 <nav id="navBackgroundColor" className='navbar navbar-expand-lg navbar-dark pt-5 ' >
                     <span className="container-fluid">
 
-                        <button className='navbar-toggler ' type='button' data-bs-toggle='collapse' data-bs-target="#collapsethis">
-                            <span class="navbar-toggler-icon"></span>
+                        <button id="btnprops" className='navbar-toggler ' type='button' data-bs-toggle='collapse' data-bs-target="#collapsethis">
+                            <div style={{ fontSize: "27px" }}>
+                                {/**being edited with css + bs. need to include d-flex,else not editable in css */}
+                                <i id="navbaricontop" class="d-flex bi bi-dash-lg"></i>
+                                <i id="navbariconmid" class="d-flex bi bi-dash-lg"></i>
+                                <i id="navbariconbot" class="d-flex bi bi-dash-lg"></i>
+
+
+
+                            </div>
+
+
+
+
 
                         </button>
                         {/**for mobile */}
@@ -45,7 +57,7 @@ class NavigationBar extends Component {
                                  * a child of NavLink. so it gets the property default ".active" in css
                                  */}
 
-                                <NavLink to='/' className='nav-link text-muted fw-bold p-md-0 p-sm-0 p-0  '>Home</NavLink>
+                                <NavLink to='/' className='nav-link text-muted fw-bold p-md-0 p-sm-0 p-0 mt-3 mt-lg-0 mt-xl-0 '>Home</NavLink>
                                 <NavLink to='/upgrade' className='nav-link text-muted ms-xl-5 ms-lg-5  fw-bold p-md-0 p-sm-0 p-0  '>Upgrade</NavLink>
                                 <NavLink to='/search' className='nav-link text-muted ms-xl-5 ms-lg-5  fw-bold p-md-0 p-sm-0 p-0  '> Search</NavLink>
 

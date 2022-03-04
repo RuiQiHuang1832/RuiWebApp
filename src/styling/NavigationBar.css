@@ -9,7 +9,16 @@
    
    
 }
- 
+
+#btnprops:hover {
+    border-color: white;
+}
+
+
+ #togglericon {
+   
+     
+ }
 
 .nav-link {
     margin-bottom: 12px;
@@ -58,8 +67,22 @@
    width: 100%;
   
 }
-
-
+/*the individual lines*/
+#navbaricontop {
+    color: white;
+    margin: -4px 4px auto;
+}
+/*the individual lines*/
+#navbariconmid {
+    color: white;
+    margin: -18px 4px;
+   
+}
+/*the individual lines*/
+#navbariconbot {
+    color: white;
+    margin: auto 4px -4px
+}
 
 
 #navBackgroundColor {

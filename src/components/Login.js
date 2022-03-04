@@ -10,7 +10,7 @@ export class Login extends Component {
    * 
    * 
    * 
-   * 
+   * https://www.youtube.com/watch?v=tDZPdovCH4I
    *Look at the previous video at the end where he sends requesst to the server.
    * all I have to do is copy that. grab data from login just like in Signup, then do a auth request
    * just like in the video to pass it in. prob using fetch API again...
