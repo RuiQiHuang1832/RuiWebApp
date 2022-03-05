@@ -166,9 +166,9 @@ export default function Signup() {
                     <div className='container '> {/**neccessary when using row + column */}
                         <div className='row d-flex justify-content-center '>
                             <div className="col-12 col-md-9 col-lg-7 col-xl-6"> {/**Changes width each screen size */}
-                                <div className="card" style={{ borderRadius: "30px", margin: "60px auto" }}>
-                                    <div className="card-body p-5"> {/**card must always be accompained by card-body */}
-                                        <h2 className="text-uppercase text-center mb-5">Create an account</h2>
+                                <div className="card " style={{ borderRadius: "30px", margin: "60px auto" }}>
+                                    <div className="card-body gradient-custom-3 p-5"> {/**card must always be accompained by card-body */}
+                                        <h2 className="text-uppercase text-center text-white mb-5">Create an account</h2>
                                         <form onSubmit={handleSubmit(() => {
                                             handleClick();
                                             // reset();
@@ -196,7 +196,7 @@ export default function Signup() {
 
                                                     })} type="text" id="formname" className={`form-control  + ${val} `} placeholder='Username*' onChange={(e) => setUsername(e.target.value)} />
 
-                                                <div className='text-muted'>Between 4 and 13 characters</div>
+                                                <div className='text-white'>Between 4 and 13 characters</div>
                                                 {/* {theaddress.map(student =>(
                                                        <p>
                                                        Id:{student.id}
@@ -237,7 +237,7 @@ export default function Signup() {
                                                             message: "Enter a valid password"
                                                         }
                                                     })} type="password" id="formpassword" className={`form-control  + ${valPw} `} placeholder='Password*' onChange={(e) => setPassword(e.target.value)} />
-                                                <div className='text-muted'>Between 3 and 32 characters</div>
+                                                <div className='text-white'>Between 3 and 32 characters</div>
                                                 <div className='text-danger'>{errors.password?.message}</div>
                                             </div>
 
@@ -263,10 +263,10 @@ export default function Signup() {
                                                     required
                                                     id="formcheck"
                                                 />
-                                                <label className="form-check-label" htmlFor="formcheck">
-                                                    I agree to all statements in <span className="text-body"><u><Link className='text-body' to="/tos">Terms of Service </Link></u></span>
+                                                <label className="form-check-label text-white" htmlFor="formcheck">
+                                                    I agree to all statements in <span className="text-white "><u><Link className='' to="/tos">Terms of Service </Link></u></span>
                                                 </label>
-                                                *
+                                                <span className='text-white'>*</span>
                                             </div>
 
                                             <div className='d-grid '>
@@ -274,7 +274,7 @@ export default function Signup() {
 
 
                                             </div>
-                                            <p className='text-center text-muted mt-4 mb-0'>Already have an account? <u >  <Link className='text-body' to="/login">Login </Link></u></p>
+                                            <p className='text-center text-white mt-4 mb-0'>Already have an account? <u >  <Link className='text-white' to="/login">Login </Link></u></p>
                                         </form>
 
                                     </div>

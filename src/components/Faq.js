@@ -14,7 +14,7 @@ export class Faq extends Component {
                     <div className='row justify-content-center '>
                         <div className='col-9'>
                             <p style={{ fontSize: "35px" }} className='text-center  fw-bold p-5  '>Frequently Asked Questions</p>
-                            <h5 className=' text-center p-5  '> Got a question? We've got answers. If you have some other questions, contact us at <a className="" href="#!">contact@Overflow.com.</a></h5>
+                            <h5 className=' text-center p-5  '> Got a question? We've got answers. If you have some other questions, contact us at <a className="" href="#!">contact@Tailwind.com.</a></h5>
                             <div className='accordion pb-5 px-5 accordioncolor' >
                                 <div className='accordion-item  '>
                                     <h2 className='accordion-header'>
