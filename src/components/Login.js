@@ -48,7 +48,7 @@ export class Login extends Component {
   handleClick(e) {
     e.preventDefault()
 
-    let url = "https://ruibackend.herokuapp.com/user/admin"
+    let url = "https://ruibackend.herokuapp.com/user/stuff"
     // let headers = new Headers();
     // headers.append('Authorization', 'Basic ' + window.btoa("Rando:asd"));
     //window.btoa(this.state.username + ":" + this.state.password)
@@ -60,10 +60,11 @@ export class Login extends Component {
         'Content-Type': 'text/plain'
       }
     }).then((response) => {
+      alert("you have successfully logged in")
       console.log(response)
     })
 
-
+    //look at authentication folder!
 
   }
 
