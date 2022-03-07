@@ -63,7 +63,7 @@ export default function Signup() {
         console.log(userinfo)
 
 
-        fetch("http://localhost:8080/user/add  ", {
+        fetch("https://ruibackend.herokuapp.com/user/add  ", {
             //look at login.js on how to implement login
 
             //http://localhost:8080/user/add                     <-local
