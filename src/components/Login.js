@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 const TITLE = "Login";
 
+
 export class Login extends Component {
   /**************************
    * 
@@ -31,21 +32,25 @@ export class Login extends Component {
     document.title = TITLE;
   }
 
+
+  //http://localhost:8080/user/admin                     <-local
+  //https://ruibackend.herokuapp.com/user/stuff          <-production
   //use localStorage for storing sessions..(only if i want it)
   handleClick(e) {
     e.preventDefault()
-    let url = "https://ruibackend.herokuapp.com/user/stuff/"
-    let encoded = window.btoa('Rando:asd')
-    let headers = new Headers();
-    headers.append('Accept', 'application/json')
-    let auth = 'Basic ' + encoded
+    console.log("lol")
+    let url = "https://ruibackend.herokuapp.com/user/admin"
+    // let headers = new Headers();
+    // headers.append('Authorization', 'Basic ' + window.btoa("Rando:asd"));
 
-    //http://localhost:8080/user/add                     <-local
-    //https://ruibackend.herokuapp.com/user/add          <-production
-    headers.append('Authorization', auth)
+
     fetch(url, {
+
       method: "GET",
-      headers: headers
+      headers: {
+        'Authorization': 'Basic ' + window.btoa("BenHuang:asd"),
+        'Content-Type': 'text/plain'
+      }
     }).then((response) => {
       console.log(response)
     })
