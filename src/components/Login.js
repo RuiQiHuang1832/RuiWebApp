@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom'
 
 const TITLE = "Login";
 
-
+let xusername;
+let xpassword;
 export class Login extends Component {
   /**************************
    * 
@@ -19,17 +20,25 @@ export class Login extends Component {
    * 
    */
 
+
+
   constructor(props) {
     super(props);
-    // this.state = {
-    //   username: "",
-    //   password: ""
-    // };
+    this.state = {
+      username: "",
+      password: ""
+    };
 
 
   }
   componentDidMount() {
     document.title = TITLE;
+  }
+
+  componentDidUpdate() {
+    xusername = this.state.username
+    xpassword = this.state.password
+
   }
 
 
@@ -38,17 +47,16 @@ export class Login extends Component {
   //use localStorage for storing sessions..(only if i want it)
   handleClick(e) {
     e.preventDefault()
-    console.log("lol")
+
     let url = "https://ruibackend.herokuapp.com/user/admin"
     // let headers = new Headers();
     // headers.append('Authorization', 'Basic ' + window.btoa("Rando:asd"));
-
+    //window.btoa(this.state.username + ":" + this.state.password)
 
     fetch(url, {
-
       method: "GET",
       headers: {
-        'Authorization': 'Basic ' + window.btoa("BenHuang:asd"),
+        'Authorization': 'Basic ' + window.btoa(xusername + ":" + xpassword),
         'Content-Type': 'text/plain'
       }
     }).then((response) => {
@@ -85,11 +93,11 @@ export class Login extends Component {
                         <form onSubmit={this.handleClick}>
                           <div className='mb-2'>
                             <label className='form-label'></label>
-                            <input type='text' placeholder='Username' className='form-control'></input>
+                            <input type='text' placeholder='Username' className='form-control' onChange={(e) => this.setState({ username: e.target.value })}></input>
                           </div>
                           <div className='mb-2'>
                             <label className='form-label'></label>
-                            <input type='password' placeholder='Password' className='form-control' ></input>
+                            <input type='password' placeholder='Password' className='form-control' onChange={(e) => this.setState({ password: e.target.value })} ></input>
                           </div>
                           {/**onChange={(e) => this.setState({ password: e.target.value })} */}
                           <div className='d-grid'>
