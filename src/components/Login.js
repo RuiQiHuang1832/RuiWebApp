@@ -17,12 +17,51 @@ export class Login extends Component {
    * 
    * 
    */
+
+  constructor(props) {
+    super(props);
+    // this.state = {
+    //   username: "",
+    //   password: ""
+    // };
+
+
+  }
   componentDidMount() {
     document.title = TITLE;
   }
+
+  //use localStorage for storing sessions..(only if i want it)
+  handleClick(e) {
+    e.preventDefault()
+    let url = "http://localhost:8080/user/stuff/"
+    let encoded = window.btoa('Rando:asd')
+    let headers = new Headers();
+    headers.append('Accept', 'application/json')
+    let auth = 'Basic ' + encoded
+
+    headers.append('Authorization', auth)
+    fetch(url, {
+      method: "GET",
+      headers: headers
+    }).then((response) => {
+      console.log(response)
+    })
+
+
+
+  }
+
+
+
+
+
   render() {
+
+
     return (
       <section id="backgroundImageLogin">
+
         <div className=' gradient-custom-3-login'>
           <div className='container h-100 '>
             <div className='row justify-content-center  mx-lg-5 h-100'>
@@ -36,15 +75,16 @@ export class Login extends Component {
                           <h3 className='mt-3 text-white'>Welcome to Overflow</h3>
                         </div>
                         <h6 className='mt-5 mb-0 text-white'>Please login to your account</h6>
-                        <form>
+                        <form onSubmit={this.handleClick}>
                           <div className='mb-2'>
                             <label className='form-label'></label>
                             <input type='text' placeholder='Username' className='form-control'></input>
                           </div>
                           <div className='mb-2'>
                             <label className='form-label'></label>
-                            <input type='password' placeholder='Password' className='form-control'></input>
+                            <input type='password' placeholder='Password' className='form-control' ></input>
                           </div>
+                          {/**onChange={(e) => this.setState({ password: e.target.value })} */}
                           <div className='d-grid'>
                             <button type='submit' className='gradient-custom-2 mt-3 btn  btn-md text-body '><span className='text-white'>Log In</span></button>
                           </div>

@@ -63,7 +63,7 @@ export default function Signup() {
         console.log(userinfo)
 
 
-        fetch("https://ruibackend.herokuapp.com/user/add  ", {
+        fetch("http://localhost:8080/user/add  ", {
             //look at login.js on how to implement login
 
             //http://localhost:8080/user/add                     <-local
@@ -72,7 +72,7 @@ export default function Signup() {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ username: userinfo.username, email: userinfo.email, password: userinfo.hashedPassword, ipaddress: userinfo.ipaddress })
+            body: JSON.stringify({ username: userinfo.username, email: userinfo.email, password: userinfo.hashedPassword, ipaddress: userinfo.ipaddress, role: "USER" })
         }).then((response) => {
             if (!response.ok) {
                 if (response.status == 500) {
