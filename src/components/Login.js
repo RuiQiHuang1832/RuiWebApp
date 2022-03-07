@@ -34,12 +34,14 @@ export class Login extends Component {
   //use localStorage for storing sessions..(only if i want it)
   handleClick(e) {
     e.preventDefault()
-    let url = "http://localhost:8080/user/stuff/"
+    let url = "https://ruibackend.herokuapp.com/user/stuff/"
     let encoded = window.btoa('Rando:asd')
     let headers = new Headers();
     headers.append('Accept', 'application/json')
     let auth = 'Basic ' + encoded
 
+    //http://localhost:8080/user/add                     <-local
+    //https://ruibackend.herokuapp.com/user/add          <-production
     headers.append('Authorization', auth)
     fetch(url, {
       method: "GET",
