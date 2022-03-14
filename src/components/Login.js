@@ -26,18 +26,28 @@ export class Login extends Component {
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      ishelogged: null
     };
 
 
   }
   componentDidMount() {
     document.title = TITLE;
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      /**https://www.freecodecamp.org/news/how-to-persist-a-logged-in-user-in-react/ <--what i used for persist..still needs work*/
+      console.log(loggedInUser)
+      this.setState({ ishelogged: true })
+    }
   }
 
   componentDidUpdate() {
     xusername = this.state.username
     xpassword = this.state.password
+
+
+
 
   }
 
@@ -45,13 +55,12 @@ export class Login extends Component {
   //http://localhost:8080/user/admin                     <-local
   //https://ruibackend.herokuapp.com/user/stuff          <-production
   //use localStorage for storing sessions..(only if i want it)
+  //Basic Auth
   handleClick(e) {
     e.preventDefault()
 
     let url = "https://ruibackend.herokuapp.com/user/stuff"
-    // let headers = new Headers();
-    // headers.append('Authorization', 'Basic ' + window.btoa("Rando:asd"));
-    //window.btoa(this.state.username + ":" + this.state.password)
+
 
     fetch(url, {
       method: "GET",
@@ -62,6 +71,8 @@ export class Login extends Component {
     }).then((response) => {
       alert("you have successfully logged in")
       console.log(response)
+      localStorage.setItem('user', xusername)
+      window.location.reload()
     })
 
     //look at authentication folder!
@@ -89,6 +100,7 @@ export class Login extends Component {
                         <div className='text-center mt-3'>
                           <img src={panda} className='align-content-center' width="180" height="150" />
                           <h3 className='mt-3 text-white'>Welcome to Overflow</h3>
+                          {this.state.ishelogged ? <h3 className='text-white'>User is logged in</h3> : <h3 className='text-white'>Please Login</h3>}
                         </div>
                         <h6 className='mt-5 mb-0 text-white'>Please login to your account</h6>
                         <form onSubmit={this.handleClick}>
