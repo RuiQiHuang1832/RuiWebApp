@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import panda from "../images/panda.png"
 import '../styling/NavigationBar.css'
 import { NavLink } from 'react-router-dom'
+
+
 
 
 
@@ -10,19 +11,37 @@ import { NavLink } from 'react-router-dom'
 //Navigation Links..Either <li> tags, routes w/ components, bootstrap navbars, navlinks/links..but those are kinda hard 
 // routes and links used in conjunction
 
-
 class NavigationBar extends Component {
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            isUserLogged: ""
+        }
+        this.handleLogout = this.handleLogout.bind(this)
+    }
+    componentDidMount() {
+        const loggedInUser = localStorage.getItem("user");
+        if (loggedInUser) {
+            /**https://www.freecodecamp.org/news/how-to-persist-a-logged-in-user-in-react/ <--what i used for persist..still needs work*/
+            this.setState({ isUserLogged: true })
 
+        } else {
+            this.setState({ isUserLogged: false })
+        }
+    }
+
+    handleLogout() {
+        localStorage.clear();
+        this.setState({ isUserLogged: false })
+    }
 
     render() {
-
 
         return (
             <div className='shadow bg-body rounded font-mono'>
                 <nav id="navBackgroundColor" className='navbar navbar-expand-lg navbar-dark pt-5 ' >
                     <span className="container-fluid">
-
                         <button id="btnprops" className='navbar-toggler ' type='button' data-bs-toggle='collapse' data-bs-target="#collapsethis">
                             <div style={{ fontSize: "27px" }}>
                                 {/**being edited with css + bs. need to include d-flex,else not editable in css */}
@@ -71,8 +90,10 @@ class NavigationBar extends Component {
                                         Sign up</NavLink>
                                 </div>
                                 <div className='d-block d-sm-none'>
-                                    <NavLink to="/login" className='nav-link text-muted ms-xl-5  p-0  fw-bold '>
-                                        Login</NavLink>
+
+                                    {this.state.isUserLogged ? <NavLink to="/logout" onClick={() => this.handleLogout()} className='nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-3'>
+                                        Logout</NavLink> : <NavLink to="/login" className='nav-link text-muted ms-xl-5  p-0  fw-bold '>
+                                        Login</NavLink>}
                                 </div>
 
                             </div>
@@ -80,8 +101,10 @@ class NavigationBar extends Component {
                             <div className='navbar-nav '>   {/**desktop */}
                                 <NavLink to="/signup" className='nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-2'>
                                     Sign up</NavLink>
-                                <NavLink to="/login" className='nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-3'>
-                                    Login</NavLink>
+
+                                {this.state.isUserLogged ? <NavLink to="/logout" onClick={() => this.handleLogout()} className='nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-3'>
+                                    Logout</NavLink> : <NavLink to="/login" className='nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-3'>
+                                    Login</NavLink>}
 
                             </div>
 

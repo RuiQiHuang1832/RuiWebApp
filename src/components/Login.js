@@ -7,6 +7,7 @@ const TITLE = "Login";
 
 let xusername;
 let xpassword;
+let xisUserLogged;
 export class Login extends Component {
   /**************************
    * 
@@ -27,25 +28,21 @@ export class Login extends Component {
     this.state = {
       username: "",
       password: "",
-      ishelogged: null
+
     };
+    this.handleClick = this.handleClick.bind(this)
 
 
   }
   componentDidMount() {
     document.title = TITLE;
-    const loggedInUser = localStorage.getItem("user");
-    if (loggedInUser) {
-      /**https://www.freecodecamp.org/news/how-to-persist-a-logged-in-user-in-react/ <--what i used for persist..still needs work*/
-      console.log(loggedInUser)
-      this.setState({ ishelogged: true })
-    }
+
+
   }
 
   componentDidUpdate() {
     xusername = this.state.username
     xpassword = this.state.password
-
 
 
 
@@ -87,8 +84,8 @@ export class Login extends Component {
 
 
     return (
-      <section id="backgroundImageLogin">
 
+      <section id="backgroundImageLogin">
         <div className=' gradient-custom-3-login'>
           <div className='container h-100 '>
             <div className='row justify-content-center  mx-lg-5 h-100'>
@@ -100,7 +97,7 @@ export class Login extends Component {
                         <div className='text-center mt-3'>
                           <img src={panda} className='align-content-center' width="180" height="150" />
                           <h3 className='mt-3 text-white'>Welcome to Overflow</h3>
-                          {this.state.ishelogged ? <h3 className='text-white'>User is logged in</h3> : <h3 className='text-white'>Please Login</h3>}
+                          {/* {this.state.isUserLogged ? <h3 className='text-white'>User is logged in</h3> : <h3 className='text-white'>Please Login</h3>} */}
                         </div>
                         <h6 className='mt-5 mb-0 text-white'>Please login to your account</h6>
                         <form onSubmit={this.handleClick}>
@@ -153,5 +150,6 @@ export class Login extends Component {
     )
   }
 }
+
 
 export default Login

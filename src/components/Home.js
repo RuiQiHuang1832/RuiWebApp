@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import '../styling/Home.css'
-import axios from 'axios'
 
 
 const TITLE = "Home";
