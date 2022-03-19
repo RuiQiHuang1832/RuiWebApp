@@ -45,9 +45,9 @@ class NavigationBar extends Component {
                         <button id="btnprops" className='navbar-toggler ' type='button' data-bs-toggle='collapse' data-bs-target="#collapsethis">
                             <div style={{ fontSize: "27px" }}>
                                 {/**being edited with css + bs. need to include d-flex,else not editable in css */}
-                                <i id="navbaricontop" class="d-flex bi bi-dash-lg"></i>
-                                <i id="navbariconmid" class="d-flex bi bi-dash-lg"></i>
-                                <i id="navbariconbot" class="d-flex bi bi-dash-lg"></i>
+                                <i id="navbaricontop" className="d-flex bi bi-dash-lg"></i>
+                                <i id="navbariconmid" className="d-flex bi bi-dash-lg"></i>
+                                <i id="navbariconbot" className="d-flex bi bi-dash-lg"></i>
 
 
 

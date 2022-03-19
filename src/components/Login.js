@@ -1,13 +1,12 @@
 import React, { Component, useRef } from 'react'
 import "../styling/Login.css"
 import panda from "../images/panda.png"
-import { Link } from 'react-router-dom'
-
+import { Link, useNavigate } from 'react-router-dom'
 const TITLE = "Login";
 
 let xusername;
 let xpassword;
-let xisUserLogged;
+
 export class Login extends Component {
   /**************************
    * 
@@ -20,7 +19,6 @@ export class Login extends Component {
    * 
    * 
    */
-
 
 
   constructor(props) {
@@ -41,6 +39,7 @@ export class Login extends Component {
   }
 
   componentDidUpdate() {
+
     xusername = this.state.username
     xpassword = this.state.password
 
@@ -48,15 +47,17 @@ export class Login extends Component {
 
   }
 
-
   //http://localhost:8080/user/admin                     <-local
   //https://ruibackend.herokuapp.com/user/stuff          <-production
   //use localStorage for storing sessions..(only if i want it)
   //Basic Auth
   handleClick(e) {
-    e.preventDefault()
 
-    let url = "https://ruibackend.herokuapp.com/user/stuff"
+    e.preventDefault()
+    const url = "https://ruibackend.herokuapp.com/user/stuff"
+
+    const mynav = this.props.navigation;
+
 
 
     fetch(url, {
@@ -66,7 +67,7 @@ export class Login extends Component {
         'Content-Type': 'text/plain'
       }
     }).then((response) => {
-      alert("you have successfully logged in")
+      mynav('/')
       console.log(response)
       localStorage.setItem('user', xusername)
       window.location.reload()
@@ -82,7 +83,6 @@ export class Login extends Component {
 
   render() {
 
-
     return (
 
       <section id="backgroundImageLogin">
@@ -97,7 +97,6 @@ export class Login extends Component {
                         <div className='text-center mt-3'>
                           <img src={panda} className='align-content-center' width="180" height="150" />
                           <h3 className='mt-3 text-white'>Welcome to Overflow</h3>
-                          {/* {this.state.isUserLogged ? <h3 className='text-white'>User is logged in</h3> : <h3 className='text-white'>Please Login</h3>} */}
                         </div>
                         <h6 className='mt-5 mb-0 text-white'>Please login to your account</h6>
                         <form onSubmit={this.handleClick}>
@@ -151,5 +150,10 @@ export class Login extends Component {
   }
 }
 
+export default function LoginFunctionComp() {
+  const navigate = useNavigate();
+  return <Login navigation={navigate} />
+}
 
-export default Login
+
+

@@ -87,8 +87,7 @@ export default function Signup() {
         }).then(() => {
 
             setTimeout(function () {  //
-                navigate("/")
-                simpleAuth = false;      //set to false**********
+                simpleAuth = false;      //set to false********** make it so users cannot go to sign=success in browser
             }, 6000);
             navigate("/signup=success");
 

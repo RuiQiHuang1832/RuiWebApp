@@ -3,7 +3,7 @@ import Footer from "./components/Footer";
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Signup, { simpleAuth } from "./components/Signup";
 import Home from "./components/Home";
-import Login from "./components/Login";
+import LoginFunctionComp from "./components/Login";
 import Tos from "./components/Tos";
 import Faq from "./components/Faq";
 import Upgrade from "./components/Upgrade"
@@ -21,7 +21,7 @@ function App(props) {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<LoginFunctionComp />} />
           <Route path="/tos" element={<Tos />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/upgrade" element={<Upgrade />} />

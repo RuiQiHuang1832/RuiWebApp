@@ -1,21 +1,25 @@
-import React, { Component } from 'react'
+import React from 'react'
 import '../styling/SuccessSignUp.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 
 export function SuccessSignUp() {
+    const navigate = useNavigate();
 
     const [seconds, setSeconds] = useState(5);
 
     useEffect(() => {
 
         if (seconds > 0) {
-            setTimeout(() => setSeconds(seconds - 1), 1000);
-            return () => {      //ComponentDidUnmount
-                clearTimeout();
-            }
+            setTimeout(() => setSeconds(seconds - 1), 1000);        //redirect timer
+        } else {
+            navigate("/")                                           //at 0, navigate home
         }
-    });
+        return () => {
+            setSeconds(0)                                          //ComponentDidUnmount, clear timer
+            clearTimeout();                                        //invaliding timers + cleanup to prevent memory leak no-ops
+        }
+    }, []);
 
 
     return (
@@ -26,7 +30,7 @@ export function SuccessSignUp() {
                         <div className='col-12 col-md-9 col-lg-7 col-xl-4 m-5 py-5'>
                             <div className='card border-0 rounded-3 '>
                                 <div className='row justify-content-center bgcolorsuccess rounded-top g-0 text-center'>
-                                    <i style={{ fontSize: "120px", color: "white" }} class="bi bi-check2-circle pt-2"></i>
+                                    <i style={{ fontSize: "120px", color: "white" }} className="bi bi-check2-circle pt-2"></i>
                                     <p className=' fs-3 text-white pb-2'>Success!</p>
                                 </div>
                                 <div className='row justify-content-center'>
