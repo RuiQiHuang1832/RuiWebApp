@@ -32,8 +32,9 @@ class NavigationBar extends Component {
     }
 
     handleLogout() {
-        localStorage.clear();
         this.setState({ isUserLogged: false })
+        localStorage.clear();
+        window.location.href = "/"  //"refresh effect"
     }
 
     render() {
@@ -86,12 +87,13 @@ class NavigationBar extends Component {
                                     About</NavLink>
                                 {/**for mobile   */}
                                 <div className='d-block d-sm-none'>
-                                    <NavLink to="/signup" className='nav-link text-muted  ms-xl-5  p-0 fw-bold '>
-                                        Sign up</NavLink>
+                                    {this.state.isUserLogged ? <span className='nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-3'>
+                                        Welcome, {localStorage.getItem("user")}!</span> : <NavLink to="/signup" className='nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-2'>
+                                        Sign up</NavLink>}
                                 </div>
                                 <div className='d-block d-sm-none'>
 
-                                    {this.state.isUserLogged ? <NavLink to="/logout" onClick={() => this.handleLogout()} className='nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-3'>
+                                    {this.state.isUserLogged ? <NavLink to="/" onClick={() => this.handleLogout()} className='nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-3'>
                                         Logout</NavLink> : <NavLink to="/login" className='nav-link text-muted ms-xl-5  p-0  fw-bold '>
                                         Login</NavLink>}
                                 </div>
@@ -99,10 +101,13 @@ class NavigationBar extends Component {
                             </div>
 
                             <div className='navbar-nav '>   {/**desktop */}
-                                <NavLink to="/signup" className='nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-2'>
-                                    Sign up</NavLink>
 
-                                {this.state.isUserLogged ? <NavLink to="/logout" onClick={() => this.handleLogout()} className='nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-3'>
+
+                                {this.state.isUserLogged ? <span className='nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-3'>
+                                    Welcome, {localStorage.getItem("user")}!</span> : <NavLink to="/signup" className='nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-2'>
+                                    Sign up</NavLink>}
+
+                                {this.state.isUserLogged ? <NavLink to="/" onClick={() => this.handleLogout()} className='nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-3'>
                                     Logout</NavLink> : <NavLink to="/login" className='nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-3'>
                                     Login</NavLink>}
 
