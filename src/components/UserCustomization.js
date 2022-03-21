@@ -1,0 +1,53 @@
+import { useEffect, useState } from 'react'
+import { NavLink, useParams } from 'react-router-dom'
+
+
+export default function UserCustomization(props) {
+    // const { id } = useParams();
+
+    const [id, setId] = useState("0");
+
+    useEffect(() => {
+        fetch('https://ruibackend.herokuapp.com/user/getAll')
+            .then((response) => response.json())
+            .then(data => {
+                const filtered = data.filter(obj => {
+                    if (localStorage.getItem("user") == obj.username) {
+                        return obj
+                    }
+                })
+                setId(filtered[0].id)
+            })
+    }, [])
+
+
+
+
+    return (
+        <div className="dropdown">
+            <a className="nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-3" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                Welcome, {localStorage.getItem("user")}! <i className=" bi bi-caret-down-fill " style={{ fontSize: "13px" }}></i>
+            </a>
+
+            <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuLink">
+                <li><NavLink className="dropdown-item" to={`/userDashboard/${localStorage.getItem("user")}-${id}`}>Dashboard</NavLink></li>
+                <li><a className="dropdown-item" href="#" onClick={() => props.handleChange()}>Sign out</a></li>
+            </ul>
+        </div>
+    )
+}
+
+
+
+
+/**
+ * 
+ * @param {By default fetch() performs a GET request. But you can always indicate the HTTP method explicitly:
+
+// ...
+const response = await fetch('/api/names', {
+  method: 'GET'
+});
+// ...} props 
+ * @returns 
+ */

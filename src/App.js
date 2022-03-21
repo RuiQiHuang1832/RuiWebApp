@@ -9,6 +9,7 @@ import Faq from "./components/Faq";
 import Upgrade from "./components/Upgrade"
 import Search from "./components/Search"
 import SuccessSignUp from "./components/SuccessSignUp"
+import UserDashboard from "./components/UserDashboard";
 //app > index
 
 function App(props) {
@@ -25,6 +26,8 @@ function App(props) {
           <Route path="/faq" element={<Faq />} />
           <Route path="/upgrade" element={<Upgrade />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/userDashboard/:username-:id" element={<UserDashboard />} />
+
 
           <Route path="/signup=success" element={<PrivateRoute><SuccessSignUp /></PrivateRoute>} />
         </Routes>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import '../styling/NavigationBar.css'
 import { NavLink } from 'react-router-dom'
+import UserCustomization from './UserCustomization'
 
 
 
@@ -11,7 +12,7 @@ import { NavLink } from 'react-router-dom'
 //Navigation Links..Either <li> tags, routes w/ components, bootstrap navbars, navlinks/links..but those are kinda hard 
 // routes and links used in conjunction
 
-class NavigationBar extends Component {
+export default class NavigationBar extends Component {
 
     constructor(props) {
         super(props)
@@ -36,6 +37,7 @@ class NavigationBar extends Component {
         localStorage.clear();
         window.location.href = "/"  //"refresh effect"
     }
+
 
     render() {
 
@@ -103,18 +105,17 @@ class NavigationBar extends Component {
                             <div className='navbar-nav '>   {/**desktop */}
 
 
-                                {this.state.isUserLogged ? <span className='nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-3'>
-                                    Welcome, {localStorage.getItem("user")}!</span> : <NavLink to="/signup" className='nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-2'>
+                                {this.state.isUserLogged ? <UserCustomization handleChange={this.handleLogout} /> : <NavLink to="/signup" className='nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-2'>
                                     Sign up</NavLink>}
 
-                                {this.state.isUserLogged ? <NavLink to="/" onClick={() => this.handleLogout()} className='nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-3'>
-                                    Logout</NavLink> : <NavLink to="/login" className='nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-3'>
+                                {this.state.isUserLogged ? <></> : <NavLink to="/login" className='nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-3'>
                                     Login</NavLink>}
 
                             </div>
 
                         </div>
-
+                        {/**<NavLink to="/" onClick={() => this.handleLogout()} className='nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-3'>
+                                    Logout</NavLink> */}
 
 
 
@@ -132,4 +133,3 @@ const fontSize = {
 
 
 
-export default NavigationBar
