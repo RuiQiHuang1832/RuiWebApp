@@ -1,0 +1,28 @@
+#backgroundColorDash {
+    background: rgb(31,32,40);
+  }
+
+  .userCoverPage {
+    background: linear-gradient(to bottom,rgba(0, 0, 0, 0.075),rgb(0, 0, 0)),url("../images/coverpage.jpg");
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center;
+    
+
+  }
+
+  .profilePicture {
+    position: absolute;
+    height:145px;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center;
+  }
+
+.profilecover {
+    position: absolute;
+    left: 320px;
+    top:9em;
+}
+  

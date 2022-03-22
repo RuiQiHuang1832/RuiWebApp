@@ -6,7 +6,7 @@ export default function UserCustomization(props) {
     // const { id } = useParams();
 
     const [id, setId] = useState("0");
-
+    //used to fetch from database and specifies user ID and name for the URL in dashboard on loadup
     useEffect(() => {
         fetch('https://ruibackend.herokuapp.com/user/getAll')
             .then((response) => response.json())
@@ -16,7 +16,7 @@ export default function UserCustomization(props) {
                         return obj
                     }
                 })
-                setId(filtered[0].id)
+                setId(filtered[0].id)       //[0] it will always be the first one and can only be one
             })
     }, [])
 

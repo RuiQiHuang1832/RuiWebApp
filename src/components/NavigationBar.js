@@ -82,7 +82,7 @@ export default class NavigationBar extends Component {
                                 <NavLink to='/' className='nav-link text-muted fw-bold p-md-0 p-sm-0 p-0 mt-3 mt-lg-0 mt-xl-0 '>Home</NavLink>
                                 <NavLink to='/upgrade' className='nav-link text-muted ms-xl-5 ms-lg-5  fw-bold p-md-0 p-sm-0 p-0  '>Upgrade</NavLink>
                                 <NavLink to='/search' className='nav-link text-muted ms-xl-5 ms-lg-5  fw-bold p-md-0 p-sm-0 p-0  '> Search</NavLink>
-
+                                <NavLink to='/members' className='nav-link text-muted ms-xl-5 ms-lg-5  fw-bold p-md-0 p-sm-0 p-0  '> Member List</NavLink>
                                 <NavLink to="/faq" className='nav-link text-muted ms-xl-5 ms-lg-5  fw-bold p-md-0 p-sm-0 p-0  '>
                                     FAQ</NavLink>
                                 <NavLink to="/tos" className='nav-link text-muted ms-xl-5 ms-lg-5  fw-bold p-md-0 p-sm-0 p-0  '>

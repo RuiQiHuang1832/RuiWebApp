@@ -26,6 +26,7 @@ export class Login extends Component {
     this.state = {
       username: "",
       password: "",
+      invalidlogin: ""
 
     };
     this.handleClick = this.handleClick.bind(this)
@@ -67,10 +68,15 @@ export class Login extends Component {
         'Content-Type': 'text/plain'
       }
     }).then((response) => {
+
       mynav('/')
       console.log(response)
       localStorage.setItem('user', xusername)
       window.location.reload()
+
+    }).catch((err) => {
+
+      this.setState({ invalidlogin: "Username or password incorrect." })
     })
 
     //look at authentication folder!
@@ -98,6 +104,7 @@ export class Login extends Component {
                           <img src={panda} className='align-content-center' width="180" height="150" />
                           <h3 className='mt-3 text-white'>Welcome to Overflow</h3>
                         </div>
+                        <h4 className='text-danger text-center'>{this.state.invalidlogin}</h4>
                         <h6 className='mt-5 mb-0 text-white'>Please login to your account</h6>
                         <form onSubmit={this.handleClick}>
                           <div className='mb-2'>

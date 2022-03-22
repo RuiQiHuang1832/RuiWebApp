@@ -179,9 +179,9 @@ export default function Signup() {
                                                 <label className='form-label' htmlFor="" ></label>
                                                 <input  {...register("firstName",
                                                     {
-                                                        required: "Please provide a name",
+                                                        required: "Please provide a username",
                                                         pattern: {
-                                                            value: /^[a-zA-Z0-9_]*$/,
+                                                            value: /^[a-zA-Z0-9_\t+$]*$/,
                                                             message: "No special characters"
                                                         },
                                                         minLength: {
