@@ -13,7 +13,6 @@
   }
 
   .profilePicture {
-    position: absolute;
     height:145px;
     background-repeat: no-repeat;
     background-size: cover; 
@@ -21,8 +20,8 @@
   }
 
 .profilecover {
-    position: absolute;
-    left: 320px;
-    top:9em;
+  position: relative;
+    left: 40px;
+    bottom:4px;
 }
   

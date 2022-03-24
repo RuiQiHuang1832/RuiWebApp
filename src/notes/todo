@@ -4,7 +4,7 @@ design userpage,
 etc.. stuff
 be able to search
 
-member list!
+
 
 ROLE column mySQL
 
@@ -13,3 +13,5 @@ rework code..no inline stlying for example
 
 might need to rework /getAll by only allowing users with ADMIN permission access rui.heroku/user/getAll
 follow what I did in the basic auth in Login to implement
+
+
