@@ -43,7 +43,7 @@ export default function Members() {
         .then((response) => response.json())
         .then((data) => {
           setMembers(data);
-          ls.set('key', data, { encrypt: true, ttl: 600 });
+          ls.set('key', data, { encrypt: true });
         })
         .then(() => setBusy(false))
         .then(() => {

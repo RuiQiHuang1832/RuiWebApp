@@ -80,7 +80,7 @@ export default function Signup() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        username: userinfo.username, email: userinfo.email, password: userinfo.hashedPassword, ipaddress: userinfo.ipaddress, role: 'USER',
+        username: userinfo.username, email: userinfo.email, password: userinfo.hashedPassword, ipaddress: userinfo.ipaddress, role: 'USER', bio: '',
       }),
     }).then((response) => {
       if (!response.ok) {

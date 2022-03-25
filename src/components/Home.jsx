@@ -25,9 +25,8 @@ export class Home extends Component {
     if (ls.get('key') === null) {
       fetch('https://ruibackend.herokuapp.com/user/getAll')
         .then((res) => res.json())
-        .then((data) => ls.set('key', data, { encrypt: true, ttl: 600 }));
+        .then((data) => ls.set('key', data, { encrypt: true }));
     }
-    ls.flush();
   }
 
   // componentDidMount() {
