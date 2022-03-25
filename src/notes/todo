@@ -15,3 +15,5 @@ might need to rework /getAll by only allowing users with ADMIN permission access
 follow what I did in the basic auth in Login to implement
 
 
+spinner on loading in members page
+https://getbootstrap.com/docs/5.0/components/spinners/#colors

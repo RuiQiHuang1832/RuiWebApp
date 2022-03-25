@@ -1,3 +1,5 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable arrow-body-style */
 import React, { useEffect, useState } from 'react';
 import ls from 'localstorage-slim';
 
@@ -7,23 +9,24 @@ import ls from 'localstorage-slim';
 // dont get blank page
 const arr = [];
 const TITLE = 'Members';
+const controller = new AbortController(); // for fetch aborting
 export default function Members() {
   // const [role, setRole] = useState()
   // const [username, setUsername] = useState()
 
   const [isBusy, setBusy] = useState(true);
   const [members, setMembers] = useState();
-  const [isPushed, setPushed] = useState(true);
+  const [isPushed, setPushed] = useState(false);
 
   function mapFunc() {
     if (!isBusy) {
       const results = members.map((obj) => ({
         role: obj.role,
         username: obj.username,
+        idKey: obj.id,
       }));
-
       arr.push(results);
-      setPushed(false);
+      setPushed(true);
     }
   }
   useEffect(() => {
@@ -33,7 +36,10 @@ export default function Members() {
       setBusy(false);
       mapFunc();
     } else {
-      fetch('https://ruibackend.herokuapp.com/user/getAll')
+      fetch('https://ruibackend.herokuapp.com/user/getAll', {
+        method: 'get',
+        signal: controller.signal,
+      })
         .then((response) => response.json())
         .then((data) => {
           setMembers(data);
@@ -42,59 +48,46 @@ export default function Members() {
         .then(() => setBusy(false))
         .then(() => {
           mapFunc();
+        })
+        .catch((error) => {
+          console.log(error);
         });
     }
   }, [isBusy]);
 
-  // console.log(arr)
+  useEffect(() => {
+    return () => {
+      controller.abort();
+    };
+  }, []);
 
-  // const results = useMemo(() => members.map(obj => ({
-  //     role: obj.role,
-  //     username: obj.username
-
-  // })), [isBusy, members])
-
-  // const results = members.map(obj => ({
-  //     role: obj.role,
-  //     username: obj.username
-
-  // }))
-
-  // console.log(results)
+  function createListOfMembers() {
+    if (isPushed && arr.length !== 0) {
+      return <ul>{arr[0].map((item) => <li key={item.idKey}><a href={`/userDashboard/${item.username}-${item.idKey}`}>{item.username}</a></li>)}</ul>;
+    }
+    return (
+      <div className="d-flex align-items-center">
+        <strong>Loading... &nbsp;</strong>
+        <div className="spinner-border" role="status" aria-hidden="true" />
+      </div>
+    );
+  }
 
   return (
     <div>
       members
       <div>
-
-        {isPushed ? <div>Loading</div>
-          : (
-            <ul>
-              {arr[0].map((item) => <li>{item.username}</li>)}
-
-            </ul>
-          )}
-
+        {createListOfMembers()}
       </div>
 
     </div>
   );
 }
 
-// {isPushed ? <div>loading</div> :
-// <div>Members:
-//     <ul>
-//         {/* {console.log(memberlist)} */}
-
-//         {/* {memberlist[0].map((item) => (
-//             <li>{console.log(item)}</li>
-//         ))} */}
-//         {/* {members.map((item) => (
-//         <li>{item.role}</li>
-//     ))} */}
-
-//     </ul>
-
-// </div>
-
-// }
+/**
+ * This is arguably the best approach because it uses a property that is unique for each item in the dataset.
+ * For example, if rows contains data fetched from a database, one could use the table's Primary Key (which typically is an auto-incrementing number).
+ * The best way to pick a key is to use a string that uniquely identifies a list item among its siblings. Most often you would use IDs from your data as keys
+ * Unique - A key cannot be identical to that of a sibling component.
+ * Static - A key should not ever change between renders.
+ */
