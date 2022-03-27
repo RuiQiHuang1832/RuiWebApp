@@ -13,10 +13,11 @@ export default function UserDashboard() {
   const [biography, Setbio] = useState('');
   const [users, setUsers] = useState();
   const [lsbio, setlsbio] = useState('');
+  const [loading, setloading] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
     document.title = TITLE;
-    if (ls.get('key') === null) {
+    if (ls.get('key') === null) { // navigate to home page to fetch the data if key is not found
       navigate('/');
     } else {
       setUsers(ls.get('key', { decrypt: true }));
@@ -39,8 +40,16 @@ export default function UserDashboard() {
     };
   }
 
+  function displaySpinner() {
+    if (loading) {
+      return <div className="spinner-border text-primary" role="status"><span className="visually-hidden">Loading...</span></div>;
+    }
+    return <> </>;
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setloading(true);
     fetch('https://ruibackend.herokuapp.com/user/updateBio', {
       method: 'PUT',
       headers: {
@@ -48,7 +57,10 @@ export default function UserDashboard() {
       },
       body: JSON.stringify(handleStringfy()),
 
-    }).then((response) => console.log(response));
+    }).then().then(() => { // after user saves bio, remove the key and navigate back to home so it refreshes the key with new info at home
+      ls.remove('key');
+      navigate('/');
+    });
   };
 
   return (
@@ -71,23 +83,22 @@ export default function UserDashboard() {
             <div className="card" style={{ background: 'rgb(31,32,40)' }}>
               <div className="card-body ">
                 <table className="table text-white">
-                  <thead>
-                    <tr>
-                      <th scope="col">Information</th>
-                    </tr>
-                  </thead>
                   <tbody>
                     <tr>
                       <td>Posts:</td>
+                      <td>0</td>
                     </tr>
                     <tr>
                       <td>Joined: </td>
+                      <td>Today</td>
                     </tr>
                     <tr>
                       <td>Date of Birth:</td>
+                      <td>Unknown</td>
                     </tr>
                     <tr>
                       <td>Reputation:</td>
+                      <td>0</td>
                     </tr>
                   </tbody>
                 </table>
@@ -97,12 +108,17 @@ export default function UserDashboard() {
           <div className="col-5 ">
             <div className="card" style={{ background: 'rgb(31,32,40)' }}>
               <div className="card-body ">
-                <label htmlFor="exampleFormControlTextarea1" className="form-label text-white">Bio</label>
+                <label className="form-label text-white">Bio</label>
                 {localStorage.getItem('user') === username ? (
                   <form onSubmit={handleSubmit}>
+                    {/** if currently logged in: */}
                     <textarea style={{ resize: 'none' }} className="form-control" value={lsbio} type="text" disabled />
-                    <textarea placeholder="max 250 characters" className="form-control" rows="6" onChange={(e) => Setbio(e.target.value)} />
-                    <button className="btn btn-secondary" type="submit">Save</button>
+                    <button className="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#textareacollapse">EDIT</button>
+                    <div className="collapse" id="textareacollapse">
+                      <textarea placeholder="max 250 characters" maxLength={250} className="form-control" rows="6" onChange={(e) => Setbio(e.target.value)} />
+                      <button className="btn btn-secondary" type="submit">Save</button>
+                    </div>
+                    <div>{displaySpinner()}</div>
                   </form>
                 )
                   : <textarea readOnly style={{ resize: 'none' }} value={lsbio} className="form-control" rows="6" /> }
