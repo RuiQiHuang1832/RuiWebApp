@@ -1,4 +1,4 @@
-**Every text you see is placeholders. All text is for the sake of having an example to show. Will be replaced in future releases**
+NOTE: **Every text you see is placeholders. All text is for the sake of having an example to show. Will be replaced in future releases**
 
 # TODO
 Upgrade ✔️<br />
