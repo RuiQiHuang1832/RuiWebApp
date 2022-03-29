@@ -1,15 +1,19 @@
-NOTE: **Every text you see on the website is placeholders. All text is for the sake of having an example to show. Will be replaced in future releases. ALL design is not finalized**
+
 
 # NOTE
 Frontend hosted on Vercel and Backend hosted on Heroku.
 
 **Since heroku is hosted free, there will be a delay while accessing the web app.**
 
+**Every text you see on the website is placeholders. All text is for the sake of having an example to show. Will be replaced in future releases. ALL design is not finalized**
+
 # TODO
 Upgrade ✔️<br />
 Search<br />
 Home<br />
-
+User Dashboard<br />
+Sign up/ Sign out✔️<br />
+Login✔️<br />
 
 # Getting Started with Create React App
 
