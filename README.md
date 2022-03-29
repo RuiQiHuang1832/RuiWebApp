@@ -1,4 +1,4 @@
-NOTE: **Every text you see on the website is placeholders. All text is for the sake of having an example to show. Will be replaced in future releases**
+NOTE: **Every text you see on the website is placeholders. All text is for the sake of having an example to show. Will be replaced in future releases. ALL design is not finalized**
 
 # TODO
 Upgrade ✔️<br />
