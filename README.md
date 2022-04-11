@@ -7,7 +7,7 @@ Frontend hosted on Vercel and Backend hosted on Heroku.
 
 **Every text you see on the website is placeholders. All text is for the sake of having an example to show. Will be replaced in future releases. ALL design is not finalized**
 
-# TODO
+# TODO (not updated)
 Upgrade ✔️<br />
 Search<br />
 Home<br />
