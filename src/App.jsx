@@ -16,6 +16,7 @@ import Search from './components/Search';
 import SuccessSignUp from './components/SuccessSignUp';
 import UserDashboard from './components/UserDashboard';
 import Members from './components/Members';
+import Settings from './components/Settings';
 // app > index
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/members" element={<Members />} />
           <Route path="/userDashboard/:username-:id" element={<UserDashboard />} />
+          <Route path="/userDashboard/settings/:username-:id" element={<Settings />} />
 
           <Route path="/signup=success" element={<PrivateRoute><SuccessSignUp /></PrivateRoute>} />
         </Routes>

@@ -14,22 +14,16 @@
     border-color: white;
 }
 
-
- #togglericon {
-   
-     
- }
-
 .nav-link {
     margin-bottom: 12px;
-    display: inline-block;
-    text-decoration: none;
 }
-
+/**full screen */
 @media (max-width: 2000px) { 
     .nav-link::after {
         content: '';
+        position: relative;
         display: block;
+        left: 0;        /* 50% for middle, 100% for right, 0 for left animation */ 
         width: 0;
         height: 2px;        /*thickness of line*/
         background: #019fb6;
@@ -65,6 +59,8 @@
 
 .nav-link:hover::after {
    width: 100%;
+   left:0;
+ 
   
 }
 /*the individual lines*/

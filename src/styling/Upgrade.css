@@ -1,4 +1,6 @@
-#borderRadius {
+
+
+.borderRadius {
   box-shadow: 1px 1px 44px -8px rgba(1, 1, 2, 0.651);
   border-color: black !important;
   border-width: thin !important;
@@ -31,28 +33,30 @@
 
 .gradient-custom-7 {
  background: rgb(0, 183, 255)
+
+/** border colors*/
 }
 #theborderstart {
-  border: 8px solid;
+  border: 0.5px solid;
 
   border-image-slice: 1;
 
-  border-image-source: linear-gradient(to bottom, #743ad5, #d53a9d);
+  border-image-source: linear-gradient(to bottom, #000000, #000000);
 }
 
 #thebordermiddle {
-  border: 8px solid;
+  border: 0.5px solid;
 
   border-image-slice: 1;
 
-  border-image-source: linear-gradient(to bottom, #7bff00, #0041f3);
+  border-image-source: linear-gradient(to bottom, #000000, #000000);
 }
 #theborderend {
-  border: 8px solid;
+  border: 0.5px solid;
 
   border-image-slice: 1;
 
-  border-image-source: linear-gradient(to bottom, #fc0000, #00ffdd);
+  border-image-source: linear-gradient(to bottom, #000000, #000000);
 }
 
 #bestvaluetag {
@@ -76,7 +80,7 @@ source: https://www.bram.us/2021/01/29/animating-a-css-gradient-border/
 */
 
 /* AQUA tab*/
-#thebordermiddle {
+/* #thebordermiddle {
   --angle: 0deg;
   border-image: linear-gradient(var(--angle), rgb(0, 255, 242), rgb(255, 255, 0)) 1;
   animation: 3s rotate linear infinite;
@@ -92,11 +96,11 @@ source: https://www.bram.us/2021/01/29/animating-a-css-gradient-border/
   syntax: '<angle>';
   initial-value: 0deg;
   inherits: false;
-}
+} */
 
 
 /* VIP tab*/
-#theborderstart {
+/* #theborderstart {
   --angle: 0deg;
   border-image: linear-gradient(var(--angle), #d400ff, #00f7ff) 1;
   animation: 3s rotate linear infinite;
@@ -112,11 +116,11 @@ source: https://www.bram.us/2021/01/29/animating-a-css-gradient-border/
   syntax: '<angle>';
   initial-value: 0deg;
   inherits: false;
-}
+} */
 
 
 /* Nova tab*/
-#theborderend {
+/* #theborderend {
   --angle: 0deg;
   border-image: linear-gradient(var(--angle), #ff8800, hsl(300, 100%, 50%)) 1;
   animation: 3s rotate linear infinite;
@@ -132,10 +136,11 @@ source: https://www.bram.us/2021/01/29/animating-a-css-gradient-border/
   syntax: '<angle>';
   initial-value: 0deg;
   inherits: false;
-}
+} */
 
+/*userbars, upgrade perks*/
 .bgColorBar {
-  background: rgb(47, 47, 47, 0.9);
+  background: rgba(31, 32, 40, 0.07);
 }
 
 .iconcolor-vip i {
@@ -149,4 +154,35 @@ source: https://www.bram.us/2021/01/29/animating-a-css-gradient-border/
 
 .iconcolor-nova i {
   color: rgb(212, 103, 9);
+}
+
+.iconfontsize i {
+  font-size: 18px;
+}
+
+/*black background color for sections, all tiers are wrapped in sections, hence, sections*/
+.darkbackgroundcolor, section   {
+  background: rgb(31,32,40) !important;
+}
+
+/*Colors for specific texts*/
+.VIPColor span {
+  color: rgb(225, 64, 19);
+  text-shadow: 0.5px 0.5px 5px rgb(225, 64, 199);
+}
+
+.AQUAColor span{
+  color:  #6991f7;
+  text-shadow: ' 0.5px 0.5px 5px #6991f7';
+}
+
+.NOVAColor span{
+  color: rgb(212, 103, 9);
+  text-shadow: ' rgb(212 103 9) 1px 1px 3px';
+}
+
+.darkHighlight {
+  background: rgba(0, 0, 0, 0.2); 
+  padding: 10px ;
+  margin: -8px ; 
 }

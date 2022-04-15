@@ -1,12 +1,7 @@
 Home page,
-once logged navbar is different,
-design userpage,
-etc.. stuff
 be able to search
 
 
-
-ROLE column mySQL
 
 rework code..no inline stlying for example
 
@@ -15,5 +10,14 @@ might need to rework /getAll by only allowing users with ADMIN permission access
 follow what I did in the basic auth in Login to implement
 
 
-spinner on loading in members page
-https://getbootstrap.com/docs/5.0/components/spinners/#colors
+UserDashboard.jsx = need to rework the code..code looks gross and messy, performance can be improved if i rework implement
+cache image to load faster
+others cant see upload profile
+joined date
+crop image thingy
+if image to big, show user response
+default iamge if not images!
+
+unmounting BS, no white pages!! use spinner!! if loading on fetch!!!!!!!!!!
+
+backend: change all API endpoint names!!!

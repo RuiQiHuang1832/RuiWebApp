@@ -47,6 +47,8 @@ export default function UserCustomization(props) {
 
       <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuLink">
         <li><NavLink className="dropdown-item" to={`/userDashboard/${localStorage.getItem('user')}-${id}`}>Dashboard</NavLink></li>
+        <li><NavLink className="dropdown-item" to={`/userDashboard/settings/${localStorage.getItem('user')}-${id}`}>Settings</NavLink></li>
+        <li><NavLink className="dropdown-item" to="/faq">FAQ</NavLink></li>
         <li><a className="dropdown-item" href="#" onClick={() => props.handleChange()}>Sign out</a></li>
       </ul>
     </div>

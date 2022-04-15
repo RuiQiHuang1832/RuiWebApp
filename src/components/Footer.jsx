@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 export class Footer extends Component {
   constructor(props) {
@@ -10,11 +10,11 @@ export class Footer extends Component {
   render() {
     return (
 
-      <footer className="position-relative bg-dark text-muted">
-        <section className="d-flex justify-content-center justify-content-lg-between p-3 border-bottom">
-          <div className="me-5 d-none d-lg-block">
+      <footer className="position-relative text-muted" style={{ background: 'rgb(31,32,40)' }}>
+        <section className="d-flex justify-content-center pt-3 ">
+          {/* <div className="me-5 d-none d-lg-block">
             <span className="text-white">Get connected with us on social networks:</span>
-          </div>
+          </div> */}
 
           <div className="text-white">
             <a href="mailto: huangben32@gmail.com" aria-label="mail button" className="me-4 text-reset ms-3"><i className="bi bi-envelope" /></a>
@@ -25,7 +25,7 @@ export class Footer extends Component {
           </div>
         </section>
 
-        <section className="border-bottom">
+        {/* <section className="border-bottom">
           <div className="container text-center text-sm-start mt-4">
             <div className="row text-white">
               <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 ">
@@ -56,7 +56,7 @@ export class Footer extends Component {
 
           </div>
 
-        </section>
+        </section> */}
         <section>
           <div style={{ backgroundColor: 'dark', color: 'white' }} className="text-center p-2">
             © 2021 Copyright. All Rights Reserved.
