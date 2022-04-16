@@ -1,0 +1,13 @@
+.settingsbg {
+    background: rgb(31,32,40);
+}
+
+textarea {
+    background-color: rgb(31,32,40) !important;
+    color: white !important;
+}
+
+.settingsmediacolor {
+    background-color: rgb(31,32,40) !important;
+    color: white !important;
+}

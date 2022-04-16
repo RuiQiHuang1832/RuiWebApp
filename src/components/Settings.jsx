@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable no-use-before-define */
 /* eslint-disable indent */
 /* eslint-disable no-console */
@@ -10,6 +11,7 @@ import React, { useState, useEffect } from 'react';
 // import defaultImg from '../images/default_large.jpg';
 import ls from 'localstorage-slim';
 import { useParams, useNavigate } from 'react-router-dom';
+import '../styling/Settings.css';
 
 const TITLE = 'Settings';
 
@@ -78,57 +80,105 @@ export default function Settings() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(handleStringfy()),
-  
+
     }).finally(() => { // after user saves bio, remove the key and navigate back to home so it refreshes the key with new info at home
       handleImageSubmit();
     });
   };
 
   return (
-    <div className="container ">
-       <h1 className="border-bottom">
-              GENERAL ACCOUNT SETTINGS
-       </h1>
-      <div>
-        <form onSubmit={handleSubmit}>
-        
-         <fieldset className="row border-bottom ">
-         <label className="col-4 col-form-label">Profile Information</label>
-         <div className="col-5 d-flex justify-content-start">
-         <textarea placeholder="max 250 characters" maxLength={250} className="form-control my-3" rows="6" onChange={(e) => Setbio(e.target.value)} /> 
-         </div>
-        </fieldset> 
-        
-        <fieldset className="row border-bottom">
-         <label className="col-4 col-form-label">Profile Picture &#60;2MB</label>
-         <div className="col-5 d-flex justify-content-start">
-          <input className="form-control form-control-md my-3" type="file" id="formFile" onChange={(event) => setimagefile(event.target.files[0])} />
-         </div>
-        </fieldset>
+    <section>
+      <div className="container settingsbg">
+        <h1 className="text-white py-3 ">
+          GENERAL ACCOUNT SETTINGS
+        </h1>
+        <div>
+          <form onSubmit={handleSubmit} className="text-white">
 
-        <fieldset className="row border-bottom">
-        <label className="col-4 col-form-label">Contact Methods</label>
-         <div className="col-5 d-flex justify-content-start">
-         <textarea placeholder="max 250 characters" maxLength={250} className="form-control my-3" rows="6" />
-         </div>
-        </fieldset>
-        {/** Filler */}
+            <fieldset className="row border-bottom border-top">
+              <label className="col-4 col-form-label">Profile Information</label>
+              <div className="col-5 d-flex justify-content-start">
+                <textarea placeholder="max 250 characters" maxLength={250} className="form-control my-3" rows="6" onChange={(e) => Setbio(e.target.value)} />
+              </div>
+            </fieldset>
 
-        <fieldset className="row border-bottom">
-        <label className="col-4 col-form-label">Friends</label>
-         <div className="col-5 d-flex justify-content-start">
-         <textarea placeholder="max 250 characters" maxLength={250} className="form-control my-3" rows="6" />
-         </div>
-        </fieldset>
-        <fieldset className="d-flex justify-content-center my-4">
-        <button className="input-group-text" type="submit">Save</button>
-        </fieldset>
-        <div>{displaySpinner()}</div>
-        </form>
+            <fieldset className="row border-bottom">
+              <label className="col-4 col-form-label">Profile Picture &#60;2MB</label>
+              <div className="col-5 d-flex justify-content-start">
+                <input className="form-control form-control-md my-3" type="file" id="formFile" onChange={(event) => setimagefile(event.target.files[0])} />
+              </div>
+            </fieldset>
+            {/** Filler */}
+            <fieldset className="row border-bottom">
+              <label className="col-4 col-form-label">Contact Methods</label>
+              <div className="col-5">
+
+                <div className="row my-3">
+                  {/** col-form-label aligns text to center, form-label does nothing */}
+                  <label className="col-2 col-form-label ">Discord</label>
+                  <div className="col ">
+                    <input className="form-control settingsmediacolor" type="text" />
+                  </div>
+                </div>
+
+                <div className="row my-3">
+                  <label className="col-2 col-form-label ">Website</label>
+                  <div className="col">
+                    <input className="form-control settingsmediacolor" type="text" />
+                  </div>
+                </div>
+
+                <div className="row my-3">
+                  <label className="col-2 col-form-label ">LinkedIn</label>
+                  <div className="col">
+                    <input className="form-control settingsmediacolor" type="text" />
+                  </div>
+                </div>
+
+              </div>
+            </fieldset>
+
+            <fieldset className="row border-bottom">
+              <label className="col-4 col-form-label">Miscellaneous</label>
+              <div className="col-5">
+
+                <div className="row my-3">
+                  {/** col-form-label aligns text to center, form-label does nothing */}
+                  <label className="col-2 col-form-label ">Gender</label>
+                  <div className="col ">
+                    <select className="form-select" aria-label="Default select example">
+                      <option selected value="1">Prefer not to say</option>
+                      <option value="2">Female</option>
+                      <option value="3">Male</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="row my-3">
+                  <label className="col-2 col-form-label ">Location</label>
+                  <div className="col">
+                    <input className="form-control settingsmediacolor" type="text" />
+                  </div>
+                </div>
+
+                <div className="row my-3">
+                  <label className="col-2 col-form-label ">Interests</label>
+                  <div className="col">
+                    <textarea placeholder="max 250 characters" maxLength={250} className="form-control my-3" rows="6" />
+                  </div>
+                </div>
+
+              </div>
+            </fieldset>
+            <fieldset className="d-flex justify-content-center mt-4 pb-4">
+              <button className="input-group-text btn btn-outline-success" type="submit">Save Changes</button>
+            </fieldset>
+            <div>{displaySpinner()}</div>
+          </form>
+        </div>
+
       </div>
-      
-    </div>
-
+    </section>
   );
 }
 

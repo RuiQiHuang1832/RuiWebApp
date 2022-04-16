@@ -12,7 +12,6 @@ follow what I did in the basic auth in Login to implement
 
 UserDashboard.jsx = need to rework the code..code looks gross and messy, performance can be improved if i rework implement
 cache image to load faster
-others cant see upload profile
 joined date
 crop image thingy
 if image to big, show user response
@@ -21,3 +20,10 @@ default iamge if not images!
 unmounting BS, no white pages!! use spinner!! if loading on fetch!!!!!!!!!!
 
 backend: change all API endpoint names!!!
+// got fix blank pages....when user is deleted, "id" undefined when submitting settings page!!!!...if user is deleted key should be updated and user
+should be logged out!!!
+easiest way would be loggin user out!]
+
+some header look like there are shadows at the bottom.. this is because App.css now replaces all BG color and some 
+components also painted their own bg colors so with both combined = no shadow..however if i only utilize App.css's background COLOR,
+then it will show a shadow!

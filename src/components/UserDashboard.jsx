@@ -35,7 +35,7 @@ export default function UserDashboard() {
   return (
     <section id="backgroundColorDash">
 
-      <div className="container">
+      <div className="container pt-3">
         <div className="row">
           <div className="col d-flex align-items-center userCoverPage">
 

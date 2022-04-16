@@ -1,0 +1,13 @@
+@font-face {
+    font-family: Didact Gothic;
+    src: url("../fonts/DidactGothic-Regular.ttf");
+  }
+
+
+  body {
+      font-family:  Didact Gothic !important;
+      letter-spacing: 0.1em;
+      background: rgb(31,32,40) !important;
+
+  }
+

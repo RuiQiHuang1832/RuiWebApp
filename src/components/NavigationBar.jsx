@@ -8,7 +8,7 @@ import UserCustomization from './UserCustomization';
 // routes and links used in conjunction
 
 const fontSize = {
-  fontSize: '18px',
+  fontSize: '20px',
 };
 export default class NavigationBar extends Component {
   constructor(props) {
@@ -57,7 +57,7 @@ export default class NavigationBar extends Component {
 
             <div className="collapse navbar-collapse justify-content-between" id="collapsethis" style={fontSize}>
               {/** for desktop */}
-              <h2 className=" ms-5 fs-3 fw-bold d-none d-lg-block ">
+              <h2 className=" ms-5 fs-2 fw-bold d-none d-lg-block ">
                 <span className="text-white ">Tailwind</span>
               </h2>
               <div className="navbar-nav ">

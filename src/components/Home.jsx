@@ -8,11 +8,11 @@ export class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    //   ip_address: '',
-    //   city: '',
-    //   continent: '',
-    //   region: '',
-    //   timezone: ''
+      //   ip_address: '',
+      //   city: '',
+      //   continent: '',
+      //   region: '',
+      //   timezone: ''
     };
   }
   /**
@@ -49,7 +49,7 @@ export class Home extends Component {
 
   render() {
     return (
-      <div id="homeBackground" className="text-white">
+      <div id="" className="text-white">
         {/* <p>{this.state.city}</p>
                 <p>{this.state.ip_address}</p>
                 <p>{this.state.timezone}</p>

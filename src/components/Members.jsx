@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable arrow-body-style */
 import React, { useEffect, useState } from 'react';
@@ -17,7 +18,7 @@ export default function Members() {
   const [isBusy, setBusy] = useState(true);
   const [members, setMembers] = useState();
   const [isPushed, setPushed] = useState(false);
-
+  // grab everything to map...this where i can include any db details.
   function mapFunc() {
     if (!isBusy) {
       const results = members.map((obj) => ({
@@ -63,7 +64,17 @@ export default function Members() {
 
   function createListOfMembers() {
     if (isPushed && arr.length !== 0) {
-      return <ul>{arr[0].map((item) => <li key={item.idKey}><a href={`/userDashboard/${item.username}-${item.idKey}`}>{item.username}</a></li>)}</ul>;
+      return (
+        <>
+          {arr[0].map((item) => (
+            <tr>
+              <td>{item.idKey}</td>
+              <td key={item.idKey}><a className="text-reset text-decoration-none" href={`/userDashboard/${item.username}-${item.idKey}`}>{item.username}</a></td>
+              <td>USER</td>
+            </tr>
+          ))}
+        </>
+      );
     }
     return (
       <div className="d-flex align-items-center">
@@ -74,12 +85,24 @@ export default function Members() {
   }
 
   return (
-    <div>
-      members
-      <div>
-        {createListOfMembers()}
+    <div className="text-white">
+      <div className="container">
+        <h1 className="pt-3">Members List</h1>
+        <div>
+          <table className="table text-white">
+            <thead>
+              <tr>
+                <th style={{ width: '25%' }} scope="col">ID</th>
+                <th style={{ width: '25%' }} scope="col">Members</th>
+                <th scope="col">Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              {createListOfMembers()}
+            </tbody>
+          </table>
+        </div>
       </div>
-
     </div>
   );
 }

@@ -1,6 +1,3 @@
-.navbar-brand {
-    font-size: 20px;
-}
 
 
 
@@ -33,7 +30,7 @@
 
     .active{
         border-bottom: 3px solid #019fb6;
-        height:29px;
+        height:32px;
           
       }
     
@@ -52,7 +49,7 @@
 }
 .active{
     border-bottom: 4px solid #019fb6;
-    height:30px;
+    height:35px;
       
   }
   }
@@ -87,14 +84,6 @@
  
 }
 
-
-
-
-.font-mono {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-   
-
-}
 .pos {
     position: absolute;
 }

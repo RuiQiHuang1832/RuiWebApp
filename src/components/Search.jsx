@@ -10,7 +10,8 @@ export class Search extends Component {
 
   render() {
     return (
-      <div className="searchbackgroundcolor">
+
+      <div className="">
         <div className="container vh-100 ">
           <div className="row justify-content-center  ">
             <div className="col  ">
@@ -34,6 +35,7 @@ export class Search extends Component {
 
         </div>
       </div>
+
     );
   }
 }
