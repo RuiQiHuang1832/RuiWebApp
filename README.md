@@ -14,6 +14,7 @@ Home<br />
 User Dashboard<br />
 Sign up/ Sign out✔️<br />
 Login✔️<br />
+Settings✔️<br />
 
 # Getting Started with Create React App
 
