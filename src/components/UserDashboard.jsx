@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-closing-tag-location */
+/* eslint-disable react/jsx-indent */
+/* eslint-disable jsx-quotes */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import React, { useEffect, useState } from 'react';
@@ -49,10 +52,29 @@ export default function UserDashboard() {
           </div>
 
         </div>
-        <div className="row">
+        <div className="row mt-5">
           <div className="col-3 ">
-            <div className="card carddarkbg">
+            {/** REPUTATION */}
+            <div className="row row-cols-1 row-cols-md-2 mb-5">
+              <div className="col ">
+                <div className="card card-body text-center pillcolor shadowlg">
+                  <span className=''>0</span>
+                  Reputation
+                </div>
+              </div>
+              <div className="col">
+                <div className="card card-body text-center pillcolor shadowlg">
+                  <span className=''>0</span>
+                  Likes
+                </div>
+              </div>
+            </div>
+            {/** BASIC INFO */}
+            <div className="card carddarkbg border-white">
               <div className="card-body ">
+                <div className="d-inline-flex w-100 justify-content-between fw-bold  border-bottom">
+                  <div className="fs-5 ms-2 text-white mb-2">Basic Information</div>
+                </div>
                 <table className="table text-white">
                   <tbody>
                     <tr>
@@ -76,11 +98,93 @@ export default function UserDashboard() {
               </div>
             </div>
           </div>
-          <div className="col-5">
-            <div className="card carddarkbg">
+          {/** BIO */}
+          <div className="col-6">
+            <div className="card carddarkbg border-white">
+              <div className="card-body">
+                <label className="form-label fs-5 ms-2 text-white mb-2 fw-bold">Biography</label>
+                <textarea disabled readOnly style={{ resize: 'none' }} value={lsbio || ''} className="form-control border-top rounded-0 border-0" rows="6" />
+              </div>
+            </div>
+            {/** STATISTICS */}
+            <div className="card carddarkbg border-white my-4">
               <div className="card-body ">
-                <label className="form-label text-white">Bio</label>
-                <textarea readOnly style={{ resize: 'none' }} value={lsbio || ''} className="form-control" rows="6" />
+                <div className="d-inline-flex w-100 justify-content-between fw-bold border-bottom ">
+                  <div className="fs-5 ms-2 text-white mb-2">Statistics</div>
+                </div>
+                <div className='row'>
+                  <div className='col'>
+                    <table className="table text-white">
+                      <thead>
+                        <th style={{ width: '100%' }} scope="col"> </th>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Posts:</td>
+                          <td>0</td>
+                        </tr>
+                        <tr>
+                          <td>Warning Level:</td>
+                          <td>Low</td>
+                        </tr>
+                        <tr>
+                          <td>Trust Scan:</td>
+                          <td>N/A</td>
+                        </tr>
+                        <tr>
+                          <td>Vounches:</td>
+                          <td>0</td>
+                        </tr>
+                        <tr>
+                          <td>Credits:</td>
+                          <td>0</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div className='col'>
+                    <table className="table text-white">
+                      <thead>
+                        <th style={{ width: '100%' }} scope="col"> </th>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Joined Date:</td>
+                          <td>Today</td>
+                        </tr>
+                        <tr>
+                          <td>Role:</td>
+                          <td>USER</td>
+                        </tr>
+                        <tr>
+                          <td>Threads:</td>
+                          <td>0</td>
+                        </tr>
+                        <tr>
+                          <td>Reported Posts:</td>
+                          <td>0</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/** VISITORS */}
+          <div className="col-3 ">
+            <div className="card carddarkbg border-white">
+              <div className="card-body ">
+                <div className="d-inline-flex w-100 justify-content-between fw-bold  border-bottom">
+                  <div className="fs-5 ms-2 text-white mb-2">Vistors</div>
+                </div>
+                <table className="table text-white">
+                  <tbody>
+                    <tr>
+                      <td>Unavailable</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>

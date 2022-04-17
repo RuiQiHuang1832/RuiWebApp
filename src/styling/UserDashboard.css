@@ -28,3 +28,12 @@
 .carddarkbg {
  background: rgb(31,32,40)!important;
 }
+
+.pillcolor {
+  background: rgb(31,32,40) !important;
+  color: white;
+}
+
+.shadowlg {
+  box-shadow: 5px 5px 15px rgb(0, 0, 0);
+}
