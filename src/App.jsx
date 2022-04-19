@@ -37,7 +37,6 @@ function App() {
           <Route path="/members" element={<Members />} />
           <Route path="/userDashboard/:username-:id" element={<UserDashboard />} />
           <Route path="/userDashboard/settings/:username-:id" element={<Settings />} />
-
           <Route path="/signup=success" element={<PrivateRoute><SuccessSignUp /></PrivateRoute>} />
         </Routes>
 

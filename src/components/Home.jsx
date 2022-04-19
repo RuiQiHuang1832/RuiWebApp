@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../styling/Home.css';
 import ls from 'localstorage-slim';
+import Forum from './Forum';
 
 const TITLE = 'Home';
 
@@ -8,17 +9,9 @@ export class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      //   ip_address: '',
-      //   city: '',
-      //   continent: '',
-      //   region: '',
-      //   timezone: ''
+      currentpage: 'Home',
     };
   }
-  /**
-   * privatize this in a filter and return that..cuz IP address and email is shown.. TODO
-   *
-   * */
 
   componentDidMount() {
     document.title = TITLE;
@@ -29,52 +22,57 @@ export class Home extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   document.title = TITLE;
-  //   // axios.get('https://ipgeolocation.abstractapi.com/v1/?api_key=0761240eebc74e768f377af56ed0058a')
-  //   //     .then(response => {
-  //   //         // console.log(response.data);
-  //   //         this.setState({
-  //   //             city: response.data.city,
-  //   //             ip_address: response.data.ip_address,
-  //   //             timezone: response.data.timezone.abbreviation,
-  //   //             continent: response.data.continent,
-  //   //             region: response.data.region
-  //   //         })
-  //   //     })
-  //   //     .catch(error => {
-  //   //         console.log(error);
-  //   //     });
-  // }
+  displayCurrentPage() {
+    switch (this.state.currentpage) {
+      case 'Home':
+        console.log('LOL');
+        return <Forum />;
+      case 'Forums':
+      default:
+    }
+  }
 
   render() {
     return (
-      <div id="" className="text-white">
-        {/* <p>{this.state.city}</p>
-                <p>{this.state.ip_address}</p>
-                <p>{this.state.timezone}</p>
-                <p>{this.state.continent}</p>
-                <p>{this.state.region}</p> */}
-        <p>The footer is placed at the bottom of the page.</p>
-        <p>The footer is placed at the bottom of the page.</p>
-        <p>The footer is placed at the bottom of the page.</p>
-        <p>The footer is placed at the bottom of the page.</p>
-        <p>The footer is placed at the bottom of the page.</p>
-        <p>The footer is placed at the bottom of the page.</p>
-        <p>The footer is placed at the bottom of the page.</p>
-        <p>The footer is placed at the bottom of the page.</p>
-        <p>The footer is placed at the bottom of the page.</p>
-        <p>The footer is placed at the bottom of the page.</p>
-        <p>The footer is placed at the bottom of the page.</p>
-        <p>The footer is placed at the bottom of the page.</p>
-        <p>The footer is placed at the bottom of the page.</p>
-        <p>The footer is placed at the bottom of the page.</p>
-        <p>The footer is placed at the bottom of the page.</p>
-        <p>The footer is placed at the bottom of the page.</p>
-        <p>The footer is placed at the bottom of the page.</p>
-        <p>The footer is placed at the bottom of the page.</p>
-        <div>The footer is placed at the bottom of the page.</div>
-      </div>
+      <di className="text-white">
+        <div className="container my-5">
+          <div id="homeBackground" className="card border-white">
+            <div className="row gx-0">
+              <div className="col-7 mb-5 p-4">
+
+                <h2 className="mt-5">Welcome to Tailwind!</h2>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Proin viverra, velit eu aliquet dapibus,
+                  dolor purus ultrices nibh,
+                  lobortis facilisis neque sem et erat. Praesent quis est at nulla sodales blandit vel sed elit.
+                </p>
+                <p>
+                  Pellentesque et mattis ipsum. Nullam ornare, justo at facilisis accumsan,
+                  magna arcu iaculis lorem, eget eleifend sapien nibh accumsan sem.
+                  Suspendisse vitae commodo velit, id tempus ligula.
+                </p>
+                <p>
+                  ivamus laoreet mauris vitae urna dictum tempus.
+                  Fusce elementum velit in sem posuere interdum.
+                  Nullam congue dapibus mauris, quis ornare diam pellentesque nec. Sed vel gravida mauris.
+                </p>
+              </div>
+
+              <ul className="nav nav-tabs">
+                <li className="nav-item bg-dark me-3 ms-3 ">
+                  <a className="nav-link " aria-current="page" href="#Home" onClick={() => this.setState({ currentpage: 'Home' })}>Home</a>
+                </li>
+                <li className="nav-item bg-dark me-3">
+                  <a className="nav-link" aria-current="page" href="#Forums" onClick={() => this.setState({ currentpage: 'Forums' })}>Tailwind Forums</a>
+                </li>
+              </ul>
+
+              {this.displayCurrentPage()}
+            </div>
+          </div>
+        </div>
+      </di>
     );
   }
 }

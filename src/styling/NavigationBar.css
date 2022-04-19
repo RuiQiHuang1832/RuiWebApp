@@ -16,7 +16,7 @@
 }
 /**full screen */
 @media (max-width: 2000px) { 
-    .nav-link::after {
+    .navbaronly.nav-link::after {
         content: '';
         position: relative;
         display: block;

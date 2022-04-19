@@ -1,12 +1,12 @@
 Home page,
-be able to search
+    be able to search
 
 
 
 rework code..no inline stlying for example
 
 
-might need to rework /getAll by only allowing users with ADMIN permission access rui.heroku/user/getAll
+might need to rework / getAll by only allowing users with ADMIN permission access rui.heroku / user / getAll
 follow what I did in the basic auth in Login to implement
 
 
@@ -24,6 +24,9 @@ backend: change all API endpoint names!!!
 should be logged out!!!
 easiest way would be loggin user out!]
 
-some header look like there are shadows at the bottom.. this is because App.css now replaces all BG color and some 
+some header look like there are shadows at the bottom..this is because App.css now replaces all BG color and some 
 components also painted their own bg colors so with both combined = no shadow..however if i only utilize App.css's background COLOR,
 then it will show a shadow!
+
+when loging in with Lord" "(with a space at the end) , the user is directed to a blank page
+to solve this: remove space from login
