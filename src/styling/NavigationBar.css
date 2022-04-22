@@ -11,7 +11,7 @@
     border-color: white;
 }
 
-.nav-link {
+.nav-link.thetopbar  {
     margin-bottom: 12px;
 }
 /**full screen */
@@ -28,7 +28,7 @@
         
     }
 
-    .active{
+    .navbaronly.nav-link.active{
         border-bottom: 3px solid #019fb6;
         height:32px;
           
@@ -38,18 +38,18 @@
   }
 
   @media (max-width: 575.98px), (max-width: 767.20px),(max-width: 991.98px) { 
-    .nav-link::after {
+    .navbaronly.nav-link::after {
     content: '';
     display: block;
     width: 0;
-    height: 3px;        /*thickness of line*/
+    height: 2px;        /*thickness of line*/
     background: #019fb6;
     transition: all 250ms ease-in-out;
     
 }
-.active{
-    border-bottom: 4px solid #019fb6;
-    height:35px;
+.navbaronly.nav-link.active{
+    border-bottom: 3px solid #019fb6;
+    height:32px;
       
   }
   }

@@ -85,25 +85,27 @@ export default function Members() {
   }
 
   return (
-    <div className="text-white">
-      <div className="container">
-        <h1 className="pt-3">Members List</h1>
-        <div>
-          <table className="table text-white">
-            <thead>
-              <tr>
-                <th style={{ width: '25%' }} scope="col">ID</th>
-                <th style={{ width: '25%' }} scope="col">Members</th>
-                <th scope="col">Role</th>
-              </tr>
-            </thead>
-            <tbody>
-              {createListOfMembers()}
-            </tbody>
-          </table>
+    <section>
+      <div className="text-white">
+        <div className="container">
+          <h1 className="pt-3">Members List</h1>
+          <div>
+            <table className="table text-white">
+              <thead>
+                <tr>
+                  <th style={{ width: '25%' }} scope="col">ID</th>
+                  <th style={{ width: '25%' }} scope="col">Members</th>
+                  <th scope="col">Role</th>
+                </tr>
+              </thead>
+              <tbody>
+                {createListOfMembers()}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

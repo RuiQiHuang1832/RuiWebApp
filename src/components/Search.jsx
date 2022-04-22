@@ -11,7 +11,7 @@ export class Search extends Component {
   render() {
     return (
 
-      <div className="">
+      <div className="searchbackgroundcolor">
         <div className="container vh-100 ">
           <div className="row justify-content-center  ">
             <div className="col  ">

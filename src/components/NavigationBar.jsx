@@ -68,18 +68,18 @@ export default class NavigationBar extends Component {
                  * .active is* a child of NavLink. so it gets the property default ".active" in css
                                  */}
 
-                <NavLink to="/" className="nav-link navbaronly text-muted fw-bold p-md-0 p-sm-0 p-0 mt-3 mt-lg-0 mt-xl-0 ">Home</NavLink>
-                <NavLink to="/upgrade" className="nav-link navbaronly text-muted ms-xl-5 ms-lg-5  fw-bold p-md-0 p-sm-0 p-0  ">Upgrade</NavLink>
-                <NavLink to="/search" className="nav-link navbaronly text-muted ms-xl-5 ms-lg-5  fw-bold p-md-0 p-sm-0 p-0  "> Search</NavLink>
-                <NavLink to="/members" className="nav-link navbaronly text-muted ms-xl-5 ms-lg-5  fw-bold p-md-0 p-sm-0 p-0  ">Members</NavLink>
-                <NavLink to="/tos" className="nav-link navbaronly text-muted ms-xl-5 ms-lg-5  fw-bold p-md-0 p-sm-0 p-0  ">
+                <NavLink to="/" className="nav-link thetopbar navbaronly text-muted fw-bold p-md-0 p-sm-0 p-0 mt-3 mt-lg-0 mt-xl-0 ">Home</NavLink>
+                <NavLink to="/upgrade" className="nav-link thetopbar navbaronly text-muted ms-xl-5 ms-lg-5  fw-bold p-md-0 p-sm-0 p-0  ">Upgrade</NavLink>
+                <NavLink to="/search" className="nav-link thetopbar navbaronly text-muted ms-xl-5 ms-lg-5  fw-bold p-md-0 p-sm-0 p-0  "> Search</NavLink>
+                <NavLink to="/members" className="nav-link thetopbar navbaronly text-muted ms-xl-5 ms-lg-5  fw-bold p-md-0 p-sm-0 p-0  ">Members</NavLink>
+                <NavLink to="/tos" className="nav-link thetopbar navbaronly text-muted ms-xl-5 ms-lg-5  fw-bold p-md-0 p-sm-0 p-0  ">
                   About
 
                 </NavLink>
                 {/** for mobile   */}
                 <div className="d-block d-sm-none">
                   {this.state.isUserLogged ? <UserCustomization handleChange={this.handleLogout} device /> : (
-                    <NavLink to="/signup" className="nav-link navbaronly text-muted ms-xl-5  p-0  fw-bold">
+                    <NavLink to="/signup" className="nav-link thetopbar navbaronly text-muted ms-xl-5  p-0  fw-bold">
                       Sign up
                     </NavLink>
                   )}
@@ -87,7 +87,7 @@ export default class NavigationBar extends Component {
                 <div className="d-block d-sm-none">
 
                   {this.state.isUserLogged ? <> </> : (
-                    <NavLink to="/login" className="nav-link navbaronly text-muted ms-xl-5  p-0  fw-bold ">
+                    <NavLink to="/login" className="nav-link thetopbar navbaronly text-muted ms-xl-5  p-0  fw-bold ">
                       Login
                     </NavLink>
                   )}
@@ -101,13 +101,13 @@ export default class NavigationBar extends Component {
 
                 {this.state.isUserLogged ? <UserCustomization handleChange={this.handleLogout} device={false} />
                   : (
-                    <NavLink to="/signup" className="nav-link navbaronly text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-2">
+                    <NavLink to="/signup" className="nav-link thetopbar navbaronly text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-2">
                       Sign up
                     </NavLink>
                   )}
 
                 {this.state.isUserLogged ? <> </> : (
-                  <NavLink to="/login" className="nav-link navbaronly text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-3">
+                  <NavLink to="/login" className="nav-link thetopbar navbaronly text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-3">
                     Login
                   </NavLink>
                 )}

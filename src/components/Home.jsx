@@ -44,13 +44,14 @@ export class Home extends Component {
 
   render() {
     return (
-      <div className="text-white hugepadding">
-        <div className="container my-5">
-          <div id="homeBackground" className="card border-4">
+
+      <section className="text-white hugepadding">
+        <div className="container py-5">
+          <div id="homeBackground" className="card border-0">
             <div className="row gx-0">
               <div className="col-7 mb-5 p-4">
 
-                <h2 className="mt-5">Welcome to Tailwind!</h2>
+                <h1 className="mt-5 mb-3">Welcome to Tailwind!</h1>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Proin viverra, velit eu aliquet dapibus,
@@ -69,21 +70,36 @@ export class Home extends Component {
                 </p>
               </div>
 
-              <ul className="nav nav-tabs">
-                <li className="nav-item bg-dark me-3 ms-3 ">
-                  <a className="nav-link " aria-current="page" href="#Home" onClick={() => this.setState({ currentpage: 'Forums' })}>Home</a>
+              <ul className="nav nav-pills border-0 ">
+                <li className="nav-item bg-dark me-3 ms-3 border bg-black rounded border-2 ">
+                  <a className="nav-link" aria-current="page" data-bs-toggle="pill" href="#Home" onClick={() => this.setState({ currentpage: 'Forums' })}>
+                    <i className="bi bi-house-fill" />
+                    &nbsp;Home
+                  </a>
                 </li>
-                <li className="nav-item bg-dark me-3">
-                  <a className="nav-link" aria-current="page" href="#Forums" onClick={() => this.setState({ currentpage: 'Coding' })}>Coding</a>
+                <li className="nav-item bg-dark me-3 border bg-black rounded border-2">
+                  <a className="nav-link" aria-current="page" data-bs-toggle="pill" href="#Forums" onClick={() => this.setState({ currentpage: 'Coding' })}>
+                    <i className="bi bi-file-earmark-code-fill" />
+                    &nbsp;Coding
+                  </a>
                 </li>
-                <li className="nav-item bg-dark me-3">
-                  <a className="nav-link" aria-current="page" href="#Forums" onClick={() => this.setState({ currentpage: 'Investing' })}>Investing</a>
+                <li className="nav-item bg-dark me-3 border bg-black rounded border-2">
+                  <a className="nav-link" aria-current="page" data-bs-toggle="pill" href="#Forums" onClick={() => this.setState({ currentpage: 'Investing' })}>
+                    <i className="bi bi-currency-exchange" />
+                    &nbsp;Investing
+                  </a>
                 </li>
-                <li className="nav-item bg-dark me-3">
-                  <a className="nav-link" aria-current="page" href="#Forums" onClick={() => this.setState({ currentpage: 'Gaming' })}>Gaming</a>
+                <li className="nav-item bg-dark me-3 border bg-black rounded border-2">
+                  <a className="nav-link" aria-current="page" data-bs-toggle="pill" href="#Forums" onClick={() => this.setState({ currentpage: 'Gaming' })}>
+                    <i className="bi bi-controller" />
+                    &nbsp;Gaming
+                  </a>
                 </li>
-                <li className="nav-item bg-dark me-3">
-                  <a className="nav-link" aria-current="page" href="#Forums" onClick={() => this.setState({ currentpage: 'Miscellaneous' })}>Miscellaneous</a>
+                <li className="nav-item bg-dark me-3 border bg-black rounded border-2">
+                  <a className="nav-link" aria-current="page" data-bs-toggle="pill" href="#Forums" onClick={() => this.setState({ currentpage: 'Miscellaneous' })}>
+                    <i className="bi bi-app" />
+                    &nbsp;Miscellaneous
+                  </a>
                 </li>
               </ul>
 
@@ -91,7 +107,7 @@ export class Home extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 }

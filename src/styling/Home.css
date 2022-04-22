@@ -5,3 +5,13 @@
 .hugepadding {
     padding-bottom: 25rem;
 }
+
+.nav-pills .nav-link.active {
+    border-radius: 0 !important;
+    background-color: rgba(86, 78, 78, 0.521) !important;
+
+    
+}
+.nav-pills .nav-link {
+  
+}
