@@ -9,6 +9,7 @@ import '../styling/UserDashboard.css';
 import ls from 'localstorage-slim';
 import memberimage from '../images/memberimage.jpg';
 import Settings from './Settings';
+import defaultimage from '../images/default_large.jpg';
 
 const TITLE = 'User Dashboard';
 export default function UserDashboard() {
@@ -29,9 +30,14 @@ export default function UserDashboard() {
     document.title = TITLE;
     fetch(`https://ruibackend.herokuapp.com/user/image/${id}`)
       .then((response) => response.blob())
-      .then((res) => {
-        const objectURL = URL.createObjectURL(res);
-        setuserimage(objectURL);
+      .then((res) => { // if the image size is 114, which is basically nothing, set it to default, else set to
+        // user designated.
+        if (res.size === 114) {
+          setuserimage(defaultimage);
+        } else {
+          const objectURL = URL.createObjectURL(res);
+          setuserimage(objectURL);
+        }
       });
   }, []);
 
@@ -116,7 +122,9 @@ export default function UserDashboard() {
                   <div className='col'>
                     <table className="table text-white">
                       <thead>
-                        <th style={{ width: '100%' }} scope="col"> </th>
+                        <tr>
+                          <th style={{ width: '100%' }} scope="col"> </th>
+                        </tr>
                       </thead>
                       <tbody>
                         <tr>
@@ -145,7 +153,9 @@ export default function UserDashboard() {
                   <div className='col'>
                     <table className="table text-white">
                       <thead>
-                        <th style={{ width: '100%' }} scope="col"> </th>
+                        <tr>
+                          <th style={{ width: '100%' }} scope="col"> </th>
+                        </tr>
                       </thead>
                       <tbody>
                         <tr>

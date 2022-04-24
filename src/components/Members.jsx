@@ -67,9 +67,9 @@ export default function Members() {
       return (
         <>
           {arr[0].map((item) => (
-            <tr>
+            <tr key={item.idKey}>
               <td>{item.idKey}</td>
-              <td key={item.idKey}><a className="text-reset text-decoration-none" href={`/userDashboard/${item.username}-${item.idKey}`}>{item.username}</a></td>
+              <td><a className="text-reset text-decoration-none" href={`/userDashboard/${item.username}-${item.idKey}`}>{item.username}</a></td>
               <td>USER</td>
             </tr>
           ))}
@@ -77,10 +77,10 @@ export default function Members() {
       );
     }
     return (
-      <div className="d-flex align-items-center">
-        <strong>Loading... &nbsp;</strong>
-        <div className="spinner-border" role="status" aria-hidden="true" />
-      </div>
+      <tr className="d-flex align-items-center">
+        <td>Loading... &nbsp;</td>
+        <td className="spinner-border" role="status" aria-hidden="true" />
+      </tr>
     );
   }
 
