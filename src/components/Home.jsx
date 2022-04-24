@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 /* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
@@ -21,6 +22,9 @@ const options = {
     'X-RapidAPI-Key': '94680c26cemsha1f6b30a6f8fca0p1d8a93jsn2088f83d240f',
   },
 };
+let ticker1;
+let ticker2;
+let ticker3;
 
 export class Home extends Component {
   constructor(props) {
@@ -33,6 +37,8 @@ export class Home extends Component {
     };
   }
 
+  // response.quoteResponse.result[0].regularMarketPrice
+  // cache it buddy
   componentDidMount() {
     document.title = TITLE;
     if (ls.get('key') === null) {
@@ -40,12 +46,23 @@ export class Home extends Component {
         .then((res) => res.json())
         .then((data) => ls.set('key', data, { encrypt: true }));
     }
-  }
 
-  // response.quoteResponse.result[0].regularMarketPrice
-  // cache it buddy
-  componentDidMount() {
-    fetch('https://yh-finance.p.rapidapi.com/market/v2/get-quotes?region=US&symbols=AMD%2CTSLA%2CAAPL', options)
+    if (ls.get('ticker') === null) {
+      // default
+      ticker1 = 'TSLA';
+      ticker2 = 'AAPL';
+      ticker3 = 'AMD';
+    } else {
+      // user obtained
+      const tickers = ls.get('ticker', { decrypt: true });
+      ticker1 = tickers[0];
+      ticker2 = tickers[1];
+      ticker3 = tickers[2];
+    }
+
+    const currency = `https://yh-finance.p.rapidapi.com/market/v2/get-quotes?region=US&symbols=${ticker1}%2C${ticker2}%2C${ticker3}`;
+
+    fetch(currency, options)
       .then((response) => response.json())
       .then((response) => {
         const res = response.quoteResponse.result;
@@ -100,7 +117,7 @@ export class Home extends Component {
                   Nullam congue dapibus mauris, quis ornare diam pellentesque nec. Sed vel gravida mauris.
                 </p>
               </div>
-              <div className="col"><CurrencyData stocksymbol={this.state.symbol} stockprice={this.state.price} stockvolume={this.state.volume} /></div>
+              <div className="col-4 ms-5"><CurrencyData stocksymbol={this.state.symbol} stockprice={this.state.price} stockvolume={this.state.volume} /></div>
 
               <ul className="nav nav-pills border-0 ">
                 <li className="nav-item bg-dark me-3 ms-3 border bg-black rounded border-2 ">

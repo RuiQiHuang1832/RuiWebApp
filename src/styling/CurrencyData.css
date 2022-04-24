@@ -1,0 +1,8 @@
+.btn.btn-dark.currency:hover {
+    background: transparent;
+    border: 0;
+}
+
+.btn.btn-dark.currency {
+    border: 0;
+}

@@ -21,6 +21,7 @@ export default function Settings() {
   const [imagefile, setimagefile] = useState(null);
   const [biography, Setbio] = useState('');
   const [loading, setloading] = useState(false);
+  const [ticker, setTicker] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -73,6 +74,7 @@ export default function Settings() {
   // https://ruibackend.herokuapp.com/user/updateBio/${id}
   const handleSubmit = (e) => {
     e.preventDefault();
+    ls.set('ticker', ticker.split(','), { encrypt: true });
     setloading(true);
     fetch(`https://ruibackend.herokuapp.com/user/updateBio/${id}`, {
       method: 'PATCH',
@@ -167,7 +169,12 @@ export default function Settings() {
                     <textarea placeholder="max 250 characters" maxLength={250} className="form-control my-3" rows="6" />
                   </div>
                 </div>
-
+                <div className="row my-3">
+                  <label className="col-2 col-form-label ">Tickers</label>
+                  <div className="col">
+                    <input type="text" className="form-control" placeholder="choose 3 tickers seperated by commas" onChange={(e) => setTicker(e.target.value)} />
+                  </div>
+                </div>
               </div>
             </fieldset>
             <fieldset className="d-flex justify-content-center mt-4 pb-4">
