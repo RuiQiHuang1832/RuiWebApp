@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import '../styling/Login.css';
 import { Link, useNavigate } from 'react-router-dom';
+import ls from 'localstorage-slim';
 import panda from '../images/panda.png';
 
 const TITLE = 'Login';
@@ -59,6 +60,7 @@ export class Login extends Component {
         'Content-Type': 'text/plain',
       },
     }).then((response) => {
+      ls.remove('key');
       mynav('/');
       console.log(response);
       localStorage.setItem('user', xusername);

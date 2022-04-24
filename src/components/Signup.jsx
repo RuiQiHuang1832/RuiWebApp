@@ -178,7 +178,7 @@ export default function Signup() {
                             {
                               required: 'Please provide a username',
                               pattern: {
-                                value: /^[a-zA-Z0-9_\t+$]*$/,
+                                value: /^(?![0-9._])(?!.*[._]$)(?!.*\d_)(?!.*_\d)[a-zA-Z0-9]+$/,
                                 message: 'No special characters',
                               },
                               minLength: {
@@ -221,10 +221,10 @@ export default function Signup() {
                             {
                               required: 'Please provide a valid email.',
                               pattern:
-                                                        {
-                                                          value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
-                                                          message: 'Please provide a valid email.',
-                                                        },
+                              {
+                                value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+                                message: 'Please provide a valid email.',
+                              },
                             },
                           )}
                           type="text"
