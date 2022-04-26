@@ -34,6 +34,7 @@ export class Home extends Component {
       symbol: [],
       price: [],
       volume: [],
+      isBusy: false,
     };
   }
 
@@ -42,9 +43,14 @@ export class Home extends Component {
   componentDidMount() {
     document.title = TITLE;
     if (ls.get('key') === null) {
+      this.setState({ isBusy: true });
       fetch('https://ruibackend.herokuapp.com/user/getAll')
         .then((res) => res.json())
-        .then((data) => ls.set('key', data, { encrypt: true }));
+        .then((data) => ls.set('key', data, { encrypt: true }))
+        .then(() => {
+          this.setState({ isBusy: false });
+          window.location.href = '/';
+        });
     }
 
     if (ls.get('ticker') === null) {
@@ -91,6 +97,9 @@ export class Home extends Component {
   }
 
   render() {
+    if (this.state.isBusy === true) {
+      return <div className="spinner-border bg-danger text-white" role="status" aria-hidden="true" />;
+    }
     return (
 
       <section className="text-white hugepadding">

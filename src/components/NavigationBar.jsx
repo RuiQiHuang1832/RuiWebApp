@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../styling/NavigationBar.css';
 import { NavLink } from 'react-router-dom';
+import ls from 'localstorage-slim';
 import UserCustomization from './UserCustomization';
 
 // Navigation Links..Either <li> tags, routes w/ components,
@@ -15,12 +16,19 @@ export default class NavigationBar extends Component {
     super(props);
     this.state = {
       isUserLogged: '',
+      isBusy: false,
     };
     this.handleLogout = this.handleLogout.bind(this);
   }
 
   componentDidMount() {
     const loggedInUser = localStorage.getItem('user');
+    if (ls.get('key') === null) {
+      this.setState({ isBusy: true });
+    } else {
+      this.setState({ isBusy: false });
+    }
+
     if (loggedInUser) {
       /** https://www.freecodecamp.org/news/how-to-persist-a-logged-in-user-in-react/ <--what i used for persist..still needs work */
       this.setState({ isUserLogged: true });
@@ -36,6 +44,9 @@ export default class NavigationBar extends Component {
   }
 
   render() {
+    if (this.state.isBusy === true) {
+      return <div />;
+    }
     return (
       <div className="shadow bg-body rounded font-mono">
         <nav id="navBackgroundColor" className="navbar navbar-expand-lg navbar-dark pt-5 ">
@@ -96,7 +107,6 @@ export default class NavigationBar extends Component {
               </div>
 
               <div className="navbar-nav ">
-                {' '}
                 {/** desktop */}
 
                 {this.state.isUserLogged ? <UserCustomization handleChange={this.handleLogout} device={false} />

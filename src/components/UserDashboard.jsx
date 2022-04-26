@@ -19,6 +19,7 @@ export default function UserDashboard() {
   useEffect(() => {
     if (ls.get('key') === null) { // navigate to home page to fetch the data if key is not found
       navigate('/');
+      console.log('null');
     } else {
       const arr = ls.get('key', { decrypt: true });
       const pos = arr.map((e) => e.username).indexOf(username);
@@ -32,7 +33,7 @@ export default function UserDashboard() {
       .then((response) => response.blob())
       .then((res) => { // if the image size is 114, which is basically nothing, set it to default, else set to
         // user designated.
-        if (res.size === 114) {
+        if (res.size < 200) {
           setuserimage(defaultimage);
         } else {
           const objectURL = URL.createObjectURL(res);

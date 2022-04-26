@@ -59,10 +59,10 @@ export class Login extends Component {
         'Authorization': 'Basic ' + window.btoa(xusername + ':' + xpassword),
         'Content-Type': 'text/plain',
       },
-    }).then((response) => {
+    }).then(() => {
       ls.remove('key');
       mynav('/');
-      console.log(response);
+      // console.log(response);
       localStorage.setItem('user', xusername);
       window.location.reload();
     }).catch(() => {

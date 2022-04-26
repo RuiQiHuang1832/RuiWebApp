@@ -1,13 +1,27 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
+import ls from 'localstorage-slim';
 
 export class Footer extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isBusy: false,
+    };
+  }
+
+  componentDidMount() {
+    if (ls.get('key') === null) {
+      this.setState({ isBusy: true });
+    } else {
+      this.setState({ isBusy: false });
+    }
   }
 
   render() {
+    if (this.state.isBusy === true) {
+      return <div />;
+    }
     return (
 
       <footer className="position-relative text-muted" style={{ background: 'rgb(31,32,40)' }}>
