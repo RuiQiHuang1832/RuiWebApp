@@ -49,6 +49,7 @@ export default function Members() {
         .then(() => setBusy(false))
         .then(() => {
           mapFunc();
+          window.location.reload();
         })
         .catch((error) => {
           console.log(error);

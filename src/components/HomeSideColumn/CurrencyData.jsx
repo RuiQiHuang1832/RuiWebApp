@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-indent */
 /* eslint-disable indent */
 import React from 'react';
-import '../styling/CurrencyData.css';
+import '../../styling/CurrencyData.css';
 
 export default function CurrencyData(props) {
     return (
-        <div>
-            <div className="d-inline-flex bg-dark p-2 w-100  justify-content-between fw-bold ">
+        <div className="mb-5">
+            <div style={{ width: '80%' }} className="d-inline-flex bg-dark p-2 mt-5 justify-content-between fw-bold ">
 
                 <div className="btn-group">
                     <div className="btn btn-dark currency pe-0">Currencies</div>
@@ -24,11 +24,11 @@ export default function CurrencyData(props) {
                     </ul>
                 </div>
 
-                <div className="darkHighlight fs-5 text-white">
+                <div className="darkHighlight text-white">
                     Your 3 Tickers
                 </div>
             </div>
-            <div className="d-flex justify-content-evenly pt-3 border border-top-0">
+            <div style={{ width: '80%' }} className="d-flex justify-content-evenly pt-3 border border-top-0">
                 <div>
                     <h4>{props.stocksymbol[0]}</h4>
                     <p>

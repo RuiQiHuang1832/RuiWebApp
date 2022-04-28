@@ -13,13 +13,13 @@ import defaultimage from '../images/default_large.jpg';
 
 const TITLE = 'User Dashboard';
 export default function UserDashboard() {
+  const navigate = useNavigate();
   const { username, id } = useParams();
   const [userimage, setuserimage] = useState(null);
   const [lsbio, setLsBio] = useState('');
   useEffect(() => {
     if (ls.get('key') === null) { // navigate to home page to fetch the data if key is not found
       navigate('/');
-      console.log('null');
     } else {
       const arr = ls.get('key', { decrypt: true });
       const pos = arr.map((e) => e.username).indexOf(username);

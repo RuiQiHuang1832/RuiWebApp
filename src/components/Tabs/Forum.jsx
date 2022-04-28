@@ -6,6 +6,9 @@ import '../../styling/Forum.css';
 const forumiconsize = {
     fontSize: '28px',
 };
+const fontsize = {
+    fontSize: '12px',
+};
 
 const TITLE = 'Tailwind Forums';
 
@@ -26,11 +29,11 @@ export default class Forum extends Component {
 
                 <table className="table align-middle table-borderless">
                     <thead className="text-white ">
-                        <tr>
+                        <tr style={fontsize}>
                             <th className=" border-bottom "> </th>
                             <th className="col-6 border-bottom ">FORUM</th>
                             <th className="col-2 text-center border-bottom ">THREADS</th>
-                            <th className="text-center border-bottom" style={{ width: '20%' }}>POSTS</th>
+                            <th className="text-center border-bottom" style={{ width: '18%' }}>POSTS</th>
                             <th className="text-center border-bottom">LAST POST</th>
                         </tr>
                     </thead>

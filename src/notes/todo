@@ -30,3 +30,7 @@ then it will show a shadow!
 
 when loging in with Lord" "(with a space at the end) , the user is directed to a blank page
 to solve this: remove space from login
+
+
+pagination for members,
+make it usable on mobile
