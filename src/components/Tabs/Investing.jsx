@@ -12,7 +12,7 @@ const fontsize = {
 const TITLE = 'Investing';
 export default function Investing() {
     return (
-        <div className="p-4">
+        <div className="p-3">
             <div className="my-5 border p-3 ">
                 <h3 className="bg-dark p-3 d-inline-block">{TITLE}</h3>
                 <p>This forum is primarily focused on investing in the capital markets. </p>

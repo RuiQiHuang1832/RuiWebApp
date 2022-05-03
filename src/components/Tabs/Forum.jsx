@@ -21,7 +21,7 @@ export default class Forum extends Component {
 
     render() {
         return (
-            <div className="p-4">
+            <div className="p-3">
                 <div className="my-5 border p-3 ">
                     <h3 className="bg-dark p-3 d-inline-block">{TITLE}</h3>
                     <p>Talk about your favourite movies, series or listen to some music.</p>

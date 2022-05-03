@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable guard-for-in */
@@ -17,16 +18,16 @@ import Announcements from './HomeSideColumn/Announcements';
 import RecentTopics from './HomeSideColumn/RecentTopics';
 
 const TITLE = 'Home';
-const options = {
-  method: 'GET',
-  headers: {
-    'X-RapidAPI-Host': 'yh-finance.p.rapidapi.com',
-    'X-RapidAPI-Key': '94680c26cemsha1f6b30a6f8fca0p1d8a93jsn2088f83d240f',
-  },
-};
-let ticker1;
-let ticker2;
-let ticker3;
+// const options = {
+//   method: 'GET',
+//   headers: {
+//     'X-RapidAPI-Host': 'yh-finance.p.rapidapi.com',
+//     'X-RapidAPI-Key': '94680c26cemsha1f6b30a6f8fca0p1d8a93jsn2088f83d240f',
+//   },
+// };
+// let ticker1;
+// let ticker2;
+// let ticker3;
 
 export class Home extends Component {
   constructor(props) {
@@ -55,31 +56,31 @@ export class Home extends Component {
         });
     }
 
-    if (ls.get('ticker') === null) {
-      // default
-      ticker1 = 'TSLA';
-      ticker2 = 'AAPL';
-      ticker3 = 'AMD';
-    } else {
-      // user obtained
-      const tickers = ls.get('ticker', { decrypt: true });
-      ticker1 = tickers[0];
-      ticker2 = tickers[1];
-      ticker3 = tickers[2];
-    }
+    // if (ls.get('ticker') === null) {
+    //   // default
+    //   ticker1 = 'TSLA';
+    //   ticker2 = 'AAPL';
+    //   ticker3 = 'AMD';
+    // } else {
+    //   // user obtained
+    //   const tickers = ls.get('ticker', { decrypt: true });
+    //   ticker1 = tickers[0];
+    //   ticker2 = tickers[1];
+    //   ticker3 = tickers[2];
+    // }
 
-    const currency = `https://yh-finance.p.rapidapi.com/market/v2/get-quotes?region=US&symbols=${ticker1}%2C${ticker2}%2C${ticker3}`;
+    // const currency = `https://yh-finance.p.rapidapi.com/market/v2/get-quotes?region=US&symbols=${ticker1}%2C${ticker2}%2C${ticker3}`;
 
-    fetch(currency, options)
-      .then((response) => response.json())
-      .then((response) => {
-        const res = response.quoteResponse.result;
-        for (const x in res) {
-          this.setState({ symbol: [...this.state.symbol, res[x].symbol] });
-          this.setState({ price: [...this.state.price, res[x].regularMarketPrice] });
-          this.setState({ volume: [...this.state.volume, res[x].regularMarketVolume] });
-        }
-      });
+    // fetch(currency, options)
+    //   .then((response) => response.json())
+    //   .then((response) => {
+    //     const res = response.quoteResponse.result;
+    //     for (const x in res) {
+    //       this.setState({ symbol: [...this.state.symbol, res[x].symbol] });
+    //       this.setState({ price: [...this.state.price, res[x].regularMarketPrice] });
+    //       this.setState({ volume: [...this.state.volume, res[x].regularMarketVolume] });
+    //     }
+    //   });
   }
 
   displayCurrentPage() {
@@ -109,7 +110,7 @@ export class Home extends Component {
     }
     return (
 
-      <section className="text-white hugepadding">
+      <section className="text-white hugepadding ps-2">
         <div className="container-fluid ps-5 py-5 ">
           <div id="homeBackground" className="card border-0">
             <div className="row gx-0">

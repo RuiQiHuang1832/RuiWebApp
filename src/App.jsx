@@ -16,7 +16,7 @@ import Upgrade from './components/Upgrade';
 import Search from './components/Search';
 import SuccessSignUp from './components/SuccessSignUp';
 import UserDashboard from './components/UserDashboard';
-import Members from './components/Members';
+import Members from './components/MembersPagination';
 import Settings from './components/Settings';
 // app > index
 

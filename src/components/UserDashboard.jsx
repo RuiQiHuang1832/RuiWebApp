@@ -123,9 +123,7 @@ export default function UserDashboard() {
                   <div className='col'>
                     <table className="table text-white">
                       <thead>
-                        <tr>
-                          <th style={{ width: '100%' }} scope="col"> </th>
-                        </tr>
+                        <tr />
                       </thead>
                       <tbody>
                         <tr>
@@ -154,9 +152,7 @@ export default function UserDashboard() {
                   <div className='col'>
                     <table className="table text-white">
                       <thead>
-                        <tr>
-                          <th style={{ width: '100%' }} scope="col"> </th>
-                        </tr>
+                        <tr />
                       </thead>
                       <tbody>
                         <tr>
