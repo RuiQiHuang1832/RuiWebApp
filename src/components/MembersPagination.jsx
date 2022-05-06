@@ -101,13 +101,13 @@ export default class MembersPagination extends Component {
                                     pageRangeDisplayed={4}
                                     marginPagesDisplayed={5}
                                     onPageChange={this.handlePageClick}
-                                    containerClassName="pagination justify-content-center fs-4"
-                                    pageLinkClassName="page-link bgcolor border-0"
+                                    containerClassName="pagination justify-content-center fs-4 "
+                                    pageLinkClassName="page-link bgcolor border-0 shadow-none "
                                     previousClassName="page-item "
-                                    previousLinkClassName="page-link bgcolor border-0"
+                                    previousLinkClassName="page-link bgcolor border-0 "
                                     nextClassName="page-item "
-                                    nextLinkClassName="page-link bgcolor border-0"
-                                    activeClassName="page-item active"
+                                    nextLinkClassName="page-link bgcolor border-0 "
+                                    activeClassName="page-item active "
 
                                 />
                             </nav>

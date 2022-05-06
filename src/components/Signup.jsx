@@ -157,8 +157,8 @@ export default function Signup() {
             <div className="row d-flex justify-content-center ">
               <div className="col-12 col-md-9 col-lg-7 col-xl-6">
                 {' '}
-                {/** Changes width each screen size */}
-                <div className="card " style={{ borderRadius: '30px', margin: '60px auto' }}>
+                {/** Changes width each screen size, also borderRadius to cut corners */}
+                <div className="card " style={{ borderRadius: '', margin: '60px auto' }}>
                   <div className="card-body gradient-custom-3 p-5">
                     {' '}
                     {/** card must always be accompained by card-body */}
