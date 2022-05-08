@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/no-unused-state */
 /* eslint-disable quote-props */
 /* eslint-disable prefer-template */
 import React, { Component } from 'react';
@@ -60,11 +62,20 @@ export class Login extends Component {
         'Content-Type': 'text/plain',
       },
     }).then(() => {
-      ls.remove('key');
-      mynav('/');
-      // console.log(response);
-      localStorage.setItem('user', xusername);
-      window.location.reload();
+      fetch('https://ruibackend.herokuapp.com/user/getAll')
+        .then((response) => response.json())
+        .then((data) => {
+          const filtered = data.filter((obj) => {
+            if (xusername.toLowerCase() === obj.username.toLowerCase()) {
+              return obj;
+            }
+          });
+          localStorage.setItem('user', filtered[0].username);
+        }).then(() => {
+          ls.remove('key');
+          mynav('/');
+          window.location.reload();
+        });
     }).catch(() => {
       this.setState({ invalidlogin: 'Username or password incorrect.' });
     });

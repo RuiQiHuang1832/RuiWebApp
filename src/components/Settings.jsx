@@ -22,10 +22,12 @@ export default function Settings() {
   const [biography, Setbio] = useState('');
   const [loading, setloading] = useState(false);
   const [ticker, setTicker] = useState('');
+  const [authUserisLogged] = useState(localStorage.getItem('user'));
   const navigate = useNavigate();
 
   useEffect(() => {
     document.title = TITLE;
+
     if (ls.get('key') === null) { // navigate to home page to fetch the data if key is not found
       navigate('/');
     } else {
@@ -87,8 +89,11 @@ export default function Settings() {
       handleImageSubmit();
     });
   };
-
+  if (authUserisLogged !== username) {
+    return <div className="text-white">Access Restricted</div>;
+  }
   return (
+
     <section>
       <div className="container settingsbg">
         <h1 className="text-white py-3 ">
@@ -186,6 +191,7 @@ export default function Settings() {
 
       </div>
     </section>
+
   );
 }
 

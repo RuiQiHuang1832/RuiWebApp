@@ -9,13 +9,16 @@ Frontend hosted on Vercel and Backend hosted on Heroku.
 
 # TODO (not updated)
 Upgrade ✔️<br />
+About ✔️<br />
 Search<br />
 Home<br />
-User Dashboard<br />
+Mobile Friendly<br />
+User Dashboard✔️<br />
 Sign up/ Sign out✔️<br />
 Login✔️<br />
 Settings✔️<br />
-
+Members✔️<br />
+FAQAccourdion✔️<br />
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
