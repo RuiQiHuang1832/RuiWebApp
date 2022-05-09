@@ -8,7 +8,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import '../styling/UserDashboard.css';
 import ls from 'localstorage-slim';
 import memberimage from '../images/memberimage.jpg';
-import Settings from './Settings';
 import defaultimage from '../images/default_large.jpg';
 
 const TITLE = 'User Dashboard';
@@ -29,7 +28,7 @@ export default function UserDashboard() {
   // load user profile on dom load, make it so it grabs it from cache instead of fetching each time!
   useEffect(() => {
     document.title = TITLE;
-    fetch(`https://ruibackend.herokuapp.com/user/image/${id}`)
+    fetch(`https://ruibackend.herokuapp.com/users/image/${id}`)
       .then((response) => response.blob())
       .then((res) => { // if the image size is 114, which is basically nothing, set it to default, else set to
         // user designated.

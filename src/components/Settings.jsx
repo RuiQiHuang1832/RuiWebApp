@@ -65,7 +65,7 @@ export default function Settings() {
   // All i had to do was remove headers..  Originally I had headers and was throwing errors, but once removed it works!
 
   const handleImageSubmit = () => {
-    fetch(`https://ruibackend.herokuapp.com/user/uploadimage/${id}`, {
+    fetch(`https://ruibackend.herokuapp.com/users/${id}/profileimage`, {
       method: 'PATCH',
       body: handleFormData(),
     }).then(() => alert('success!')).then(() => {
@@ -78,7 +78,7 @@ export default function Settings() {
     e.preventDefault();
     ls.set('ticker', ticker.split(','), { encrypt: true });
     setloading(true);
-    fetch(`https://ruibackend.herokuapp.com/user/updateBio/${id}`, {
+    fetch(`https://ruibackend.herokuapp.com/users/${id}/biography`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

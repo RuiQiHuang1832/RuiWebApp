@@ -70,7 +70,7 @@ export default function Signup() {
     };
     console.log(userinfo);
 
-    fetch('https://ruibackend.herokuapp.com/user/add  ', {
+    fetch('https://ruibackend.herokuapp.com/users/add  ', {
       // look at login.js on how to implement login
 
       // http://localhost:8080/user/add                     <-local

@@ -46,12 +46,12 @@ export class Login extends Component {
   }
 
   // http://localhost:8080/user/admin                     <-local
-  // https://ruibackend.herokuapp.com/user/stuff          <-production
+  // https://ruibackend.herokuapp.com/user/login          <-production
   // use localStorage for storing sessions..(only if i want it)
   // Basic Auth
   handleClick(e) {
     e.preventDefault();
-    const url = 'https://ruibackend.herokuapp.com/user/stuff';
+    const url = 'https://ruibackend.herokuapp.com/users/login';
 
     const mynav = this.props.navigation;
 
@@ -62,7 +62,7 @@ export class Login extends Component {
         'Content-Type': 'text/plain',
       },
     }).then(() => {
-      fetch('https://ruibackend.herokuapp.com/user/getAll')
+      fetch('https://ruibackend.herokuapp.com/users/datalist')
         .then((response) => response.json())
         .then((data) => {
           const filtered = data.filter((obj) => {

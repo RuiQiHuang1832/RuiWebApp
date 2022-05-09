@@ -25,7 +25,7 @@ export default class MembersPagination extends Component {
 
     receivedData() {
         this.setState({ isBusy: true });
-        fetch('https://ruibackend.herokuapp.com/user/getAll')
+        fetch('https://ruibackend.herokuapp.com/users/datalist')
             .then((response) => response.json())
             .then((data) => {
                 const slice = data.slice(

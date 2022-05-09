@@ -47,7 +47,7 @@ export class Home extends Component {
     document.title = TITLE;
     if (ls.get('key') === null) {
       this.setState({ isBusy: true });
-      fetch('https://ruibackend.herokuapp.com/user/getAll')
+      fetch('https://ruibackend.herokuapp.com/users/datalist')
         .then((res) => res.json())
         .then((data) => ls.set('key', data, { encrypt: true }))
         .then(() => {
