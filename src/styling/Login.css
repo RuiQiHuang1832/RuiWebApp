@@ -2,7 +2,7 @@
 
  
   
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
      /* background: linear-gradient(to right, #3b73db, #d48889, #832f4f, #36ca78);  */
      background: rgba(55, 201, 26, 0.945) !important 
   }
@@ -17,8 +17,6 @@
 }
   
 .gradient-custom-3-login {
-
-  
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background: rgb(31,32,40);
 }
@@ -27,5 +25,20 @@
   .footerLoginFontSize {
       font-size: 95%;
   }
+
+}
+
+
+.loginbutton:hover {
+  background: #167135 !important; 
+
+}
+
+.loginbutton:active {
+  background: #2ffa7329 !important; 
+
+}
+
+.invalidloginopacity {
 
 }

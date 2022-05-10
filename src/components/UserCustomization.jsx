@@ -17,7 +17,7 @@ export default function UserCustomization(props) {
         });
       setId(filteredCache[0].id);
     } else {
-      fetch('https://ruibackend.herokuapp.com/user/getAll')
+      fetch('https://ruibackend.herokuapp.com/user/datalist')
         .then((response) => response.json())
         .then((data) => {
           const filtered = data.filter((obj) => {

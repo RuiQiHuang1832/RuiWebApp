@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/no-unused-state */
-/* eslint-disable quote-props */
+/* eslint-disable react/jsx-indent */
 /* eslint-disable prefer-template */
 import React, { Component } from 'react';
 import '../styling/Login.css';
@@ -32,6 +30,7 @@ export class Login extends Component {
       username: '',
       password: '',
       invalidlogin: '',
+      spinnerlogin: 'Log In',
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -51,14 +50,19 @@ export class Login extends Component {
   // Basic Auth
   handleClick(e) {
     e.preventDefault();
+    this.setState({ invalidlogin: '' });
     const url = 'https://ruibackend.herokuapp.com/users/login';
+    this.setState({
+      spinnerlogin:
+        <div className="spinner-border spinner-border-sm" role="status" />,
+    });
 
     const mynav = this.props.navigation;
 
     fetch(url, {
       method: 'GET',
       headers: {
-        'Authorization': 'Basic ' + window.btoa(xusername + ':' + xpassword),
+        Authorization: 'Basic ' + window.btoa(xusername + ':' + xpassword),
         'Content-Type': 'text/plain',
       },
     }).then(() => {
@@ -78,6 +82,7 @@ export class Login extends Component {
         });
     }).catch(() => {
       this.setState({ invalidlogin: 'Username or password incorrect.' });
+      this.setState({ spinnerlogin: 'Log In' });
     });
 
     // look at authentication folder!
@@ -99,7 +104,7 @@ export class Login extends Component {
                           <img src={panda} alt="pandaImage" className="align-content-center" width="180" height="150" />
                           <h3 className="mt-3 text-white">Welcome to Tailwind</h3>
                         </div>
-                        <h4 className="text-danger text-center">{this.state.invalidlogin}</h4>
+                        <h4 className="text-danger text-center invalidloginopacity">{this.state.invalidlogin}</h4>
                         <h6 className="mt-5 mb-0 text-white">Please login to your account</h6>
                         <form onSubmit={this.handleClick}>
                           <div className="mb-2">
@@ -112,7 +117,7 @@ export class Login extends Component {
                           </div>
                           {/** onChange={(e) => this.setState({ password: e.target.value })} */}
                           <div className="d-grid">
-                            <button type="submit" className="gradient-custom-2 mt-3 btn  btn-md text-body "><span className="text-white">Log In</span></button>
+                            <button type="submit" className="gradient-custom-2 mt-3 btn btn-md text-body loginbutton"><span className="text-white">{this.state.spinnerlogin}</span></button>
                           </div>
                           <div className="text-white text-center my-4">
                             Forgot password?
