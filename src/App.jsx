@@ -18,6 +18,7 @@ import SuccessSignUp from './components/SuccessSignUp';
 import UserDashboard from './components/UserDashboard';
 import Members from './components/MembersPagination';
 import Settings from './components/Settings';
+import ForgetPassword from './components/ForgetPassword';
 // app > index
 
 function App() {
@@ -38,6 +39,8 @@ function App() {
           <Route path="/userDashboard/:username-:id" element={<UserDashboard />} />
           <Route path="/userDashboard/settings/:username-:id" element={<Settings />} />
           <Route path="/signup=success" element={<PrivateRoute><SuccessSignUp /></PrivateRoute>} />
+          <Route path="/lostpassword" element={<ForgetPassword />} />
+
         </Routes>
 
         <Footer />

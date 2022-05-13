@@ -120,7 +120,7 @@ export class Login extends Component {
                             <button type="submit" className="gradient-custom-2 mt-3 btn btn-md text-body loginbutton"><span className="text-white">{this.state.spinnerlogin}</span></button>
                           </div>
                           <div className="text-white text-center my-4">
-                            Forgot password?
+                            <a href="/lostpassword"> Forgot password?</a>
                           </div>
                           <div className="d-flex justify-content-center">
                             <p className="mt-3 mb-0 text-white">

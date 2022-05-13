@@ -111,11 +111,11 @@ export class Home extends Component {
     return (
 
       <section className="text-white hugepadding ps-2">
-        <div className="container-fluid ps-5 py-5 ">
+        <div className="container-fluid ps-md-5 py-5 ">
           <div id="homeBackground" className="card border-0">
             <div className="row gx-0">
-              <div className=" col-9 mb-5 pt-4 ">
-                <div className="col-8 ps-3 mb-5">
+              <div className=" col-lg-9 mb-5 pt-4 ">
+                <div className="col-lg-8 ps-3 mb-5">
                   <h1 className="mt-3 mb-4">Welcome to Tailwind!</h1>
                   <p>
                     <strong>Everyone is invited! </strong>
@@ -133,42 +133,44 @@ export class Home extends Component {
                     <strong> Harrasment is not tolerated.</strong>
                   </p>
                 </div>
-                <ul className="nav nav-pills border-0 ">
-                  <li className="nav-item bg-dark me-3 ms-3 border bg-black rounded border-2 ">
-                    <a className="nav-link" aria-current="page" data-bs-toggle="pill" href="#Home" onClick={() => this.setState({ currentpage: 'Forums' })}>
-                      <i className="bi bi-house-fill" />
-                      &nbsp;Home
-                    </a>
-                  </li>
-                  <li className="nav-item bg-dark me-3 border bg-black rounded border-2">
-                    <a className="nav-link" aria-current="page" data-bs-toggle="pill" href="#Forums" onClick={() => this.setState({ currentpage: 'Coding' })}>
-                      <i className="bi bi-file-earmark-code-fill" />
-                      &nbsp;Coding
-                    </a>
-                  </li>
-                  <li className="nav-item bg-dark me-3 border bg-black rounded border-2">
-                    <a className="nav-link" aria-current="page" data-bs-toggle="pill" href="#Forums" onClick={() => this.setState({ currentpage: 'Investing' })}>
-                      <i className="bi bi-currency-exchange" />
-                      &nbsp;Investing
-                    </a>
-                  </li>
-                  <li className="nav-item bg-dark me-3 border bg-black rounded border-2">
-                    <a className="nav-link" aria-current="page" data-bs-toggle="pill" href="#Forums" onClick={() => this.setState({ currentpage: 'Gaming' })}>
-                      <i className="bi bi-controller" />
-                      &nbsp;Gaming
-                    </a>
-                  </li>
-                  <li className="nav-item bg-dark me-3 border bg-black rounded border-2">
-                    <a className="nav-link" aria-current="page" data-bs-toggle="pill" href="#Forums" onClick={() => this.setState({ currentpage: 'Miscellaneous' })}>
-                      <i className="bi bi-app" />
-                      &nbsp;Miscellaneous
-                    </a>
-                  </li>
-                </ul>
+                <div className="">
+                  <ul className="nav nav-pills border-0 flex-lg-row flex-column">
+                    <li className="nav-item mb-3 mb-lg-0  bg-dark me-3 ms-lg-3 border bg-black rounded border-2 ">
+                      <a className="nav-link" aria-current="page" data-bs-toggle="pill" href="#Home" onClick={() => this.setState({ currentpage: 'Forums' })}>
+                        <i className="bi bi-house-fill" />
+                        &nbsp;Home
+                      </a>
+                    </li>
+                    <li className="nav-item bg-dark me-3 mb-3 mb-lg-0 border bg-black rounded border-2">
+                      <a className="nav-link" aria-current="page" data-bs-toggle="pill" href="#Forums" onClick={() => this.setState({ currentpage: 'Coding' })}>
+                        <i className="bi bi-file-earmark-code-fill" />
+                        &nbsp;Coding
+                      </a>
+                    </li>
+                    <li className="nav-item bg-dark me-3 mb-3 mb-lg-0 border bg-black rounded border-2">
+                      <a className="nav-link" aria-current="page" data-bs-toggle="pill" href="#Forums" onClick={() => this.setState({ currentpage: 'Investing' })}>
+                        <i className="bi bi-currency-exchange" />
+                        &nbsp;Investing
+                      </a>
+                    </li>
+                    <li className="nav-item bg-dark me-3 mb-3 mb-lg-0 border bg-black rounded border-2">
+                      <a className="nav-link" aria-current="page" data-bs-toggle="pill" href="#Forums" onClick={() => this.setState({ currentpage: 'Gaming' })}>
+                        <i className="bi bi-controller" />
+                        &nbsp;Gaming
+                      </a>
+                    </li>
+                    <li className="nav-item bg-dark me-3 mb-3 mb-lg-0 border bg-black rounded border-2">
+                      <a className="nav-link" aria-current="page" data-bs-toggle="pill" href="#Forums" onClick={() => this.setState({ currentpage: 'Miscellaneous' })}>
+                        <i className="bi bi-app" />
+                        &nbsp;Miscellaneous
+                      </a>
+                    </li>
+                  </ul>
+                </div>
                 {this.displayCurrentPage()}
               </div>
 
-              <div className=" col-3">
+              <div className="col-3 d-none d-lg-block d-xl-block">
                 <CurrencyData stocksymbol={this.state.symbol} stockprice={this.state.price} stockvolume={this.state.volume} />
                 <Announcements />
                 <RecentTopics />

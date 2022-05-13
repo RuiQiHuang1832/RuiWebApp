@@ -19,14 +19,13 @@ export default function CurrencyData(props) {
                                 Note: You can change your tickers
                                 <br />
                                 in the settings menu.
+                                <br />
+                                <span className="text-danger">Currently displaying your top 3.</span>
                             </div>
                         </li>
                     </ul>
                 </div>
 
-                <div className="darkHighlight text-white">
-                    Your 3 Tickers
-                </div>
             </div>
             <div style={{ width: '80%' }} className="d-flex justify-content-evenly pt-3 border border-top-0">
                 <div>

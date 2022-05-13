@@ -24,6 +24,7 @@ export default function Signup() {
   const [password, setPassword] = useState('');
   const [dupmessage, setDupmessage] = useState(' ');
   const [ipaddress, setIpaddress] = useState();
+  const [spinner, setSpinner] = useState('Register');
 
   const {
     register, handleSubmit, watch,
@@ -61,6 +62,7 @@ export default function Signup() {
     submit it into address..something about async.. but not enough knowledge..rn */ }
 
   const handleClick = () => {
+    setSpinner(<div className="spinner-border spinner-border-sm" role="status" />);
     const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync());
 
     //  e.preventDefault()
@@ -85,7 +87,7 @@ export default function Signup() {
     }).then((response) => {
       if (!response.ok) {
         if (response.status === 500) {
-          setDupmessage('Username is already taken. Try again.');
+          setDupmessage('Username/Email is already taken. Try again.');
         }
         throw new Error(response.status);
       } else { setDupmessage(''); }
@@ -96,7 +98,7 @@ export default function Signup() {
       }, 6000);
       navigate('/signup=success');
     }).catch(() => {
-
+      setSpinner('Register');
     });
 
     simpleAuth = true; // auth for signup=success
@@ -300,7 +302,7 @@ export default function Signup() {
                       </div>
 
                       <div className="d-grid ">
-                        <button type="submit" className="btn btn-success  btn-lg gradient-custom-4 text-body">Register</button>
+                        <button type="submit" className="btn btn-success  btn-lg gradient-custom-4 text-body registerbutton">{spinner}</button>
 
                       </div>
                       <p className="text-center text-white mt-4 mb-0">
