@@ -134,33 +134,33 @@ export class Home extends Component {
                   </p>
                 </div>
                 <div className="">
-                  <ul className="nav nav-pills border-0 flex-lg-row flex-column">
-                    <li className="nav-item mb-3 mb-lg-0  bg-dark me-3 ms-lg-3 border bg-black rounded border-2 ">
-                      <a className="nav-link" aria-current="page" data-bs-toggle="pill" href="#Home" onClick={() => this.setState({ currentpage: 'Forums' })}>
+                  <ul className="nav nav-pills border-0 flex-lg-row flex-column ">
+                    <li className="nav-item mb-3 mb-lg-0  me-3 ms-lg-3 border rounded border-2 tabcolor">
+                      <a className="nav-link text-white" aria-current="page" data-bs-toggle="pill" href="#Home" onClick={() => this.setState({ currentpage: 'Forums' })}>
                         <i className="bi bi-house-fill" />
                         &nbsp;Home
                       </a>
                     </li>
-                    <li className="nav-item bg-dark me-3 mb-3 mb-lg-0 border bg-black rounded border-2">
-                      <a className="nav-link" aria-current="page" data-bs-toggle="pill" href="#Forums" onClick={() => this.setState({ currentpage: 'Coding' })}>
+                    <li className="nav-item me-3 mb-3 mb-lg-0 border  rounded border-2 tabcolor">
+                      <a className="nav-link text-white" aria-current="page" data-bs-toggle="pill" href="#Forums" onClick={() => this.setState({ currentpage: 'Coding' })}>
                         <i className="bi bi-file-earmark-code-fill" />
                         &nbsp;Coding
                       </a>
                     </li>
-                    <li className="nav-item bg-dark me-3 mb-3 mb-lg-0 border bg-black rounded border-2">
-                      <a className="nav-link" aria-current="page" data-bs-toggle="pill" href="#Forums" onClick={() => this.setState({ currentpage: 'Investing' })}>
+                    <li className="nav-item me-3 mb-3 mb-lg-0 border  rounded border-2 tabcolor">
+                      <a className="nav-link text-white" aria-current="page" data-bs-toggle="pill" href="#Forums" onClick={() => this.setState({ currentpage: 'Investing' })}>
                         <i className="bi bi-currency-exchange" />
                         &nbsp;Investing
                       </a>
                     </li>
-                    <li className="nav-item bg-dark me-3 mb-3 mb-lg-0 border bg-black rounded border-2">
-                      <a className="nav-link" aria-current="page" data-bs-toggle="pill" href="#Forums" onClick={() => this.setState({ currentpage: 'Gaming' })}>
+                    <li className="nav-item me-3 mb-3 mb-lg-0 border rounded border-2 tabcolor">
+                      <a className="nav-link text-white" aria-current="page" data-bs-toggle="pill" href="#Forums" onClick={() => this.setState({ currentpage: 'Gaming' })}>
                         <i className="bi bi-controller" />
                         &nbsp;Gaming
                       </a>
                     </li>
-                    <li className="nav-item bg-dark me-3 mb-3 mb-lg-0 border bg-black rounded border-2">
-                      <a className="nav-link" aria-current="page" data-bs-toggle="pill" href="#Forums" onClick={() => this.setState({ currentpage: 'Miscellaneous' })}>
+                    <li className="nav-item me-3 mb-3 mb-lg-0 border rounded border-2 tabcolor">
+                      <a className="nav-link text-white" aria-current="page" data-bs-toggle="pill" href="#Forums" onClick={() => this.setState({ currentpage: 'Miscellaneous' })}>
                         <i className="bi bi-app" />
                         &nbsp;Miscellaneous
                       </a>

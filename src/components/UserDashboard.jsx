@@ -131,12 +131,12 @@ export default function UserDashboard() {
             </div>
             {/** STATISTICS */}
             <div className="card carddarkbg border-white my-4">
-              <div className="card-body ">
+              <div className="card-body">
                 <div className="d-inline-flex w-100 justify-content-between fw-bold border-bottom ">
                   <div className="fs-5 ms-2 text-white mb-2">Statistics</div>
                 </div>
                 <div className='row'>
-                  <div className='col'>
+                  <div className='col-md'>
                     <table className="table text-white">
                       <thead>
                         <tr />
@@ -165,7 +165,7 @@ export default function UserDashboard() {
                       </tbody>
                     </table>
                   </div>
-                  <div className='col'>
+                  <div className='col-md'>
                     <table className="table text-white">
                       <thead>
                         <tr />

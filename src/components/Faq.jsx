@@ -11,16 +11,16 @@ export class Faq extends Component {
   render() {
     return (
       <section id="backgroundFAQColor">
-        <div className="container text-white">
+        <div className="container-fluid text-white">
           <div className="row justify-content-center ">
-            <div className="col-9">
-              <p style={{ fontSize: '35px' }} className="text-center  fw-bold p-5  ">Frequently Asked Questions</p>
-              <h5 className=" text-center p-5  ">
+            <div className="col-md-9 col-12">
+              <p style={{ fontSize: '35px' }} className="text-center  fw-bold  pt-5">Frequently Asked Questions</p>
+              <h5 className=" text-center p-lg-5 pb-5  ">
                 Got a question? We&apos;ve got answers.
                 If you have some other questions, contact us at
-                <a className="" href="#!">contact@Tailwind.com.</a>
+                <a className="text-muted text-reset text-decoration-none" href="#!"> contact@Tailwind.com.</a>
               </h5>
-              <div className="accordion pb-5 px-5 accordioncolor">
+              <div className="accordion pb-5 px-3 px-lg-5 accordioncolor">
                 <div className="accordion-item  ">
                   <h2 className="accordion-header">
                     <button className="accordion-button collapsed  fs-6 bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
