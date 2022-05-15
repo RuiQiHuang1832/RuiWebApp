@@ -43,8 +43,7 @@ export default function UserDashboard() {
 
   return (
     <section id="backgroundColorDash">
-
-      <div className="container pt-3">
+      <div className="container-lg pt-3">
         <div className="row">
           <div className="col d-flex align-items-center userCoverPage">
 
@@ -58,20 +57,21 @@ export default function UserDashboard() {
           </div>
 
         </div>
-        <div className="row mt-5">
-          <div className="col-3 ">
+        <div className="row row-cols-1 row-cols-sm-2 mt-5">
+          <div className="col-xl-3 col-sm-6">
             {/** REPUTATION */}
-            <div className="row row-cols-1 row-cols-md-2 mb-5">
-              <div className="col ">
+
+            <div className="row row-cols-2 row-cols-md-2 mb-5 g-4">
+              <div className="col">
                 <div className="card card-body text-center pillcolor shadowlg">
                   <span className=''>0</span>
-                  Reputation
+                  <span className='' style={{ fontSize: '13px' }}>Reputation</span>
                 </div>
               </div>
               <div className="col">
                 <div className="card card-body text-center pillcolor shadowlg">
                   <span className=''>0</span>
-                  Likes
+                  <span className='' style={{ fontSize: '13px' }}>Likes</span>
                 </div>
               </div>
             </div>
@@ -103,9 +103,26 @@ export default function UserDashboard() {
                 </table>
               </div>
             </div>
+            {/** VISITORS */}
+            <div className="mt-4">
+              <div className="card carddarkbg border-white">
+                <div className="card-body ">
+                  <div className="d-inline-flex w-100 justify-content-between fw-bold  border-bottom">
+                    <div className="fs-5 ms-2 text-white mb-2">Vistors</div>
+                  </div>
+                  <table className="table text-white">
+                    <tbody>
+                      <tr>
+                        <td>Unavailable</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
           </div>
           {/** BIO */}
-          <div className="col-6">
+          <div className="col-lg-6 mt-4 mt-sm-auto col">
             <div className="card carddarkbg border-white">
               <div className="card-body">
                 <label className="form-label fs-5 ms-2 text-white mb-2 fw-bold">Biography</label>
@@ -174,23 +191,6 @@ export default function UserDashboard() {
                     </table>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          {/** VISITORS */}
-          <div className="col-3 ">
-            <div className="card carddarkbg border-white">
-              <div className="card-body ">
-                <div className="d-inline-flex w-100 justify-content-between fw-bold  border-bottom">
-                  <div className="fs-5 ms-2 text-white mb-2">Vistors</div>
-                </div>
-                <table className="table text-white">
-                  <tbody>
-                    <tr>
-                      <td>Unavailable</td>
-                    </tr>
-                  </tbody>
-                </table>
               </div>
             </div>
           </div>
