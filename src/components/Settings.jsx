@@ -104,39 +104,38 @@ export default function Settings() {
 
             <fieldset className="row border-bottom border-top">
               <label className="col-4 col-form-label">Profile Information</label>
-              <div className="col-5 d-flex justify-content-start">
+              <div style={{ boxSizing: 'content-box' }} className=" col-11 col-lg-5 col-md-7 d-flex justify-content-start">
                 <textarea placeholder="max 250 characters" maxLength={250} className="form-control my-3" rows="6" onChange={(e) => Setbio(e.target.value)} />
               </div>
             </fieldset>
 
             <fieldset className="row border-bottom">
               <label className="col-4 col-form-label">Profile Picture &#60;2MB</label>
-              <div className="col-5 d-flex justify-content-start">
+              <div style={{ boxSizing: 'content-box' }} className=" col-11 col-lg-5 col-md-7 d-flex justify-content-start">
                 <input className="form-control form-control-md my-3" type="file" id="formFile" onChange={(event) => setimagefile(event.target.files[0])} />
               </div>
             </fieldset>
             {/** Filler */}
             <fieldset className="row border-bottom">
               <label className="col-4 col-form-label">Contact Methods</label>
-              <div className="col-5">
-
+              <div style={{ boxSizing: 'content-box' }} className=" col-11 col-lg-5 col-md-7">
                 <div className="row my-3">
                   {/** col-form-label aligns text to center, form-label does nothing */}
-                  <label className="col-2 col-form-label ">Discord</label>
-                  <div className="col ">
-                    <input className="form-control settingsmediacolor" type="text" />
-                  </div>
-                </div>
-
-                <div className="row my-3">
-                  <label className="col-2 col-form-label ">Website</label>
+                  <label className="col-4 col-md-3 col-form-label ">Discord</label>
                   <div className="col">
                     <input className="form-control settingsmediacolor" type="text" />
                   </div>
                 </div>
 
                 <div className="row my-3">
-                  <label className="col-2 col-form-label ">LinkedIn</label>
+                  <label className="col-4 col-md-3 col-form-label ">Website</label>
+                  <div className="col">
+                    <input className="form-control settingsmediacolor" type="text" />
+                  </div>
+                </div>
+
+                <div className="row my-3">
+                  <label className="col-4 col-md-3 col-form-label ">LinkedIn</label>
                   <div className="col">
                     <input className="form-control settingsmediacolor" type="text" />
                   </div>
@@ -147,12 +146,11 @@ export default function Settings() {
 
             <fieldset className="row border-bottom">
               <label className="col-4 col-form-label">Miscellaneous</label>
-              <div className="col-5">
-
+              <div style={{ boxSizing: 'content-box' }} className=" col-11 col-lg-5 col-md-7">
                 <div className="row my-3">
                   {/** col-form-label aligns text to center, form-label does nothing */}
-                  <label className="col-2 col-form-label ">Gender</label>
-                  <div className="col ">
+                  <label className="col-4 col-md-3 col-form-label ">Gender</label>
+                  <div className="col">
                     <select className="form-select" aria-label="Default select example">
                       <option selected value="1">Prefer not to say</option>
                       <option value="2">Female</option>
@@ -162,20 +160,20 @@ export default function Settings() {
                 </div>
 
                 <div className="row my-3">
-                  <label className="col-2 col-form-label ">Location</label>
+                  <label className="col-4 col-md-3 col-form-label ">Location</label>
                   <div className="col">
                     <input className="form-control settingsmediacolor" type="text" />
                   </div>
                 </div>
 
                 <div className="row my-3">
-                  <label className="col-2 col-form-label ">Interests</label>
+                  <label className="col-4 col-md-3  col-form-label ">Interests</label>
                   <div className="col">
                     <textarea placeholder="max 250 characters" maxLength={250} className="form-control my-3" rows="6" />
                   </div>
                 </div>
                 <div className="row my-3">
-                  <label className="col-2 col-form-label ">Tickers</label>
+                  <label className="col-4 col-md-3 col-form-label ">Tickers</label>
                   <div className="col">
                     <input type="text" className="form-control" placeholder="choose 3 tickers seperated by commas" onChange={(e) => setTicker(e.target.value)} />
                   </div>
