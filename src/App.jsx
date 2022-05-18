@@ -19,6 +19,7 @@ import UserDashboard from './components/UserDashboard';
 import Members from './components/MembersPagination';
 import Settings from './components/Settings';
 import ForgetPassword from './components/ForgetPassword';
+import ResetPasswordPage from './components/ResetPasswordPage';
 // app > index
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <Route path="/userDashboard/settings/:username-:id" element={<Settings />} />
           <Route path="/signup=success" element={<PrivateRoute><SuccessSignUp /></PrivateRoute>} />
           <Route path="/lostpassword" element={<ForgetPassword />} />
+          <Route path="/resetpassword/token=:tokenid" element={<ResetPasswordPage />} />
 
         </Routes>
 
