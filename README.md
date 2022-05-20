@@ -12,6 +12,7 @@ Upgrade ✔️<br />
 About ✔️<br />
 Search<br />
 Home<br />
+postsTable<br/>
 Mobile Friendly<br />
 User Dashboard✔️<br />
 Sign up/ Sign out✔️<br />
@@ -20,6 +21,7 @@ Settings✔️<br />
 Members✔️<br />
 FAQAccourdion✔️<br />
 Forgotpassword+resetPassword✔️<br />
+Userfeedback ✔️<br />
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -2,6 +2,7 @@
 /* eslint-disable react/jsx-indent */
 import React, { Component } from 'react';
 import '../../styling/Forum.css';
+import '../../styling/Tabs.css';
 
 const forumiconsize = {
     fontSize: '28px',
@@ -43,7 +44,7 @@ export default class Forum extends Component {
                                 <i style={forumiconsize} className="bi bi-chat-right-text-fill" />
                             </td>
                             <td>
-                                <h6 className="fw-bold">General Discussions </h6>
+                                <h6 className="fw-bold "><a className="text-decoration-none text-white discussionlink" href="/forum/general-discussion">General Discussions </a></h6>
                                 <p className="summaryfontsize col-md-8">For the general chit-chats. You can post stuff in here that has nothing to do with forums.</p>
                             </td>
                             <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">1</td>

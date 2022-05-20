@@ -20,6 +20,7 @@ import Members from './components/MembersPagination';
 import Settings from './components/Settings';
 import ForgetPassword from './components/ForgetPassword';
 import ResetPasswordPage from './components/ResetPasswordPage';
+import Template from './components/Template';
 // app > index
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
           <Route path="/signup=success" element={<PrivateRoute><SuccessSignUp /></PrivateRoute>} />
           <Route path="/lostpassword" element={<ForgetPassword />} />
           <Route path="/resetpassword/token=:tokenid" element={<ResetPasswordPage />} />
+          <Route path="/forum/:forumname" element={<Template />} />
 
         </Routes>
 

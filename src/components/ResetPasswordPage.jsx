@@ -11,6 +11,7 @@ export default function ResetPasswordPage() {
     const { tokenid } = useParams();
     const [password, setPassword] = useState('');
     const [spinner, setSpinner] = useState('Submit');
+    const [feedback, setFeedback] = useState('');
     const navigate = useNavigate();
     const {
         register, watch, handleSubmit,
@@ -40,12 +41,14 @@ export default function ResetPasswordPage() {
 
         }).then((response) => {
             if (!response.ok) {
-                alert("INVALID FORM. Please Do not clear cache. Try submitting another 'forgot password?' request");
+                setFeedback("INVALID FORM. Please Do not clear cache. Try submitting another 'forgot password?' request");
                 navigate('/');
                 throw new Error(response.status);
             } else {
-                alert('password has been reset');
-                navigate('/login');
+                setFeedback('Password has been successfully reset. Redirecting in 3 seconds...');
+                setTimeout(() => {
+                    navigate('/login');
+                }, '3000');
             }
             ls.flush(true);
         });
@@ -69,7 +72,7 @@ export default function ResetPasswordPage() {
                 >
 
                     <div className="row justify-content-center">
-                        <div className="col-5">
+                        <div className="col-md-5">
                             <h1>Reset Your Password</h1>
                             <p>Strong passwords include numbers, letters and punctuation marks.</p>
                             <div className="mb-3">
@@ -117,6 +120,7 @@ export default function ResetPasswordPage() {
                                 <div className="text-danger">{errors.cPassword?.message}</div>
 
                                 <div className="text-center">
+                                    <div className="text-info">{feedback}</div>
                                     <button className="form-control mt-3 btn btn-outline-info w-25 " type="submit">{spinner}</button>
                                 </div>
                             </div>

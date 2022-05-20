@@ -68,7 +68,7 @@ export default function Settings() {
     fetch(`https://ruibackend.herokuapp.com/users/${id}/profileimage`, {
       method: 'PATCH',
       body: handleFormData(),
-    }).then(() => alert('success!')).then(() => {
+    }).then().then(() => {
       resetKey();
     });
   };

@@ -7,10 +7,13 @@ import emailjs from '@emailjs/browser';
 
 import ls from 'localstorage-slim';
 import randomToken from 'random-token';
+import { useNavigate } from 'react-router-dom';
 
 export default function ForgetPassword() {
     const [resetEmail, setResetEmail] = useState();
     const [mytoken, setmytoken] = useState(randomToken(30));
+    const [feedback, setFeedback] = useState('');
+
     const forms = useRef();
     function handleSubmit(e) {
         e.preventDefault();
@@ -22,15 +25,14 @@ export default function ForgetPassword() {
                 user: arr[pos].id,
             };
             ls.set('token', value, { ttl: 600, encrypt: true });
-            alert('email sent!');
             emailjs.sendForm('service_jo5fr7m', 'template_5rsg6am', forms.current, '_2JKIlgBkZKk4qUiI')
                 .then((result) => {
-                    console.log(result.text);
+                    setFeedback('Link Sent! Check your email');
                 }, (error) => {
-                    console.log(error.text);
+
                 });
         } else {
-            alert('email does not exist');
+            setFeedback('No User Associated with Email');
         }
     }
 
@@ -38,9 +40,8 @@ export default function ForgetPassword() {
         <section className="text-white">
             <div className="container ">
                 <div id="backgroundColorDash" className="card card-body">
-
                     <div className="row justify-content-center">
-                        <div className="col-7">
+                        <div className="col-md-7">
                             <h1 className="text-white text-center mb-5"> LOST YOUR PASSWORD?</h1>
                             <p className="text-white">
                                 If you've lost your password, you can use this form to reset it. Enter your username or email address in the field below.
@@ -57,6 +58,7 @@ export default function ForgetPassword() {
                                 <label className="form-label">Enter Email</label>
                                 <input type="email" name="email" className="form-control" placeholder="Email" onChange={(e) => setResetEmail(e.target.value)} />
                                 <input name="message" defaultValue={`https://rui-web-app.vercel.app/resetpassword/token=${mytoken}`} className="d-none" />
+                                <div className="text-warning">{feedback}</div>
                                 <button className="form-control mt-3 btn btn-outline-info mb-5" type="submit">Submit</button>
                             </form>
 
