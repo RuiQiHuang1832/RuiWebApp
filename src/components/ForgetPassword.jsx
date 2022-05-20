@@ -3,20 +3,32 @@
 /* eslint-disable react/jsx-indent */
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState, useRef } from 'react';
-import axios from 'axios';
+import emailjs from '@emailjs/browser';
+
 import ls from 'localstorage-slim';
 import randomToken from 'random-token';
-// http://localhost:8080/users/{id}/password
+
 export default function ForgetPassword() {
     const [resetEmail, setResetEmail] = useState();
+    const [mytoken, setmytoken] = useState(randomToken(30));
     const forms = useRef();
     function handleSubmit(e) {
         e.preventDefault();
         const arr = ls.get('key', { decrypt: true });
         const pos = arr.map((event) => event.email).indexOf(resetEmail);
         if (pos !== -1) {
+            const value = {
+                tokenIDVALUE: mytoken,
+                user: arr[pos].id,
+            };
+            ls.set('token', value, { ttl: 600, encrypt: true });
             alert('email sent!');
-            console.log(`localhost:3000/resetpassword/token=${randomToken(14)}`);
+            emailjs.sendForm('service_jo5fr7m', 'template_5rsg6am', forms.current, '_2JKIlgBkZKk4qUiI')
+                .then((result) => {
+                    console.log(result.text);
+                }, (error) => {
+                    console.log(error.text);
+                });
         } else {
             alert('email does not exist');
         }
@@ -43,7 +55,8 @@ export default function ForgetPassword() {
                             </p>
                             <form ref={forms} onSubmit={handleSubmit}>
                                 <label className="form-label">Enter Email</label>
-                                <input type="text" className="form-control" placeholder="Email" onChange={(e) => setResetEmail(e.target.value)} />
+                                <input type="email" name="email" className="form-control" placeholder="Email" onChange={(e) => setResetEmail(e.target.value)} />
+                                <input name="message" defaultValue={`https://rui-web-app.vercel.app/resetpassword/token=${mytoken}`} className="d-none" />
                                 <button className="form-control mt-3 btn btn-outline-info mb-5" type="submit">Submit</button>
                             </form>
 
