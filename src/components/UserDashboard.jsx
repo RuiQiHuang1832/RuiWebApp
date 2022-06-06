@@ -1,8 +1,3 @@
-/* eslint-disable react/jsx-closing-tag-location */
-/* eslint-disable react/jsx-indent */
-/* eslint-disable jsx-quotes */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../styling/UserDashboard.css';
@@ -64,14 +59,14 @@ export default function UserDashboard() {
             <div className="row row-cols-2 row-cols-md-2 mb-5 g-4">
               <div className="col">
                 <div className="card card-body text-center pillcolor shadowlg">
-                  <span className=''>0</span>
-                  <span className='' style={{ fontSize: '13px' }}>Reputation</span>
+                  <span className="">0</span>
+                  <span className="" style={{ fontSize: '13px' }}>Reputation</span>
                 </div>
               </div>
               <div className="col">
                 <div className="card card-body text-center pillcolor shadowlg">
-                  <span className=''>0</span>
-                  <span className='' style={{ fontSize: '13px' }}>Likes</span>
+                  <span className="">0</span>
+                  <span className="" style={{ fontSize: '13px' }}>Likes</span>
                 </div>
               </div>
             </div>
@@ -135,8 +130,8 @@ export default function UserDashboard() {
                 <div className="d-inline-flex w-100 justify-content-between fw-bold border-bottom ">
                   <div className="fs-5 ms-2 text-white mb-2">Statistics</div>
                 </div>
-                <div className='row'>
-                  <div className='col-md'>
+                <div className="row">
+                  <div className="col-md">
                     <table className="table text-white">
                       <thead>
                         <tr />
@@ -165,7 +160,7 @@ export default function UserDashboard() {
                       </tbody>
                     </table>
                   </div>
-                  <div className='col-md'>
+                  <div className="col-md">
                     <table className="table text-white">
                       <thead>
                         <tr />

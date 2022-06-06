@@ -21,6 +21,7 @@ import Settings from './components/Settings';
 import ForgetPassword from './components/ForgetPassword';
 import ResetPasswordPage from './components/ResetPasswordPage';
 import Template from './components/Template';
+import NewTopic from './components/NewTopic';
 // app > index
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
           <Route path="/lostpassword" element={<ForgetPassword />} />
           <Route path="/resetpassword/token=:tokenid" element={<ResetPasswordPage />} />
           <Route path="/forum/:forumname" element={<Template />} />
+          <Route path="/post" element={<NewTopic />} />
 
         </Routes>
 

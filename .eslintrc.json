@@ -27,8 +27,9 @@
         "consistent-return": 0,
         "react/jsx-props-no-spreading": "off",
         "jsx-a11y/label-has-associated-control": 0,
-        "react/jsx-indent-props" : 0
-       
+        "indent": "off",
+        "react/jsx-indent": "off",
+        "react/jsx-indent-props": "off"
     }
     
 }

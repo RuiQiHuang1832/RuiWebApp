@@ -1,0 +1,24 @@
+.centered {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.forumbannergeneraldiscussion {
+  background: linear-gradient(to bottom, #0000002e, #000000),
+    url(../images/gendiscussion.png);
+  height: 250px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.backgroundasset {
+  background-image: url(../images/asset.jpg);
+  background-size: cover;
+}
+
+.forumbannerheader {
+  border: solid white !important;
+}

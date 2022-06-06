@@ -59,7 +59,6 @@ export default function ResetPasswordPage() {
     if (tokenid !== lsvalue.tokenIDVALUE) {
         return <div className="text-white">UNKNOWN PAGE</div>;
     }
-
     return (
         <div className="text-white">
             <div className="container ">

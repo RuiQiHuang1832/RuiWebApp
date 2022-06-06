@@ -1,13 +1,37 @@
 @font-face {
-    font-family: Didact Gothic;
-    src: url("../fonts/DidactGothic-Regular.ttf");
-  }
+  font-family: Didact Gothic;
+  src: url("../fonts/DidactGothic-Regular.ttf");
+}
 
+body {
+  font-family: Didact Gothic !important;
+  letter-spacing: 0.1em;
+  background: rgb(31, 32, 40) !important;
+}
 
-  body {
-      font-family:  Didact Gothic !important;
-      letter-spacing: 0.1em;
-      background: rgb(31,32,40) !important;
+.ck-editor__editable {
+  min-height: 300px;
+  background: rgb(31, 32, 40) !important;
+  color: white !important;
+}
 
-  }
+.ck-toolbar {
+  background-color: rgb(31, 32, 40) !important;
+}
 
+.ck-button {
+  color: white !important;
+  font-size: 12px !important;
+}
+
+.ck-button:hover {
+  background-color: rgba(255, 255, 255, 0.149) !important;
+}
+.ck.ck-button.ck-on,
+a.ck.ck-button.ck-on {
+  background: black !important;
+}
+
+.ck-button__label {
+  color: rgb(61, 166, 189) !important;
+}

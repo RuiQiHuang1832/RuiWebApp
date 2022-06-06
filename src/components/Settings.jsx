@@ -1,12 +1,4 @@
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable no-use-before-define */
-/* eslint-disable indent */
-/* eslint-disable no-console */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable react/jsx-closing-tag-location */
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-lone-blocks */
-/* eslint-disable react/jsx-indent */
 import React, { useState, useEffect } from 'react';
 // import defaultImg from '../images/default_large.jpg';
 import ls from 'localstorage-slim';
