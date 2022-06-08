@@ -44,7 +44,7 @@ export default class Forum extends Component {
                                 <i style={forumiconsize} className="bi bi-chat-right-text-fill" />
                             </td>
                             <td>
-                                <h6 className="fw-bold "><a className="text-decoration-none text-white discussionlink" href="/forum/general-discussion">General Discussions </a></h6>
+                                <h6 className="fw-bold "><a className="text-decoration-none text-white discussionlink" href={`/${TITLE}/general-discussion`}>General Discussions </a></h6>
                                 <p className="summaryfontsize col-md-8">For the general chit-chats. You can post stuff in here that has nothing to do with forums.</p>
                             </td>
                             <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">1</td>
@@ -54,7 +54,9 @@ export default class Forum extends Component {
                         <tr>
                             <td className="pb-4 col-1"><i style={forumiconsize} className="bi bi-info-circle-fill" /></td>
                             <td>
-                                <h6 className="fw-bold">Help and Support </h6>
+                                <h6 className="fw-bold">
+                                    <a className="text-decoration-none text-white discussionlink" href={`/${TITLE}/help-and-support`}>Help and Support</a>
+                                </h6>
                                 <p className="summaryfontsize col-md-8">
                                     If you need help with anything
                                     <strong> site-related</strong>
@@ -71,7 +73,13 @@ export default class Forum extends Component {
                                 <i style={forumiconsize} className="bi bi-chat-right-text-fill" />
                             </td>
                             <td>
-                                <h6 className="fw-bold">Feedback and Suggestions </h6>
+                                <h6 className="fw-bold">
+                                    <a className="text-decoration-none text-white discussionlink" href={`/${TITLE}/feedback-suggestions`}>
+                                        {' '}
+                                        Feedback and Suggestions
+                                    </a>
+
+                                </h6>
                                 <p className="summaryfontsize col-md-8">
                                     Leave feedback or post suggestions to improve the sites quality.
                                 </p>

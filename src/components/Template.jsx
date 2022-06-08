@@ -1,11 +1,15 @@
 import React from 'react';
 // import gendiscussion from '../images/gendiscussion.png';
 import '../styling/Template.css';
+import { useParams } from 'react-router-dom';
 // Template for how all forum pages should be built.
 const forumiconsize = {
     fontSize: '28px',
 };
+
 export default function Template() {
+    const { topic, forumname } = useParams();
+
     return (
         <section>
             <div className="container-fluid pt-5">
@@ -22,6 +26,12 @@ export default function Template() {
                                             You can post stuff in here that has nothing to do with
                                             forums.
                                         </p>
+                                    </div>
+                                    <div style={{
+                                        float: 'right', position: 'relative', bottom: '-90px', left: '-20px',
+                                    }}
+                                    >
+                                        <a href={`/${topic}/${forumname}/post`} className="btn btn-outline-light">Start New Topic</a>
                                     </div>
                                 </div>
                                 <div

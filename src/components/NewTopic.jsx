@@ -11,19 +11,19 @@ export default function NewTopic() {
 
                 <div id="backgroundColorDash" className="card ">
 
-                    <div className="d-inline-flex bg-info w-100 p-1 justify-content-between fw-bold backgroundasset">
+                    <div className="d-inline-flex bg-white w-100 p-1 justify-content-between fw-bold backgroundasset">
                         <div className="ms-2 text-black">
                             Posting a New Topic in Cracked Programs
                         </div>
                     </div>
                     {/* THIS IS HOW YOU PUT A BORDER FOR ONLY A SECTION, YOU PUT IT ON THE FORM, AND NOT THE WHOLE CARD LOL */}
-                    <form className="p-3 rounded-0 border border-top-0 border-danger">
+                    <form className="p-3 rounded-0 border border-top-0 border-white">
                         <div className=" col-6 ">
                             <label className="form-label text-white">Topic Title</label>
                             <input
                                 type="text"
                                 style={{ background: 'rgba(0, 0, 0, .2)', color: 'white' }}
-                                className="form-control rounded-0 "
+                                className="form-control rounded-0 shadow-none"
                                 required
                             />
                         </div>
@@ -46,7 +46,7 @@ export default function NewTopic() {
 
                         </div>
                         <div className="text-center">
-                            <button type="submit" className="btn btn-outline-info ">Post New Topic</button>
+                            <button type="submit" className="btn btn-outline-light ">Post New Topic</button>
                         </div>
                     </form>
                 </div>

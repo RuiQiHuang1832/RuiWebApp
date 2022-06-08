@@ -23,6 +23,9 @@ import ResetPasswordPage from './components/ResetPasswordPage';
 import Template from './components/Template';
 import NewTopic from './components/NewTopic';
 // app > index
+function NoMatch() {
+  return (<p className="text-danger">404!</p>);
+}
 
 function App() {
   return (
@@ -31,6 +34,8 @@ function App() {
       <Router>
         <NavigationBar />
         <Routes>
+          <Route path="*" element={<NoMatch />} />
+
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<LoginFunctionComp />} />
@@ -44,8 +49,8 @@ function App() {
           <Route path="/signup=success" element={<PrivateRoute><SuccessSignUp /></PrivateRoute>} />
           <Route path="/lostpassword" element={<ForgetPassword />} />
           <Route path="/resetpassword/token=:tokenid" element={<ResetPasswordPage />} />
-          <Route path="/forum/:forumname" element={<Template />} />
-          <Route path="/post" element={<NewTopic />} />
+          <Route path="/:topic/:forumname" element={<Template />} />
+          <Route path="/:topic/:forumname/post" element={<NewTopic />} />
 
         </Routes>
 
