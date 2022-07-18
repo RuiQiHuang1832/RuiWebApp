@@ -70,7 +70,6 @@ export default function Signup() {
     const userinfo = {
       username, email, hashedPassword, ipaddress,
     };
-    console.log(userinfo);
 
     fetch('https://ruibackend.herokuapp.com/users/add  ', {
       // look at login.js on how to implement login
