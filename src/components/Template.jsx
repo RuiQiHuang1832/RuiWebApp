@@ -1,5 +1,4 @@
 import React from 'react';
-// import gendiscussion from '../images/gendiscussion.png';
 import '../styling/Template.css';
 import { useParams, useLocation } from 'react-router-dom';
 
@@ -7,8 +6,6 @@ import { useParams, useLocation } from 'react-router-dom';
 const forumiconsize = {
     fontSize: '28px',
 };
-
-// const TITLE = 'General Discussion';
 
 export default function Template() {
     const location = useLocation();
@@ -20,25 +17,20 @@ export default function Template() {
                 <section>
                     <div className="container-fluid pt-5">
                         <div className="row justify-content-center">
-                            <div className="col-11 ">
+                            <div className="col-12 col-lg-11 ">
                                 <div id="backgroundColorDash" className="card forumbannerheader">
                                     <div className="card-body">
                                         <div className="forumbannergeneraldiscussion">
                                             <div className="centered text-white text-center fs-3 fw-bold">
                                                 {location.state.name}
-                                                <p style={{ fontSize: '13px' }} className=" fw-normal">
-                                                    For the general chit-chats.
-                                                    <br />
-                                                    You can post stuff in here that has nothing to do with
-                                                    forums.
+                                                <p style={{ fontSize: '13px' }} className="fw-normal mt-2">
+                                                    {location.state.description}
                                                 </p>
+
+                                                <a href={`/${topic}/${forumname}/post`} className="btn btn-outline-light newTopicBtn">Start New Topic</a>
+
                                             </div>
-                                            <div style={{
-                                                float: 'right', position: 'relative', bottom: '-90px', left: '-20px',
-                                            }}
-                                            >
-                                                <a href={`/${topic}/${forumname}/post`} className="btn btn-outline-light">Start New Topic</a>
-                                            </div>
+
                                         </div>
                                         <div
                                             style={{

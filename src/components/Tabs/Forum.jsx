@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable indent */
@@ -18,22 +19,33 @@ const fontsize = {
 const topicOne = 'General Discussion';
 const topicTwo = 'Help And Support';
 const topicThree = 'Feedback And Suggestions';
+const generalDiscussionDescription = 'For the general chit-chats. You can post stuff in here that has nothing to do with forums.';
+const helpAndSupportDescription = `If you need help with anything 
+site-related, this is the right place to ask for help.`;
+const feedbackDescription = 'Leave feedback or post suggestions to improve the sites quality.';
+
 const TITLE = 'Tailwind Forums';
 
 export default function Forum() {
     const navigate = useNavigate();
-
-    const [discussion, setDiscussion] = useState();
-    const [support, setSupport] = useState();
-    const [feedback, setFeedback] = useState();
+    const objTempState = {
+        discussion: 'Loading..',
+        support: 'Loading..',
+        feedback: 'Loading..',
+    };
+    const tempState = ls.get('threadCount') !== null ? ls.get('threadCount') : objTempState;
+    const discussion = tempState.discussion;
+    const support = tempState.support;
+    const feedback = tempState.feedback;
 
     // navigates from homepage to template page
-    const toComponentB = (destination, titleName) => {
-        navigate(`/${TITLE}/${destination}`, { state: { name: titleName } });
+    const toComponentB = (destination, params) => {
+        navigate(`/${TITLE}/${destination}`, { state: { name: params.topic, description: params.description } });
     };
     function getOccurrence(array, value) {
         return array.filter((x) => x.category === value).length;
     }
+
     // grabs the amount of threads and puts it in home screen 'forum"
     useEffect(() => {
         let isMounted = true;
@@ -41,25 +53,24 @@ export default function Forum() {
             .then((response) => response.json())
             .then((data) => {
                 if (isMounted) {
-                    setSupport(getOccurrence(data, topicTwo));
-                    setDiscussion(getOccurrence(data, topicOne));
-                    setFeedback(getOccurrence(data, topicThree));
+                    if (discussion === 'Loading..') {
+                        const supportOccur = getOccurrence(data, topicTwo);
+                        const discussionOccur = getOccurrence(data, topicOne);
+                        const feedbackOccur = getOccurrence(data, topicThree);
+                        const threadCount = {
+                            support: supportOccur,
+                            feedback: feedbackOccur,
+                            discussion: discussionOccur,
+                        };
+                        ls.set('threadCount', threadCount);
+                    }
                 }
-            })
-            // bottom then is make the thread number static so it doesn't disappear for a split second and reappear
-
-            .then(() => {
-                const threadCount = {
-                    support,
-                    feedback,
-                    discussion,
-                };
-                ls.set('threadCount', threadCount, { encrypt: true });
             });
+        // bottom then is make the thread number static so it doesn't disappear for a split second and reappear
         // https://stackoverflow.com/questions/53949393/cant-perform-a-react-state-update-on-an-unmounted-component
         return () => { isMounted = false; };
         // If you pass an empty array ([]), the props and state inside the effect will always have their initial values.
-    }, [support, discussion, feedback]);
+    }, []);
 
     return (
         <div className="p-3">
@@ -85,14 +96,19 @@ export default function Forum() {
                         </td>
                         <td>
                             <h6 className="fw-bold ">
-                                <a role="button" tabIndex="0" className="text-decoration-none text-white discussionlink" onClick={() => toComponentB('general-discussion', topicOne)}>
+                                <a
+                                    role="button"
+                                    tabIndex="0"
+                                    className="text-decoration-none text-white discussionlink"
+                                    onClick={() => toComponentB('general-discussion', { topic: topicOne, description: generalDiscussionDescription })}
+                                >
                                     {topicOne}
                                 </a>
 
                             </h6>
-                            <p className="summaryfontsize col-md-8">For the general chit-chats. You can post stuff in here that has nothing to do with forums.</p>
+                            <p className="summaryfontsize col-md-8">{generalDiscussionDescription}</p>
                         </td>
-                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{ls.get('threadCount', { decrypt: true }).discussion}</td>
+                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{discussion}</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
                     </tr>
@@ -100,16 +116,22 @@ export default function Forum() {
                         <td className="pb-4 col-1"><i style={forumiconsize} className="bi bi-info-circle-fill" /></td>
                         <td>
                             <h6 className="fw-bold">
-                                <a className="text-decoration-none text-white discussionlink" role="button" tabIndex="0" onClick={() => toComponentB('help-and-support', topicTwo)}>{topicTwo}</a>
+                                <a
+                                    className="text-decoration-none text-white discussionlink"
+                                    role="button"
+                                    tabIndex="0"
+                                    onClick={() => toComponentB(
+                                        'help-and-support',
+                                        { topic: topicTwo, description: helpAndSupportDescription },
+                                    )}
+                                >
+                                    {topicTwo}
+
+                                </a>
                             </h6>
-                            <p className="summaryfontsize col-md-8">
-                                If you need help with anything
-                                <strong> site-related</strong>
-                                , this is the right place to ask for help.
-                                Please read our F.A.Q. before posting your questions/support inquires!
-                            </p>
+                            <p className="summaryfontsize col-md-8">{helpAndSupportDescription}</p>
                         </td>
-                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{ls.get('threadCount', { decrypt: true }).support}</td>
+                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{support}</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
                     </tr>
@@ -119,16 +141,21 @@ export default function Forum() {
                         </td>
                         <td>
                             <h6 className="fw-bold">
-                                <a className="text-decoration-none text-white discussionlink" role="button" tabIndex="0" onClick={() => toComponentB('feedback-and-suggestions', topicThree)}>
+                                <a
+                                    className="text-decoration-none text-white discussionlink"
+                                    role="button"
+                                    tabIndex="0"
+                                    onClick={() => toComponentB('feedback-and-suggestions', { topic: topicThree, description: feedbackDescription })}
+                                >
                                     {topicThree}
                                 </a>
 
                             </h6>
                             <p className="summaryfontsize col-md-8">
-                                Leave feedback or post suggestions to improve the sites quality.
+                                {feedbackDescription}
                             </p>
                         </td>
-                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{ls.get('threadCount', { decrypt: true }).feedback}</td>
+                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{feedback}</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
                     </tr>

@@ -1,6 +1,6 @@
 .centered {
   position: relative;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -21,4 +21,11 @@
 
 .forumbannerheader {
   border: solid white !important;
+}
+
+.newTopicBtn {
+  float: right;
+  position: relative;
+  bottom: -40px;
+  left: -20px;
 }

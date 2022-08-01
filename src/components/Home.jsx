@@ -29,6 +29,14 @@ const TITLE = 'Home';
 // let ticker2;
 // let ticker3;
 
+// needed or crashes
+// const threadCount = {
+//   support: 'Loading..',
+//   feedback: 'Loading..',
+//   discussion: 'Loading..',
+// };
+// ls.set('threadCount', threadCount);
+
 export class Home extends Component {
   constructor(props) {
     super(props);
@@ -155,13 +163,13 @@ export class Home extends Component {
                     </li>
                     <li className="nav-item me-3 mb-3 mb-lg-0 border rounded border-2 tabcolor">
                       <a className="nav-link text-white" aria-current="page" data-bs-toggle="pill" href="#Forums" onClick={() => this.setState({ currentpage: 'Gaming' })}>
-                        <i className="bi bi-controller" />
+                        <i className="bi bi-joystick" />
                         &nbsp;Gaming
                       </a>
                     </li>
                     <li className="nav-item me-3 mb-3 mb-lg-0 border rounded border-2 tabcolor">
                       <a className="nav-link text-white" aria-current="page" data-bs-toggle="pill" href="#Forums" onClick={() => this.setState({ currentpage: 'Miscellaneous' })}>
-                        <i className="bi bi-app" />
+                        <i className="bi bi-unity" />
                         &nbsp;Miscellaneous
                       </a>
                     </li>
