@@ -26,8 +26,22 @@ export default function Template() {
                                                 <p style={{ fontSize: '13px' }} className="fw-normal mt-2">
                                                     {location.state.description}
                                                 </p>
-
-                                                <a href={`/${topic}/${forumname}/post`} className="btn btn-outline-light newTopicBtn">Start New Topic</a>
+                                                {/* user must be logged in to post */}
+                                                {localStorage.getItem('user') == null
+                                                    ? (
+                                                        <span
+                                                            className="btn btn-secondary newTopicBtn"
+                                                        >
+                                                            Please log in to post a topic
+                                                        </span>
+                                                    ) : (
+                                                        <a
+                                                            href={`/${topic}/${forumname}/post`}
+                                                            className="btn btn-outline-light newTopicBtn"
+                                                        >
+                                                            Start New Topic
+                                                        </a>
+                                                    )}
 
                                             </div>
 

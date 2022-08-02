@@ -49,7 +49,7 @@ export default class NavigationBar extends Component {
     }
     return (
       <div className="shadow bg-body rounded font-mono">
-        <nav id="navBackgroundColor" className="navbar navbar-expand-lg navbar-dark pt-5 ">
+        <nav id="navBackgroundColor" className="navbar navbar-expand-lg navbar-dark pt-sm-5 pt-4">
           <span className="container-fluid">
             <button id="btnprops" className="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#collapsethis">
               <div style={{ fontSize: '27px' }}>
@@ -63,13 +63,13 @@ export default class NavigationBar extends Component {
             </button>
             {/** for mobile */}
             <h2 className="navbar-brand ms-5  fs-3 fw-bold d-block d-lg-none">
-              <span className="text-white ">Tailwind</span>
+              <NavLink to="/" className="text-white text-decoration-none">Tailwind</NavLink>
             </h2>
 
             <div className="collapse navbar-collapse justify-content-between" id="collapsethis" style={fontSize}>
               {/** for desktop */}
               <h2 className=" ms-5 fs-2 fw-bold d-none d-lg-block ">
-                <span className="text-white ">Tailwind</span>
+                <NavLink to="/" className="text-white text-decoration-none">Tailwind</NavLink>
               </h2>
               <div className="navbar-nav ">
 

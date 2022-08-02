@@ -1,6 +1,5 @@
-
-
 # NOTE
+
 Frontend hosted on Vercel and Backend hosted on Heroku.
 
 **Since heroku is hosted free, there will be a delay while accessing the web app.**
@@ -8,6 +7,7 @@ Frontend hosted on Vercel and Backend hosted on Heroku.
 **Every text you see on the website is placeholders. All text is for the sake of having an example to show. Will be replaced in future releases. ALL design is not finalized**
 
 # TODO (not updated)
+
 Upgrade ✔️<br />
 About ✔️<br />
 Search<br />
@@ -19,9 +19,11 @@ Sign up/ Sign out✔️<br />
 Login✔️<br />
 Settings✔️<br />
 Members✔️<br />
+TemplateForum<br />
 FAQAccourdion✔️<br />
 Forgotpassword+resetPassword✔️<br />
 Userfeedback ✔️<br />
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
