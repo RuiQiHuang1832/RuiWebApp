@@ -16,8 +16,19 @@
 .tabcolor {
   background-color: rgba(0, 0, 0, 0.273);
 }
-.align-items-center {
+.centerAll {
   display: flex;
   align-items: center; /*Aligns vertically center */
   justify-content: center; /*Aligns horizontally center */
+}
+
+.loading {
+  clip-path: inset(0 1.5ch 0 0);
+  animation: l 1s steps(5) infinite;
+}
+
+@keyframes l {
+  to {
+    clip-path: inset(0 -1ch 0 0);
+  }
 }

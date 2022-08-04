@@ -1,5 +1,5 @@
 /* eslint-disable no-lone-blocks */
-import { FingerprintSpinner } from 'react-epic-spinners';
+import { SelfBuildingSquareSpinner } from 'react-epic-spinners';
 import React, { useState, useEffect } from 'react';
 // import defaultImg from '../images/default_large.jpg';
 import ls from 'localstorage-slim';
@@ -51,7 +51,7 @@ export default function Settings() {
     if (loading) {
       return (
         <div>
-          <FingerprintSpinner color="rgb(52,159,182)" />
+          <SelfBuildingSquareSpinner size="50" color="rgb(52,159,182)" className="mb-5" />
           <span className="visually-hidden">Loading...</span>
         </div>
       );
