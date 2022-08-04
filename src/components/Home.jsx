@@ -1,3 +1,4 @@
+/* eslint-disable import/no-mutable-exports */
 /* eslint-disable no-unused-vars */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable react/no-access-state-in-setstate */
@@ -5,6 +6,7 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable react/no-unused-state */
 /* eslint-disable no-dupe-class-members */
+import { FingerprintSpinner } from 'react-epic-spinners';
 import React, { Component } from 'react';
 import '../styling/Home.css';
 import ls from 'localstorage-slim';
@@ -17,6 +19,7 @@ import CurrencyData from './HomeSideColumn/CurrencyData';
 import Announcements from './HomeSideColumn/Announcements';
 import RecentTopics from './HomeSideColumn/RecentTopics';
 
+let isHerokoBusy = true;
 const TITLE = 'Home';
 // const options = {
 //   method: 'GET',
@@ -60,6 +63,8 @@ export class Home extends Component {
         .then((data) => ls.set('key', data, { encrypt: true }))
         .then(() => {
           this.setState({ isBusy: false });
+          isHerokoBusy = this.state.isBusy;
+
           window.location.href = '/';
         });
     }
@@ -110,12 +115,15 @@ export class Home extends Component {
   render() {
     if (this.state.isBusy === true) {
       return (
-        <div>
-          <div className="spinner-border bg-danger text-white" role="status" aria-hidden="true" />
-          <div className="text-white">Loading...Heroku takes a while</div>
+        <div style={{ height: '500px' }} className="align-items-center">
+          <div>
+            <FingerprintSpinner size="150" color="rgb(52,159,182)" />
+            <div className="text-white">Heroku booting...</div>
+          </div>
         </div>
       );
     }
+
     return (
 
       <section className="text-white hugepadding ps-2">
@@ -189,8 +197,9 @@ export class Home extends Component {
           </div>
         </div>
       </section>
+
     );
   }
 }
 
-export default Home;
+export { isHerokoBusy };

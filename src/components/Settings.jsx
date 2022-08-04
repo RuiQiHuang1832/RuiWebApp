@@ -1,4 +1,5 @@
 /* eslint-disable no-lone-blocks */
+import { FingerprintSpinner } from 'react-epic-spinners';
 import React, { useState, useEffect } from 'react';
 // import defaultImg from '../images/default_large.jpg';
 import ls from 'localstorage-slim';
@@ -48,7 +49,12 @@ export default function Settings() {
 
   function displaySpinner() {
     if (loading) {
-      return <div className="spinner-border text-primary" role="status"><span className="visually-hidden">Loading...</span></div>;
+      return (
+        <div>
+          <FingerprintSpinner color="rgb(52,159,182)" />
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      );
     }
     return <> </>;
   }

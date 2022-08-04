@@ -1,21 +1,23 @@
 #homeBackground {
-    background: rgb(31,32,40);
+  background: rgb(31, 32, 40);
 }
 
 .hugepadding {
-    padding-bottom: 25rem;
+  padding-bottom: 25rem;
 }
 
 .nav-pills .nav-link.active {
-    border-radius: 0 !important;
-    background-color: rgba(86, 78, 78, 0.521) !important;
-
-    
+  border-radius: 0 !important;
+  background-color: rgba(86, 78, 78, 0.521) !important;
 }
 .nav-pills .nav-link {
-  
 }
 
 .tabcolor {
-    background-color: rgba(0, 0, 0, 0.273);
+  background-color: rgba(0, 0, 0, 0.273);
+}
+.align-items-center {
+  display: flex;
+  align-items: center; /*Aligns vertically center */
+  justify-content: center; /*Aligns horizontally center */
 }

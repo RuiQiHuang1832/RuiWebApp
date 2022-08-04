@@ -8,7 +8,7 @@ import {
 import NavigationBar from './components/NavigationBar';
 import Footer from './components/Footer';
 import Signup, { simpleAuth } from './components/Signup';
-import Home from './components/Home';
+import { Home, isHerokoBusy } from './components/Home';
 import LoginFunctionComp from './components/Login';
 import Tos from './components/Tos';
 import Faq from './components/Faq';
@@ -54,7 +54,7 @@ function App() {
 
         </Routes>
 
-        <Footer />
+        {isHerokoBusy && <Footer />}
       </Router>
 
     </div>
