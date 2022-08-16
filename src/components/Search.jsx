@@ -29,8 +29,12 @@ export class Search extends Component {
       .then((res) => {
         isBusy = false;
         const { data } = res;
-        const filtered = data.filter((val) => val.title.toLowerCase().includes(this.state.query.toLowerCase()));
-        this.setState({ result: filtered });
+        // if empty space, or leading empty spaces, don't show results found!!
+        if (this.state.query !== '') {
+          const filtered = data.filter((val) => val.title.toLowerCase().includes(this.state.query.toLowerCase()));
+          this.setState({ result: filtered });
+        }
+
         this.mapData();
       });
   };
@@ -87,6 +91,15 @@ export class Search extends Component {
           </div>
           <table>
             <tbody>
+              {/* displays results found if >0 */}
+              {!isBusy && this.state.result.length >= 1 ? (
+                <span className="text-info">
+                  Results Found:
+                  {this.state.result.length}
+
+                </span>
+              ) : ''}
+              {/* lists the actual results or error if <0 */}
               {!isBusy ? this.state.postData : (
                 <tr className="d-flex align-items-center text-white">
                   <td />
