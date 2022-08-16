@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable indent */
 /* eslint-disable react/jsx-indent */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import '../../styling/Forum.css';
 import '../../styling/Tabs.css';
 import { useNavigate } from 'react-router-dom';

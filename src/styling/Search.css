@@ -1,34 +1,31 @@
 .searchbackgroundcolor {
-    background: rgb(31,32,40);
+  background: rgb(31, 32, 40);
 }
 
 .spacing-form {
-    padding-top: 200px;
-   
-
-
+  padding-top: 200px;
 }
 
 .searchstuff {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index:9;
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9;
 }
 
- .input-group-prepend {
-    position: absolute;
-    right: 4px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index:9;
-
-  
-  
+.input-group-prepend {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9;
 }
 
 .textindented {
-    text-indent: 25px; 
+  text-indent: 25px !important;
 }
 
+.colorred {
+  color: red;
+}
