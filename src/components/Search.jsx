@@ -23,6 +23,10 @@ export class Search extends Component {
   }
 
   handleSearch = (e) => {
+    // intial clear any remaining search from previous result
+    this.state.postData = '';
+    this.state.result = [];
+    // then set a new state
     this.setState({ spinnerLogin: <div className="spinner-border spinner-border-sm" role="status" /> });
     e.preventDefault();
     axios.get('https://ruibackend.herokuapp.com/post-data')
