@@ -1,3 +1,4 @@
+/* eslint-disable react/style-prop-object */
 /* eslint-disable react/no-access-state-in-setstate */
 import React, { Component } from 'react';
 import '../styling/Search.css';
@@ -6,6 +7,9 @@ import axios from 'axios';
 const TITLE = 'Search';
 let isBusy = true;
 const SEARCH = 'Search';
+const forumiconsize = {
+  fontSize: '28px',
+};
 
 export class Search extends Component {
   constructor(props) {
@@ -49,15 +53,37 @@ export class Search extends Component {
         postData:
           (
             <tr className="text-danger">
-              <td>0 Results Found</td>
+              <td colSpan={2}>Results Found: 0</td>
+
             </tr>
+
           ),
       });
     } else {
       const postData = this.state.result.map((obj) => (
-        <tr className="text-white" key={obj.id}>
-          <td>{obj.title}</td>
+        <tr key={obj.id}>
+          <td style={forumiconsize} className="pb-4">
+            <i className="bi bi-lock-fill" />
+          </td>
+          <td>
+            <h6>
+              {obj.title}
+              <span className="text-muted" style={{ fontSize: '11px' }}>&nbsp;&nbsp;&nbsp; 3 weeks ago</span>
+            </h6>
+            <p className="summaryfontsize col-md-8">Started By: Ben</p>
+          </td>
+          <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
+            3
+            <p className="summaryfontsize">Replies</p>
+
+          </td>
+          <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
+            0
+            <p className="summaryfontsize">Views</p>
+          </td>
+
         </tr>
+
       ));
       this.setState({ postData });
     }
@@ -68,11 +94,11 @@ export class Search extends Component {
   render() {
     return (
 
-      <div className="searchbackgroundcolor">
-        <div className="container vh-100 ">
+      <div className="searchbackgroundcolor ">
+        <div className="container ">
           <div className="row justify-content-center  ">
-            <div className="col  ">
-              <form className="d-flex spacing-form " onSubmit={this.handleSearch}>
+            <div className="col">
+              <form className="d-flex spacing-form pb-1" onSubmit={this.handleSearch}>
                 <div className="input-group">
                   <div className="searchstuff">
                     <i className="bi bi-search" />
@@ -90,20 +116,32 @@ export class Search extends Component {
                   </div>
                 </div>
               </form>
+
             </div>
 
           </div>
-          <table>
-            <tbody>
-              {/* displays results found if >0 */}
-              {!isBusy && this.state.result.length >= 1 ? (
-                <span className="text-info">
-                  Results Found:
-                  {this.state.result.length}
+          {/* displays results found if >0 */}
+          {!isBusy && this.state.result.length >= 1 ? (
+            <span className="text-info pt-3 d-block text-center">
+              Results Found:&nbsp;
+              {this.state.result.length}
 
-                </span>
-              ) : ''}
+            </span>
+          ) : ''}
+
+          <table style={{ paddingBottom: '14rem' }} className="table align-middle table-borderless ">
+            <thead className="text-white ">
+              <tr>
+                <th style={{ width: '2%' }} className="col border-bottom "> </th>
+                <th className="col-6 border-bottom "> </th>
+                <th className="col-2 text-center border-bottom d-none d-lg-table-cell d-md-table-cell d-xl-table-cell"> </th>
+                <th className="text-center border-bottom d-none d-lg-table-cell d-md-table-cell d-xl-table-cell" style={{ width: '13%' }}> </th>
+                <th className="text-center border-bottom d-none d-lg-table-cell d-md-table-cell d-xl-table-cell"> </th>
+              </tr>
+            </thead>
+            <tbody className="text-white ">
               {/* lists the actual results or error if <0 */}
+
               {!isBusy ? this.state.postData : (
                 <tr className="d-flex align-items-center text-white">
                   <td />
@@ -112,6 +150,7 @@ export class Search extends Component {
             </tbody>
 
           </table>
+
         </div>
 
       </div>

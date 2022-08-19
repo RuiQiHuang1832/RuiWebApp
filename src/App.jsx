@@ -53,7 +53,6 @@ function App() {
           <Route path="/:topic/:forumname/post" element={<NewTopic />} />
 
         </Routes>
-
         {isHerokoBusy && <Footer />}
       </Router>
 
