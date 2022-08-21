@@ -1,6 +1,0 @@
-// Styling + serach is basically done just need to fix some stuff
-
-//VALIDATEDOMNESTING WHITESPACE TEXT NODES ->> CONSOLE ERROR ->> Fix this.
-
-/* eslint-disable react/no-access-state-in-setstate */ < --fix htis on serach
-

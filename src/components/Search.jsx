@@ -1,12 +1,11 @@
 /* eslint-disable react/style-prop-object */
-/* eslint-disable react/no-access-state-in-setstate */
+
 import React, { Component } from 'react';
 import '../styling/Search.css';
 import axios from 'axios';
 
 const TITLE = 'Search';
 let isBusy = true;
-const SEARCH = 'Search';
 const forumiconsize = {
   fontSize: '28px',
 };
@@ -17,8 +16,7 @@ export class Search extends Component {
     this.state = {
       query: '',
       result: [],
-      spinnerLogin: SEARCH,
-
+      spinnerLogin: TITLE,
     };
   }
 
@@ -28,7 +26,7 @@ export class Search extends Component {
 
   handleSearch = (e) => {
     // intial clear any remaining search from previous result
-    this.state.postData = '';
+    this.state.postData = <tr />;
     this.state.result = [];
     // then set a new state
     this.setState({ spinnerLogin: <div className="spinner-border spinner-border-sm" role="status" /> });
@@ -54,41 +52,39 @@ export class Search extends Component {
           (
             <tr className="text-danger">
               <td colSpan={2}>Results Found: 0</td>
-
             </tr>
-
           ),
       });
     } else {
-      const postData = this.state.result.map((obj) => (
-        <tr key={obj.id}>
-          <td style={forumiconsize} className="pb-4">
-            <i className="bi bi-lock-fill" />
-          </td>
-          <td>
-            <h6>
-              {obj.title}
-              <span className="text-muted" style={{ fontSize: '11px' }}>&nbsp;&nbsp;&nbsp; 3 weeks ago</span>
-            </h6>
-            <p className="summaryfontsize col-md-8">Started By: Ben</p>
-          </td>
-          <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
-            3
-            <p className="summaryfontsize">Replies</p>
+      this.setState((previousState) => {
+        const postData = previousState.result.map((obj) => (
+          <tr key={obj.id}>
+            <td style={forumiconsize} className="pb-4">
+              <i className="bi bi-lock-fill" />
+            </td>
+            <td>
+              <h6>
+                {obj.title}
+                <span className="text-muted" style={{ fontSize: '11px' }}>&nbsp;&nbsp;&nbsp; 3 weeks ago</span>
+              </h6>
+              <p className="summaryfontsize col-md-8">Started By: Ben</p>
+            </td>
+            <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
+              3
+              <p className="summaryfontsize">Replies</p>
+            </td>
+            <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
+              0
+              <p className="summaryfontsize">Views</p>
+            </td>
+          </tr>
 
-          </td>
-          <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
-            0
-            <p className="summaryfontsize">Views</p>
-          </td>
-
-        </tr>
-
-      ));
-      this.setState({ postData });
+        ));
+        return ({ postData });
+      });
     }
 
-    this.setState({ spinnerLogin: SEARCH });
+    this.setState({ spinnerLogin: TITLE });
   }
 
   render() {
@@ -139,14 +135,9 @@ export class Search extends Component {
                 <th className="text-center border-bottom d-none d-lg-table-cell d-md-table-cell d-xl-table-cell"> </th>
               </tr>
             </thead>
-            <tbody className="text-white ">
+            <tbody className="text-white">
               {/* lists the actual results or error if <0 */}
-
-              {!isBusy ? this.state.postData : (
-                <tr className="d-flex align-items-center text-white">
-                  <td />
-                </tr>
-              )}
+              {!isBusy ? this.state.postData : <tr />}
             </tbody>
 
           </table>

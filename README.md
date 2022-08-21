@@ -10,7 +10,7 @@ Frontend hosted on Vercel and Backend hosted on Heroku.
 
 Upgrade ✔️<br />
 About ✔️<br />
-Search✔️<br />
+Search✔️ Officially Done<br />
 Home<br />
 postsTable<br/>
 Mobile Friendly<br />
