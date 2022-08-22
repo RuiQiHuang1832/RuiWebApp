@@ -1,6 +1,9 @@
-import React from 'react';
+/* eslint-disable prefer-const */
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from 'react';
 import '../styling/Template.css';
 import { useParams, useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 // Template for how all forum pages should be built.
 const forumiconsize = {
@@ -10,12 +13,62 @@ const forumiconsize = {
 export default function Template() {
     const location = useLocation();
     const { topic, forumname } = useParams();
+    let threadIdentifier = {};
+    const [currentTopic, setCurrentTopic] = useState();
+    const [postData, setPostData] = useState();
+    // could be coded better
+    function convertForumNameToCategory() {
+        if (forumname === 'general-discussion') {
+            setCurrentTopic('General Discussion');
+        } else if (forumname === 'help-and-support') {
+            setCurrentTopic('Help And Support');
+        } else if (forumname === 'feedback-and-suggestions') {
+            setCurrentTopic('Feedback And Suggestions');
+        }
+    }
+    useEffect(() => {
+        convertForumNameToCategory();
+        axios.get('https://ruibackend.herokuapp.com/post-data')
+            .then((res) => {
+                const { data } = res;
+                const filtered = data.filter((val) => val.category.includes(currentTopic));
+                threadIdentifier = filtered;
+            }).then(() => {
+                setPostData(threadIdentifier.map((obj) => (
+                    <tr key={obj.id}>
+                        <td style={forumiconsize} className="pb-4 m-0">
+                            <i className="bi bi-lock-fill" />
+                        </td>
+                        <td>
+                            <h6 className="">
+                                <a className="text-decoration-none text-white" href={`/${obj.id}-${obj.title}`}>{obj.title}</a>
+                                <span className="text-muted" style={{ fontSize: '11px' }}>&nbsp;&nbsp;&nbsp; 3 weeks ago</span>
+                            </h6>
+                            <p className="summaryfontsize col-md-8">Started By: Ben</p>
+                        </td>
+                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
+                            3
+
+                            <p className="summaryfontsize">Replies</p>
+
+                        </td>
+                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
+                            0
+
+                            <p className="summaryfontsize">Views</p>
+                        </td>
+
+                    </tr>
+                )));
+            });
+    }, [currentTopic]);
 
     return (
         location.state === null ? <div className="text-white">404! PAGE NOT FOUND. PLEASE REFRESH PAGE. URL IS NOT A PAGE</div>
             : (
                 <section>
                     <div className="container-fluid pt-5">
+
                         <div className="row justify-content-center">
                             <div className="col-12 col-lg-11 ">
                                 <div id="backgroundColorDash" className="card forumbannerheader">
@@ -84,83 +137,7 @@ export default function Template() {
                                                 </tr>
                                             </thead>
                                             <tbody className="text-white">
-                                                <tr>
-                                                    <td style={forumiconsize} className="pb-4 m-0">
-                                                        <i className="bi bi-lock-fill" />
-                                                    </td>
-                                                    <td>
-                                                        <h6 className="">
-
-                                                            Thread #1
-                                                            <span className="text-muted" style={{ fontSize: '11px' }}>&nbsp;&nbsp;&nbsp; 3 weeks ago</span>
-                                                        </h6>
-                                                        <p className="summaryfontsize col-md-8">Started By: Ben</p>
-                                                    </td>
-                                                    <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
-                                                        3
-
-                                                        <p className="summaryfontsize">Replies</p>
-
-                                                    </td>
-                                                    <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
-                                                        0
-
-                                                        <p className="summaryfontsize">Views</p>
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td style={forumiconsize} className="pb-4 ">
-                                                        <i className="bi bi-lock-fill" />
-                                                    </td>
-                                                    <td>
-                                                        <h6 className="">
-
-                                                            Thread #2
-
-                                                            <span className="text-muted" style={{ fontSize: '11px' }}>&nbsp;&nbsp;&nbsp; 3 weeks ago</span>
-
-                                                        </h6>
-                                                        <p className="summaryfontsize col-md-8">
-                                                            Started By: Ben
-                                                        </p>
-                                                    </td>
-                                                    <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
-                                                        1
-                                                        <p className="summaryfontsize">Replies</p>
-                                                    </td>
-                                                    <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
-                                                        0
-
-                                                        <p className="summaryfontsize">Views</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style={forumiconsize} className="pb-4">
-                                                        <i className="bi bi-lock-fill" />
-                                                    </td>
-                                                    <td>
-                                                        <h6 className="">
-                                                            Thread #3
-                                                            <span className="text-muted" style={{ fontSize: '11px' }}>&nbsp;&nbsp;&nbsp; 3 weeks ago</span>
-
-                                                        </h6>
-                                                        <p className="summaryfontsize col-md-8">
-                                                            Started By: Ben
-
-                                                        </p>
-                                                    </td>
-                                                    <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
-                                                        1
-
-                                                        <p className="summaryfontsize">Replies</p>
-                                                    </td>
-                                                    <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
-                                                        0
-
-                                                        <p className="summaryfontsize">Views</p>
-                                                    </td>
-                                                </tr>
+                                                {postData}
                                             </tbody>
                                         </table>
                                     </div>
