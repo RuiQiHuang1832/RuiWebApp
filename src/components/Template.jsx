@@ -1,5 +1,8 @@
+/* eslint-disable camelcase */
+/* eslint-disable no-mixed-operators */
 /* eslint-disable prefer-const */
 /* eslint-disable no-unused-vars */
+import { SelfBuildingSquareSpinner } from 'react-epic-spinners';
 import React, { useEffect, useState } from 'react';
 import '../styling/Template.css';
 import { useParams, useLocation } from 'react-router-dom';
@@ -15,7 +18,16 @@ export default function Template() {
     const { topic, forumname } = useParams();
     let threadIdentifier = {};
     const [currentTopic, setCurrentTopic] = useState();
-    const [postData, setPostData] = useState();
+    const [postData, setPostData] = useState(
+        <tr className="">
+            <td colSpan={5}>
+                <div className="d-flex justify-content-center">
+                    <SelfBuildingSquareSpinner size={50} color="rgb(52,159,182)" className="mt-2" />
+                </div>
+            </td>
+        </tr>,
+    );
+
     // could be coded better
     function convertForumNameToCategory() {
         if (forumname === 'general-discussion') {
@@ -26,6 +38,7 @@ export default function Template() {
             setCurrentTopic('Feedback And Suggestions');
         }
     }
+
     useEffect(() => {
         convertForumNameToCategory();
         axios.get('https://ruibackend.herokuapp.com/post-data')
@@ -35,6 +48,7 @@ export default function Template() {
                 threadIdentifier = filtered;
             }).then(() => {
                 setPostData(threadIdentifier.map((obj) => (
+
                     <tr key={obj.id}>
                         <td style={forumiconsize} className="pb-4 m-0">
                             <i className="bi bi-lock-fill" />
@@ -59,16 +73,19 @@ export default function Template() {
                         </td>
 
                     </tr>
+
                 )));
             });
-    }, [currentTopic]);
-
+    }, [currentTopic, postData]);
+    // disregard the double () (), its apparently the return
+    useEffect(() => () => {
+        setPostData(); // prevents no-op memory leak error but its fixed in react 18
+    }, []);
     return (
         location.state === null ? <div className="text-white">404! PAGE NOT FOUND. PLEASE REFRESH PAGE. URL IS NOT A PAGE</div>
             : (
                 <section>
                     <div className="container-fluid pt-5">
-
                         <div className="row justify-content-center">
                             <div className="col-12 col-lg-11 ">
                                 <div id="backgroundColorDash" className="card forumbannerheader">
@@ -126,6 +143,7 @@ export default function Template() {
                                             </div>
 
                                         </div>
+
                                         <table className="table align-middle table-borderless">
                                             <thead className="text-white ">
                                                 <tr>
@@ -140,6 +158,7 @@ export default function Template() {
                                                 {postData}
                                             </tbody>
                                         </table>
+
                                     </div>
                                 </div>
                             </div>

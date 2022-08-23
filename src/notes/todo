@@ -1,7 +1,18 @@
 working on Thread.jsx Right now.
 
-finishing mapping it. have not done any bug test/ loading screens yet
+finishing mapping it. have not done any bug test
 
 so still needs optimization + tweaking + maybe styling and bug test.
 
 still need to mess around with it
+
+not gonna do acordiion, proven i could do it already
+not gonna do fast loading with LS, proven i could do it already.
+
+still need to do created at, started by, replies, (maybe) views. and the whole thread page.
+pinned stuff as well.
+etc..
+
+---
+
+// work on 'created at'
