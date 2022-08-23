@@ -9,10 +9,13 @@ still need to mess around with it
 not gonna do acordiion, proven i could do it already
 not gonna do fast loading with LS, proven i could do it already.
 
-still need to do created at, started by, replies, (maybe) views. and the whole thread page.
+still need to do , replies, (maybe) views. and the whole thread page.
 pinned stuff as well.
 etc..
 
 ---
 
-// work on 'created at'
+limit title,
+
+organize so that newest threads are always first
+no null titles/bodies

@@ -18,6 +18,7 @@ export default function Template() {
     const { topic, forumname } = useParams();
     let threadIdentifier = {};
     const [currentTopic, setCurrentTopic] = useState();
+
     const [postData, setPostData] = useState(
         <tr className="">
             <td colSpan={5}>
@@ -56,9 +57,16 @@ export default function Template() {
                         <td>
                             <h6 className="">
                                 <a className="text-decoration-none text-white" href={`/${obj.id}-${obj.title}`}>{obj.title}</a>
-                                <span className="text-muted" style={{ fontSize: '11px' }}>&nbsp;&nbsp;&nbsp; 3 weeks ago</span>
+                                <span className="text-muted" style={{ fontSize: '11px' }}>
+                                    &emsp;
+                                    {obj.createdAt}
+                                </span>
                             </h6>
-                            <p className="summaryfontsize col-md-8">Started By: Ben</p>
+                            <p className="summaryfontsize col-md-8">
+                                Started By:
+                                {' '}
+                                {obj.authorId}
+                            </p>
                         </td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
                             3
@@ -76,7 +84,7 @@ export default function Template() {
 
                 )));
             });
-    }, [currentTopic, postData]);
+    }, [currentTopic]);
     // disregard the double () (), its apparently the return
     useEffect(() => () => {
         setPostData(); // prevents no-op memory leak error but its fixed in react 18

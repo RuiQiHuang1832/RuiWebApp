@@ -24,7 +24,9 @@ export default function NewTopic() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ body: text, title, category: titleTopic }),
+            body: JSON.stringify({
+                body: text, title, category: titleTopic, authorId: localStorage.getItem('user'),
+            }),
         }).then((response) => {
             if (response.ok) {
                 console.log('Successfully posted');

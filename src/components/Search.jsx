@@ -65,9 +65,18 @@ export class Search extends Component {
             <td>
               <h6>
                 {obj.title}
-                <span className="text-muted" style={{ fontSize: '11px' }}>&nbsp;&nbsp;&nbsp; 3 weeks ago</span>
+                <span className="text-muted" style={{ fontSize: '11px' }}>
+                  {' '}
+                  &emsp;
+                  {obj.createdAt}
+
+                </span>
               </h6>
-              <p className="summaryfontsize col-md-8">Started By: Ben</p>
+              <p className="summaryfontsize col-md-8">
+                Started By:
+                {' '}
+                {obj.authorId}
+              </p>
             </td>
             <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
               3
