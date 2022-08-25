@@ -46,7 +46,7 @@ export default function Template() {
             .then((res) => {
                 const { data } = res;
                 const filtered = data.filter((val) => val.category.includes(currentTopic));
-                threadIdentifier = filtered;
+                threadIdentifier = filtered.reverse();
             }).then(() => {
                 setPostData(threadIdentifier.map((obj) => (
 
@@ -152,7 +152,7 @@ export default function Template() {
 
                                         </div>
 
-                                        <table className="table align-middle table-borderless">
+                                        <table className="table align-middle table-borderless mb-0">
                                             <thead className="text-white ">
                                                 <tr>
                                                     <th style={{ width: '2%' }} className="col border-bottom "> </th>

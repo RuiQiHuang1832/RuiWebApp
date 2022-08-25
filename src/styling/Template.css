@@ -20,7 +20,9 @@
 }
 
 .forumbannerheader {
-  border: solid white !important;
+  border: solid rgb(250, 250, 250) !important;
+  border-width: 1px !important;
+  border-radius: 0% !important;
 }
 
 .newTopicBtn {

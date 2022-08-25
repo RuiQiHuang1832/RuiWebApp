@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 export default function NewTopic() {
-    const [text, setText] = useState();
+    const [text, setText] = useState('');
     const [title, setTitle] = useState();
     const { topic, forumname } = useParams();
     const navigate = useNavigate();
@@ -59,6 +59,7 @@ export default function NewTopic() {
                                         style={{ background: 'rgba(0, 0, 0, .2)', color: 'white' }}
                                         className="form-control rounded-0 shadow-none"
                                         required
+                                        maxLength={70}
                                     />
                                 </div>
 
@@ -76,11 +77,15 @@ export default function NewTopic() {
                                         onFocus={(event, editor) => {
                                             console.log('Focus.', editor);
                                         }}
+
                                     />
 
                                 </div>
                                 <div className="text-center">
-                                    <button type="submit" className="btn btn-outline-light">Post New Topic</button>
+                                    {text === ''
+                                        ? <button type="submit" className="btn btn-outline-light" disabled>Post New Topic</button>
+                                        : <button type="submit" className="btn btn-outline-light">Post New Topic</button>}
+
                                 </div>
                             </form>
                         </div>

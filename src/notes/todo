@@ -15,7 +15,9 @@ etc..
 
 ---
 
-limit title,
+members page has links to each pagination eg. /members/2, memebers/3 for each page
 
-organize so that newest threads are always first
-no null titles/bodies
+//do breadcrumb
+eg. Nulled -> Leaks -> Cracked Programs.
+// make an admin account
+// admin account can delete post and ban users;
