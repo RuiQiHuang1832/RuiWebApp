@@ -1,10 +1,3 @@
-working on Thread.jsx Right now.
-
-finishing mapping it. have not done any bug test
-
-so still needs optimization + tweaking + maybe styling and bug test.
-
-still need to mess around with it
 
 not gonna do acordiion, proven i could do it already
 not gonna do fast loading with LS, proven i could do it already.
@@ -15,9 +8,14 @@ etc..
 
 ---
 
-members page has links to each pagination eg. /members/2, memebers/3 for each page
 
 //do breadcrumb
 eg. Nulled -> Leaks -> Cracked Programs.
 // make an admin account
 // admin account can delete post and ban users;
+
+announcment main page/recently added needs to be updated
+
+fix on mobile, long text goes over the page
+
+if user goes beyond 5 pages in members page, show an page error, dont just display nothing..

@@ -15,10 +15,11 @@ export default class MembersPagination extends Component {
         this.state = {
             offset: 0,
             data: [],
-            perPage: 10,
+            perPage: 8,
             currentPage: 0,
-            pageCount: 0,
+            pageCount: 5,
             isBusy: false,
+            page: window.location.pathname.split('/')[2],
         };
         this.handlePageClick = this.handlePageClick.bind(this);
     }
@@ -47,7 +48,7 @@ export default class MembersPagination extends Component {
 
     // named arrow function
     handlePageClick(e) {
-        console.log(e);
+        window.history.replaceState(null, '', `/members/${e.selected + 1}`);
         const selectedPage = e.selected;
         const offset = selectedPage * this.state.perPage;
 
@@ -108,6 +109,7 @@ export default class MembersPagination extends Component {
                                     nextClassName="page-item "
                                     nextLinkClassName="page-link bgcolor border-0 "
                                     activeClassName="page-item active "
+                                    initialPage={this.state.page - 1}
 
                                 />
                             </nav>

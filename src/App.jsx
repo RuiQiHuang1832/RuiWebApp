@@ -44,7 +44,7 @@ function App() {
           <Route path="/faq" element={<Faq />} />
           <Route path="/upgrade" element={<Upgrade />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/members" element={<Members />} />
+          <Route path="/members/:page" element={<Members />} />
           <Route path="/userDashboard/:username-:id" element={<UserDashboard />} />
           <Route path="/userDashboard/settings/:username-:id" element={<Settings />} />
           <Route path="/signup=success" element={<PrivateRoute><SuccessSignUp /></PrivateRoute>} />
