@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable indent */
 /* eslint-disable react/jsx-indent */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../styling/Forum.css';
 import '../../styling/Tabs.css';
 import { useNavigate } from 'react-router-dom';
@@ -38,6 +38,14 @@ export default function Forum() {
     const support = tempState.support;
     const feedback = tempState.feedback;
 
+    const discussionArr = [];
+    const supportArr = [];
+    const feedbackArr = [];
+
+    const [latestDiscussionPost, setlatestDiscussionPost] = useState();
+    const [latestSupportPost, setlatestSupportPost] = useState();
+    const [latestFeedbackPost, setlatestFeedbackPost] = useState();
+
     // navigates from homepage to template page
     const toComponentB = (destination, params) => {
         navigate(`/${TITLE}/${destination}`, { state: { name: params.topic, description: params.description } });
@@ -52,6 +60,18 @@ export default function Forum() {
         fetch('https://ruibackend.herokuapp.com/post-data')
             .then((response) => response.json())
             .then((data) => {
+                data.map((val) => {
+                    if (val.category === topicOne) {
+                        discussionArr.push(val);
+                    } else if (val.category === topicTwo) {
+                        supportArr.push(val);
+                    } else if (val.category === topicThree) {
+                        feedbackArr.push(val);
+                    }
+                });
+                setlatestDiscussionPost(discussionArr[discussionArr.length - 1].title);
+                setlatestSupportPost(supportArr[supportArr.length - 1].title);
+                setlatestFeedbackPost(feedbackArr[feedbackArr.length - 1].title);
                 if (isMounted) {
                     if (discussion === 'Loading..') {
                         const supportOccur = getOccurrence(data, topicTwo);
@@ -78,7 +98,6 @@ export default function Forum() {
                 <h3 className="bg-dark p-3 d-inline-block">{TITLE}</h3>
                 <p>Talk about your favourite movies, series or listen to some music.</p>
             </div>
-
             <table className="table align-middle table-borderless">
                 <thead className="text-white ">
                     <tr style={fontsize}>
@@ -110,7 +129,7 @@ export default function Forum() {
                         </td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{discussion}</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
-                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
+                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{latestDiscussionPost}</td>
                     </tr>
                     <tr>
                         <td className="pb-4 col-1"><i style={forumiconsize} className="bi bi-info-circle-fill" /></td>
@@ -133,7 +152,7 @@ export default function Forum() {
                         </td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{support}</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
-                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
+                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{latestSupportPost}</td>
                     </tr>
                     <tr>
                         <td className="pb-4 col-1">
@@ -157,7 +176,7 @@ export default function Forum() {
                         </td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{feedback}</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
-                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
+                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{latestFeedbackPost}</td>
                     </tr>
                     <tr>
                         <td className="pb-4 col-1"><i style={forumiconsize} className="bi bi-award" /></td>
