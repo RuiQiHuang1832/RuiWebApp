@@ -18,4 +18,9 @@ announcment main page/recently added needs to be updated
 
 fix on mobile, long text goes over the page
 
-still need to do "Last post" which shoudl be easy ->> finished this, just need to style it + make it like my 'threads' column, by caching it so it doesnt keep flickering when i change a different tab and so it doesnt need infinte calls to api
+still need to do "Last post" which shoudl be easy ->> finished this, just need to style it 
+^ I fixed this "last post" and made it way better..
+
+//need to handle large posts like sssssssssssssssssssssss
+//one idea is if the text is longer than 15 words, make it show (...) at the end.
+//still need to link the posts

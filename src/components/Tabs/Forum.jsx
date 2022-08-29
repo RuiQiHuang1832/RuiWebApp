@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable indent */
 /* eslint-disable react/jsx-indent */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import '../../styling/Forum.css';
 import '../../styling/Tabs.css';
 import { useNavigate } from 'react-router-dom';
@@ -33,18 +33,19 @@ export default function Forum() {
         support: 'Loading..',
         feedback: 'Loading..',
     };
+    const objTempStateLastPost = {
+        lastPostDiscussion: 'Loading..',
+        lastPostSupport: 'Loading..',
+        lastPostFeedback: 'Loading..',
+    };
     const tempState = ls.get('threadCount') !== null ? ls.get('threadCount') : objTempState;
-    const discussion = tempState.discussion;
-    const support = tempState.support;
-    const feedback = tempState.feedback;
+    const tempStateLastPost = ls.get('lastPost') !== null ? ls.get('lastPost') : objTempStateLastPost;
+    const { discussion, support, feedback } = tempState;
+    const { lastPostDiscussion, lastPostFeedback, lastPostSupport } = tempStateLastPost;
 
     const discussionArr = [];
     const supportArr = [];
     const feedbackArr = [];
-
-    const [latestDiscussionPost, setlatestDiscussionPost] = useState();
-    const [latestSupportPost, setlatestSupportPost] = useState();
-    const [latestFeedbackPost, setlatestFeedbackPost] = useState();
 
     // navigates from homepage to template page
     const toComponentB = (destination, params) => {
@@ -60,19 +61,27 @@ export default function Forum() {
         fetch('https://ruibackend.herokuapp.com/post-data')
             .then((response) => response.json())
             .then((data) => {
-                data.map((val) => {
-                    if (val.category === topicOne) {
-                        discussionArr.push(val);
-                    } else if (val.category === topicTwo) {
-                        supportArr.push(val);
-                    } else if (val.category === topicThree) {
-                        feedbackArr.push(val);
-                    }
-                });
-                setlatestDiscussionPost(discussionArr[discussionArr.length - 1].title);
-                setlatestSupportPost(supportArr[supportArr.length - 1].title);
-                setlatestFeedbackPost(feedbackArr[feedbackArr.length - 1].title);
                 if (isMounted) {
+                    // for last Post
+                    if (lastPostDiscussion === 'Loading..') {
+                        data.map((val) => {
+                            if (val.category === topicOne) {
+                                discussionArr.push(val);
+                            } else if (val.category === topicTwo) {
+                                supportArr.push(val);
+                            } else if (val.category === topicThree) {
+                                feedbackArr.push(val);
+                            }
+                        });
+
+                        const lastPost = {
+                            lastPostDiscussion: discussionArr[discussionArr.length - 1].title,
+                            lastPostFeedback: feedbackArr[feedbackArr.length - 1].title,
+                            lastPostSupport: supportArr[supportArr.length - 1].title,
+                        };
+                        ls.set('lastPost', lastPost);
+                    }
+                    // for Thread count
                     if (discussion === 'Loading..') {
                         const supportOccur = getOccurrence(data, topicTwo);
                         const discussionOccur = getOccurrence(data, topicOne);
@@ -84,6 +93,12 @@ export default function Forum() {
                         };
                         ls.set('threadCount', threadCount);
                     }
+                }
+            }).then(() => {
+                // makes its so the user now doesn't have to click else where to refresh the page and instead,
+                // it auto refreshes for the user now.
+                if (lastPostDiscussion === 'Loading..' || discussion === 'Loading..') {
+                    window.location.reload();
                 }
             });
         // bottom then is make the thread number static so it doesn't disappear for a split second and reappear
@@ -129,7 +144,7 @@ export default function Forum() {
                         </td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{discussion}</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
-                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{latestDiscussionPost}</td>
+                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{lastPostDiscussion}</td>
                     </tr>
                     <tr>
                         <td className="pb-4 col-1"><i style={forumiconsize} className="bi bi-info-circle-fill" /></td>
@@ -152,7 +167,7 @@ export default function Forum() {
                         </td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{support}</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
-                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{latestSupportPost}</td>
+                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{lastPostSupport}</td>
                     </tr>
                     <tr>
                         <td className="pb-4 col-1">
@@ -176,7 +191,7 @@ export default function Forum() {
                         </td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{feedback}</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
-                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{latestFeedbackPost}</td>
+                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{lastPostFeedback}</td>
                     </tr>
                     <tr>
                         <td className="pb-4 col-1"><i style={forumiconsize} className="bi bi-award" /></td>

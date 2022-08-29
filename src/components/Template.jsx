@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react';
 import '../styling/Template.css';
 import { useParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import ls from 'localstorage-slim';
 
 // Template for how all forum pages should be built.
 const forumiconsize = {
@@ -41,6 +42,10 @@ export default function Template() {
     }
 
     useEffect(() => {
+        // refresh last post from local storage so that it retrieves a new one from DB just in case its updated,
+        // allows me to use cache and api calls without making wasting resources on making useless calls if update is not needed
+        ls.remove('lastPost');
+        ls.remove('threadCount');
         convertForumNameToCategory();
         axios.get('https://ruibackend.herokuapp.com/post-data')
             .then((res) => {
