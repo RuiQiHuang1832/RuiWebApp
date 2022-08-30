@@ -8,6 +8,7 @@ etc..
 
 ---
 
+//Backend heroku ends November 28th, 2022
 
 //do breadcrumb
 eg. Nulled -> Leaks -> Cracked Programs.
@@ -21,6 +22,6 @@ fix on mobile, long text goes over the page
 still need to do "Last post" which shoudl be easy ->> finished this, just need to style it 
 ^ I fixed this "last post" and made it way better..
 
-//need to handle large posts like sssssssssssssssssssssss
-//one idea is if the text is longer than 15 words, make it show (...) at the end.
+
 //still need to link the posts
+//search should show new ones

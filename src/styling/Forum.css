@@ -1,4 +1,11 @@
 .summaryfontsize {
-    font-size: 13px;
-    color: #999999;
+  font-size: 13px;
+  color: #999999;
+}
+
+.nowrapEllipse {
+  width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

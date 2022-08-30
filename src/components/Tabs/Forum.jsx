@@ -142,9 +142,14 @@ export default function Forum() {
                             </h6>
                             <p className="summaryfontsize col-md-8">{generalDiscussionDescription}</p>
                         </td>
-                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{discussion}</td>
-                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
-                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{lastPostDiscussion}</td>
+                        <td aria-label="threads" className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{discussion}</td>
+                        <td aria-label="posts" className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
+                        <td aria-label="last post" className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell ">
+                            <div className="nowrapEllipse">
+                                {lastPostDiscussion}
+                            </div>
+
+                        </td>
                     </tr>
                     <tr>
                         <td className="pb-4 col-1"><i style={forumiconsize} className="bi bi-info-circle-fill" /></td>
@@ -167,7 +172,9 @@ export default function Forum() {
                         </td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{support}</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
-                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{lastPostSupport}</td>
+                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
+                            <div className="nowrapEllipse">{lastPostSupport}</div>
+                        </td>
                     </tr>
                     <tr>
                         <td className="pb-4 col-1">
@@ -191,7 +198,10 @@ export default function Forum() {
                         </td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{feedback}</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
-                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{lastPostFeedback}</td>
+                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
+                            <div className="nowrapEllipse">{lastPostFeedback}</div>
+
+                        </td>
                     </tr>
                     <tr>
                         <td className="pb-4 col-1"><i style={forumiconsize} className="bi bi-award" /></td>
