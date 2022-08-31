@@ -38,7 +38,7 @@ export class Search extends Component {
         // if empty space, or leading empty spaces, don't show results found!!
         if (this.state.query !== '') {
           const filtered = data.filter((val) => val.title.toLowerCase().includes(this.state.query.toLowerCase()));
-          this.setState({ result: filtered });
+          this.setState({ result: filtered.reverse() });
         }
 
         this.mapData();
@@ -100,7 +100,7 @@ export class Search extends Component {
     return (
 
       <div className="searchbackgroundcolor ">
-        <div className="container ">
+        <div style={{ paddingBottom: '14rem' }} className="container ">
           <div className="row justify-content-center  ">
             <div className="col">
               <form className="d-flex spacing-form pb-1" onSubmit={this.handleSearch}>
@@ -127,14 +127,14 @@ export class Search extends Component {
           </div>
           {/* displays results found if >0 */}
           {!isBusy && this.state.result.length >= 1 ? (
-            <span className="text-info pt-3 d-block text-center">
+            <span className="text-info pt-3 d-block text-center mb-2">
               Results Found:&nbsp;
               {this.state.result.length}
 
             </span>
           ) : ''}
 
-          <table style={{ paddingBottom: '14rem' }} className="table align-middle table-borderless ">
+          <table className="table align-middle table-borderless raisedbox">
             <thead className="text-white ">
               <tr>
                 <th style={{ width: '2%' }} className="col border-bottom "> </th>

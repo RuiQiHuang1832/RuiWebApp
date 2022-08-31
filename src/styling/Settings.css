@@ -1,13 +1,25 @@
 .settingsbg {
-    background: rgb(31,32,40);
+  background: rgb(31, 32, 40);
 }
 
 textarea {
-    background-color: rgb(31,32,40) !important;
-    color: white !important;
+  background-color: rgb(31, 32, 40) !important;
+  color: white !important;
 }
 
 .settingsmediacolor {
-    background-color: rgb(31,32,40) !important;
-    color: white !important;
+  background-color: rgb(31, 32, 40) !important;
+  color: white !important;
+}
+
+:root {
+  --elevatedColor: rgb(32, 199, 232);
+}
+
+.raisedbox {
+  padding: 10px;
+  border: 1px solid rgb(15, 15, 20) !important;
+  box-shadow: -1px 1px var(--elevatedColor), -2px 2px var(--elevatedColor),
+    -3px 3px var(--elevatedColor), -4px 4px var(--elevatedColor),
+    -5px 5px var(--elevatedColor), -6px 6px var(--elevatedColor);
 }
