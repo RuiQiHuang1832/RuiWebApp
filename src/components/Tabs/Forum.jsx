@@ -73,11 +73,14 @@ export default function Forum() {
                                 feedbackArr.push(val);
                             }
                         });
+                        const discussionElement = discussionArr[discussionArr.length - 1];
+                        const feedbackElement = feedbackArr[feedbackArr.length - 1];
+                        const supportElement = supportArr[supportArr.length - 1];
 
                         const lastPost = {
-                            lastPostDiscussion: discussionArr[discussionArr.length - 1].title,
-                            lastPostFeedback: feedbackArr[feedbackArr.length - 1].title,
-                            lastPostSupport: supportArr[supportArr.length - 1].title,
+                            lastPostDiscussion: { title: discussionElement.title, id: discussionElement.id },
+                            lastPostFeedback: { title: feedbackElement.title, id: feedbackElement.id },
+                            lastPostSupport: { title: supportElement.title, id: supportElement.id },
                         };
                         ls.set('lastPost', lastPost);
                     }
@@ -146,7 +149,10 @@ export default function Forum() {
                         <td aria-label="posts" className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
                         <td aria-label="last post" className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell ">
                             <div className="nowrapEllipse">
-                                {lastPostDiscussion}
+                                <a className="text-decoration-none text-white" href={`/${lastPostDiscussion.id}-${lastPostDiscussion.title}`}>
+                                    {lastPostDiscussion.title}
+                                </a>
+
                             </div>
 
                         </td>
@@ -173,7 +179,13 @@ export default function Forum() {
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{support}</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
-                            <div className="nowrapEllipse">{lastPostSupport}</div>
+                            <div className="nowrapEllipse">
+
+                                <a className="text-decoration-none text-white" href={`/${lastPostSupport.id}-${lastPostSupport.title}`}>
+                                    {lastPostSupport.title}
+                                </a>
+
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -199,7 +211,12 @@ export default function Forum() {
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{feedback}</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
-                            <div className="nowrapEllipse">{lastPostFeedback}</div>
+                            <div className="nowrapEllipse">
+                                <a className="text-decoration-none text-white" href={`/${lastPostFeedback.id}-${lastPostFeedback.title}`}>
+                                    {lastPostFeedback.title}
+                                </a>
+
+                            </div>
 
                         </td>
                     </tr>
