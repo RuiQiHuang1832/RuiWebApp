@@ -64,7 +64,9 @@ export class Search extends Component {
             </td>
             <td>
               <h6>
-                {obj.title}
+                <a className="text-decoration-none text-white" href={`/${obj.id}-${obj.title}`}>
+                  {obj.title}
+                </a>
                 <span className="text-muted" style={{ fontSize: '11px' }}>
                   {' '}
                   &emsp;
