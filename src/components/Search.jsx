@@ -103,9 +103,9 @@ export class Search extends Component {
     return (
 
       <div className="searchbackgroundcolor">
-        <div style={{ paddingBottom: '14rem' }} className="container ">
+        <div style={{ paddingBottom: '14rem' }} className="container">
           <div className="row justify-content-center  ">
-            <div className="col">
+            <div className="col col-md-5">
               <form className="d-flex spacing-form pb-1" onSubmit={this.handleSearch}>
                 <div className="input-group">
                   <div className="searchstuff">
@@ -138,7 +138,8 @@ export class Search extends Component {
             </span>
           ) : ''}
 
-          <table className="table align-middle table-borderless raisedbox">
+          <table style={{ width: '72%' }} className="table align-middle table-borderless raisedbox caption-top mx-auto">
+            <caption>List of threads</caption>
             <thead className="text-white ">
               <tr>
                 <th style={{ width: '2%' }} className="col border-bottom "> </th>
