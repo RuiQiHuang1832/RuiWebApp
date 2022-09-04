@@ -23,6 +23,7 @@ import ResetPasswordPage from './components/ResetPasswordPage';
 import Template from './components/Template';
 import NewTopic from './components/NewTopic';
 import Thread from './components/Thread';
+import Test from './components/Test';
 // app > index
 function NoMatch() {
   return (<p className="text-danger">404!</p>);
@@ -53,7 +54,7 @@ function App() {
           <Route path="/:topic/:forumname" element={<Template />} />
           <Route path="/:topic/:forumname/post" element={<NewTopic />} />
           <Route path="/:id-:title" element={<Thread />} />
-
+          <Route path="/test" element={<Test />} />
         </Routes>
         {isHerokoBusy && <Footer />}
       </Router>

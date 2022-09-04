@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import '../styling/Search.css';
+import '../styling/effects.css';
 import axios from 'axios';
 
 const TITLE = 'Search';
@@ -16,7 +17,7 @@ export class Search extends Component {
     this.state = {
       query: '',
       result: [],
-      spinnerLogin: TITLE,
+      spinnerLogin: <i className="bi bi-arrow-right" style={{ fontSize: '20px' }} />,
     };
   }
 
@@ -95,31 +96,32 @@ export class Search extends Component {
       });
     }
 
-    this.setState({ spinnerLogin: TITLE });
+    this.setState({ spinnerLogin: <i className="bi bi-arrow-right" style={{ fontSize: '20px' }} /> });
   }
 
   render() {
     return (
 
-      <div className="searchbackgroundcolor ">
+      <div className="searchbackgroundcolor">
         <div style={{ paddingBottom: '14rem' }} className="container ">
           <div className="row justify-content-center  ">
             <div className="col">
               <form className="d-flex spacing-form pb-1" onSubmit={this.handleSearch}>
                 <div className="input-group">
                   <div className="searchstuff">
-                    <i className="bi bi-search" />
+                    <i className="bi bi-search" style={{ color: 'red' }} />
                   </div>
                   <input
                     onChange={(e) => this.setState({ query: e.target.value })}
-                    className="textindented form-control form-control-lg rounded-1 "
+                    className="textindented form-control form-control-lg rounded-1 SearchbgColor effect-11  shadow-none"
                     type="text"
                     placeholder="..."
                   />
+                  <span className="focus-bg" />
 
                   <div className="input-group-prepend">
 
-                    <button className="btn btn-md btn-warning " type="submit">{this.state.spinnerLogin}</button>
+                    <button className="btn px-2 py-0 btn-primary" type="submit">{this.state.spinnerLogin}</button>
                   </div>
                 </div>
               </form>

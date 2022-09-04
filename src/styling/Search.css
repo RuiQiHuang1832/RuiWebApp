@@ -29,3 +29,8 @@
 .colorred {
   color: red;
 }
+
+.SearchbgColor {
+  background: transparent !important;
+  color: white !important;
+}
