@@ -18,6 +18,7 @@ export class Search extends Component {
       query: '',
       result: [],
       spinnerLogin: <i className="bi bi-arrow-right" style={{ fontSize: '20px' }} />,
+      listOfThreadDisplay: false,
     };
   }
 
@@ -43,6 +44,7 @@ export class Search extends Component {
         }
 
         this.mapData();
+        this.setState({ listOfThreadDisplay: true });
       });
   };
 
@@ -103,13 +105,13 @@ export class Search extends Component {
     return (
 
       <div className="searchbackgroundcolor">
-        <div style={{ paddingBottom: '14rem' }} className="container">
+        <div style={{ paddingBottom: '18rem' }} className="container">
           <div className="row justify-content-center  ">
             <div className="col col-md-5">
               <form className="d-flex spacing-form pb-1" onSubmit={this.handleSearch}>
                 <div className="input-group">
                   <div className="searchstuff">
-                    <i className="bi bi-search" style={{ color: 'red' }} />
+                    <i className="bi bi-search" style={{ color: 'green' }} />
                   </div>
                   <input
                     onChange={(e) => this.setState({ query: e.target.value })}
@@ -137,24 +139,25 @@ export class Search extends Component {
 
             </span>
           ) : ''}
+          {this.state.listOfThreadDisplay ? (
+            <table style={{ width: '72%' }} className="table align-middle table-borderless raisedbox caption-top mx-auto">
+              <caption>List of threads</caption>
+              <thead className="text-white ">
+                <tr>
+                  <th style={{ width: '2%' }} className="col border-bottom "> </th>
+                  <th className="col-6 border-bottom "> </th>
+                  <th className="col-2 text-center border-bottom d-none d-lg-table-cell d-md-table-cell d-xl-table-cell"> </th>
+                  <th className="text-center border-bottom d-none d-lg-table-cell d-md-table-cell d-xl-table-cell" style={{ width: '13%' }}> </th>
+                  <th className="text-center border-bottom d-none d-lg-table-cell d-md-table-cell d-xl-table-cell"> </th>
+                </tr>
+              </thead>
+              <tbody className="text-white">
+                {/* lists the actual results or error if <0 */}
+                {!isBusy ? this.state.postData : <tr />}
+              </tbody>
 
-          <table style={{ width: '72%' }} className="table align-middle table-borderless raisedbox caption-top mx-auto">
-            <caption>List of threads</caption>
-            <thead className="text-white ">
-              <tr>
-                <th style={{ width: '2%' }} className="col border-bottom "> </th>
-                <th className="col-6 border-bottom "> </th>
-                <th className="col-2 text-center border-bottom d-none d-lg-table-cell d-md-table-cell d-xl-table-cell"> </th>
-                <th className="text-center border-bottom d-none d-lg-table-cell d-md-table-cell d-xl-table-cell" style={{ width: '13%' }}> </th>
-                <th className="text-center border-bottom d-none d-lg-table-cell d-md-table-cell d-xl-table-cell"> </th>
-              </tr>
-            </thead>
-            <tbody className="text-white">
-              {/* lists the actual results or error if <0 */}
-              {!isBusy ? this.state.postData : <tr />}
-            </tbody>
-
-          </table>
+            </table>
+          ) : ''}
 
         </div>
 
