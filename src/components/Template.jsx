@@ -157,7 +157,7 @@ export default function Template() {
 
                                         </div>
 
-                                        <table className="table align-middle table-borderless mb-0">
+                                        <table style={{ wordBreak: 'break-word' }} className="table align-middle table-borderless mb-0">
                                             <thead className="text-white ">
                                                 <tr>
                                                     <th style={{ width: '2%' }} className="col border-bottom "> </th>
@@ -168,7 +168,9 @@ export default function Template() {
                                                 </tr>
                                             </thead>
                                             <tbody className="text-white">
+
                                                 {postData}
+
                                             </tbody>
                                         </table>
 

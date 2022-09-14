@@ -140,7 +140,7 @@ export class Search extends Component {
             </span>
           ) : ''}
           {this.state.listOfThreadDisplay ? (
-            <table style={{ width: '72%' }} className="table align-middle table-borderless raisedbox caption-top mx-auto">
+            <table style={{ width: '72%', wordBreak: 'break-word' }} className="table align-middle table-borderless raisedbox caption-top mx-auto">
               <caption>List of threads</caption>
               <thead className="text-white ">
                 <tr>
