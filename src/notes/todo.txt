@@ -1,5 +1,3 @@
-// not gonna do acordiion, proven i could do it already
-// not gonna do fast loading with LS, proven i could do it already.
 
 // still need to do , replies, (maybe) views.and the whole thread page.
 // pinned stuff as well.
@@ -14,8 +12,20 @@
 // // make an admin account
 // // admin account can delete post and ban users;
 
-// announcment main page / recently added needs to be updated
+// announcment main page / recently added needs to be updated  ->>> did a bit of it, still needs tweaks, unfinished!!
 
 // need to be ablet to delete stuff
 
+// need to make checks to localStorage, if it gets edited, page gets refreshed
 
+//if user changes user key, forcefully logout user or smthing..need to fix LS
+
+
+/////whenever user clicks forum page, ls removes all keys which makes loading back into the home page slow
+//a way to do this is just to only remove all ls when user clicks on "start new topic", other wise, its unnessary to remove all keys.
+//pages: newTopic, template. need to edit these then check if it works on recentTopics and Lastpost.
+
+^^ still need to fix htis
+
+
+//home page double reloads...need to fix that..

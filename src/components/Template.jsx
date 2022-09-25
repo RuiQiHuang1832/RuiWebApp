@@ -46,50 +46,49 @@ export default function Template() {
         // allows me to use cache and api calls without making wasting resources on making useless calls if update is not needed
         ls.remove('lastPost');
         ls.remove('threadCount');
+        ls.remove('recentPost');
+
         convertForumNameToCategory();
-        axios.get('https://ruibackend.herokuapp.com/post-data')
-            .then((res) => {
-                const { data } = res;
-                const filtered = data.filter((val) => val.category.includes(currentTopic));
-                threadIdentifier = filtered.reverse();
-            }).then(() => {
-                setPostData(threadIdentifier.map((obj) => (
+        const filtered = location.state.data.filter((val) => val.category.includes(currentTopic));
+        threadIdentifier = filtered.reverse();
 
-                    <tr key={obj.id}>
-                        <td style={forumiconsize} className="pb-4 m-0">
-                            <i className="bi bi-lock-fill" />
-                        </td>
-                        <td>
-                            <h6 className="">
-                                <a className="text-decoration-none text-white" href={`/${obj.id}-${obj.title}`}>{obj.title}</a>
-                                <span className="text-muted" style={{ fontSize: '11px' }}>
-                                    &emsp;
-                                    {obj.createdAt}
-                                </span>
-                            </h6>
-                            <p className="summaryfontsize col-md-8">
-                                Started By:
-                                {' '}
-                                {obj.authorId}
-                            </p>
-                        </td>
-                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
-                            3
+        setPostData(threadIdentifier.map((obj) => (
 
-                            <p className="summaryfontsize">Replies</p>
+            <tr key={obj.id}>
+                <td style={forumiconsize} className="pb-4 m-0">
+                    <i className="bi bi-lock-fill" />
+                </td>
+                <td>
+                    <h6 className="">
+                        <a className="text-decoration-none text-white" href={`/${obj.id}-${obj.title}`}>{obj.title}</a>
+                        <span className="text-muted" style={{ fontSize: '11px' }}>
+                            &emsp;
+                            {obj.createdAt}
+                        </span>
+                    </h6>
+                    <p className="summaryfontsize col-md-8">
+                        Started By:
+                        {' '}
+                        {obj.authorId}
+                    </p>
+                </td>
+                <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
+                    3
 
-                        </td>
-                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
-                            0
+                    <p className="summaryfontsize">Replies</p>
 
-                            <p className="summaryfontsize">Views</p>
-                        </td>
+                </td>
+                <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
+                    0
 
-                    </tr>
+                    <p className="summaryfontsize">Views</p>
+                </td>
 
-                )));
-            });
+            </tr>
+
+        )));
     }, [currentTopic]);
+
     // disregard the double () (), its apparently the return
     useEffect(() => () => {
         setPostData(); // prevents no-op memory leak error but its fixed in react 18

@@ -8,6 +8,7 @@ import '../../styling/Forum.css';
 import '../../styling/Tabs.css';
 import { useNavigate } from 'react-router-dom';
 import ls from 'localstorage-slim';
+import axios from 'axios';
 
 const forumiconsize = {
     fontSize: '28px',
@@ -47,9 +48,12 @@ export default function Forum() {
     const supportArr = [];
     const feedbackArr = [];
 
+    let results;
+
     // navigates from homepage to template page
     const toComponentB = (destination, params) => {
-        navigate(`/${TITLE}/${destination}`, { state: { name: params.topic, description: params.description } });
+        navigate(`/${TITLE}/${destination}`, { state: { name: params.topic, description: params.description, data: results } });
+        navigate(0);
     };
     function getOccurrence(array, value) {
         return array.filter((x) => x.category === value).length;
@@ -61,6 +65,7 @@ export default function Forum() {
         fetch('https://ruibackend.herokuapp.com/post-data')
             .then((response) => response.json())
             .then((data) => {
+                results = [...data];
                 if (isMounted) {
                     // for last Post
                     if (lastPostDiscussion === 'Loading..') {
@@ -99,7 +104,7 @@ export default function Forum() {
                 }
             }).then(() => {
                 // makes its so the user now doesn't have to click else where to refresh the page and instead,
-                // it auto refreshes for the user now.
+                // it auto refreshes for the user now. works with Template.jsx (look at the ls.remove())
                 if (lastPostDiscussion === 'Loading..' || discussion === 'Loading..') {
                     window.location.reload();
                 }
