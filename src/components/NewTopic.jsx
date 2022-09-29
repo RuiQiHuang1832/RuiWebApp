@@ -5,6 +5,7 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { API } from '../global';
 
 export default function NewTopic() {
     const [text, setText] = useState('');
@@ -19,7 +20,7 @@ export default function NewTopic() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        fetch('https://ruibackend.herokuapp.com/posts', {
+        fetch(`${API}posts`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import ls from 'localstorage-slim';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../styling/Settings.css';
+import { API } from '../global';
 
 const TITLE = 'Settings';
 
@@ -63,7 +64,7 @@ export default function Settings() {
   // All i had to do was remove headers..  Originally I had headers and was throwing errors, but once removed it works!
 
   const handleImageSubmit = () => {
-    fetch(`https://ruibackend.herokuapp.com/users/${id}/profileimage`, {
+    fetch(`${API}users/${id}/profileimage`, {
       method: 'PATCH',
       body: handleFormData(),
     }).then().then(() => {
@@ -76,7 +77,7 @@ export default function Settings() {
     e.preventDefault();
     ls.set('ticker', ticker.split(','), { encrypt: true });
     setloading(true);
-    fetch(`https://ruibackend.herokuapp.com/users/${id}/biography`, {
+    fetch(`${API}users/${id}/biography`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

@@ -8,7 +8,7 @@ import '../../styling/Forum.css';
 import '../../styling/Tabs.css';
 import { useNavigate } from 'react-router-dom';
 import ls from 'localstorage-slim';
-import axios from 'axios';
+import { API } from '../../global';
 
 const forumiconsize = {
     fontSize: '28px',
@@ -53,6 +53,7 @@ export default function Forum() {
     // navigates from homepage to template page
     const toComponentB = (destination, params) => {
         navigate(`/${TITLE}/${destination}`, { state: { name: params.topic, description: params.description, data: results } });
+        // did this to kinda replicate behavior of links
         navigate(0);
     };
     function getOccurrence(array, value) {
@@ -62,7 +63,7 @@ export default function Forum() {
     // grabs the amount of threads and puts it in home screen 'forum"
     useEffect(() => {
         let isMounted = true;
-        fetch('https://ruibackend.herokuapp.com/post-data')
+        fetch(`${API}post-data`)
             .then((response) => response.json())
             .then((data) => {
                 results = [...data];

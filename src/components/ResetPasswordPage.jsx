@@ -6,6 +6,7 @@ import bcrypt from 'bcryptjs';
 import { useForm } from 'react-hook-form';
 import ls from 'localstorage-slim';
 import { useNavigate, useParams } from 'react-router-dom';
+import { API } from '../global';
 
 export default function ResetPasswordPage() {
     const { tokenid } = useParams();
@@ -32,7 +33,7 @@ export default function ResetPasswordPage() {
     const handleClick = () => {
         setSpinner(<div className="spinner-border spinner-border-sm" role="status" />);
         const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync());
-        fetch(`https://ruibackend.herokuapp.com/users/${lsvalue.user}/password`, {
+        fetch(`${API}users/${lsvalue.user}/password`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

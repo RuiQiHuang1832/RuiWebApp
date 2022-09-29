@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import bcrypt from 'bcryptjs';
 import axios from 'axios';
+import { API } from '../global';
 
 let simpleAuth = false; // auth for signup=success
 const TITLE = 'Sign up';
@@ -71,7 +72,7 @@ export default function Signup() {
       username, email, hashedPassword, ipaddress,
     };
 
-    fetch('https://ruibackend.herokuapp.com/users/add  ', {
+    fetch(`${API}users/add  `, {
       // look at login.js on how to implement login
 
       // http://localhost:8080/user/add                     <-local

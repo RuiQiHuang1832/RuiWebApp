@@ -8,6 +8,7 @@
 import React, { Component } from 'react';
 import ReactPaginate from 'react-paginate';
 import '../styling/MembersPagination.css';
+import { API } from '../global';
 
 export default class MembersPagination extends Component {
     constructor(props) {
@@ -26,7 +27,7 @@ export default class MembersPagination extends Component {
 
     receivedData() {
         this.setState({ isBusy: true });
-        fetch('https://ruibackend.herokuapp.com/users/datalist')
+        fetch(`${API}users/datalist`)
             .then((response) => response.json())
             .then((data) => {
                 const slice = data.slice(

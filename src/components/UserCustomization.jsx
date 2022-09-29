@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import ls from 'localstorage-slim';
+import { API } from '../global';
 
 export default function UserCustomization(props) {
   // const { id } = useParams();
@@ -17,7 +18,7 @@ export default function UserCustomization(props) {
         });
       setId(filteredCache[0].id);
     } else {
-      fetch('https://ruibackend.herokuapp.com/user/datalist')
+      fetch(`${API}user/datalist`)
         .then((response) => response.json())
         .then((data) => {
           const filtered = data.filter((obj) => {

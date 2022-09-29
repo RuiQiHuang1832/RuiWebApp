@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import '../styling/Search.css';
 import '../styling/effects.css';
 import axios from 'axios';
+import { API } from '../global';
 
 const TITLE = 'Search';
 let isBusy = true;
@@ -33,7 +34,7 @@ export class Search extends Component {
     // then set a new state
     this.setState({ spinnerLogin: <div className="spinner-border spinner-border-sm" role="status" /> });
     e.preventDefault();
-    axios.get('https://ruibackend.herokuapp.com/post-data')
+    axios.get(`${API}post-data`)
       .then((res) => {
         isBusy = false;
         const { data } = res;

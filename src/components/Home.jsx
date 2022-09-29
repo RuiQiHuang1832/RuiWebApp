@@ -18,6 +18,7 @@ import Gaming from './Tabs/Gaming';
 import CurrencyData from './HomeSideColumn/CurrencyData';
 import Announcements from './HomeSideColumn/Announcements';
 import RecentTopics from './HomeSideColumn/RecentTopics';
+import { API } from '../global';
 
 let isHerokoBusy = true;
 const TITLE = 'Home';
@@ -58,7 +59,7 @@ export class Home extends Component {
     document.title = TITLE;
     if (ls.get('key') === null) {
       this.setState({ isBusy: true });
-      fetch('https://ruibackend.herokuapp.com/users/datalist')
+      fetch(`${API}users/datalist`)
         .then((res) => res.json())
         .then((data) => ls.set('key', data, { encrypt: true }))
         .then(() => {

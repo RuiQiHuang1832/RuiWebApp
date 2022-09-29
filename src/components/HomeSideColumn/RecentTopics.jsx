@@ -2,6 +2,7 @@
 /* eslint-disable indent */
 import React, { useEffect } from 'react';
 import ls from 'localstorage-slim';
+import { API } from '../../global';
 
 export default function RecentTopics() {
     const tempStateRecentPost = {
@@ -12,7 +13,7 @@ export default function RecentTopics() {
     const { recentPost } = objLastPost;
 
     useEffect(() => {
-        fetch('https://ruibackend.herokuapp.com/post-data')
+        fetch(`${API}post-data`)
             .then((response) => response.json())
             .then((data) => {
                 const lastData = data[data.length - 1];

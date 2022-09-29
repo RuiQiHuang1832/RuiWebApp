@@ -5,6 +5,7 @@ import '../styling/Login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import ls from 'localstorage-slim';
 import panda from '../images/panda.png';
+import { API } from '../global';
 
 const TITLE = 'Login';
 
@@ -51,7 +52,7 @@ export class Login extends Component {
   handleClick(e) {
     e.preventDefault();
     this.setState({ invalidlogin: '' });
-    const url = 'https://ruibackend.herokuapp.com/users/login';
+    const url = API + 'users/login';
     this.setState({
       spinnerlogin:
         <div className="spinner-border spinner-border-sm" role="status" />,
@@ -66,7 +67,7 @@ export class Login extends Component {
         'Content-Type': 'text/plain',
       },
     }).then(() => {
-      fetch('https://ruibackend.herokuapp.com/users/datalist')
+      fetch(API + 'users/datalist')
         .then((response) => response.json())
         .then((data) => {
           const filtered = data.filter((obj) => {
@@ -78,7 +79,8 @@ export class Login extends Component {
         }).then(() => {
           ls.remove('key');
           mynav('/');
-          window.location.reload();
+          // removed this so it doesn't infite load on login
+          // window.location.reload();
         });
     }).catch(() => {
       this.setState({ invalidlogin: 'Username or password incorrect.' });

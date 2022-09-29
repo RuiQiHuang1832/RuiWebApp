@@ -29,3 +29,8 @@
 
 
 //home page double reloads...need to fix that..
+
+
+//ls changes, site dies
+//double reload on home page
+//move from heroku to render.com, needs docker file
