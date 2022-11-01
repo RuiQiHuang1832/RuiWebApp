@@ -1,12 +1,13 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import ls from 'localstorage-slim';
 import { API } from '../global';
 
 export default function UserCustomization(props) {
   // const { id } = useParams();
-
   const [id, setId] = useState('');
+  const navigate = useNavigate();
   // used to fetch from database and specifies user ID and name for the URL in dashboard on loadup
   useEffect(() => {
     if (ls.get('key') !== null) {

@@ -10,6 +10,7 @@ import { SelfBuildingSquareSpinner } from 'react-epic-spinners';
 import React, { Component } from 'react';
 import '../styling/Home.css';
 import ls from 'localstorage-slim';
+import { useNavigate } from 'react-router-dom';
 import Forum from './Tabs/Forum';
 import Coding from './Tabs/Coding';
 import Investing from './Tabs/Investing';
@@ -41,7 +42,7 @@ const TITLE = 'Home';
 // };
 // ls.set('threadCount', threadCount);
 
-export class Home extends Component {
+export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,6 +51,16 @@ export class Home extends Component {
       price: [],
       volume: [],
       isBusy: false,
+    };
+    // If user intentionally updates local storage, refresh LS.
+    // Basically for myself only..
+    window.onerror = () => {
+      if (window.confirm('IS LOCAL STORAGE UPDATED? OK: REFRESH CACHE AND TRY AGAIN. CANCEL: COMMENT THIS OUT IN HOME.JSX')) {
+        ls.clear();
+        window.location.href = '/';
+      } else {
+        alert('ERROR IS NOT IN LS');
+      }
     };
   }
 

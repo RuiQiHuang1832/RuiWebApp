@@ -28,9 +28,6 @@
 ^^ still need to fix htis
 
 
-//home page double reloads...need to fix that..
-
-
-//ls changes, site dies
+//ls changes, site dies. somewhat fixed it. Done. Check home.jsx
 //double reload on home page
-//move from heroku to render.com, needs docker file
+

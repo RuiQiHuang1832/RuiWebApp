@@ -8,7 +8,7 @@ import {
 import NavigationBar from './components/NavigationBar';
 import Footer from './components/Footer';
 import Signup, { simpleAuth } from './components/Signup';
-import { Home, isHerokoBusy } from './components/Home';
+import Home, { isHerokoBusy } from './components/Home';
 import LoginFunctionComp from './components/Login';
 import Tos from './components/Tos';
 import Faq from './components/Faq';
@@ -37,7 +37,6 @@ function App() {
         <NavigationBar />
         <Routes>
           <Route path="*" element={<NoMatch />} />
-
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<LoginFunctionComp />} />
@@ -55,6 +54,7 @@ function App() {
           <Route path="/:topic/:forumname/post" element={<NewTopic />} />
           <Route path="/:id-:title" element={<Thread />} />
           <Route path="/test" element={<Test />} />
+
         </Routes>
         {isHerokoBusy && <Footer />}
       </Router>
