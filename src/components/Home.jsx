@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable import/no-mutable-exports */
 /* eslint-disable no-unused-vars */
 /* eslint-disable prefer-destructuring */
@@ -22,6 +23,7 @@ import RecentTopics from './HomeSideColumn/RecentTopics';
 import { API } from '../global';
 
 let isHerokoBusy = true;
+let mostRecent;
 const TITLE = 'Home';
 // const options = {
 //   method: 'GET',
@@ -42,6 +44,21 @@ const TITLE = 'Home';
 // };
 // ls.set('threadCount', threadCount);
 
+// loads twice because: assuming:
+// on first load it clears ls, but since it hasn't gotten the data yet,
+// it will display another error and on the second go, the data is retrieved and put into our ls,
+// so no more errors.
+
+// ENABLE ONLY IN TESTING:
+// window.onerror = () => {
+//   if (window.confirm('IS LOCAL STORAGE UPDATED? OK: REFRESH CACHE AND TRY AGAIN. CANCEL: COMMENT THIS OUT IN HOME.JSX')) {
+//     ls.clear();
+//     console.log('CLEARED');
+//     window.location.href = '/';
+//   } else {
+//     alert('ERROR IS NOT IN LS');
+//   }
+// };
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -51,23 +68,17 @@ export default class Home extends Component {
       price: [],
       volume: [],
       isBusy: false,
+
     };
     // If user intentionally updates local storage, refresh LS.
-    // Basically for myself only..
-    window.onerror = () => {
-      if (window.confirm('IS LOCAL STORAGE UPDATED? OK: REFRESH CACHE AND TRY AGAIN. CANCEL: COMMENT THIS OUT IN HOME.JSX')) {
-        ls.clear();
-        window.location.href = '/';
-      } else {
-        alert('ERROR IS NOT IN LS');
-      }
-    };
+    // Basically for myself only..testing purposes only.
   }
 
   // response.quoteResponse.result[0].regularMarketPrice
   // cache it buddy
   componentDidMount() {
     document.title = TITLE;
+
     if (ls.get('key') === null) {
       this.setState({ isBusy: true });
       fetch(`${API}users/datalist`)
@@ -76,9 +87,12 @@ export default class Home extends Component {
         .then(() => {
           this.setState({ isBusy: false });
           isHerokoBusy = this.state.isBusy;
-
           window.location.href = '/';
         });
+    }
+    if (ls.get('recentPost') !== null) {
+      const data = ls.get('recentPost');
+      this.setState({ recentPostTitle: data.title, recentPostAuthor: data.authorId, recentPostCreatedAt: data.createdAt });
     }
 
     // if (ls.get('ticker') === null) {
@@ -125,7 +139,7 @@ export default class Home extends Component {
   }
 
   render() {
-    if (this.state.isBusy === true) {
+    if (this.state.isBusy) {
       return (
         <div style={{ height: '500px' }} className="centerAll">
           <div>
@@ -203,7 +217,7 @@ export default class Home extends Component {
               <div className="col-3 d-none d-lg-block d-xl-block">
                 <CurrencyData stocksymbol={this.state.symbol} stockprice={this.state.price} stockvolume={this.state.volume} />
                 <Announcements />
-                <RecentTopics />
+                <RecentTopics title={this.state.recentPostTitle} createdAt={this.state.recentPostCreatedAt} authorId={this.state.recentPostAuthor} />
 
               </div>
 

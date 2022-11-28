@@ -49,6 +49,9 @@ export default function Template() {
         ls.remove('recentPost');
 
         convertForumNameToCategory();
+        if (location.state.data === undefined) {
+            window.location.href = '/';
+        }
         const filtered = location.state.data.filter((val) => val.category.includes(currentTopic));
         threadIdentifier = filtered.reverse();
 

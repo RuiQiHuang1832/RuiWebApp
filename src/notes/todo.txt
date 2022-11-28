@@ -3,9 +3,6 @@
 // pinned stuff as well.
 //     etc..
 
-// ---
-
-//     //Backend heroku ends November 28th, 2022
 
 //     //do breadcrumb
 //     eg.Nulled -> Leaks -> Cracked Programs.
@@ -16,10 +13,6 @@
 
 // need to be ablet to delete stuff
 
-// need to make checks to localStorage, if it gets edited, page gets refreshed
-
-//if user changes user key, forcefully logout user or smthing..need to fix LS
-
 
 /////whenever user clicks forum page, ls removes all keys which makes loading back into the home page slow
 //a way to do this is just to only remove all ls when user clicks on "start new topic", other wise, its unnessary to remove all keys.
@@ -28,6 +21,7 @@
 ^^ still need to fix htis
 
 
-//ls changes, site dies. somewhat fixed it. Done. Check home.jsx
-//double reload on home page
+//ls changes, site dies. somewhat fixed it. Done. Check home.jsx ENABLES ONLY IN TESTING
+//double reload on home page, DONE, took me so long to solve. CHECK FORUM.JSX and HOME.JSX and RECENTPOST.JSX for changes + notes
+// VERY IMPORTANT: ALSO WHENEVER I RENDER A COMPONENT WITHIN A COMPONENET, IT WILL BE CONFUSING, SO JUST REMEMEBR HOW EACH COMPONENT WORKS WITHIN ANOTHER COMPONENET IF THEY DEPEND ON EACH OTHER!!
 

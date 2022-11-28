@@ -28,7 +28,6 @@ import Test from './components/Test';
 function NoMatch() {
   return (<p className="text-danger">404!</p>);
 }
-
 function App() {
   return (
     <div className="App">

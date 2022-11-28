@@ -1,36 +1,9 @@
 /* eslint-disable react/jsx-indent */
 /* eslint-disable indent */
-import React, { useEffect } from 'react';
-import ls from 'localstorage-slim';
-import { API } from '../../global';
+import React from 'react';
 
-export default function RecentTopics() {
-    const tempStateRecentPost = {
-        recentPost: 'Loading..',
-    };
-
-    const objLastPost = ls.get('recentPost') !== null ? ls.get('recentPost') : tempStateRecentPost;
-    const { recentPost } = objLastPost;
-
-    useEffect(() => {
-        fetch(`${API}post-data`)
-            .then((response) => response.json())
-            .then((data) => {
-                const lastData = data[data.length - 1];
-                const mostRecent = {
-                    recentPost: { title: lastData.title, createdAt: lastData.createdAt, authorId: lastData.authorId },
-                };
-                ls.set('recentPost', mostRecent);
-            }).then(() => {
-                // works with template.jsx look at the ls.remove()
-                if (recentPost === 'Loading..') {
-                    window.location.reload();
-                }
-            });
-    }, []);
-
+export default function RecentTopics(props) {
     return (
-
         <div className="mb-5">
             <div style={{ width: '80%' }} className="d-inline-flex bg-dark p-2 mt-5 justify-content-between fw-bold ">
                 {/** Announcment header */}
@@ -45,13 +18,13 @@ export default function RecentTopics() {
                     <tbody>
                         <tr>
                             <td className="border-bottom">
-                                {recentPost.title}
+                                {props.title}
                                 <br />
                                 <span className="announcmentfontsize text-muted">
                                     By&nbsp;
-                                    {recentPost.authorId}
+                                    {props.authorId}
                                     ,&nbsp;
-                                    {recentPost.createdAt}
+                                    {props.createdAt}
                                 </span>
 
                             </td>

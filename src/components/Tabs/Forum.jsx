@@ -16,7 +16,21 @@ const forumiconsize = {
 const fontsize = {
     fontSize: '12px',
 };
-
+/**
+ * * the reason I put results variable globally is because,
+ * * in my Home, I render two components, Forum.jsx (this) and recentPost,
+ * * in my Home, I also setState in ComponentDidMount, which causes a rerender, and causes these two
+ * * components to re-render.
+ * * In my useEffect of Forum.jsx, my dependecy array makes it only run ONCE. that means when forum.jsx is re-rendered,
+ * * if let results is within the functional componenet instead global, it will be undefined because useEffect is not ran anymore
+ * * and let results = NOTHING. which is why I was getting undefined whenever I re-render.
+ * * Two solutions, were use define results globally, which means it will always have its value even after rerender or
+ * *  make useEffect without the dependency array which means it will always be ran even after a re-render
+ * *
+ *  let results;
+ *
+ */
+let results;
 const topicOne = 'General Discussion';
 const topicTwo = 'Help And Support';
 const topicThree = 'Feedback And Suggestions';
@@ -48,8 +62,6 @@ export default function Forum() {
     const supportArr = [];
     const feedbackArr = [];
 
-    let results;
-
     // navigates from homepage to template page
     const toComponentB = (destination, params) => {
         navigate(`/${TITLE}/${destination}`, { state: { name: params.topic, description: params.description, data: results } });
@@ -67,6 +79,11 @@ export default function Forum() {
             .then((response) => response.json())
             .then((data) => {
                 results = [...data];
+                const lastData = results[results.length - 1];
+                const mostRecent = {
+                    title: lastData.title, createdAt: lastData.createdAt, authorId: lastData.authorId,
+                };
+                ls.set('recentPost', mostRecent);
                 if (isMounted) {
                     // for last Post
                     if (lastPostDiscussion === 'Loading..') {
