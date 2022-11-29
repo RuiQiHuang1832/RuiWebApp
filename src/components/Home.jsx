@@ -12,6 +12,7 @@ import React, { Component } from 'react';
 import '../styling/Home.css';
 import ls from 'localstorage-slim';
 import { useNavigate } from 'react-router-dom';
+import { clear } from '@testing-library/user-event/dist/clear';
 import Forum from './Tabs/Forum';
 import Coding from './Tabs/Coding';
 import Investing from './Tabs/Investing';
@@ -59,6 +60,7 @@ const TITLE = 'Home';
 //     alert('ERROR IS NOT IN LS');
 //   }
 // };
+let interval;
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -70,6 +72,7 @@ export default class Home extends Component {
       isBusy: false,
 
     };
+
     // If user intentionally updates local storage, refresh LS.
     // Basically for myself only..testing purposes only.
   }
@@ -77,9 +80,9 @@ export default class Home extends Component {
   // response.quoteResponse.result[0].regularMarketPrice
   // cache it buddy
   componentDidMount() {
-    setInterval(() => {
+    interval = setInterval(() => {
       this.refetchData();
-    }, 900000);
+    }, 10000);
     document.title = TITLE;
     if (ls.get('key') === null) {
       this.setState({ isBusy: true });
@@ -124,6 +127,11 @@ export default class Home extends Component {
     //   });
   }
 
+  componentWillUnmount() {
+    clearInterval(interval);
+    console.log('Unmounting');
+  }
+
   displayCurrentPage() {
     switch (this.state.currentpage) {
       case 'Forums':
@@ -140,6 +148,8 @@ export default class Home extends Component {
     }
   }
 
+  // new way to fetch data with interval instead of doing it everytime user clicks on
+  // the template page. This makes for an easier load too.
   refetchData() {
     ls.remove('lastPost');
     ls.remove('threadCount');
