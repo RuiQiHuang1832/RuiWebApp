@@ -77,8 +77,10 @@ export default class Home extends Component {
   // response.quoteResponse.result[0].regularMarketPrice
   // cache it buddy
   componentDidMount() {
+    setInterval(() => {
+      this.refetchData();
+    }, 900000);
     document.title = TITLE;
-
     if (ls.get('key') === null) {
       this.setState({ isBusy: true });
       fetch(`${API}users/datalist`)
@@ -136,6 +138,12 @@ export default class Home extends Component {
         return <Gaming />;
       default:
     }
+  }
+
+  refetchData() {
+    ls.remove('lastPost');
+    ls.remove('threadCount');
+    ls.remove('recentPost');
   }
 
   render() {

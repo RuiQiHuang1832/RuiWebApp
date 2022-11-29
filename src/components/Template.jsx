@@ -44,9 +44,6 @@ export default function Template() {
     useEffect(() => {
         // refresh last post from local storage so that it retrieves a new one from DB just in case its updated,
         // allows me to use cache and api calls without making wasting resources on making useless calls if update is not needed
-        ls.remove('lastPost');
-        ls.remove('threadCount');
-        ls.remove('recentPost');
 
         convertForumNameToCategory();
         if (location.state.data === undefined) {
