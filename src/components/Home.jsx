@@ -11,8 +11,6 @@ import { SelfBuildingSquareSpinner } from 'react-epic-spinners';
 import React, { Component } from 'react';
 import '../styling/Home.css';
 import ls from 'localstorage-slim';
-import { useNavigate } from 'react-router-dom';
-import { clear } from '@testing-library/user-event/dist/clear';
 import Forum from './Tabs/Forum';
 import Coding from './Tabs/Coding';
 import Investing from './Tabs/Investing';
@@ -24,26 +22,19 @@ import RecentTopics from './HomeSideColumn/RecentTopics';
 import { API } from '../global';
 
 let isHerokoBusy = true;
-let mostRecent;
-const TITLE = 'Home';
-// const options = {
-//   method: 'GET',
-//   headers: {
-//     'X-RapidAPI-Host': 'yh-finance.p.rapidapi.com',
-//     'X-RapidAPI-Key': '94680c26cemsha1f6b30a6f8fca0p1d8a93jsn2088f83d240f',
-//   },
-// };
-// let ticker1;
-// let ticker2;
-// let ticker3;
 
-// needed or crashes
-// const threadCount = {
-//   support: 'Loading..',
-//   feedback: 'Loading..',
-//   discussion: 'Loading..',
-// };
-// ls.set('threadCount', threadCount);
+const TITLE = 'Home';
+const options = {
+  method: 'GET',
+  headers: {
+    'X-RapidAPI-Key': '94680c26cemsha1f6b30a6f8fca0p1d8a93jsn2088f83d240f',
+    'X-RapidAPI-Host': 'yh-finance.p.rapidapi.com',
+  },
+};
+
+let ticker1;
+let ticker2;
+let ticker3;
 
 // loads twice because: assuming:
 // on first load it clears ls, but since it hasn't gotten the data yet,
@@ -100,31 +91,32 @@ export default class Home extends Component {
       this.setState({ recentPostTitle: data.title, recentPostAuthor: data.authorId, recentPostCreatedAt: data.createdAt });
     }
 
-    // if (ls.get('ticker') === null) {
-    //   // default
-    //   ticker1 = 'TSLA';
-    //   ticker2 = 'AAPL';
-    //   ticker3 = 'AMD';
-    // } else {
-    //   // user obtained
-    //   const tickers = ls.get('ticker', { decrypt: true });
-    //   ticker1 = tickers[0];
-    //   ticker2 = tickers[1];
-    //   ticker3 = tickers[2];
-    // }
+    if (ls.get('ticker') === null) {
+      // default
+      ticker1 = 'TSLA';
+      ticker2 = 'AAPL';
+      ticker3 = 'AMD';
+    } else {
+      // user obtained
+      const tickers = ls.get('ticker', { decrypt: true });
+      ticker1 = tickers[0];
+      ticker2 = tickers[1];
+      ticker3 = tickers[2];
+    }
 
-    // const currency = `https://yh-finance.p.rapidapi.com/market/v2/get-quotes?region=US&symbols=${ticker1}%2C${ticker2}%2C${ticker3}`;
+    const currency = `https://yh-finance.p.rapidapi.com/market/v2/get-quotes?region=US&symbols=${ticker1}%2C${ticker2}%2C${ticker3}`;
 
-    // fetch(currency, options)
-    //   .then((response) => response.json())
-    //   .then((response) => {
-    //     const res = response.quoteResponse.result;
-    //     for (const x in res) {
-    //       this.setState({ symbol: [...this.state.symbol, res[x].symbol] });
-    //       this.setState({ price: [...this.state.price, res[x].regularMarketPrice] });
-    //       this.setState({ volume: [...this.state.volume, res[x].regularMarketVolume] });
-    //     }
-    //   });
+    fetch(currency, options)
+      .then((response) => response.json())
+      .then((response) => {
+        const res = response.quoteResponse.result;
+        for (const x in res) {
+          this.setState({ symbol: [...this.state.symbol, res[x].symbol] });
+          this.setState({ price: [...this.state.price, res[x].regularMarketPrice] });
+          this.setState({ volume: [...this.state.volume, res[x].regularMarketVolume] });
+        }
+      })
+      .catch((err) => console.error(err));
   }
 
   componentWillUnmount() {
@@ -151,8 +143,7 @@ export default class Home extends Component {
   // new way to fetch data with interval instead of doing it everytime user clicks on
   // the template page. This makes for an easier load too.
   refetchData() {
-    ls.remove('lastPost');
-    ls.remove('threadCount');
+    ls.remove('forumData');
     ls.remove('recentPost');
   }
 

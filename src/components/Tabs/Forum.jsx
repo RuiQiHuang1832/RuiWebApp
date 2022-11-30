@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable indent */
 /* eslint-disable react/jsx-indent */
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import '../../styling/Forum.css';
 import '../../styling/Tabs.css';
 import { useNavigate } from 'react-router-dom';
@@ -31,6 +31,7 @@ const fontsize = {
  *
  */
 let results;
+let lengthOfDB = null;
 const topicOne = 'General Discussion';
 const topicTwo = 'Help And Support';
 const topicThree = 'Feedback And Suggestions';
@@ -43,24 +44,18 @@ const TITLE = 'Tailwind Forums';
 
 export default function Forum() {
     const navigate = useNavigate();
-    const objTempState = {
-        discussion: 'Loading..',
-        support: 'Loading..',
-        feedback: 'Loading..',
-    };
-    const objTempStateLastPost = {
-        lastPostDiscussion: 'Loading..',
-        lastPostSupport: 'Loading..',
-        lastPostFeedback: 'Loading..',
-    };
-    const tempState = ls.get('threadCount') !== null ? ls.get('threadCount') : objTempState;
-    const tempStateLastPost = ls.get('lastPost') !== null ? ls.get('lastPost') : objTempStateLastPost;
-    const { discussion, support, feedback } = tempState;
-    const { lastPostDiscussion, lastPostFeedback, lastPostSupport } = tempStateLastPost;
+    const objTempStateLastPost = [];
+    if (lengthOfDB !== ls.get('dbAmt')) {
+        ls.remove('previousforumData');
+    }
+    for (let i = 0; i < 3; i += 1) {
+        objTempStateLastPost.push({
+            lastPost: { title: ls.get('previousforumData') !== null ? ls.get('previousforumData')[i].lastPost.title : '-' },
+            threadCount: ls.get('previousforumData') !== null ? ls.get('previousforumData')[i].threadCount : '-',
+        });
+    }
 
-    const discussionArr = [];
-    const supportArr = [];
-    const feedbackArr = [];
+    const allPostData = ls.get('forumData') !== null ? ls.get('forumData') : objTempStateLastPost;
 
     // navigates from homepage to template page
     const toComponentB = (destination, params) => {
@@ -68,8 +63,14 @@ export default function Forum() {
         // did this to kinda replicate behavior of links
         navigate(0);
     };
-    function getOccurrence(array, value) {
-        return array.filter((x) => x.category === value).length;
+
+    function getDataLength(data, topic) {
+        return data.filter((e) => e.category === topic).length;
+    }
+
+    function getLastPost(data, topic) {
+        const temp = data.filter((e) => e.category === topic);
+        return temp[temp.length - 1];
     }
 
     // grabs the amount of threads and puts it in home screen 'forum"
@@ -78,6 +79,7 @@ export default function Forum() {
         fetch(`${API}post-data`)
             .then((response) => response.json())
             .then((data) => {
+                lengthOfDB = data.length;
                 results = [...data];
                 const lastData = results[results.length - 1];
                 const mostRecent = {
@@ -85,46 +87,21 @@ export default function Forum() {
                 };
                 ls.set('recentPost', mostRecent);
                 if (isMounted) {
-                    // for last Post
-                    if (lastPostDiscussion === 'Loading..') {
-                        data.map((val) => {
-                            if (val.category === topicOne) {
-                                discussionArr.push(val);
-                            } else if (val.category === topicTwo) {
-                                supportArr.push(val);
-                            } else if (val.category === topicThree) {
-                                feedbackArr.push(val);
-                            }
-                        });
-                        const discussionElement = discussionArr[discussionArr.length - 1];
-                        const feedbackElement = feedbackArr[feedbackArr.length - 1];
-                        const supportElement = supportArr[supportArr.length - 1];
-
-                        const lastPost = {
-                            lastPostDiscussion: { title: discussionElement.title, id: discussionElement.id },
-                            lastPostFeedback: { title: feedbackElement.title, id: feedbackElement.id },
-                            lastPostSupport: { title: supportElement.title, id: supportElement.id },
-                        };
-                        ls.set('lastPost', lastPost);
-                    }
-                    // for Thread count
-                    if (discussion === 'Loading..') {
-                        const supportOccur = getOccurrence(data, topicTwo);
-                        const discussionOccur = getOccurrence(data, topicOne);
-                        const feedbackOccur = getOccurrence(data, topicThree);
-                        const threadCount = {
-                            support: supportOccur,
-                            feedback: feedbackOccur,
-                            discussion: discussionOccur,
-                        };
-                        ls.set('threadCount', threadCount);
-                    }
-                }
-            }).then(() => {
-                // makes its so the user now doesn't have to click else where to refresh the page and instead,
-                // it auto refreshes for the user now. works with Template.jsx (look at the ls.remove())
-                if (lastPostDiscussion === 'Loading..' || discussion === 'Loading..') {
-                    window.location.reload();
+                    const postData = [{
+                        lastPost: getLastPost(data, topicOne),
+                        threadCount: getDataLength(data, topicOne),
+                    },
+                    {
+                        lastPost: getLastPost(data, topicTwo),
+                        threadCount: getDataLength(data, topicTwo),
+                    },
+                    {
+                        lastPost: getLastPost(data, topicThree),
+                        threadCount: getDataLength(data, topicThree),
+                    }];
+                    ls.set('dbAmt', data.length);
+                    ls.set('previousforumData', postData);
+                    ls.set('forumData', postData);
                 }
             });
         // bottom then is make the thread number static so it doesn't disappear for a split second and reappear
@@ -168,12 +145,14 @@ export default function Forum() {
                             </h6>
                             <p className="summaryfontsize col-md-8">{generalDiscussionDescription}</p>
                         </td>
-                        <td aria-label="threads" className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{discussion}</td>
+                        <td aria-label="threads" className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
+                            {allPostData[0].threadCount}
+                        </td>
                         <td aria-label="posts" className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
                         <td aria-label="last post" className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell ">
                             <div className="nowrapEllipse">
-                                <a className="text-decoration-none text-white" href={`/${lastPostDiscussion.id}-${lastPostDiscussion.title}`}>
-                                    {lastPostDiscussion.title}
+                                <a className="text-decoration-none text-white" href={`/${allPostData[0].lastPost.id}-${allPostData[0].lastPost.title}`}>
+                                    {allPostData[0].lastPost.title}
                                 </a>
 
                             </div>
@@ -199,13 +178,13 @@ export default function Forum() {
                             </h6>
                             <p className="summaryfontsize col-md-8">{helpAndSupportDescription}</p>
                         </td>
-                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{support}</td>
+                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{allPostData[0].threadCount}</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
                             <div className="nowrapEllipse">
 
-                                <a className="text-decoration-none text-white" href={`/${lastPostSupport.id}-${lastPostSupport.title}`}>
-                                    {lastPostSupport.title}
+                                <a className="text-decoration-none text-white" href={`/${allPostData[1].lastPost.id}-${allPostData[1].lastPost.title}`}>
+                                    {allPostData[1].lastPost.title}
                                 </a>
 
                             </div>
@@ -231,12 +210,12 @@ export default function Forum() {
                                 {feedbackDescription}
                             </p>
                         </td>
-                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{feedback}</td>
+                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{allPostData[2].threadCount}</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
                             <div className="nowrapEllipse">
-                                <a className="text-decoration-none text-white" href={`/${lastPostFeedback.id}-${lastPostFeedback.title}`}>
-                                    {lastPostFeedback.title}
+                                <a className="text-decoration-none text-white" href={`/${allPostData[2].lastPost.id}-${allPostData[2].lastPost.title}`}>
+                                    {allPostData[2].lastPost.title}
                                 </a>
 
                             </div>
