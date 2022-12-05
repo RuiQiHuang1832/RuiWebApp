@@ -45,9 +45,6 @@ const TITLE = 'Tailwind Forums';
 export default function Forum() {
     const navigate = useNavigate();
     const objTempStateLastPost = [];
-    if (lengthOfDB !== ls.get('dbAmt')) {
-        ls.remove('previousforumData');
-    }
     for (let i = 0; i < 3; i += 1) {
         objTempStateLastPost.push({
             lastPost: { title: ls.get('previousforumData') !== null ? ls.get('previousforumData')[i].lastPost.title : '-' },
@@ -81,11 +78,11 @@ export default function Forum() {
             .then((data) => {
                 lengthOfDB = data.length;
                 results = [...data];
-                const lastData = results[results.length - 1];
-                const mostRecent = {
-                    title: lastData.title, createdAt: lastData.createdAt, authorId: lastData.authorId,
-                };
-                ls.set('recentPost', mostRecent);
+                if (lengthOfDB !== ls.get('dbAmt')) {
+                    ls.remove('forumData');
+                    ls.remove('recentPost');
+                    ls.remove('previousforumData');
+                }
                 if (isMounted) {
                     const postData = [{
                         lastPost: getLastPost(data, topicOne),
@@ -178,7 +175,7 @@ export default function Forum() {
                             </h6>
                             <p className="summaryfontsize col-md-8">{helpAndSupportDescription}</p>
                         </td>
-                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{allPostData[0].threadCount}</td>
+                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">{allPostData[1].threadCount}</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
                             <div className="nowrapEllipse">

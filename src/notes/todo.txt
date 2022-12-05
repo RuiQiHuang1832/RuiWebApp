@@ -14,13 +14,10 @@
 // need to be ablet to delete stuff
 
 
-/////whenever user clicks forum page, ls removes all keys which makes loading back into the home page slow
-//a way to do this is just to only remove all ls when user clicks on "start new topic", other wise, its unnessary to remove all keys.
-//pages: newTopic, template. need to edit these then check if it works on recentTopics and Lastpost.
-
-^^ still need to fix htis
-
 
 //ls changes, site dies. somewhat fixed it. Done. Check home.jsx ENABLES ONLY IN TESTING
 // VERY IMPORTANT: ALSO WHENEVER I RENDER A COMPONENT WITHIN A COMPONENET, IT WILL BE CONFUSING, SO JUST REMEMEBR HOW EACH COMPONENT WORKS WITHIN ANOTHER COMPONENET IF THEY DEPEND ON EACH OTHER!!
 
+//need to finish Recent topics, basically make it a componenet and render it through a for loop
+//right now it works, but sometimes it throws undefined because of async issues so need to find a fix around that
+make it someone never have undefined, then the looping works.

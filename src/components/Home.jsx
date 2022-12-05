@@ -24,17 +24,17 @@ import { API } from '../global';
 let isHerokoBusy = true;
 
 const TITLE = 'Home';
-const options = {
-  method: 'GET',
-  headers: {
-    'X-RapidAPI-Key': '94680c26cemsha1f6b30a6f8fca0p1d8a93jsn2088f83d240f',
-    'X-RapidAPI-Host': 'yh-finance.p.rapidapi.com',
-  },
-};
+// const options = {
+//   method: 'GET',
+//   headers: {
+//     'X-RapidAPI-Key': '94680c26cemsha1f6b30a6f8fca0p1d8a93jsn2088f83d240f',
+//     'X-RapidAPI-Host': 'yh-finance.p.rapidapi.com',
+//   },
+// };
 
-let ticker1;
-let ticker2;
-let ticker3;
+// let ticker1;
+// let ticker2;
+// let ticker3;
 
 // loads twice because: assuming:
 // on first load it clears ls, but since it hasn't gotten the data yet,
@@ -61,7 +61,7 @@ export default class Home extends Component {
       price: [],
       volume: [],
       isBusy: false,
-
+      data: undefined,
     };
 
     // If user intentionally updates local storage, refresh LS.
@@ -71,9 +71,9 @@ export default class Home extends Component {
   // response.quoteResponse.result[0].regularMarketPrice
   // cache it buddy
   componentDidMount() {
-    interval = setInterval(() => {
-      this.refetchData();
-    }, 10000);
+    // interval = setInterval(() => {
+    //   this.refetchData();
+    // }, 10000);
     document.title = TITLE;
     if (ls.get('key') === null) {
       this.setState({ isBusy: true });
@@ -86,37 +86,46 @@ export default class Home extends Component {
           window.location.href = '/';
         });
     }
+
+    if (ls.get('recentPost') === null) {
+      fetch(`${API}post-data`)
+        .then((response) => response.json())
+        .then((data) => {
+          const lastData = data.slice(-3);
+          ls.set('recentPost', lastData);
+        }).then(() => {
+          this.renderRecentPost();
+        });
+    }
     if (ls.get('recentPost') !== null) {
-      const data = ls.get('recentPost');
-      this.setState({ recentPostTitle: data.title, recentPostAuthor: data.authorId, recentPostCreatedAt: data.createdAt });
+      this.renderRecentPost();
     }
+    // if (ls.get('ticker') === null) {
+    //   // default
+    //   ticker1 = 'TSLA';
+    //   ticker2 = 'AAPL';
+    //   ticker3 = 'AMD';
+    // } else {
+    //   // user obtained
+    //   const tickers = ls.get('ticker', { decrypt: true });
+    //   ticker1 = tickers[0];
+    //   ticker2 = tickers[1];
+    //   ticker3 = tickers[2];
+    // }
 
-    if (ls.get('ticker') === null) {
-      // default
-      ticker1 = 'TSLA';
-      ticker2 = 'AAPL';
-      ticker3 = 'AMD';
-    } else {
-      // user obtained
-      const tickers = ls.get('ticker', { decrypt: true });
-      ticker1 = tickers[0];
-      ticker2 = tickers[1];
-      ticker3 = tickers[2];
-    }
+    // const currency = `https://yh-finance.p.rapidapi.com/market/v2/get-quotes?region=US&symbols=${ticker1}%2C${ticker2}%2C${ticker3}`;
 
-    const currency = `https://yh-finance.p.rapidapi.com/market/v2/get-quotes?region=US&symbols=${ticker1}%2C${ticker2}%2C${ticker3}`;
-
-    fetch(currency, options)
-      .then((response) => response.json())
-      .then((response) => {
-        const res = response.quoteResponse.result;
-        for (const x in res) {
-          this.setState({ symbol: [...this.state.symbol, res[x].symbol] });
-          this.setState({ price: [...this.state.price, res[x].regularMarketPrice] });
-          this.setState({ volume: [...this.state.volume, res[x].regularMarketVolume] });
-        }
-      })
-      .catch((err) => console.error(err));
+    // fetch(currency, options)
+    //   .then((response) => response.json())
+    //   .then((response) => {
+    //     const res = response.quoteResponse.result;
+    //     for (const x in res) {
+    //       this.setState({ symbol: [...this.state.symbol, res[x].symbol] });
+    //       this.setState({ price: [...this.state.price, res[x].regularMarketPrice] });
+    //       this.setState({ volume: [...this.state.volume, res[x].regularMarketVolume] });
+    //     }
+    //   })
+    //   .catch((err) => console.error(err));
   }
 
   componentWillUnmount() {
@@ -140,15 +149,21 @@ export default class Home extends Component {
     }
   }
 
-  // new way to fetch data with interval instead of doing it everytime user clicks on
-  // the template page. This makes for an easier load too.
-  refetchData() {
-    ls.remove('forumData');
-    ls.remove('recentPost');
+  renderRecentPost() {
+    let data = ls.get('recentPost');
+    data = data.reverse();
+    this.setState({ data });
   }
 
+  // new way to fetch data with interval instead of doing it everytime user clicks on
+  // the template page. This makes for an easier load too.
+  // refetchData() {
+  //   ls.remove('forumData');
+  //   ls.remove('recentPost');
+  // }
+
   render() {
-    if (this.state.isBusy) {
+    if (this.state.isBusy || this.state.data === undefined) {
       return (
         <div style={{ height: '500px' }} className="centerAll">
           <div>
@@ -226,7 +241,7 @@ export default class Home extends Component {
               <div className="col-3 d-none d-lg-block d-xl-block">
                 <CurrencyData stocksymbol={this.state.symbol} stockprice={this.state.price} stockvolume={this.state.volume} />
                 <Announcements />
-                <RecentTopics title={this.state.recentPostTitle} createdAt={this.state.recentPostCreatedAt} authorId={this.state.recentPostAuthor} />
+                <RecentTopics data={this.state.data} />
 
               </div>
 
