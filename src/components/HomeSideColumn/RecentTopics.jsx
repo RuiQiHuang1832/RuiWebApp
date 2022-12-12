@@ -4,10 +4,12 @@ import React from 'react';
 
 export default function RecentTopics(props) {
     function organizeData(val) {
-        const data = val.map((e) => (
+        const data = val.map((e, i) => (
             <tr key={e.id}>
-                <td className="border-bottom">
-                    {e.title}
+                <td className={i === 2 ? '' : 'border-bottom'}>
+                    <a className="text-decoration-none text-white" href={`/${e.id}-${e.title}`}>
+                        {e.title}
+                    </a>
                     <br />
                     <span className="announcmentfontsize text-muted">
                         By&nbsp;
