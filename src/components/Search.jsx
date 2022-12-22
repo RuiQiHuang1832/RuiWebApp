@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 import '../styling/Search.css';
 import '../styling/effects.css';
 import axios from 'axios';
-import { API } from '../global';
+import { API, BREADCRUMB_PATH } from '../global';
+import Breadcrumbs from './Breadcrumbs';
 
 const TITLE = 'Search';
 let isBusy = true;
@@ -106,6 +107,8 @@ export class Search extends Component {
     return (
 
       <div className="searchbackgroundcolor">
+        <Breadcrumbs path={BREADCRUMB_PATH.Search} />
+
         <div style={{ paddingBottom: '18rem' }} className="container">
           <div className="row justify-content-center  ">
             <div className="col col-md-5">

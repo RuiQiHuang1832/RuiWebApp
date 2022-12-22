@@ -2,6 +2,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { Component } from 'react';
 import '../styling/Tos.css';
+import { BREADCRUMB_PATH } from '../global';
+import Breadcrumbs from './Breadcrumbs';
 
 const TITLE = 'Terms of Service';
 // const fontSize = {
@@ -16,6 +18,7 @@ export class Tos extends Component {
   render() {
     return (
       <section id="backgroundColor">
+        <Breadcrumbs path={BREADCRUMB_PATH.About} />
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-11">

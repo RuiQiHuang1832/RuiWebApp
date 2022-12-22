@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import '../styling/Upgrade.css';
+import { BREADCRUMB_PATH } from '../global';
+import Breadcrumbs from './Breadcrumbs';
 // import VIPbanner from '../images/vip.png';
 // import AQUAbanner from '../images/aqua.png';
 // import NOVAbanner from '../images/nova.png';
@@ -16,6 +18,7 @@ export class Upgrade extends Component {
   render() {
     return (
       <section>
+        <Breadcrumbs path={BREADCRUMB_PATH.Upgrade} />
         <div className="container-fluid p-0 p-lg-5 p-md-5 p-sm-5 ">
           <div className="row">
             <div className="col">

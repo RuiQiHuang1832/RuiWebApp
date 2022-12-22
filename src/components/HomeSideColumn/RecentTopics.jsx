@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-indent */
 /* eslint-disable indent */
 import React from 'react';
+import { getRelativeTime } from '../../functions/coreFunctions';
 
 export default function RecentTopics(props) {
     function organizeData(val) {
@@ -15,7 +16,7 @@ export default function RecentTopics(props) {
                         By&nbsp;
                         {e.authorId}
                         ,&nbsp;
-                        {e.createdAt}
+                        {getRelativeTime(e.createdAt)}
                     </span>
                 </td>
             </tr>

@@ -8,7 +8,8 @@
 import React, { Component } from 'react';
 import ReactPaginate from 'react-paginate';
 import '../styling/MembersPagination.css';
-import { API } from '../global';
+import { API, BREADCRUMB_PATH } from '../global';
+import Breadcrumbs from './Breadcrumbs';
 
 export default class MembersPagination extends Component {
     constructor(props) {
@@ -71,6 +72,8 @@ export default class MembersPagination extends Component {
     render() {
         return (
             <section>
+                <Breadcrumbs path={BREADCRUMB_PATH.Members} />
+
                 <div className="text-white">
                     <div className="container">
                         <h1 className="pt-3">Members List</h1>
