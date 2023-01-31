@@ -1,0 +1,12 @@
+:root {
+  --size: 14px;
+}
+
+.member-title {
+  text-align: center;
+  margin-top: var(--size);
+  margin-bottom: var(--size);
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background-color: aliceblue;
+}

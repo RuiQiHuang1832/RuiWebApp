@@ -19,7 +19,7 @@ import Gaming from './Tabs/Gaming';
 import CurrencyData from './HomeSideColumn/CurrencyData';
 import Announcements from './HomeSideColumn/Announcements';
 import RecentTopics from './HomeSideColumn/RecentTopics';
-import { API, BREADCRUMB_PATH } from '../global';
+import { API, BREADCRUMB_PATH, NAME } from '../global';
 import Breadcrumbs from './Breadcrumbs';
 
 let isHerokoBusy = true;
@@ -180,17 +180,30 @@ export default class Home extends Component {
     return (
 
       <section className="text-white hugepadding ps-2">
+
         <Breadcrumbs path={BREADCRUMB_PATH.Home} />
 
         <div className="container-fluid ps-md-5 py-5 ">
           <div id="homeBackground" className="card border-0">
+
             <div className="row gx-0">
               <div className=" col-lg-9 mb-5 pt-4 ">
+
                 <div className="col-lg-8 ps-3 mb-5">
-                  <h1 className="mt-3 mb-4">Welcome to Tailwind!</h1>
+
+                  <h1 className="mt-3 mb-4">
+                    Welcome to
+                    {' '}
+                    {NAME}
+                    !
+                  </h1>
                   <p>
                     <strong>Everyone is invited! </strong>
-                    The Tailwind discussions are for everyone, new and advanced users alike!
+                    The
+                    {' '}
+                    {NAME}
+                    {' '}
+                    discussions are for everyone, new and advanced users alike!
                   </p>
                   <p>
                     <strong>Searching is key! </strong>

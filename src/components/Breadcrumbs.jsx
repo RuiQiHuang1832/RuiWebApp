@@ -13,7 +13,7 @@ export default function Breadcrumbs(props) {
 
     return (
         <nav aria-label="breadcrumb">
-            <ol className="breadcrumb">
+            <ol className="breadcrumb justify-content-center pt-4 mb-0">
                 {createList(props.path)}
             </ol>
         </nav>

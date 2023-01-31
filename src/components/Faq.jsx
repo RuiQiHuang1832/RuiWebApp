@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styling/Faq.css';
+import { NAME } from '../global';
 
 const TITLE = 'Frequently Asked Questions';
 
@@ -18,7 +19,12 @@ export class Faq extends Component {
               <h5 className=" text-center p-lg-5 pb-5  ">
                 Got a question? We&apos;ve got answers.
                 If you have some other questions, contact us at
-                <a className="text-muted text-reset text-decoration-none" href="#!"> contact@Tailwind.com.</a>
+                <a className="text-muted text-reset text-decoration-none" href="#!">
+                  {' '}
+                  contact@
+                  {NAME}
+                  .com.
+                </a>
               </h5>
               <div className="accordion pb-5 px-3 px-lg-5 accordioncolor">
                 <div className="accordion-item  ">

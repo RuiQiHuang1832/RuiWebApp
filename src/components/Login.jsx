@@ -5,7 +5,7 @@ import '../styling/Login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import ls from 'localstorage-slim';
 import panda from '../images/panda.png';
-import { API } from '../global';
+import { API, NAME } from '../global';
 
 const TITLE = 'Login';
 
@@ -104,7 +104,11 @@ export class Login extends Component {
                       <div className="card-body  m-lg-5 ">
                         <div className="text-center mt-3">
                           <img src={panda} alt="pandaImage" className="align-content-center" width="180" height="150" />
-                          <h3 className="mt-3 text-white">Welcome to Tailwind</h3>
+                          <h3 className="mt-3 text-white">
+                            Welcome to
+                            {' '}
+                            {NAME}
+                          </h3>
                         </div>
                         <h4 className="text-danger text-center invalidloginopacity">{this.state.invalidlogin}</h4>
                         <h6 className="mt-5 mb-0 text-white">Please login to your account</h6>

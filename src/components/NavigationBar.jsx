@@ -3,6 +3,7 @@ import '../styling/NavigationBar.css';
 import { NavLink } from 'react-router-dom';
 import ls from 'localstorage-slim';
 import UserCustomization from './UserCustomization';
+import { NAME } from '../global';
 
 // Navigation Links..Either <li> tags, routes w/ components,
 // bootstrap navbars, navlinks/links..but those are kinda hard
@@ -64,13 +65,13 @@ export default class NavigationBar extends Component {
             </button>
             {/** for mobile */}
             <h2 className="navbar-brand ms-5  fs-3 fw-bold d-block d-lg-none">
-              <NavLink to="/" className="text-white text-decoration-none">Tailwind</NavLink>
+              <NavLink to="/" className="text-white text-decoration-none">{NAME}</NavLink>
             </h2>
 
             <div className="collapse navbar-collapse justify-content-between" id="collapsethis" style={fontSize}>
               {/** for desktop */}
               <h2 className=" ms-5 fs-2 fw-bold d-none d-lg-block ">
-                <NavLink to="/" className="text-white text-decoration-none">Tailwind</NavLink>
+                <NavLink to="/" className="text-white text-decoration-none">{NAME}</NavLink>
               </h2>
               <div className="navbar-nav ">
 

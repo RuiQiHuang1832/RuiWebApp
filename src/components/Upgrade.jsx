@@ -30,6 +30,7 @@ export class Upgrade extends Component {
                     {/** Gap-4 ^ */}
                     {/** 1st COLUMN */}
                     <div className="col-lg-4 col-md-7 col-sm-10  ">
+
                       <div id="theborderstart" className="card my-5 ">
                         <div className="d-inline-flex  p-2 w-100 gradient-custom-1 justify-content-between fw-bold">
                           <div className="fs-5 ms-2 text-white">Tier 1</div>

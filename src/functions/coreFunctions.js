@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 
 // @params: yyyy-mm-dd
-// @return: string formatted time
+// @return: relative string formatted time
 export function getRelativeTime(dateString) {
     const now = new Date();
     const inputDate = new Date(dateString);
