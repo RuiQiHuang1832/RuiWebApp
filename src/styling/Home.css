@@ -10,7 +10,8 @@
   border-radius: 0 !important;
   background-color: rgba(86, 78, 78, 0.521) !important;
 }
-.nav-pills .nav-link {
+.nav-pills .nav-link:hover {
+  background-color: rgb(33, 27, 27);
 }
 
 .tabcolor {

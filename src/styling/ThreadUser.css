@@ -8,5 +8,11 @@
   margin-bottom: var(--size);
   padding-top: 2px;
   padding-bottom: 2px;
-  background-color: aliceblue;
+  background-color: #0a0909b0;
+}
+.inline-img {
+  display: inline;
+  margin: 0 0.5em;
+  padding: 0;
+  vertical-align: baseline;
 }
