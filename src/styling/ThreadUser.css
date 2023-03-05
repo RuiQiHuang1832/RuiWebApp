@@ -16,3 +16,47 @@
   padding: 0;
   vertical-align: baseline;
 }
+
+@media (min-width: 961px) {
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+  .img {
+    width: 160px;
+  }
+}
+@media (min-width: 1025px) {
+  /* big landscape tablets, laptops, and desktops */
+  .img {
+    width: 160px;
+  }
+}
+
+@media (min-width: 1281px) {
+  /* hi-res laptops and desktops */
+  .img {
+    width: 160px;
+  }
+}
+/* CSS specificity determines which CSS rules are applied to an element based on the specificity of the selector used to define them. When multiple selectors apply to the same element, the one with the highest specificity takes precedence. */
+@media (min-width: 1201px) {
+  div.threadUserCol3 {
+    width: 20%;
+  }
+  div.threadUserCol9 {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1400px) {
+  div.threadUserCol3 {
+    width: 16.66666667%;
+  }
+  div.threadUserCol9 {
+    width: 83.33333333%;
+  }
+}
+
+@media (min-width: 992px) {
+  .hideBorderLeft {
+    border-left: 0px solid !important;
+  }
+}

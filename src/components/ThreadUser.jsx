@@ -29,8 +29,8 @@ export default function ThreadUser() {
             </div>
 
             <div className="member-title ">Lurker</div>
-            <div className="p-3 text-center mb-1">
-                <img src={member} aria-label="member picture" width="170" />
+            <div className=" pb-3 pt-e text-center mb-1">
+                <img className="img" src={member} aria-label="member picture" />
             </div>
             {/* refactor this so it becomes a componenet or just make a for loop for it */}
             <div className="mb-3" style={{ width: '175px', margin: '0 auto', fontSize: '12px' }}>

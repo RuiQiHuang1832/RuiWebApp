@@ -7,19 +7,19 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import ThreadBody from './ThreadBody';
 import ThreadUser from './ThreadUser';
-
+// TODO: NEED TO FINISH MOBILE RESPONSIVENESS
 export default function Thread() {
     function ThreadReplies(len) {
         const items = [];
         for (let i = 0; i < len; i += 1) {
             items.push(<div key={i} style={{ color: '#AFAFAF' }} className="row g-0">
                 <div
-                    style={{ width: '18%', background: 'linear-gradient(#161716, transparent)' }}
-                    className="col-3 border-end-0 mt-2 threadBorder"
+                    style={{ background: 'linear-gradient(#161716, transparent)' }}
+                    className="d-none d-lg-block col-lg-3 threadUserCol3   border-end-0 mt-2 threadBorder"
                 >
                     <ThreadUser />
                 </div>
-                <div style={{ width: '82%' }} className="col-9  border-start-0 mt-2 threadBorder">
+                <div className="col-lg-9 col-xl-9 threadUserCol9 hideBorderLeft mt-2 threadBorder">
                     <ThreadBody number={i + 1} />
                 </div>
                 <div
@@ -46,7 +46,7 @@ export default function Thread() {
         return items;
     }
     return (
-        <section className="container text-white pt-3 g-0">
+        <section className="container-lg px-3 px-lg-0 text-white pt-3 g-0">
             <div style={{ borderBottomWidth: '4px' }} className=" threadBorder">
                 <h4 className="text-start mb-0 p-1">
                     <i className="bi bi-text-left ms-2 " style={{ fontSize: '20px' }} />
