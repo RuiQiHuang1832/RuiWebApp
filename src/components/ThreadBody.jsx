@@ -6,8 +6,13 @@ export default function ThreadBody(props) {
             <span style={{ fontSize: '12px' }} className="text-secondary">
                 Posted
                 {' '}
-                <span style={{ textDecoration: 'underline dotted' }}>Yesterday</span>
+                <span style={{ textDecoration: 'underline dotted' }}>
+                    Yesterday
+                </span>
+                <span className="fw-bold text-success d-inline-block d-lg-none">&nbsp;by Batman</span>
+
             </span>
+
             <span
                 style={{
                     background: '#191717', marginTop: '-4px', marginRight: '-16px', fontSize: '0px',

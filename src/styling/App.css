@@ -10,7 +10,7 @@ body {
 }
 
 .ck-editor__editable {
-  min-height: 300px;
+  min-height: 200px;
   background: rgb(31, 32, 40) !important;
   color: white !important;
 }

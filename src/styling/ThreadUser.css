@@ -60,3 +60,7 @@
     border-left: 0px solid !important;
   }
 }
+
+.clickableTextArea:focus {
+  border: 2px solid red !important;
+}

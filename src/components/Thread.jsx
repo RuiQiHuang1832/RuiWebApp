@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-closing-tag-location */
-import React from 'react';
+import React, { useState } from 'react';
 import '../styling/Template.css';
 import { } from 'react-router-dom';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
@@ -9,6 +11,12 @@ import ThreadBody from './ThreadBody';
 import ThreadUser from './ThreadUser';
 // TODO: NEED TO FINISH MOBILE RESPONSIVENESS
 export default function Thread() {
+    const [elementHidden, setElementHidden] = useState(false);
+
+    function handleClick() {
+        setElementHidden(true);
+    }
+
     function ThreadReplies(len) {
         const items = [];
         for (let i = 0; i < len; i += 1) {
@@ -19,7 +27,7 @@ export default function Thread() {
                 >
                     <ThreadUser />
                 </div>
-                <div className="col-lg-9 col-xl-9 threadUserCol9 hideBorderLeft mt-2 threadBorder">
+                <div className="col-lg-9 col-xl-9 threadUserCol9 hideBorderLeft mt-2 threadBorder pb-lg-0 pb-5">
                     <ThreadBody number={i + 1} />
                 </div>
                 <div
@@ -30,14 +38,14 @@ export default function Thread() {
                         &nbsp;
                         <button type="button" className="rounded text-white" style={{ background: 'black' }}>
                             <i className="bi bi-flag-fill" />
-                            &nbsp;Report
+                            <span className="d-none d-lg-inline-block">&nbsp;Report</span>
                         </button>
                     </span>
                     <span className="p-1">
                         &nbsp;
                         <button type="button" className="rounded text-white" style={{ background: 'black' }}>
                             <i className="bi bi-reply-fill" />
-                            &nbsp;Reply
+                            <span className="d-none d-lg-inline-block">&nbsp;Reply</span>
                         </button>
                     </span>
                 </div>
@@ -56,28 +64,44 @@ export default function Thread() {
             <div className="d-flex flex-column">
                 {ThreadReplies(4)}
             </div>
+
             <form className=" rounded-0 mt-4">
+
                 <div style={{ background: 'blue' }} className="border border-white border-bottom-0 ">
                     <label className=" text-white">&nbsp;Quick Reply</label>
-                </div>
-
-                <div className="mb-3 ck-editor__editable">
-
-                    <CKEditor
-                        editor={Editor}
-                        onChange={(event, editor) => {
-                            const data = editor.getData();
-                        }}
-                        onBlur={(event, editor) => {
-                            // console.log('Blur.', editor);
-                        }}
-                        onFocus={(event, editor) => {
-                            // console.log('Focus.', editor);
-                        }}
-
-                    />
 
                 </div>
+                <div onClick={handleClick}>
+                    {elementHidden
+                        ? (
+                            <div id="ckEditor" className="mb-3 ck-editor__editable">
+
+                                <CKEditor
+                                    editor={Editor}
+                                    onChange={(event, editor) => {
+                                        const data = editor.getData();
+                                    }}
+                                    onBlur={(event, editor) => {
+                                        // console.log('Blur.', editor);
+                                    }}
+                                    onFocus={(event, editor) => {
+                                        // console.log('Focus.', editor);
+                                    }}
+
+                                />
+
+                            </div>
+                        ) : (
+                            <div
+                                aria-label="textarea"
+                                role="button"
+                                tabIndex={0}
+                                className="border border-1 clickableTextArea mb-3"
+                                style={{ height: '100px' }}
+                            />
+                        )}
+                </div>
+
                 <div className="text-center">
                     <button type="submit" className="btn btn-outline-light" disabled>Post</button>
 
