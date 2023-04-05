@@ -1,4 +1,5 @@
 import React from 'react';
+import { getRelativeTime } from '../functions/coreFunctions';
 
 export default function ThreadBody(props) {
     return (
@@ -7,7 +8,7 @@ export default function ThreadBody(props) {
                 Posted
                 {' '}
                 <span style={{ textDecoration: 'underline dotted' }}>
-                    Yesterday
+                    {getRelativeTime(props.time)}
                 </span>
                 <span className="fw-bold text-success d-inline-block d-lg-none">&nbsp;by Batman</span>
 

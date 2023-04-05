@@ -20,7 +20,7 @@ export default function NewTopic() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        fetch(`${API}posts`, {
+        fetch(`${API}posts?username=${localStorage.getItem('user')}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

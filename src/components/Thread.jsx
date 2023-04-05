@@ -1,21 +1,36 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-closing-tag-location */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styling/Template.css';
-import { } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import ThreadBody from './ThreadBody';
 import ThreadUser from './ThreadUser';
-// TODO: NEED TO FINISH MOBILE RESPONSIVENESS
+import { API } from '../global';
+
 export default function Thread() {
     const [elementHidden, setElementHidden] = useState(false);
+    const { id, title } = useParams();
 
+    // for quick replys
     function handleClick() {
         setElementHidden(true);
     }
+    const [fetchedData, setFetchedData] = useState([]);
+
+    useEffect(() => {
+        fetch(`${API}post-data`)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                const tmp = data.filter((e) => e.id == id);
+                setFetchedData(tmp[0]);
+            });
+    }, []);
 
     function ThreadReplies(len) {
         const items = [];
@@ -25,10 +40,10 @@ export default function Thread() {
                     style={{ background: 'linear-gradient(#161716, transparent)' }}
                     className="d-none d-lg-block col-lg-3 threadUserCol3   border-end-0 mt-2 threadBorder"
                 >
-                    <ThreadUser />
+                    <ThreadUser authorId={fetchedData.authorId} />
                 </div>
                 <div className="col-lg-9 col-xl-9 threadUserCol9 hideBorderLeft mt-2 threadBorder pb-lg-0 pb-5">
-                    <ThreadBody number={i + 1} />
+                    <ThreadBody number={i + 1} time={fetchedData.createdAt} />
                 </div>
                 <div
                     style={{ borderBottomWidth: '4px', background: 'rgb(11 10 10)' }}
@@ -53,12 +68,16 @@ export default function Thread() {
         }
         return items;
     }
+
     return (
         <section className="container-lg px-3 px-lg-0 text-white pt-3 g-0">
             <div style={{ borderBottomWidth: '4px' }} className=" threadBorder">
                 <h4 className="text-start mb-0 p-1">
-                    <i className="bi bi-text-left ms-2 " style={{ fontSize: '20px' }} />
-                    <span className="ms-1 font-monospace " style={{ fontSize: '20px' }}> What is this site all about?</span>
+                    <i className="bi bi-text-left ms-2 " style={{ fontSize: '17px' }} />
+                    <span className="ms-2 font-monospace " style={{ fontSize: '20px' }}>
+
+                        {fetchedData.title}
+                    </span>
                 </h4>
             </div>
             <div className="d-flex flex-column">

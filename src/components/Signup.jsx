@@ -75,8 +75,6 @@ export default function Signup() {
     fetch(`${API}users/add  `, {
       // look at login.js on how to implement login
 
-      // http://localhost:8080/user/add                     <-local
-      // https://ruibackend.herokuapp.com/user/add          <-production
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

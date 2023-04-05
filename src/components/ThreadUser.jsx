@@ -3,11 +3,11 @@ import panda from '../images/panda.png';
 import '../styling/ThreadUser.css';
 import member from '../images/memberimage.jpg';
 // look at the comment on the bottom and refactor with a for loop/.
-export default function ThreadUser() {
+export default function ThreadUser(props) {
     return (
         <div className="threadUser">
             <div className="text-center mb-3 mt-1 text-white">
-                Batman
+                {props.authorId}
                 <br />
                 <span style={{ fontSize: '12px' }} className="text-danger ">offline</span>
             </div>

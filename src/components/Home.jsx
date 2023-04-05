@@ -214,7 +214,7 @@ export default class Home extends Component {
                     <strong>Be respectful! </strong>
                     Do not start flame wars! If someone is engaged in behavior that is
                     detrimental to the message board such as spamming, flaming, etc -- contact one of the moderators!
-                    <strong> Harrasment is not tolerated.</strong>
+                    <strong> Harrassment is not tolerated.</strong>
                   </p>
                 </div>
                 <div className="">

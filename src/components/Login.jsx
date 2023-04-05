@@ -50,6 +50,10 @@ export class Login extends Component {
   // use localStorage for storing sessions..(only if i want it)
   // Basic Auth
   handleClick(e) {
+    // prevent Default is needed. If you take it out, the
+    // fetch will occur because everything is still being ran within this func, but
+    // it refreshes because of the event "submit" so fast that fetch doesn't even have time
+    // to process, and immenditaly gets wiped which looks like fetch never ran.
     e.preventDefault();
     this.setState({ invalidlogin: '' });
     const url = API + 'users/login';
@@ -71,7 +75,7 @@ export class Login extends Component {
         .then((response) => response.json())
         .then((data) => {
           const filtered = data.filter((obj) => {
-            if (xusername.toLowerCase() === obj.username.toLowerCase()) {
+            if (xusername === obj.username) {
               return obj;
             }
           });

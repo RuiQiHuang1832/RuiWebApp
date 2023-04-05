@@ -6,8 +6,9 @@ import { SelfBuildingSquareSpinner } from 'react-epic-spinners';
 import React, { useEffect, useState } from 'react';
 import '../styling/Template.css';
 import { useParams, useLocation } from 'react-router-dom';
-import axios from 'axios';
-import ls from 'localstorage-slim';
+import JSZip from 'jszip';
+import { getRelativeTime } from '../functions/coreFunctions';
+import { API } from '../global';
 
 // Template for how all forum pages should be built.
 const forumiconsize = {
@@ -19,6 +20,7 @@ export default function Template() {
     const { topic, forumname } = useParams();
     let threadIdentifier = {};
     const [currentTopic, setCurrentTopic] = useState();
+    const [images, setImages] = useState([]);
 
     const [postData, setPostData] = useState(
         <tr className="">
@@ -42,52 +44,88 @@ export default function Template() {
     }
 
     useEffect(() => {
-        // refresh last post from local storage so that it retrieves a new one from DB just in case its updated,
-        // allows me to use cache and api calls without making wasting resources on making useless calls if update is not needed
-
-        convertForumNameToCategory();
         if (location.state.data === undefined) {
             window.location.href = '/';
         }
-        const filtered = location.state.data.filter((val) => val.category.includes(currentTopic));
-        threadIdentifier = filtered.reverse();
+        fetch(`${API}users/images`)
+            .then((response) => response.blob())
+            .then((blob) => {
+                const zipFile = new JSZip();
+                return zipFile.loadAsync(blob); // Load the zip file asynchronously
+            })
+            .then((zip) => {
+                const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp'];
+                const imagePromises = [];
 
-        setPostData(threadIdentifier.map((obj) => (
+                // Loop through each file in the zip archive
+                zip.forEach((relativePath, zipEntry) => {
+                    if (imageExtensions.some((ext) => zipEntry.name.endsWith(ext))) {
+                        // Extract the image file from the zip archive
+                        const imagePromise = zipEntry
+                            .async('blob')
+                            .then((imageBlob) => {
+                                const imageUrl = URL.createObjectURL(imageBlob);
+                                return imageUrl;
+                            });
+                        imagePromises.push(imagePromise);
+                    }
+                });
 
-            <tr key={obj.id}>
-                <td style={forumiconsize} className="pb-4 m-0">
-                    <i className="bi bi-lock-fill" />
-                </td>
-                <td>
-                    <h6 className="">
-                        <a className="text-decoration-none text-white" href={`/${obj.id}-${obj.title}`}>{obj.title}</a>
-                        <span className="text-muted" style={{ fontSize: '11px' }}>
-                            &emsp;
-                            {obj.createdAt}
-                        </span>
-                    </h6>
-                    <p className="summaryfontsize col-md-8">
-                        Started By:
-                        {' '}
-                        {obj.authorId}
-                    </p>
-                </td>
-                <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
-                    3
+                // Wait for all image promises to resolve and display the images
+                return Promise.all(imagePromises);
+            })
+            .then((imageUrls) => {
+                setImages([...imageUrls]);
+                convertForumNameToCategory();
+            })
+            .catch((error) => console.error(error))
+            .then(() => {
+                const filtered = location.state.data.filter((val) => val.category.includes(currentTopic));
+                threadIdentifier = filtered.reverse();
+                console.log(threadIdentifier);
+                setPostData(threadIdentifier.map((obj) => (
 
-                    <p className="summaryfontsize">Replies</p>
+                    <tr key={obj.id} style={{ fontSize: '13px' }}>
+                        <td style={forumiconsize} className="pb-4 m-0">
+                            <i className="bi bi-file-earmark-fill" />
+                        </td>
+                        <td>
+                            <h6 className="">
+                                <a className="text-decoration-none text-white" href={`/${obj.id}-${obj.title}`}>{obj.title}</a>
+                                <span className="text-muted" style={{ fontSize: '11px' }}>
+                                    &emsp;
+                                    {getRelativeTime(obj.createdAt)}
+                                </span>
+                            </h6>
+                            <p className="summaryfontsize col-md-8">
+                                Started By:
+                                {' '}
+                                {obj.authorId}
+                            </p>
+                        </td>
+                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
+                            3
+                            <p className="summaryfontsize">Replies</p>
 
-                </td>
-                <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
-                    0
+                        </td>
+                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
+                            0
+                            <p className="summaryfontsize">Views</p>
+                        </td>
+                        <td className="d-flex align-items-center" style={{ color: '#898989', paddingLeft: '7%' }}>
+                            <img src={images[obj.userId - 1]} alt="pfp" className="align-content-center mt-1 me-2" width="50" height="40" />
+                            <div>
+                                <div className="mt-1" style={{ color: 'rgb(204,204,204)' }}>Ben</div>
+                                <div>Yesterday</div>
+                            </div>
+                        </td>
+                    </tr>
 
-                    <p className="summaryfontsize">Views</p>
-                </td>
-
-            </tr>
-
-        )));
+                )));
+            });
     }, [currentTopic]);
+    // refresh last post from local storage so that it retrieves a new one from DB just in case its updated,
+    // allows me to use cache and api calls without making wasting resources on making useless calls if update is not needed
 
     // disregard the double () (), its apparently the return
     useEffect(() => () => {
@@ -156,14 +194,14 @@ export default function Template() {
 
                                         </div>
 
-                                        <table style={{ wordBreak: 'break-word' }} className="table align-middle table-borderless mb-0">
+                                        <table style={{ wordBreak: 'break-word', borderCollapse: 'collapse' }} className="table align-middle table-borderless mb-0">
                                             <thead className="text-white ">
                                                 <tr>
                                                     <th style={{ width: '2%' }} className="col border-bottom "> </th>
                                                     <th className="col-6 border-bottom "> </th>
-                                                    <th className="col-2 text-center border-bottom d-none d-lg-table-cell d-md-table-cell d-xl-table-cell"> </th>
-                                                    <th className="text-center border-bottom d-none d-lg-table-cell d-md-table-cell d-xl-table-cell" style={{ width: '13%' }}> </th>
-                                                    <th className="text-center border-bottom d-none d-lg-table-cell d-md-table-cell d-xl-table-cell"> </th>
+                                                    <th className="text-center border-bottom d-none d-lg-table-cell d-md-table-cell d-xl-table-cell" style={{ width: '10%' }}> </th>
+                                                    <th className=" text-center border-bottom d-none d-lg-table-cell d-md-table-cell d-xl-table-cell" style={{ width: '8%' }}> </th>
+                                                    <th className="  text-center border-bottom d-none d-lg-table-cell d-md-table-cell d-xl-table-cell"> </th>
                                                 </tr>
                                             </thead>
                                             <tbody className="text-white">
