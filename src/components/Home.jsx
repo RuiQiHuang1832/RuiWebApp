@@ -72,6 +72,12 @@ export default class Home extends Component {
   // response.quoteResponse.result[0].regularMarketPrice
   // cache it buddy
   componentDidMount() {
+    // needed for when there are no entries in DB, nothing loads
+    // 6 because there has to be 2 in each. 2 x 3 forums = 6
+    if (ls.get('dbAmt') !== 6) {
+      ls.remove('forumData');
+      ls.remove('previousforumData');
+    }
     // interval = setInterval(() => {
     //   this.refetchData();
     // }, 10000);

@@ -22,8 +22,7 @@
 Lastest update: I assocaited backend userID with the username when the user posts. WHAT SHOULD I DO NEXT?
 //fetched it and grabbed the images, however, a problem arises if user somehow just lands on the template page.
 the images wont get loaded. this means I have to load it on template page itself. <=== on this part
-//basically finished this part, but stuck on a part with localstorage. need to make it so if db is cleared, 
-website should still be accessible. looking at Forum and Home,
+//basically finished this part,
 //ERROR: if a newly created user doesnt have an imaeg, will cause error in template page
 
 
