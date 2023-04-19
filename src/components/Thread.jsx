@@ -43,7 +43,7 @@ export default function Thread() {
                     <ThreadUser authorId={fetchedData.authorId} />
                 </div>
                 <div className="col-lg-9 col-xl-9 threadUserCol9 hideBorderLeft mt-2 threadBorder pb-lg-0 pb-5">
-                    <ThreadBody number={i + 1} time={fetchedData.createdAt} />
+                    <ThreadBody number={i + 1} time={fetchedData.createdAt} body={fetchedData.body} authorId={fetchedData.authorId} />
                 </div>
                 <div
                     style={{ borderBottomWidth: '4px', background: 'rgb(11 10 10)' }}

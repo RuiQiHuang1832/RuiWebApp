@@ -17,7 +17,7 @@ import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough.js
 import Table from '@ckeditor/ckeditor5-table/src/table.js';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline.js';
 
-class Editor extends ClassicEditor {}
+class Editor extends ClassicEditor { }
 
 // Plugins to include in the build.
 Editor.builtinPlugins = [
@@ -33,7 +33,7 @@ Editor.builtinPlugins = [
 	Paragraph,
 	Strikethrough,
 	Table,
-	Underline
+	Underline,
 ];
 
 // Editor configuration.
@@ -55,10 +55,10 @@ Editor.defaultConfig = {
 			'blockQuote',
 			'insertTable',
 			'undo',
-			'redo'
-		]
+			'redo',
+		],
 	},
-	language: 'en'
+	language: 'en',
 };
 
 export default Editor;

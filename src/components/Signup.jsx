@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable import/no-mutable-exports */
 import React, { useState, useEffect } from 'react';
 import '../styling/Signup.css';
@@ -5,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import bcrypt from 'bcryptjs';
 import axios from 'axios';
+
 import { API } from '../global';
 
 let simpleAuth = false; // auth for signup=success
@@ -41,13 +43,15 @@ export default function Signup() {
 
   });
   const watched = watch();
+  // for Ip address
   useEffect(() => {
     document.title = TITLE;
-    axios.get('https://ipgeolocation.abstractapi.com/v1/?api_key=0761240eebc74e768f377af56ed0058a')
-      .then((response) => {
-        setIpaddress(response.data.ip_address);
-      });
-  }, []); // componentdidUpdate with the second parameter being empty. however
+    // axios.get('https://ipgeolocation.abstractapi.com/v1/?api_key=0761240eebc74e768f377af56ed0058a')
+    //   .then((response) => {
+    //     setIpaddress(response.data.ip_address);
+    //   });
+  }, []);
+  // componentdidUpdate with the second parameter being empty. however
   // can also provide a list of things to allow it to know when to update
   // 1) [] - acts like componentDidMount,To run the useEffect only on mount,
   // pass an empty array [] as a second argument
@@ -98,7 +102,6 @@ export default function Signup() {
     }).catch(() => {
       setSpinner('Register');
     });
-
     simpleAuth = true; // auth for signup=success
   };
 

@@ -113,7 +113,7 @@ export default function Template() {
                             <p className="summaryfontsize">Views</p>
                         </td>
                         <td className="d-flex align-items-center" style={{ color: '#898989', paddingLeft: '7%' }}>
-                            <img src={images[obj.userId - 1]} alt="pfp" className="align-content-center mt-1 me-2" width="50" height="40" />
+                            <img src={images[obj.userId - 1]} alt="pfp" className="align-content-center mt-1 me-2" width="34" height="34" />
                             <div>
                                 <div className="mt-1" style={{ color: 'rgb(204,204,204)' }}>Ben</div>
                                 <div>Yesterday</div>

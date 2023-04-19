@@ -74,7 +74,7 @@ export default class Home extends Component {
   componentDidMount() {
     // needed for when there are no entries in DB, nothing loads
     // 6 because there has to be 2 in each. 2 x 3 forums = 6
-    if (ls.get('dbAmt') !== 6) {
+    if (ls.get('dbAmt') <= 6) {
       ls.remove('forumData');
       ls.remove('previousforumData');
     }

@@ -1,4 +1,5 @@
 import React from 'react';
+import parse from 'html-react-parser';
 import { getRelativeTime } from '../functions/coreFunctions';
 
 export default function ThreadBody(props) {
@@ -10,7 +11,11 @@ export default function ThreadBody(props) {
                 <span style={{ textDecoration: 'underline dotted' }}>
                     {getRelativeTime(props.time)}
                 </span>
-                <span className="fw-bold text-success d-inline-block d-lg-none">&nbsp;by Batman</span>
+                <span className="fw-bold text-success d-inline-block d-lg-none">
+                    &nbsp;by
+                    {' '}
+                    {props.authorId}
+                </span>
 
             </span>
 
@@ -27,9 +32,7 @@ export default function ThreadBody(props) {
                 </span>
             </span>
             <div className="mt-4">
-                Reducing just the padding on the columns wont make the trick,
-                as you will extend the width of the page, making it uneven with the rest of your page, say navbar.
-                You need to equally reduce the negative margin on the row. Taking @martinedwards LESS example:
+                {parse(`${props.body}`)}
 
             </div>
         </div>
