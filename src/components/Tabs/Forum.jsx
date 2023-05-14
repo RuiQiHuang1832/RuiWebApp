@@ -47,8 +47,10 @@ export default function Forum() {
     const objTempStateLastPost = [];
     for (let i = 0; i < 3; i += 1) {
         objTempStateLastPost.push({
-            lastPost: { title: ls.get('previousforumData') !== null ? ls.get('previousforumData')[i].lastPost.title : '-' },
-            threadCount: ls.get('previousforumData') !== null ? ls.get('previousforumData')[i].threadCount : '-',
+            lastPost: {
+                title: (ls.get('previousforumData')[i].threadCount !== 0 && ls.get('previousforumData') !== null) ? ls.get('previousforumData')[i].lastPost.title : '-',
+            },
+            threadCount: (ls.get('previousforumData')[i].threadCount !== 0 && ls.get('previousforumData') !== null) ? ls.get('previousforumData')[i].threadCount : '-',
         });
     }
 
@@ -142,14 +144,15 @@ export default function Forum() {
                             </h6>
                             <p className="summaryfontsize col-md-8">{generalDiscussionDescription}</p>
                         </td>
+
                         <td aria-label="threads" className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
                             {allPostData[0].threadCount}
                         </td>
                         <td aria-label="posts" className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
                         <td aria-label="last post" className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell ">
                             <div className="nowrapEllipse">
-                                <a className="text-decoration-none text-white" href={`/${allPostData[0].lastPost.id}-${allPostData[0].lastPost.title}`}>
-                                    {allPostData[0].lastPost.title}
+                                <a className="text-decoration-none text-white" href={allPostData[0].lastPost === undefined ? '-' : `/${allPostData[0].lastPost.id}-${allPostData[0].lastPost.title}`}>
+                                    {allPostData[0].lastPost === undefined ? '-' : allPostData[0].lastPost.title}
                                 </a>
 
                             </div>
@@ -179,9 +182,9 @@ export default function Forum() {
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
                             <div className="nowrapEllipse">
+                                <a className="text-decoration-none text-white" href={allPostData[1].lastPost === undefined ? '-' : `/${allPostData[1].lastPost.id}-${allPostData[1].lastPost.title}`}>
 
-                                <a className="text-decoration-none text-white" href={`/${allPostData[1].lastPost.id}-${allPostData[1].lastPost.title}`}>
-                                    {allPostData[1].lastPost.title}
+                                    {allPostData[1].lastPost === undefined ? '-' : allPostData[1].lastPost.title}
                                 </a>
 
                             </div>
@@ -211,8 +214,8 @@ export default function Forum() {
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">0</td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
                             <div className="nowrapEllipse">
-                                <a className="text-decoration-none text-white" href={`/${allPostData[2].lastPost.id}-${allPostData[2].lastPost.title}`}>
-                                    {allPostData[2].lastPost.title}
+                                <a className="text-decoration-none text-white" href={allPostData[2].lastPost === undefined ? '-' : `/${allPostData[2].lastPost.id}-${allPostData[2].lastPost.title}`}>
+                                    {allPostData[2].lastPost === undefined ? '-' : allPostData[2].lastPost.title}
                                 </a>
 
                             </div>

@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-indent */
 /* eslint-disable indent */
 import React from 'react';
+import parse from 'html-react-parser';
 import { getRelativeTime } from '../../functions/coreFunctions';
 
 export default function RecentTopics(props) {
@@ -13,9 +14,9 @@ export default function RecentTopics(props) {
                     </a>
                     <br />
                     <span className="announcmentfontsize text-muted">
-                        By&nbsp;
-                        {e.authorId}
-                        ,&nbsp;
+                        {e.status === 1 ? parse(`<span className="text-white">By ${e.authorId}</span>`) : parse(`<del style="opacity:0.5">By ${e.authorId}</del>`)}
+
+                        <span className="text-muted">,&nbsp;</span>
                         {getRelativeTime(e.createdAt)}
                     </span>
                 </td>

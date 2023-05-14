@@ -6,7 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styling/Template.css';
 import { useParams } from 'react-router-dom';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
+import { CKEditor } from '@ckeditor/ckeditor5-react/dist/ckeditor';
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import ThreadBody from './ThreadBody';
 import ThreadUser from './ThreadUser';

@@ -74,6 +74,7 @@ export default class Home extends Component {
   componentDidMount() {
     // needed for when there are no entries in DB, nothing loads
     // 6 because there has to be 2 in each. 2 x 3 forums = 6
+
     if (ls.get('dbAmt') <= 6) {
       ls.remove('forumData');
       ls.remove('previousforumData');
@@ -140,6 +141,11 @@ export default class Home extends Component {
     console.log('Unmounting');
   }
 
+  handleDelete(e) {
+    e.preventDefault();
+    console.log(e.target[0].value);
+  }
+
   displayCurrentPage() {
     switch (this.state.currentpage) {
       case 'Forums':
@@ -196,6 +202,14 @@ export default class Home extends Component {
               <div className=" col-lg-9 mb-5 pt-4 ">
 
                 <div className="col-lg-8 ps-3 mb-5">
+
+                  <form onSubmit={this.handleDelete} className="form">
+                    <label>Name (test feature)</label>
+                    <div className="form-group d-flex">
+                      <input type="text" className="form-control" />
+                      <button className="btn btn-primary" type="submit">Button</button>
+                    </div>
+                  </form>
 
                   <h1 className="mt-3 mb-4">
                     Welcome to
