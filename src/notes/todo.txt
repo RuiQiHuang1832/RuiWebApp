@@ -17,29 +17,42 @@
 //ls changes, site dies. somewhat fixed it. Done. Check home.jsx ENABLES ONLY IN TESTING
 // VERY IMPORTANT: ALSO WHENEVER I RENDER A COMPONENT WITHIN A COMPONENET, IT WILL BE CONFUSING, SO JUST REMEMEBR HOW EACH COMPONENT WORKS WITHIN ANOTHER COMPONENET IF THEY DEPEND ON EACH OTHER!!
 
+NEXT
+-> if admin ROLE -> reveal the delete button -> else nothing
+-> going to achieve this using ls and encyprtions. I could also do cookies but ehhhh just going to do this for now but normally i would use cookies
+^ DOne with this + Dne with backend
+Now I just need to make it so FE passes in the credntials
+^ most finished. Made it so when admin logins, I get a token saved to LS.
+Now I just need to store that key also somehwer ein the server backend.
+After that I will no longner have to pass admin:admin and instead only pass the token in my ls.
+after passing that, i have to autheticate that token is exisitn in my server. Moving forward I will do this method.
 
 
 
 
-//create an option to deletethe user which then calls the backend and sets a status for it
 
-//on backend - the absolute path for the image needs to be a relative path or else it wont work when its public
 
-//also how are deleted users still being logged in when i star my npm? ->> not that big of a bug but still..
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////Just making more edge cases for myself. Move on from this. Its behavior is normal.
 //might refactor -> home -> general discussion. somehow make it load before accessing the general discussion. i can't do it in general discssion since what if a user loads to it from a different previous destination. need to somehow load onto GD and not showing the topics being loaded on. it should be instant 
 //^ did some research and apparently its pretty hard to implement. there isn't' anything solid so I guess what i have is good For now
 //HOWEVER, I want to try to utilize react.lazy and suspense. I already asked an AI for help so it should be on there.
 look at that for future reference or when i work on this again.
 
 //maybe use memo for loading onto page template ^^^. and only cahnges when depencdy is changed like a new post is created. that way, maybe it can load faster and doesnt require loading each time unless somethign is changed.
-
-
-//on this right now. on home page, enter user name and the user will set active status from 1 to 0.
-this needs to be on backend with a patchMapping for status on Post.
-This allows me to test it first before implemting the delete feature on frontend.
-
-//if topics is emtpy in Template. show something like "no topics..u can be the first one!"
-
-
 
