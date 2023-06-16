@@ -20,6 +20,7 @@ export default function NewTopic() {
 
     function handleSubmit(e) {
         e.preventDefault();
+        // this api always requires a user to be in the DB before they can submit anyhting.
         fetch(`${API}posts?username=${localStorage.getItem('user')}`, {
             method: 'POST',
             headers: {

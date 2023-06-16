@@ -2,7 +2,7 @@
 /* eslint-disable no-mixed-operators */
 /* eslint-disable prefer-const */
 /* eslint-disable no-unused-vars */
-import { SelfBuildingSquareSpinner } from 'react-epic-spinners';
+import { AtomSpinner } from 'react-epic-spinners';
 import parse from 'html-react-parser';
 import React, { useEffect, useState, useMemo } from 'react';
 import '../styling/Template.css';
@@ -28,7 +28,7 @@ export default function Template() {
         <tr className="">
             <td colSpan={5}>
                 <div className="d-flex justify-content-center">
-                    <SelfBuildingSquareSpinner size={50} color="rgb(52,159,182)" className="mt-2" />
+                    <AtomSpinner size={50} color="rgb(52,159,182)" className="mt-2" />
                 </div>
             </td>
         </tr>,
@@ -95,7 +95,6 @@ export default function Template() {
 
                 setPostData(threadIdentifier.map((obj) => (
                     <tr key={obj.id} style={{ fontSize: '13px' }}>
-                        {console.log(obj)}
                         <td style={forumiconsize} className="pb-4 m-0">
                             <i className="bi bi-file-earmark-fill" />
                         </td>
@@ -110,7 +109,7 @@ export default function Template() {
                             <p className="summaryfontsize col-md-8 text-white">
                                 <span className="text-muted">Started By:</span>
                                 {' '}
-                                {obj.status === 1 ? obj.authorId : parse(`<del style="opacity:0.5">${obj.authorId}</del>`)}
+                                {obj.deletionFlag === 1 ? obj.authorId : parse(`<del style="opacity:0.5">${obj.authorId}</del>`)}
                             </p>
                         </td>
                         <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
@@ -206,24 +205,27 @@ export default function Template() {
                                             </div>
 
                                         </div>
+                                        {
+                                            postData.length === 0 ? <div className="text-white text-center pt-1">Looks like its empty!</div>
+                                                : (
+                                                    <table style={{ wordBreak: 'break-word', borderCollapse: 'collapse' }} className="table align-middle table-borderless mb-0">
+                                                        <thead className="text-white ">
+                                                            <tr>
+                                                                <th style={{ width: '2%' }} className="col border-bottom "> </th>
+                                                                <th className="col-6 border-bottom "> </th>
+                                                                <th className="text-center border-bottom d-none d-lg-table-cell d-md-table-cell d-xl-table-cell" style={{ width: '10%' }}> </th>
+                                                                <th className=" text-center border-bottom d-none d-lg-table-cell d-md-table-cell d-xl-table-cell" style={{ width: '8%' }}> </th>
+                                                                <th className="  text-center border-bottom d-none d-lg-table-cell d-md-table-cell d-xl-table-cell"> </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody className="text-white">
 
-                                        <table style={{ wordBreak: 'break-word', borderCollapse: 'collapse' }} className="table align-middle table-borderless mb-0">
-                                            <thead className="text-white ">
-                                                <tr>
-                                                    <th style={{ width: '2%' }} className="col border-bottom "> </th>
-                                                    <th className="col-6 border-bottom "> </th>
-                                                    <th className="text-center border-bottom d-none d-lg-table-cell d-md-table-cell d-xl-table-cell" style={{ width: '10%' }}> </th>
-                                                    <th className=" text-center border-bottom d-none d-lg-table-cell d-md-table-cell d-xl-table-cell" style={{ width: '8%' }}> </th>
-                                                    <th className="  text-center border-bottom d-none d-lg-table-cell d-md-table-cell d-xl-table-cell"> </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody className="text-white">
+                                                            {postData}
 
-                                                {postData}
-
-                                            </tbody>
-                                        </table>
-
+                                                        </tbody>
+                                                    </table>
+                                                )
+                                        }
                                     </div>
                                 </div>
                             </div>

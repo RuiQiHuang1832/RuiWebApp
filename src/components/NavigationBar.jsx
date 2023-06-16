@@ -42,6 +42,9 @@ export default class NavigationBar extends Component {
     this.setState({ isUserLogged: false });
     // changed to only remove user instead of .clear() all so it doesn't infinite reload on logout
     ls.remove('user');
+    ls.remove('clearance');
+    ls.remove('token');
+
     window.location.href = '/'; // "refresh effect"
   }
 

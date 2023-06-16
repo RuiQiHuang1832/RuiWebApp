@@ -46,12 +46,23 @@ export default function Forum() {
     const navigate = useNavigate();
     const objTempStateLastPost = [];
     for (let i = 0; i < 3; i += 1) {
-        objTempStateLastPost.push({
-            lastPost: {
-                title: (ls.get('previousforumData')[i].threadCount !== 0 && ls.get('previousforumData') !== null) ? ls.get('previousforumData')[i].lastPost.title : '-',
-            },
-            threadCount: (ls.get('previousforumData')[i].threadCount !== 0 && ls.get('previousforumData') !== null) ? ls.get('previousforumData')[i].threadCount : '-',
-        });
+        try {
+            if ((ls.get('previousforumData')[i].threadCount !== 0 && ls.get('previousforumData') !== '')) {
+                objTempStateLastPost.push({
+                    lastPost: {
+                        title: ls.get('previousforumData')[i].lastPost.title,
+                    },
+                    threadCount: ls.get('previousforumData')[i].threadCount,
+                });
+            }
+        } catch {
+            objTempStateLastPost.push({
+                lastPost: {
+                    title: '-',
+                },
+                threadCount: '-',
+            });
+        }
     }
 
     const allPostData = ls.get('forumData') !== null ? ls.get('forumData') : objTempStateLastPost;

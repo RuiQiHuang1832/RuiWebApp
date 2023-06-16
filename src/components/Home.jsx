@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-concat */
+/* eslint-disable prefer-template */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable import/no-mutable-exports */
 /* eslint-disable no-unused-vars */
@@ -143,7 +145,29 @@ export default class Home extends Component {
 
   handleDelete(e) {
     e.preventDefault();
-    console.log(e.target[0].value);
+    // this API always requires a user to be in the DB before they can submit anything.
+    fetch(`${API}users/${e.target[0].value}/softDelete/0`, {
+      method: 'PATCH',
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+        'Content-Type': 'text/plain',
+        user: localStorage.getItem('user'),
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.text(); // Parse response body as text
+        }
+        throw new Error('Unexpected Error');
+      })
+      .then((data) => {
+        // Log the response data
+        if (data === 'Successful') {
+          console.log('Successfully Deleted');
+        } else {
+          console.error('Error: User does not exist');
+        }
+      });
   }
 
   displayCurrentPage() {
@@ -202,14 +226,16 @@ export default class Home extends Component {
               <div className=" col-lg-9 mb-5 pt-4 ">
 
                 <div className="col-lg-8 ps-3 mb-5">
-
-                  <form onSubmit={this.handleDelete} className="form">
-                    <label>Name (test feature)</label>
-                    <div className="form-group d-flex">
-                      <input type="text" className="form-control" />
-                      <button className="btn btn-primary" type="submit">Button</button>
-                    </div>
-                  </form>
+                  {localStorage.getItem('clearance') === 'ADMIN'
+                    && (
+                      <form onSubmit={this.handleDelete} className="form">
+                        <label>Name (test feature)</label>
+                        <div className="form-group d-flex">
+                          <input type="text" className="form-control" />
+                          <button className="btn btn-primary" type="submit">Button</button>
+                        </div>
+                      </form>
+                    )}
 
                   <h1 className="mt-3 mb-4">
                     Welcome to

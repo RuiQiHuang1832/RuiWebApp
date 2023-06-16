@@ -63,7 +63,19 @@ export class Login extends Component {
     });
 
     const mynav = this.props.navigation;
-
+    // Admin auth for getting token
+    fetch(`${API}users/auth/admin`, {
+      method: 'POST',
+      headers: {
+        Authorization: 'Basic ' + window.btoa(xusername + ':' + xpassword),
+        'Content-Type': 'text/plain',
+      },
+      body: xusername,
+    }).then((res) => res.text())
+      .then((token) => {
+        localStorage.setItem('token', token);
+      }).catch(() => console.log('Admin Status: False'));
+    //
     fetch(url, {
       method: 'GET',
       headers: {
@@ -80,6 +92,7 @@ export class Login extends Component {
             }
           });
           localStorage.setItem('user', filtered[0].username);
+          localStorage.setItem('clearance', filtered[0].role);
         }).then(() => {
           ls.remove('key');
           mynav('/');

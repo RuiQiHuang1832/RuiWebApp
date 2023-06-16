@@ -7,7 +7,7 @@ export default function Breadcrumbs(props) {
             if (i === path.length - 1) {
                 textColor = 'text-white';
             }
-            return (<li className={`breadcrumb-item ${textColor}`}>{e}</li>);
+            return (<li key={e} className={`breadcrumb-item ${textColor}`}>{e}</li>);
         });
     }
 
