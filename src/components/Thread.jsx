@@ -15,35 +15,121 @@ import { API } from '../global';
 export default function Thread() {
     const [elementHidden, setElementHidden] = useState(false);
     const { id, title } = useParams();
-
+    const [text, setText] = useState('');
+    const [fetchedData, setFetchedData] = useState({});
+    const [originalPost, setOriginalPost] = useState({ body: '...', authorId: '...' });
     // for quick replys
+    function handleSubmit() {
+        fetch(`${API}posts/${id}/users/${localStorage.getItem('user')}/replies`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                content: text,
+            }),
+        }).then((response) => {
+            if (response.ok) {
+                console.log('Successfully posted');
+            } else {
+                console.log('Unexpected Error');
+            }
+        });
+        window.location.reload();
+    }
+
     function handleClick() {
         setElementHidden(true);
     }
-    const [fetchedData, setFetchedData] = useState([]);
-
     useEffect(() => {
-        fetch(`${API}post-data`)
+        const abortController = new AbortController();
+
+        fetch(`${API}post-data`, { signal: abortController.signal })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 const tmp = data.filter((e) => e.id == id);
-                setFetchedData(tmp[0]);
+                setOriginalPost(tmp[0]);
+            })
+            .catch((error) => {
+                if (error.name === 'AbortError') {
+                    console.log('Fetch aborted');
+                } else {
+                    // Handle other errors
+                }
             });
+
+        return () => {
+            console.log('Cleanup post-data');
+            abortController.abort();
+        };
+    }, []);
+
+    useEffect(() => {
+        const abortController = new AbortController();
+
+        fetch(`${API}post-reply/${id}`, { signal: abortController.signal })
+            .then((response) => response.json())
+            .then((data) => {
+                setFetchedData(data);
+            })
+            .catch((error) => {
+                if (error.name === 'AbortError') {
+                    console.log('Fetch aborted');
+                } else {
+                    // Handle other errors
+                }
+            });
+
+        return () => {
+            console.log('Cleanup post-reply');
+            abortController.abort();
+        };
     }, []);
 
     function ThreadReplies(len) {
         const items = [];
-        for (let i = 0; i < len; i += 1) {
-            items.push(<div key={i} style={{ color: '#AFAFAF' }} className="row g-0">
+        items[0] = (
+            <div key={-1} style={{ color: '#AFAFAF' }} className="row g-0">
                 <div
                     style={{ background: 'linear-gradient(#161716, transparent)' }}
                     className="d-none d-lg-block col-lg-3 threadUserCol3   border-end-0 mt-2 threadBorder"
                 >
-                    <ThreadUser authorId={fetchedData.authorId} />
+                    <ThreadUser authorId={originalPost.authorId} />
                 </div>
                 <div className="col-lg-9 col-xl-9 threadUserCol9 hideBorderLeft mt-2 threadBorder pb-lg-0 pb-5">
-                    <ThreadBody number={i + 1} time={fetchedData.createdAt} body={fetchedData.body} authorId={fetchedData.authorId} />
+                    <ThreadBody number={0} time={originalPost.createdAt} body={originalPost.body} authorId={originalPost.authorId} />
+                </div>
+                <div
+                    style={{ borderBottomWidth: '4px', background: 'rgb(11 10 10)' }}
+                    className="d-flex justify-content-between threadBorder border-top-0 "
+                >
+                    <span className="p-1">
+                        &nbsp;
+                        <button type="button" className="rounded text-white" style={{ background: 'black' }}>
+                            <i className="bi bi-flag-fill" />
+                            <span className="d-none d-lg-inline-block">&nbsp;Report</span>
+                        </button>
+                    </span>
+                    <span className="p-1">
+                        &nbsp;
+                        <button type="button" className="rounded text-white" style={{ background: 'black' }}>
+                            <i className="bi bi-reply-fill" />
+                            <span className="d-none d-lg-inline-block">&nbsp;Reply</span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        );
+        for (let i = 0; i < len; i += 1) {
+            items.push(<div key={fetchedData[i].id} style={{ color: '#AFAFAF' }} className="row g-0">
+                <div
+                    style={{ background: 'linear-gradient(#161716, transparent)' }}
+                    className="d-none d-lg-block col-lg-3 threadUserCol3   border-end-0 mt-2 threadBorder"
+                >
+                    <ThreadUser authorId={fetchedData[i].user.username} />
+                </div>
+                <div className="col-lg-9 col-xl-9 threadUserCol9 hideBorderLeft mt-2 threadBorder pb-lg-0 pb-5">
+                    <ThreadBody number={i + 1} time={fetchedData[i].timeStamp} body={fetchedData[i].content} authorId={fetchedData[i].user.username} />
                 </div>
                 <div
                     style={{ borderBottomWidth: '4px', background: 'rgb(11 10 10)' }}
@@ -76,18 +162,18 @@ export default function Thread() {
                     <i className="bi bi-text-left ms-2 " style={{ fontSize: '17px' }} />
                     <span className="ms-2 font-monospace " style={{ fontSize: '20px' }}>
 
-                        {fetchedData.title}
+                        {title}
                     </span>
                 </h4>
             </div>
             <div className="d-flex flex-column">
-                {ThreadReplies(4)}
+                {ThreadReplies(fetchedData.length)}
             </div>
 
-            <form className=" rounded-0 mt-4">
+            <form className=" rounded-0 mt-4" onSubmit={handleSubmit}>
 
-                <div style={{ background: 'blue' }} className="border border-white border-bottom-0 ">
-                    <label className=" text-white">&nbsp;Quick Reply</label>
+                <div style={{ background: '#0f5579', fontSize: '13px' }} className="border border-white border-bottom-0 ">
+                    <label className=" text-white ">&nbsp;Quick Reply</label>
 
                 </div>
                 <div onClick={handleClick}>
@@ -99,6 +185,7 @@ export default function Thread() {
                                     editor={Editor}
                                     onChange={(event, editor) => {
                                         const data = editor.getData();
+                                        setText(data);
                                     }}
                                     onBlur={(event, editor) => {
                                         // console.log('Blur.', editor);
@@ -122,7 +209,10 @@ export default function Thread() {
                 </div>
 
                 <div className="text-center">
-                    <button type="submit" className="btn btn-outline-light" disabled>Post</button>
+                    {
+                        text == '' ? <button type="submit" className="btn btn-outline-light" disabled>Post</button>
+                            : <button type="submit" className="btn btn-outline-light">Post</button>
+                    }
 
                 </div>
             </form>

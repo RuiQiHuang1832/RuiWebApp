@@ -2,7 +2,7 @@
 // api backend
 // export const API = 'https://ruibackend.onrender.com/';
 // testing:
-export const API = 'https://ruibackend.onrender.com/';
+export const API = 'http://localhost:8080/';
 export const NAME = 'Tailwind';
 export const BREADCRUMB_PATH = {
     Home: [NAME, 'Home'],

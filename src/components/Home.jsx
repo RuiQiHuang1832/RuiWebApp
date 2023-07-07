@@ -163,6 +163,7 @@ export default class Home extends Component {
       .then((data) => {
         // Log the response data
         if (data === 'Successful') {
+          ls.remove('recentPost');
           console.log('Successfully Deleted');
         } else {
           console.error('Error: User does not exist');

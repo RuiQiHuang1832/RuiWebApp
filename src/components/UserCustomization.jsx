@@ -42,7 +42,7 @@ export default function UserCustomization(props) {
         aria-expanded="false"
       >
         Welcome,&nbsp;
-        {localStorage.getItem('user')}
+        <span className={localStorage.getItem('clearance') === 'ADMIN' ? 'text-danger' : ''}>{localStorage.getItem('user')}</span>
         !
         <i className=" bi bi-caret-down-fill " style={{ fontSize: '13px' }} />
       </a>

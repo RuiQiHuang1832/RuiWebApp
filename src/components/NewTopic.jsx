@@ -87,7 +87,6 @@ export default function NewTopic() {
                                     {text === ''
                                         ? <button type="submit" className="btn btn-outline-light" disabled>Post New Topic</button>
                                         : <button type="submit" className="btn btn-outline-light">Post New Topic</button>}
-
                                 </div>
                             </form>
                         </div>

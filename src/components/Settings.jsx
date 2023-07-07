@@ -33,6 +33,8 @@ export default function Settings() {
   function resetKey() {
     // refresh key basically and retrieve new updated
     ls.remove('key');
+    ls.remove('images');
+
     navigate('/');
   }
 

@@ -71,7 +71,7 @@ export default function Forum() {
     const toComponentB = (destination, params) => {
         navigate(`/${TITLE}/${destination}`, { state: { name: params.topic, description: params.description, data: results } });
         // did this to kinda replicate behavior of links
-        navigate(0);
+        // navigate(0);
     };
 
     function getDataLength(data, topic) {

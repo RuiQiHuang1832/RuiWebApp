@@ -4,7 +4,7 @@
 /* eslint-disable no-unused-vars */
 import { AtomSpinner } from 'react-epic-spinners';
 import parse from 'html-react-parser';
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styling/Template.css';
 import { useParams, useLocation } from 'react-router-dom';
 import JSZip from 'jszip';
@@ -21,7 +21,8 @@ export default function Template() {
     const { topic, forumname } = useParams();
     let threadIdentifier = {};
     const [currentTopic, setCurrentTopic] = useState();
-    const [images, setImages] = useState({});
+    const [images, setImages] = useState(JSON.parse(localStorage.getItem('images')) ?? {});
+
     const imageNames = [];
 
     const [postData, setPostData] = useState(
@@ -44,95 +45,107 @@ export default function Template() {
             setCurrentTopic('Feedback And Suggestions');
         }
     }
+    function mapPostData() {
+        convertForumNameToCategory();
+        const filtered = location.state.data.filter((val) => val.category.includes(currentTopic));
+        threadIdentifier = filtered.reverse();
+
+        setPostData(threadIdentifier.map((obj) => (
+            <tr key={obj.id} style={{ fontSize: '13px' }}>
+                <td style={forumiconsize} className="pb-4 m-0">
+                    <i className="bi bi-file-earmark-fill" />
+                </td>
+                <td>
+                    <h6 className="">
+                        <a className="text-decoration-none text-white" href={`/${obj.id}-${obj.title}`}>{obj.title}</a>
+                        <span className="text-muted" style={{ fontSize: '11px' }}>
+                            &emsp;
+                            {getRelativeTime(obj.createdAt)}
+                        </span>
+                    </h6>
+                    <p className="summaryfontsize col-md-8 text-white">
+                        <span className="text-muted">Started By:</span>
+                        {' '}
+                        {obj.deletionFlag === 1 ? parse(`<span class='text-${obj.userColor}'>${obj.authorId}</span>`) : parse(`<del style="opacity:0.5">${obj.authorId}</del>`)}
+                    </p>
+                </td>
+                <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
+                    3
+                    <p className="summaryfontsize">Replies</p>
+
+                </td>
+                <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
+                    0
+                    <p className="summaryfontsize">Views</p>
+                </td>
+                <td className="d-flex align-items-center" style={{ color: '#898989', paddingLeft: '7%' }}>
+                    {/* may have to change .jpg extension depending on file type. */}
+                    <img src={images[`${obj.authorId}.jpg`]} alt="pfp" className="align-content-center mt-1 me-2" width="34" height="34" />
+                    <div>
+                        <div className="mt-1" style={{ color: 'rgb(204,204,204)' }}>Ben</div>
+                        <div>Yesterday</div>
+                    </div>
+                </td>
+            </tr>
+
+        )));
+    }
     useEffect(() => {
         if (location.state.data === undefined) {
             window.location.href = '/';
         }
-        fetch(`${API}users/images`)
-            .then((response) => response.blob())
-            .then((blob) => {
-                const zipFile = new JSZip();
-                return zipFile.loadAsync(blob); // Load the zip file asynchronously
-            })
-            .then((zip) => {
-                const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp'];
-                const imagePromises = [];
+        if (localStorage.getItem('images') == null) {
+            fetch(`${API}users/images`)
+                .then((response) => response.blob())
+                .then((blob) => {
+                    const zipFile = new JSZip();
+                    return zipFile.loadAsync(blob); // Load the zip file asynchronously
+                })
+                .then((zip) => {
+                    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp'];
+                    const imagePromises = [];
 
-                // Loop through each file in the zip archive
-                zip.forEach((relativePath, zipEntry) => {
-                    if (imageExtensions.some((ext) => zipEntry.name.endsWith(ext))) {
-                        // Extract the image file from the zip archive
-                        const imagePromise = zipEntry
-                            .async('blob')
-                            .then((imageBlob) => {
-                                const imageUrl = URL.createObjectURL(imageBlob);
-                                return imageUrl;
-                            });
-                        imagePromises.push(imagePromise);
-                        imageNames.push(zipEntry.name);
-                    }
+                    // Loop through each file in the zip archive
+                    zip.forEach((relativePath, zipEntry) => {
+                        if (imageExtensions.some((ext) => zipEntry.name.endsWith(ext))) {
+                            // Extract the image file from the zip archive
+                            const imagePromise = zipEntry
+                                .async('blob')
+                                .then((imageBlob) => new Promise((resolve) => {
+                                    const reader = new FileReader();
+                                    reader.onloadend = () => resolve(reader.result);
+                                    reader.readAsDataURL(imageBlob);
+                                }));
+                            // .then((imageBlob) => {
+                            //     const imageUrl = URL.createObjectURL(imageBlob);
+                            //     return imageUrl;
+                            // });
+                            imagePromises.push(imagePromise);
+                            imageNames.push(zipEntry.name);
+                        }
+                    });
+                    // Wait for all image promises to resolve and display the images
+                    return Promise.all(imagePromises);
+                })
+                .then((imageUrls) => {
+                    // async stuff is hard
+
+                    // combines imagePromises and Imagenames to a single Object
+                    // can't be done above because promises don't resolve until Promise.all
+                    const result = imageNames.reduce((acc, curr, index) => {
+                        acc[curr] = imageUrls[index];
+                        return acc;
+                    }, {});
+                    localStorage.setItem('images', JSON.stringify(result));
+                    setImages(result);
+                })
+                .catch((error) => console.error(error))
+                .then(() => {
+                    mapPostData();
                 });
-                // Wait for all image promises to resolve and display the images
-                return Promise.all(imagePromises);
-            })
-            .then((imageUrls) => {
-                // async stuff is hard
-
-                // combines imagePromises and Imagenames to a single Object
-                // can't be done above because promises don't resolve until Promise.all
-                const result = imageNames.reduce((acc, curr, index) => {
-                    acc[curr] = imageUrls[index];
-                    return acc;
-                }, {});
-                setImages(result);
-                convertForumNameToCategory();
-            })
-            .catch((error) => console.error(error))
-            .then(() => {
-                const filtered = location.state.data.filter((val) => val.category.includes(currentTopic));
-                threadIdentifier = filtered.reverse();
-                // console.log(threadIdentifier);
-
-                setPostData(threadIdentifier.map((obj) => (
-                    <tr key={obj.id} style={{ fontSize: '13px' }}>
-                        <td style={forumiconsize} className="pb-4 m-0">
-                            <i className="bi bi-file-earmark-fill" />
-                        </td>
-                        <td>
-                            <h6 className="">
-                                <a className="text-decoration-none text-white" href={`/${obj.id}-${obj.title}`}>{obj.title}</a>
-                                <span className="text-muted" style={{ fontSize: '11px' }}>
-                                    &emsp;
-                                    {getRelativeTime(obj.createdAt)}
-                                </span>
-                            </h6>
-                            <p className="summaryfontsize col-md-8 text-white">
-                                <span className="text-muted">Started By:</span>
-                                {' '}
-                                {obj.deletionFlag === 1 ? obj.authorId : parse(`<del style="opacity:0.5">${obj.authorId}</del>`)}
-                            </p>
-                        </td>
-                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
-                            3
-                            <p className="summaryfontsize">Replies</p>
-
-                        </td>
-                        <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
-                            0
-                            <p className="summaryfontsize">Views</p>
-                        </td>
-                        <td className="d-flex align-items-center" style={{ color: '#898989', paddingLeft: '7%' }}>
-                            {/* may have to change .jpg extension depending on file type. */}
-                            <img src={images[`${obj.authorId}.jpg`]} alt="pfp" className="align-content-center mt-1 me-2" width="34" height="34" />
-                            <div>
-                                <div className="mt-1" style={{ color: 'rgb(204,204,204)' }}>Ben</div>
-                                <div>Yesterday</div>
-                            </div>
-                        </td>
-                    </tr>
-
-                )));
-            });
+        } else {
+            mapPostData();
+        }
     }, [currentTopic]);
 
     // refresh last post from local storage so that it retrieves a new one from DB just in case its updated,

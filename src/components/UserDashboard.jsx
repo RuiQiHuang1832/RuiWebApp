@@ -7,18 +7,22 @@ import defaultimage from '../images/default_large.jpg';
 import { API } from '../global';
 
 const TITLE = 'User Dashboard';
+
 export default function UserDashboard() {
   const navigate = useNavigate();
   const { username, id } = useParams();
   const [userimage, setuserimage] = useState(null);
-  const [lsbio, setLsBio] = useState('');
+  const [lsbio, setLsBio] = useState(ls.get('userInfo')?.bio || '');
+  const [color, setColor] = useState(ls.get('userInfo')?.color || '');
   useEffect(() => {
     if (ls.get('key') === null) { // navigate to home page to fetch the data if key is not found
       navigate('/');
     } else {
       const arr = ls.get('key', { decrypt: true });
       const pos = arr.map((e) => e.username).indexOf(username);
+      setColor(arr[pos].color);
       setLsBio(arr[pos].bio);
+      ls.set('userInfo', { bio: arr[pos].bio, color: arr[pos].color });
     }
   }, []);
   // load user profile on dom load, make it so it grabs it from cache instead of fetching each time!
@@ -45,7 +49,7 @@ export default function UserDashboard() {
 
             <img className="profilePicture ms-3" aria-label="profile picture" width={150} src={userimage} />
             <div className="profilecover text-white ">
-              <h3 className="m-0">{username}</h3>
+              <h3 className={`m-0 text-${color}`}>{username}</h3>
               <p className="fs-6 ">New Member</p>
               <img src={memberimage} aria-label="member picture" width="150" />
 

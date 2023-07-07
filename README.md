@@ -11,8 +11,8 @@ Frontend hosted on Vercel and Backend hosted on Heroku.
 Upgrade ✔️<br />
 About ✔️<br />
 Search✔️ Officially Done<br />
-Home<br />
-postsTable<br/>
+Home✔️<br />
+postsTable✔️<br/>
 Mobile Friendly<br />
 User Dashboard✔️<br />
 Sign up/ Sign out✔️<br />
@@ -23,7 +23,7 @@ TemplateForum<br />
 FAQAccourdion✔️<br />
 Forgotpassword+resetPassword✔️<br />
 Userfeedback ✔️<br />
-Topics <br/>
+Topics ✔️<br/>
 
 # Getting Started with Create React App
 
