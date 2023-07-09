@@ -8,7 +8,7 @@ import React, { useEffect, useState } from 'react';
 import '../styling/Template.css';
 import { useParams, useLocation } from 'react-router-dom';
 import JSZip from 'jszip';
-import { getRelativeTime } from '../functions/coreFunctions';
+import { getRelativeTime, getRandomInt } from '../functions/coreFunctions';
 import { API } from '../global';
 
 // Template for how all forum pages should be built.
@@ -66,16 +66,17 @@ export default function Template() {
                     <p className="summaryfontsize col-md-8 text-white">
                         <span className="text-muted">Started By:</span>
                         {' '}
-                        {obj.deletionFlag === 1 ? parse(`<span class='text-${obj.userColor}'>${obj.authorId}</span>`) : parse(`<del style="opacity:0.5">${obj.authorId}</del>`)}
+                        {obj.deletionFlag === 1 ? parse(`<a class='text-${obj.userColor ?? 'white'} text-decoration-none' 
+                        href='/userDashboard/${obj.authorId}-${obj.id}'>${obj.authorId}</a>`) : parse(`<del style="opacity:0.5">${obj.authorId}</del>`)}
                     </p>
                 </td>
                 <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
-                    3
+                    {obj.replies}
                     <p className="summaryfontsize">Replies</p>
 
                 </td>
                 <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
-                    0
+                    {getRandomInt(1, 20)}
                     <p className="summaryfontsize">Views</p>
                 </td>
                 <td className="d-flex align-items-center" style={{ color: '#898989', paddingLeft: '7%' }}>

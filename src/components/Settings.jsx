@@ -156,6 +156,9 @@ export default function Settings() {
                       <option selected value="1">Prefer not to say</option>
                       <option value="2">Female</option>
                       <option value="3">Male</option>
+                      <option value="3">Non-Binary</option>
+                      <option value="3">Helicopter</option>
+
                     </select>
                   </div>
                 </div>

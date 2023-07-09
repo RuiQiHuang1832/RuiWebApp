@@ -3,6 +3,7 @@
 // still need to update images in the thread. may or may not do the offline/online thingy...
 
 
+// I can add a "last user" in my column db. now need last user replied
 
 
 // pinned stuff as well.

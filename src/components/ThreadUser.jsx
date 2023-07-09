@@ -1,5 +1,4 @@
 import React from 'react';
-import panda from '../images/panda.png';
 import '../styling/ThreadUser.css';
 import member from '../images/memberimage.jpg';
 // look at the comment on the bottom and refactor with a for loop/.
@@ -13,7 +12,7 @@ export default function ThreadUser(props) {
             </div>
 
             <div className="text-center mb-3">
-                <img src={panda} alt="pandaImage" className="align-content-center " width="150" height="120" />
+                <img src={props.pfp} alt="pfp" className="align-content-center " width="140" height="140" />
             </div>
             <div className="d-flex ">
                 <div style={{ borderRight: '1px solid #333' }} className="m-auto mt-4 mb-3 text-center flex-grow-1">

@@ -94,7 +94,8 @@ export default function Thread() {
                     style={{ background: 'linear-gradient(#161716, transparent)' }}
                     className="d-none d-lg-block col-lg-3 threadUserCol3   border-end-0 mt-2 threadBorder"
                 >
-                    <ThreadUser authorId={originalPost.authorId} />
+
+                    <ThreadUser authorId={originalPost.authorId} pfp={JSON.parse(localStorage.getItem('images'))?.[`${originalPost.authorId}.jpg`]} />
                 </div>
                 <div className="col-lg-9 col-xl-9 threadUserCol9 hideBorderLeft mt-2 threadBorder pb-lg-0 pb-5">
                     <ThreadBody number={0} time={originalPost.createdAt} body={originalPost.body} authorId={originalPost.authorId} />
@@ -126,7 +127,7 @@ export default function Thread() {
                     style={{ background: 'linear-gradient(#161716, transparent)' }}
                     className="d-none d-lg-block col-lg-3 threadUserCol3   border-end-0 mt-2 threadBorder"
                 >
-                    <ThreadUser authorId={fetchedData[i].user.username} />
+                    <ThreadUser authorId={fetchedData[i].user.username} pfp={JSON.parse(localStorage.getItem('images'))?.[`${fetchedData[i].user.username}.jpg`]} />
                 </div>
                 <div className="col-lg-9 col-xl-9 threadUserCol9 hideBorderLeft mt-2 threadBorder pb-lg-0 pb-5">
                     <ThreadBody number={i + 1} time={fetchedData[i].timeStamp} body={fetchedData[i].content} authorId={fetchedData[i].user.username} />
