@@ -1,3 +1,6 @@
+/* eslint-disable react/style-prop-object */
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable func-names */
 /* eslint-disable camelcase */
 /* eslint-disable no-mixed-operators */
 /* eslint-disable prefer-const */
@@ -8,14 +11,21 @@ import React, { useEffect, useState } from 'react';
 import '../styling/Template.css';
 import { useParams, useLocation } from 'react-router-dom';
 import JSZip from 'jszip';
+import popover, { popoverInstances } from '../functions/popover';
 import { getRelativeTime, getRandomInt } from '../functions/coreFunctions';
 import { API } from '../global';
+import defaultimage from '../images/default_large.jpg';
 
 // Template for how all forum pages should be built.
 const forumiconsize = {
     fontSize: '28px',
 };
-
+const forumnameToTopic = {
+    'general-discussion': 'General Discussion',
+    'help-and-support': 'Help And Support',
+    'feedback-and-suggestions': 'Feedback And Suggestions',
+    // Add more mappings here if needed
+};
 export default function Template() {
     const location = useLocation();
     const { topic, forumname } = useParams();
@@ -35,62 +45,86 @@ export default function Template() {
         </tr>,
     );
 
-    // could be coded better
-    function convertForumNameToCategory() {
-        if (forumname === 'general-discussion') {
-            setCurrentTopic('General Discussion');
-        } else if (forumname === 'help-and-support') {
-            setCurrentTopic('Help And Support');
-        } else if (forumname === 'feedback-and-suggestions') {
-            setCurrentTopic('Feedback And Suggestions');
-        }
-    }
+    useEffect(() => {
+        popover();
+        // Cleanup function
+        return () => {
+            popoverInstances.length = 0;
+        };
+    });
+
     function mapPostData() {
-        convertForumNameToCategory();
+        setCurrentTopic(forumnameToTopic[forumname] || '');
         const filtered = location.state.data.filter((val) => val.category.includes(currentTopic));
         threadIdentifier = filtered.reverse();
+        let img;
+        setPostData(
+            threadIdentifier.map((obj) => (
+                <tr key={obj.id} style={{ fontSize: '13px' }}>
+                    <td style={forumiconsize} className="pb-4 m-0">
+                        <i className="bi bi-file-earmark-fill" />
+                    </td>
+                    <td>
+                        <h6 className="">
+                            <a
+                                className="text-decoration-none text-white discussionlink"
+                                title={`${obj.title} - started  ${obj.createdAt}`}
+                                href={`/${obj.id}-${obj.title}`}
+                            >
+                                {obj.title}
+                            </a>
+                            <span className="text-muted" style={{ fontSize: '11px' }}>
+                                &emsp;
+                                {getRelativeTime(obj.createdAt)}
+                            </span>
+                        </h6>
+                        <p className="summaryfontsize col-md-8 text-white">
+                            <span className="text-muted">
+                                Started By:
 
-        setPostData(threadIdentifier.map((obj) => (
-            <tr key={obj.id} style={{ fontSize: '13px' }}>
-                <td style={forumiconsize} className="pb-4 m-0">
-                    <i className="bi bi-file-earmark-fill" />
-                </td>
-                <td>
-                    <h6 className="">
-                        <a className="text-decoration-none text-white" href={`/${obj.id}-${obj.title}`}>{obj.title}</a>
-                        <span className="text-muted" style={{ fontSize: '11px' }}>
-                            &emsp;
-                            {getRelativeTime(obj.createdAt)}
-                        </span>
-                    </h6>
-                    <p className="summaryfontsize col-md-8 text-white">
-                        <span className="text-muted">Started By:</span>
-                        {' '}
-                        {obj.deletionFlag === 1 ? parse(`<a class='text-${obj.userColor ?? 'white'} text-decoration-none' 
-                        href='/userDashboard/${obj.authorId}-${obj.id}'>${obj.authorId}</a>`) : parse(`<del style="opacity:0.5">${obj.authorId}</del>`)}
-                    </p>
-                </td>
-                <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
-                    {obj.replies}
-                    <p className="summaryfontsize">Replies</p>
+                            </span>
+                            {' '}
+                            {obj.deletionFlag === 1 ? (
+                                <a
+                                    className={`text-${obj.userColor ?? 'white'} text-decoration-none`}
+                                    href={`/userDashboard/${obj.authorId}-${obj.id}`}
+                                    data-bs-toggle="popover"
+                                    data-bs-trigger="hover"
+                                    data-bs-content={`<div><img src="${images[`${obj.authorId}.jpg`]}" alt="pfp" width="100" height="100" /></div>`}
+                                    data-bs-html="true"
+                                >
+                                    {obj.authorId}
+                                </a>
+                            ) : (
+                                <del style={{ opacity: 0.5 }}>
+                                    {obj.authorId}
+                                </del>
+                            )}
+                        </p>
+                    </td>
+                    <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
+                        {obj.replies}
+                        <p className="summaryfontsize">Replies</p>
 
-                </td>
-                <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
-                    {getRandomInt(1, 20)}
-                    <p className="summaryfontsize">Views</p>
-                </td>
-                <td className="d-flex align-items-center" style={{ color: '#898989', paddingLeft: '7%' }}>
-                    {/* may have to change .jpg extension depending on file type. */}
-                    <img src={images[`${obj.authorId}.jpg`]} alt="pfp" className="align-content-center mt-1 me-2" width="34" height="34" />
-                    <div>
-                        <div className="mt-1" style={{ color: 'rgb(204,204,204)' }}>Ben</div>
-                        <div>Yesterday</div>
-                    </div>
-                </td>
-            </tr>
+                    </td>
+                    <td className="text-center d-none d-lg-table-cell d-md-table-cell d-xl-table-cell">
+                        {getRandomInt(1, 20)}
+                        <p className="summaryfontsize">Views</p>
+                    </td>
+                    <td className="d-flex align-items-center" style={{ color: '#898989', paddingLeft: '7%' }}>
+                        {/* may have to change .jpg extension depending on file type. */}
+                        <img src={images[`${obj.authorId}.jpg`]} alt="pfp" className="align-content-center mt-1 me-2" width="34" height="34" />
+                        <div>
+                            <div className="mt-1" style={{ color: 'rgb(204,204,204)' }}>Ben</div>
+                            <div>Yesterday</div>
+                        </div>
+                    </td>
+                </tr>
 
-        )));
+            )),
+        );
     }
+
     useEffect(() => {
         if (location.state.data === undefined) {
             window.location.href = '/';
@@ -114,9 +148,14 @@ export default function Template() {
                                 .async('blob')
                                 .then((imageBlob) => new Promise((resolve) => {
                                     const reader = new FileReader();
-                                    reader.onloadend = () => resolve(reader.result);
+                                    reader.onloadend = () => {
+                                        // Convert the image data to base64 format with the appropriate MIME type
+                                        const base64data = `data:image/jpeg;base64,${reader.result.split(',')[1]}`;
+                                        resolve(base64data);
+                                    };
                                     reader.readAsDataURL(imageBlob);
                                 }));
+
                             // .then((imageBlob) => {
                             //     const imageUrl = URL.createObjectURL(imageBlob);
                             //     return imageUrl;

@@ -4,7 +4,14 @@
 
 
 // I can add a "last user" in my column db. now need last user replied
+//neeed popover for usernames in Template like nulled, already did it for title
 
+issue if a already delted user creates a new post, the account is not deleted. strikethrough not there
+
+another issue with popoveer not working with dropdowns even if I am not using the popover but import  it only (fixed)
+
+
+error where you access different users when you change id on url, and it still shows them. need to edit it so it throws a error if user does not exist.
 
 // pinned stuff as well.
 // etc..
