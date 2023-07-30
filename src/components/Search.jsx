@@ -15,20 +15,25 @@ const forumiconsize = {
 
 export class Search extends Component {
   constructor(props) {
+    document.title = TITLE;
+    const urlParams = new URLSearchParams(window.location.search);
+    const queryFromURL = urlParams.get('query') || '';
     super(props);
     this.state = {
-      query: '',
+      query: queryFromURL,
       result: [],
       spinnerLogin: <i className="bi bi-arrow-right" style={{ fontSize: '20px' }} />,
       listOfThreadDisplay: false,
     };
   }
 
-  componentDidMount() {
-    document.title = TITLE;
-  }
-
   handleSearch = (e) => {
+    // Save the search query in browser's history state
+    const searchQuery = this.state.query.trim(); // Trim the query to remove leading/trailing spaces
+    const url = new URL(window.location.href);
+    url.searchParams.set('query', searchQuery);
+    window.history.pushState({ query: searchQuery }, '', url.href);
+
     // intial clear any remaining search from previous result
     this.state.postData = <tr />;
     this.state.result = [];

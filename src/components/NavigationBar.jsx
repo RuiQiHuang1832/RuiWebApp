@@ -55,8 +55,8 @@ export default class NavigationBar extends Component {
     }
     return (
       <div className="shadow bg-body rounded font-mono">
-        <nav id="navBackgroundColor" className="navbar navbar-expand-lg navbar-dark pt-sm-5 pt-4">
-          <span className="container-fluid">
+        <nav id="navBackgroundColor" className="navbar navbar-expand-lg navbar-dark pt-sm-5 pt-4 container-fluid">
+          <span className="container-fluid p-0">
             <button id="btnprops" className="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#collapsethis">
               <div style={{ fontSize: '27px' }}>
                 {/** being edited with css + bs. need to include d-flex,else not editable in css */}
@@ -74,7 +74,7 @@ export default class NavigationBar extends Component {
 
             <div className="collapse navbar-collapse justify-content-between" id="collapsethis" style={fontSize}>
               {/** for desktop */}
-              <h2 className=" ms-5 fs-2 fw-bold d-none d-lg-block ">
+              <h2 className=" ms-5 fs-2 fw-bold d-none d-lg-block ps-3">
                 <NavLink to="/" className="text-white text-decoration-none">{NAME}</NavLink>
               </h2>
               <div className="navbar-nav ">
@@ -85,11 +85,11 @@ export default class NavigationBar extends Component {
                  * .active is* a child of NavLink. so it gets the property default ".active" in css
                                  */}
 
-                <NavLink to="/" className="nav-link thetopbar navbaronly text-muted fw-bold p-md-0 p-sm-0 p-0 mt-3 mt-lg-0 mt-xl-0 ">Home</NavLink>
-                <NavLink to="/upgrade" className="nav-link thetopbar navbaronly text-muted ms-xl-5 ms-lg-5  fw-bold p-md-0 p-sm-0 p-0  ">Upgrade</NavLink>
-                <NavLink to="/search" className="nav-link thetopbar navbaronly text-muted ms-xl-5 ms-lg-5  fw-bold p-md-0 p-sm-0 p-0  "> Search</NavLink>
-                <NavLink to="/members/1" className="nav-link thetopbar navbaronly text-muted ms-xl-5 ms-lg-5  fw-bold p-md-0 p-sm-0 p-0  ">Members</NavLink>
-                <NavLink to="/tos" className="nav-link thetopbar navbaronly text-muted ms-xl-5 ms-lg-5  fw-bold p-md-0 p-sm-0 p-0  ">
+                <NavLink to="/" className="nav-link thetopbar  navbaronly text-muted fw-bold p-md-0 p-sm-0 p-0 mt-3 mt-lg-0 mt-xl-0 ">Home</NavLink>
+                <NavLink to="/upgrade" className="nav-link thetopbar  navbaronly text-muted ms-xl-5 ms-lg-5  fw-bold p-md-0 p-sm-0 p-0  ">Upgrade</NavLink>
+                <NavLink to="/search" className="nav-link thetopbar  navbaronly text-muted ms-xl-5 ms-lg-5  fw-bold p-md-0 p-sm-0 p-0  "> Search</NavLink>
+                <NavLink to="/members/1" className="nav-link thetopbar  navbaronly text-muted ms-xl-5 ms-lg-5  fw-bold p-md-0 p-sm-0 p-0  ">Members</NavLink>
+                <NavLink to="/tos" className="nav-link thetopbar  navbaronly text-muted ms-xl-5 ms-lg-5  fw-bold p-md-0 p-sm-0 p-0  ">
                   About
 
                 </NavLink>

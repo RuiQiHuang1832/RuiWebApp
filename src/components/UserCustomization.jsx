@@ -35,7 +35,7 @@ export default function UserCustomization(props) {
   return (
     <div className="dropdown">
       <a
-        className={props.device ? 'nav-link text-muted ms-xl-5  p-0  fw-bold' : 'nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-2'}
+        className={props.device ? 'nav-link text-muted ms-xl-5  p-0  fw-bold thetopbar' : 'thetopbar nav-link text-muted fw-bold d-none d-sm-block  ms-xl-2 me-xl-2 p-md-0 p-sm-0 p-0  ms-lg-2'}
         role="button"
         id="dropdownMenuLink"
         data-bs-toggle="dropdown"

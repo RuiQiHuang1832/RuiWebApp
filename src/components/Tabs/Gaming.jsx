@@ -12,7 +12,7 @@ const fontsize = {
 const TITLE = 'Gaming';
 export default function Gaming() {
     return (
-        <div className="p-3">
+        <div className="p-3 ms-5">
             <div className="my-5 border p-3 text-center">
                 <h3 className="bg-dark p-3 d-inline-block">{TITLE}</h3>
                 <p>

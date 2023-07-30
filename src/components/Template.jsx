@@ -14,7 +14,6 @@ import JSZip from 'jszip';
 import popover, { popoverInstances } from '../functions/popover';
 import { getRelativeTime, getRandomInt } from '../functions/coreFunctions';
 import { API } from '../global';
-import defaultimage from '../images/default_large.jpg';
 
 // Template for how all forum pages should be built.
 const forumiconsize = {
@@ -87,7 +86,7 @@ export default function Template() {
                             {obj.deletionFlag === 1 ? (
                                 <a
                                     className={`text-${obj.userColor ?? 'white'} text-decoration-none`}
-                                    href={`/userDashboard/${obj.authorId}-${obj.id}`}
+                                    href={`/userDashboard/${obj.authorId}-${obj.userId}`}
                                     data-bs-toggle="popover"
                                     data-bs-trigger="hover"
                                     data-bs-content={`<div><img src="${images[`${obj.authorId}.jpg`]}" alt="pfp" width="100" height="100" /></div>`}

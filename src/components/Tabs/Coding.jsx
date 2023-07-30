@@ -12,7 +12,7 @@ const fontsize = {
 const TITLE = 'Coding';
 export default function Coding() {
     return (
-        <div className="p-3">
+        <div className="p-3 ms-5">
             <div className="my-5 border p-3 text-center">
                 <h3 className="bg-dark p-3 d-inline-block align-content-center">{TITLE}</h3>
                 <p>A forum for the entire family of coding. Gain help on compiling, objects, classes, and functions. </p>

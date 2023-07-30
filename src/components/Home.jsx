@@ -216,17 +216,17 @@ export default class Home extends Component {
 
     return (
 
-      <section className="text-white hugepadding ps-2">
+      <section className="text-white hugepadding">
 
         <Breadcrumbs path={BREADCRUMB_PATH.Home} />
 
-        <div className="container-fluid ps-md-5 py-5 ">
+        <div className="container-fluid py-5 ">
           <div id="homeBackground" className="card border-0">
 
             <div className="row gx-0">
               <div className=" col-lg-9 mb-5 pt-4 ">
 
-                <div className="col-lg-8 ps-3 mb-5">
+                <div className="col-lg-8 mb-5 ms-5 ps-3">
                   {localStorage.getItem('clearance') === 'ADMIN'
                     && (
                       <form onSubmit={this.handleDelete} className="form">
@@ -264,8 +264,8 @@ export default class Home extends Component {
                     <strong> Harrassment is not tolerated.</strong>
                   </p>
                 </div>
-                <div className="">
-                  <ul className="nav nav-pills border-0 flex-lg-row flex-column ">
+                <div className=" ms-5">
+                  <ul className="nav nav-pills border-0 flex-lg-row flex-column">
                     <li className="nav-item mb-3 mb-lg-0  me-3 ms-lg-3 border rounded border-2 tabcolor">
                       <a className="nav-link text-white" aria-current="page" data-bs-toggle="pill" href="#Home" onClick={() => this.setState({ currentpage: 'Forums' })}>
                         <i className="bi bi-house-fill" />

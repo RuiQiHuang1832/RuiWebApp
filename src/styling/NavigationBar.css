@@ -74,6 +74,7 @@
 .navbar-nav {
   /* controls blue line height*/
   height: auto;
+  align-items: flex-start;
 }
 
 /*When screen size is smaller than this, height:auto */
