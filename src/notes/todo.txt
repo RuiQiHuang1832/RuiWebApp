@@ -9,9 +9,8 @@
 issue if a already delted user creates a new post, the account is not deleted. strikethrough not there
 
 
-error where you access different users when you change id on url, and it still shows them. need to edit it so it throws a error if user does not exist. (fixed for if you click a user in template but not fixed if you manually change user ID)
+error where you access different users when you change id on url, and it still shows them. need to edit it so it throws a error if user does not exist. (fixed for if you click a user in template but not fixed if you manually change user ID) (Fixed)
 
-"search" if you search then click one then go back and search again, results found = 0
 
 // pinned stuff as well.
 // etc..

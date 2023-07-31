@@ -45,3 +45,14 @@ export function getRandomInt(minimum, maximum) {
     const max = Math.floor(maximum);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+// check if user exists
+export function containsEntry(arr, idToFind, nameToFind) {
+    console.log(nameToFind);
+    for (let i = 0; i < arr.length; i += 1) {
+        if (arr[i].id === Number(idToFind) && arr[i].username === nameToFind) {
+            return true;
+        }
+    }
+    return false;
+}
