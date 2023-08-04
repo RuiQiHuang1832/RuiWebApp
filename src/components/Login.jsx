@@ -76,33 +76,38 @@ export class Login extends Component {
         localStorage.setItem('token', token);
       }).catch(() => console.log('Admin Status: False'));
     //
-    fetch(url, {
+    fetch(url + `?username=${xusername}`, {
       method: 'GET',
       headers: {
         Authorization: 'Basic ' + window.btoa(xusername + ':' + xpassword),
         'Content-Type': 'text/plain',
       },
-    }).then(() => {
-      fetch(API + 'users/datalist')
-        .then((response) => response.json())
-        .then((data) => {
-          const filtered = data.filter((obj) => {
-            if (xusername === obj.username) {
-              return obj;
-            }
+
+    }).then((res) => res.text())
+      .then((token) => {
+        localStorage.setItem('jwt', token);
+      }).then(() => {
+        fetch(API + 'users/datalist')
+          .then((response) => response.json())
+          .then((data) => {
+            const filtered = data.filter((obj) => {
+              if (xusername === obj.username) {
+                return obj;
+              }
+            });
+            localStorage.setItem('user', filtered[0].username);
+            localStorage.setItem('clearance', filtered[0].role);
+          }).then(() => {
+            ls.remove('key');
+            mynav('/');
+            // removed this so it doesn't infite load on login
+            // window.location.reload();
           });
-          localStorage.setItem('user', filtered[0].username);
-          localStorage.setItem('clearance', filtered[0].role);
-        }).then(() => {
-          ls.remove('key');
-          mynav('/');
-          // removed this so it doesn't infite load on login
-          // window.location.reload();
-        });
-    }).catch(() => {
-      this.setState({ invalidlogin: 'Username or password incorrect.' });
-      this.setState({ spinnerlogin: 'Log In' });
-    });
+      })
+      .catch(() => {
+        this.setState({ invalidlogin: 'Username or password incorrect.' });
+        this.setState({ spinnerlogin: 'Log In' });
+      });
 
     // look at authentication folder!
   }

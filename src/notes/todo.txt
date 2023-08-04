@@ -1,53 +1,8 @@
 
-// still need to do , replies, (maybe) views.
-// still need to update images in the thread. may or may not do the offline/online thingy...
-
-
-// I can add a "last user" in my column db. now need last user replied
-//neeed popover for usernames in Template like nulled, already did it for title
-
-issue if a already delted user creates a new post, the account is not deleted. strikethrough not there
-
-
-error where you access different users when you change id on url, and it still shows them. need to edit it so it throws a error if user does not exist. (fixed for if you click a user in template but not fixed if you manually change user ID) (Fixed)
-
-
-// pinned stuff as well.
-// etc..
-
-// announcment main page
-
-
 //ls changes, site dies. somewhat fixed it. Done. Check home.jsx ENABLES ONLY IN TESTING
-// VERY IMPORTANT: ALSO WHENEVER I RENDER A COMPONENT WITHIN A COMPONENET, IT WILL BE CONFUSING, SO JUST REMEMEBR HOW EACH COMPONENT WORKS WITHIN ANOTHER COMPONENET IF THEY DEPEND ON EACH OTHER!!
 
 
+adding editing they can submit an empty body if they want to delete it.
 
 
-//another "not bug" but when loging out while in general discussion will briefly show 404 error thingy. so i shoudl cahnge it
-//not a delay/server bug but instead its just somethign i did on the frontend. so yeah i should change that
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-///////////////////////////Just making more edge cases for myself. Move on from this. Its behavior is normal.
-//might refactor -> home -> general discussion. somehow make it load before accessing the general discussion. i can't do it in general discssion since what if a user loads to it from a different previous destination. need to somehow load onto GD and not showing the topics being loaded on. it should be instant 
-//^ did some research and apparently its pretty hard to implement. there isn't' anything solid so I guess what i have is good For now
-//HOWEVER, I want to try to utilize react.lazy and suspense. I already asked an AI for help so it should be on there.
-look at that for future reference or when i work on this again.
-
-//maybe use memo for loading onto page template ^^^. and only cahnges when depencdy is changed like a new post is created. that way, maybe it can load faster and doesnt require loading each time unless somethign is changed.
-
+right now I'm on the editing part

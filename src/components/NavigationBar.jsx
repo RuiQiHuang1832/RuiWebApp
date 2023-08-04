@@ -45,6 +45,7 @@ export default class NavigationBar extends Component {
     ls.remove('clearance');
     ls.remove('token');
     ls.remove('images');
+    ls.remove('jwt');
 
     window.location.href = '/'; // "refresh effect"
   }

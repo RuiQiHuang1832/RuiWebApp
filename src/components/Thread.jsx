@@ -5,7 +5,7 @@
 /* eslint-disable react/jsx-closing-tag-location */
 import React, { useState, useEffect } from 'react';
 import '../styling/Template.css';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { CKEditor } from '@ckeditor/ckeditor5-react/dist/ckeditor';
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import ThreadBody from './ThreadBody';
@@ -16,6 +16,9 @@ export default function Thread() {
     const [elementHidden, setElementHidden] = useState(false);
     const { id, title } = useParams();
     const [text, setText] = useState('');
+    const location = useLocation();
+
+    const navigate = useNavigate();
     const [fetchedData, setFetchedData] = useState({});
     const [originalPost, setOriginalPost] = useState({ body: '...', authorId: '...' });
     // for quick replys
@@ -40,6 +43,12 @@ export default function Thread() {
 
     function handleClick() {
         setElementHidden(true);
+    }
+
+    function handleEdit() {
+        const currentPathname = location.pathname;
+        const editedPathname = `${currentPathname}/edit`;
+        navigate(editedPathname, { state: { body: originalPost.body } });
     }
     useEffect(() => {
         const abortController = new AbortController();
@@ -70,6 +79,7 @@ export default function Thread() {
         fetch(`${API}post-reply/${id}`, { signal: abortController.signal })
             .then((response) => response.json())
             .then((data) => {
+                console.log(data);
                 setFetchedData(data);
             })
             .catch((error) => {
@@ -112,11 +122,18 @@ export default function Thread() {
                         </button>
                     </span>
                     <span className="p-1">
-                        &nbsp;
-                        <button type="button" className="rounded text-white" style={{ background: 'black' }}>
-                            <i className="bi bi-reply-fill" />
-                            <span className="d-none d-lg-inline-block">&nbsp;Reply</span>
+                        <button name="edit" type="button" className="rounded text-white" onClick={() => handleEdit()} style={{ background: 'black' }}>
+                            <i className="bi bi-pencil-square" />
+                            <span className="d-none d-lg-inline-block">&nbsp;Edit</span>
                         </button>
+                        &nbsp;
+                        <a href="#reply">
+                            <button name="reply" type="button" className="rounded text-white" style={{ background: 'black' }}>
+                                <i className="bi bi-reply-fill" />
+                                <span className="d-none d-lg-inline-block">&nbsp;Reply</span>
+                            </button>
+                        </a>
+
                     </span>
                 </div>
             </div>
@@ -145,10 +162,12 @@ export default function Thread() {
                     </span>
                     <span className="p-1">
                         &nbsp;
-                        <button type="button" className="rounded text-white" style={{ background: 'black' }}>
-                            <i className="bi bi-reply-fill" />
-                            <span className="d-none d-lg-inline-block">&nbsp;Reply</span>
-                        </button>
+                        <a href="#reply">
+                            <button type="button" className="rounded text-white" style={{ background: 'black' }}>
+                                <i className="bi bi-reply-fill" />
+                                <span className="d-none d-lg-inline-block">&nbsp;Reply</span>
+                            </button>
+                        </a>
                     </span>
                 </div>
             </div>);
@@ -171,7 +190,7 @@ export default function Thread() {
                 {ThreadReplies(fetchedData.length)}
             </div>
 
-            <form className=" rounded-0 mt-4" onSubmit={handleSubmit}>
+            <form id="reply" className=" rounded-0 mt-4 " onSubmit={handleSubmit}>
 
                 <div style={{ background: '#0f5579', fontSize: '13px' }} className="border border-white border-bottom-0 ">
                     <label className=" text-white ">&nbsp;Quick Reply</label>

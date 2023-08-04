@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import parse from 'html-react-parser';
 import { getRelativeTime } from '../functions/coreFunctions';
@@ -33,7 +34,6 @@ export default function ThreadBody(props) {
             </span>
             <div className="mt-4">
                 {parse(`${props.body}`)}
-
             </div>
         </div>
     );

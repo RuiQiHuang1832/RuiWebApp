@@ -31,7 +31,6 @@ export default function Template() {
     let threadIdentifier = {};
     const [currentTopic, setCurrentTopic] = useState();
     const [images, setImages] = useState(JSON.parse(localStorage.getItem('images')) ?? {});
-
     const imageNames = [];
 
     const [postData, setPostData] = useState(
@@ -56,7 +55,8 @@ export default function Template() {
         setCurrentTopic(forumnameToTopic[forumname] || '');
         const filtered = location.state.data.filter((val) => val.category.includes(currentTopic));
         threadIdentifier = filtered.reverse();
-        let img;
+        console.log(threadIdentifier);
+
         setPostData(
             threadIdentifier.map((obj) => (
                 <tr key={obj.id} style={{ fontSize: '13px' }}>
@@ -112,10 +112,10 @@ export default function Template() {
                     </td>
                     <td className="d-flex align-items-center" style={{ color: '#898989', paddingLeft: '7%' }}>
                         {/* may have to change .jpg extension depending on file type. */}
-                        <img src={images[`${obj.authorId}.jpg`]} alt="pfp" className="align-content-center mt-1 me-2" width="34" height="34" />
+                        <img src={images[`${obj.lastReply ?? obj.authorId}.jpg`]} alt="pfp" className="align-content-center mt-1 me-2" width="34" height="34" />
                         <div>
-                            <div className="mt-1" style={{ color: 'rgb(204,204,204)' }}>Ben</div>
-                            <div>Yesterday</div>
+                            <div className="mt-1" style={{ color: 'rgb(204,204,204)' }}>{obj.lastReply ?? obj.authorId}</div>
+                            <div>{getRelativeTime(obj.lastReplyCreatedAt ?? 'Less than a day')}</div>
                         </div>
                     </td>
                 </tr>
@@ -196,7 +196,7 @@ export default function Template() {
     }, []);
 
     return (
-        location.state === null ? <div className="text-white">404! PAGE NOT FOUND. PLEASE REFRESH PAGE. URL IS NOT A PAGE</div>
+        location.state === null ? <div className="text-white" />
             : (
                 <section>
                     <div className="container-fluid pt-5">
