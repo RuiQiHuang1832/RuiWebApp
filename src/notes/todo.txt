@@ -1,8 +1,2 @@
 
 //ls changes, site dies. somewhat fixed it. Done. Check home.jsx ENABLES ONLY IN TESTING
-
-
-adding editing they can submit an empty body if they want to delete it.
-
-
-right now I'm on the editing part

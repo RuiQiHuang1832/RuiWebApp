@@ -30,7 +30,7 @@ export function getRelativeTime(dateString) {
         const daysAgo = Math.floor(timeDifference / secondsInDay);
         return relativeTimeFormatter.format(-daysAgo, 'day');
     }
-    return 'Less than a day ago';
+    return '< a day ago';
 }
 
 /**

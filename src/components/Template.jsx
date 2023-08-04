@@ -55,8 +55,6 @@ export default function Template() {
         setCurrentTopic(forumnameToTopic[forumname] || '');
         const filtered = location.state.data.filter((val) => val.category.includes(currentTopic));
         threadIdentifier = filtered.reverse();
-        console.log(threadIdentifier);
-
         setPostData(
             threadIdentifier.map((obj) => (
                 <tr key={obj.id} style={{ fontSize: '13px' }}>
@@ -110,7 +108,7 @@ export default function Template() {
                         {getRandomInt(1, 20)}
                         <p className="summaryfontsize">Views</p>
                     </td>
-                    <td className="d-flex align-items-center" style={{ color: '#898989', paddingLeft: '7%' }}>
+                    <td className="align-items-center d-none d-md-flex d-xl-flex" style={{ color: '#898989', paddingLeft: '7%' }}>
                         {/* may have to change .jpg extension depending on file type. */}
                         <img src={images[`${obj.lastReply ?? obj.authorId}.jpg`]} alt="pfp" className="align-content-center mt-1 me-2" width="34" height="34" />
                         <div>

@@ -6,7 +6,6 @@ import { getRelativeTime } from '../../functions/coreFunctions';
 
 export default function RecentTopics(props) {
     function organizeData(val) {
-        console.log(val);
         const data = val.map((e, i) => (
             <tr key={e.id}>
                 <td className={i === 2 ? '' : 'border-bottom'}>

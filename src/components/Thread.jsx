@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react';
 import '../styling/Template.css';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { CKEditor } from '@ckeditor/ckeditor5-react/dist/ckeditor';
+import ls from 'localstorage-slim';
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import ThreadBody from './ThreadBody';
 import ThreadUser from './ThreadUser';
@@ -17,7 +18,7 @@ export default function Thread() {
     const { id, title } = useParams();
     const [text, setText] = useState('');
     const location = useLocation();
-
+    const [isAuthor, setIsAuthor] = useState(false);
     const navigate = useNavigate();
     const [fetchedData, setFetchedData] = useState({});
     const [originalPost, setOriginalPost] = useState({ body: '...', authorId: '...' });
@@ -57,6 +58,8 @@ export default function Thread() {
             .then((response) => response.json())
             .then((data) => {
                 const tmp = data.filter((e) => e.id == id);
+                setIsAuthor(tmp[0].authorId == localStorage.getItem('user'));
+                console.log(isAuthor);
                 setOriginalPost(tmp[0]);
             })
             .catch((error) => {
@@ -116,16 +119,21 @@ export default function Thread() {
                 >
                     <span className="p-1">
                         &nbsp;
+
                         <button type="button" className="rounded text-white" style={{ background: 'black' }}>
                             <i className="bi bi-flag-fill" />
                             <span className="d-none d-lg-inline-block">&nbsp;Report</span>
                         </button>
+
                     </span>
                     <span className="p-1">
-                        <button name="edit" type="button" className="rounded text-white" onClick={() => handleEdit()} style={{ background: 'black' }}>
-                            <i className="bi bi-pencil-square" />
-                            <span className="d-none d-lg-inline-block">&nbsp;Edit</span>
-                        </button>
+                        {isAuthor
+                            && (
+                                <button name="edit" type="button" className="rounded text-white" onClick={() => handleEdit()} style={{ background: 'black' }}>
+                                    <i className="bi bi-pencil-square" />
+                                    <span className="d-none d-lg-inline-block">&nbsp;Edit</span>
+                                </button>
+                            )}
                         &nbsp;
                         <a href="#reply">
                             <button name="reply" type="button" className="rounded text-white" style={{ background: 'black' }}>
