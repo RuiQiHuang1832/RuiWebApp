@@ -1,4 +1,7 @@
+#Stack
+
 # NOTE
+
 
 Frontend hosted on Vercel and Backend hosted on Heroku.
 
