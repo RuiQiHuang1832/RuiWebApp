@@ -1,32 +1,72 @@
-# Stack
+## Technology Stack
 
-# NOTE
+This project utilizes a diverse range of technologies and dependencies to provide a robust and feature-rich application:
+
+### Front-End
+
+- **React**: A powerful JavaScript library for building dynamic user interfaces.
+- **HTML5**: The standard markup language for structuring and presenting content on the web.
+- **CSS**: Cascading Style Sheets for styling and layout of the application.
+- **JSX**: A syntax extension for JavaScript used with React to describe UI components.
+- **JavaScript**: The core scripting language for adding interactivity and logic.
+
+### Libraries and Dependencies
+
+- **@ckeditor/ckeditor5-react**: Rich text editor for creating and editing content.
+- **@emailjs/browser**: Library for sending emails directly from the browser.
+- **axios**: Promise-based HTTP client for making API requests.
+- **bootstrap**: CSS framework for responsive and visually appealing designs.
+- **react-bootstrap**: Bootstrap components rebuilt for React.
+- **react-router-dom**: Library for routing and navigation in React applications.
+- **react-hook-form**: Efficient form validation and management.
+- **react-paginate**: Component for implementing pagination in lists of data.
+- **react-epic-spinners**: Collection of loading spinners for a better user experience.
+- **html-react-parser**: Parses HTML strings into React components.
+- **web-vitals**: Helps measure and optimize the performance of the application.
+
+### Back-End
+
+- **Spring Boot**: A Java-based framework for building robust and scalable web applications.
+
+### Dependencies for Back-End
+
+The backend leverages the following dependencies:
+
+- **spring-boot-starter-data-jpa**: Starter for using Spring Data JPA, simplifying database access.
+- **spring-boot-starter-web**: Starter for building web applications, including RESTful endpoints.
+- **spring-boot-starter-security**: Starter for implementing security features in the application.
+- **spring-boot-starter-thymeleaf**: Starter for integrating Thymeleaf templates into the application.
+- **mysql-connector-java**: MySQL database connector for runtime database interactions.
+- **spring-boot-starter-test**: Starter for writing tests in Spring Boot applications.
+- **io.jsonwebtoken:jjwt-api**: Library for working with JSON Web Tokens (JWT) - API.
+- **io.jsonwebtoken:jjwt-impl**: Library for working with JSON Web Tokens (JWT) - Implementation.
+- **io.jsonwebtoken:jjwt-jackson**: Library for working with JSON Web Tokens (JWT) - Jackson integration.
+
+### Additional Tools
+
+- **bcrypt / bcryptjs**: Libraries for hashing and encrypting sensitive data.
+- **bootstrap-icons**: Icons designed for use with the Bootstrap framework.
+- **emailjs-com**: Library for sending emails using various email services.
+- **jszip**: Library for working with ZIP files.
+- **localstorage-slim**: Simplified local storage management.
+- **random-token**: Generates random tokens, useful for various application features.
+- **svgo**: Tool for optimizing SVG files.
+
+These technologies synergize to create an engaging and efficient web application. Feel free to explore the codebase to see how they are integrated to deliver a seamless user experience.
 
 
-Frontend hosted on Vercel and Backend hosted on Heroku.
+## Server Information
 
-**Since heroku is hosted free, there will be a delay while accessing the web app.**
+This application is hosted on [Render.com](https://render.com), a cloud platform for deploying and scaling web applications. Please be aware of the following information regarding server spin-up time and content:
 
-**Every text you see on the website is placeholders. All text is for the sake of having an example to show. Will be replaced in future releases. ALL design is not finalized**
+- **Server Spin-up Time**: The application is hosted on a free version of Render.com, which has a spin-up time of approximately 15 minutes. As a result, the initial loading of the website may take some time. Subsequent visits will have faster loading times.
 
-# TODO (not updated)
+- **Content Placeholder**: The text and images you currently see on the website are placeholders used for illustrative purposes. They do not reflect the final content of the application and are included solely to provide an example structure.
 
-Upgrade ✔️<br />
-About ✔️<br />
-Search✔️ Officially Done<br />
-Home✔️<br />
-postsTable✔️<br/>
-Mobile Friendly<br />
-User Dashboard✔️<br />
-Sign up/ Sign out✔️<br />
-Login✔️<br />
-Settings✔️<br />
-Members✔️<br />
-TemplateForum<br />
-FAQAccourdion✔️<br />
-Forgotpassword+resetPassword✔️<br />
-Userfeedback ✔️<br />
-Topics ✔️<br/>
+I appreciate your patience during the spin-up time and encourage you to explore the website's functionality once it has fully loaded. For any inquiries or feedback, please don't hesitate to reach out.
+
+Thank you for understanding!
+
 
 # Getting Started with Create React App
 
